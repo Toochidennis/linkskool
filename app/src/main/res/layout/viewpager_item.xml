@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    android:layout_margin="8dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:padding="20dp"
+            android:background="#662C91"
+            >
+            <TextView
+                android:id="@+id/school_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Raymond College"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/no_of_entity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No. of Students"
+                android:layout_below="@id/school_name"
+                android:textSize="14sp"
+                android:fontFamily="@font/roboto"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="20dp"
+                />
+
+            <TextView
+                android:id="@+id/count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/no_of_entity"
+                android:layout_marginTop="15dp"
+                android:text="55"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:fontFamily="@font/roboto"
+                android:textStyle="bold" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_right"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                />
+
+            <Button
+                android:id="@+id/btn_viewpager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:text="Student's contact"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/view_pager_btn"/>
+
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+

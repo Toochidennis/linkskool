@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:orientation="vertical"
+    tools:context=".fragments.ReceiptStudentNameFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tab_color"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/main_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/budget_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:clipToPadding="true" />
+
+            <ImageView
+                android:id="@+id/error_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="180dp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/no_internet"
+                android:visibility="gone"
+                app:tint="@color/color_7" />
+
+            <TextView
+                android:id="@+id/budget_error_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginEnd="0dp"
+                android:fontFamily="@font/montserrat"
+                android:lines="2"
+                android:text="@string/no_data"
+                android:textAlignment="center"
+                android:textColor="@color/text_bg_color"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/error_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:lines="2"
+            android:text="@string/can_not_retrieve"
+            android:textAlignment="center"
+            android:textColor="@color/text_bg_color"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/refresh_btn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ripple_effect"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/refresh_layout"
+            android:textColor="@color/color_5"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/details_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appBar"
+        android:layout_marginBottom="110dp"
+        android:contentDescription="@string/todo"
+        android:visibility="gone">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:elevation="5dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <ImageView
+                    android:id="@+id/back_btn"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:clickable="true"
+                    android:contentDescription="@string/todo"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/arrow_left"
+                    app:tint="@color/black" />
+
+                <TextView
+                    android:id="@+id/school_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:lines="2"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/school_name"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/details_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/title"
+                    android:layout_marginTop="20dp" />
+
+                <LinearLayout
+                    android:id="@+id/line"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/details_recycler"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/line"
+                    android:orientation="horizontal" />
+
+                <TextView
+                    android:id="@+id/total_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/line"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Total"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/total2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/details_recycler"
+                    android:layout_alignBaseline="@id/total_label"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toEndOf="@id/total_label"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="end"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <RelativeLayout
+        android:id="@+id/payment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_5"
+        android:padding="15dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="20dp"
+            android:layout_toStartOf="@id/pay_btn"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/amount_to_pay"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/fee_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="end"
+                android:text="@string/zero_balance"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/pay_btn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/ripple_effect"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="Proceed to pay"
+            android:textColor="@color/color_5"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_receipt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:clickable="true"
+            android:contentDescription="@string/todo"
+            android:focusable="true"
+            android:src="@drawable/ic_settings_black_24dp"
+            android:visibility="gone"
+            app:backgroundTint="@color/color_10" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

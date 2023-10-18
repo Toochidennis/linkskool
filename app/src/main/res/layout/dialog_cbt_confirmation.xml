@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_background"
+    android:orientation="vertical"
+    tools:context=".dialog.CBTConfirmationDialog">
+
+    <RelativeLayout
+        android:id="@+id/un_empty_state"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center_horizontal"
+            android:text="Confirm Exam"
+            android:textColor="@color/text_bg_color"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/exam_type_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Exam Type:"
+            android:textColor="@color/text_bg_color"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/exam_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView"
+            android:layout_alignBaseline="@id/exam_type_label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@id/exam_type_label"
+            android:fontFamily="@font/montserrat"
+            android:lines="2"
+            android:textColor="@color/text_bg_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/subject_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/exam_type_label"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Subject:"
+            android:textColor="@color/text_bg_color"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/exam_type"
+            android:layout_alignBaseline="@id/subject_label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="13dp"
+            android:layout_toEndOf="@id/subject_label"
+            android:fontFamily="@font/montserrat"
+            android:lines="2"
+            android:text=""
+            android:textColor="@color/text_bg_color"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/year_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/subject_label"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+            android:text="Year:"
+            android:textColor="@color/text_bg_color"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/subject"
+            android:layout_alignBaseline="@id/year_label"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="12.5dp"
+            android:layout_toEndOf="@id/year_label"
+            android:fontFamily="@font/montserrat"
+            android:text=""
+            android:textColor="@color/text_bg_color"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/year_label"
+            android:layout_marginTop="48dp"
+            android:orientation="horizontal"
+            android:paddingBottom="30dp">
+
+            <Button
+                android:id="@+id/cancel_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_bg"
+                android:backgroundTint="@android:color/holo_red_light"
+                android:contentDescription="@string/todo"
+                android:elevation=".5dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Cancel"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/continue_button"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_bg"
+                android:backgroundTint="@color/greenC"
+                android:contentDescription="@string/todo"
+                android:elevation=".5dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Continue"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/empty_state"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/error_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="50dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_warning" />
+
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/error_image"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/no_data" />
+
+        <Button
+            android:id="@+id/close_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/error_message"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="80dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/edit_text_bg"
+            android:backgroundTint="@color/color_5"
+            android:contentDescription="@string/todo"
+            android:elevation=".5dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Close"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>
+
+

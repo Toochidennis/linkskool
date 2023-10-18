@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:elevation="0dp"
+    android:background="@color/bg_color"
+    tools:context=".activities.TestUpload">
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/toolbar"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/test_header_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar">
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/question_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/test_header_recycler"
+        android:paddingBottom="60dp"
+        android:clipToPadding="false">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="1dp"
+        android:layout_alignParentBottom="true">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="horizontal">
+       <LinearLayout
+           android:id="@+id/preview_test"
+           android:layout_width="0dp"
+           android:layout_height="60dp"
+           android:clickable="true"
+           android:orientation="vertical"
+           android:layout_weight="1"
+           android:gravity="center"
+           >
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/ic_eye_view"
+               app:tint="#4F4F4F" />
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Preview"
+               android:textSize="11sp"
+               android:textColor="#4F4F4F"
+               android:fontFamily="@font/roboto"
+               />
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="0dp"
+           android:layout_height="60dp"
+           android:clickable="true"
+           android:orientation="horizontal"
+           android:layout_weight="1"
+           android:gravity="center"
+           android:focusable="true">
+
+          <LinearLayout
+              android:id="@+id/add_question"
+              android:layout_width="40dp"
+              android:layout_height="40dp"
+              android:gravity="center"
+              android:elevation="5dp"
+              android:background="@drawable/circle2"
+              android:orientation="vertical">
+
+              <ImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:src="@drawable/ic_add"/>
+          </LinearLayout>
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:id="@+id/submit"
+           android:layout_width="0dp"
+           android:layout_height="60dp"
+           android:orientation="vertical"
+           android:layout_weight="1"
+           android:gravity="center">
+
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/ic_send"
+               app:tint="#4F4F4F"/>
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Submit"
+               android:textSize="11sp"
+               android:textColor="#4F4F4F"
+               android:fontFamily="@font/roboto"/>
+
+       </LinearLayout>
+
+   </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

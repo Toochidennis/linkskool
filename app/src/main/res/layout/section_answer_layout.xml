@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="10dp"
+    android:background="@color/light_gray"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/light_gray"
+        >
+
+        <TextView
+            android:id="@+id/err_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Title is required"
+            android:textColor="@color/redH"
+            android:focusable="false"
+            android:clickable="false"
+            />
+        <TextView
+            android:id="@+id/section_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Section title"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="3dp"
+            android:padding="10dp"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            >
+
+            <ImageView
+                android:id="@+id/desc_logo"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/ic_format_list"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/desc_logo"
+                android:text="Section"
+                android:textSize="10sp"
+                android:layout_centerVertical="true"
+                />
+            <LinearLayout
+                android:layout_alignParentEnd="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_edit"
+                    android:tint="@android:color/white" />
+
+                <ImageView
+                    android:id="@+id/copy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_copy"
+                    android:tint="@android:color/white" />
+
+                <ImageView
+                    android:id="@+id/delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_delete"
+                    android:tint="@android:color/white" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

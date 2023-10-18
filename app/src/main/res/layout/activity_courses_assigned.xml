@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.CoursesAssigned">
+
+    <include layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@drawable/background_gradient_color"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/circle_initials"
+                    android:fontFamily="@font/lato"
+                    android:padding="10dp"
+                    android:text="A"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/teacherName_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="15dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto"
+                    android:maxLines="2"
+                    android:text="Dike kingsley"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="-20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:contentPaddingBottom="10dp"
+            app:contentPaddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/call_teacher_profile"
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageButton
+                        android:id="@+id/call_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/white"
+                        android:clickable="false"
+                        android:src="@drawable/ic_call"
+                        android:tint="@color/blue" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/call_icon"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:clickable="false"
+                        android:text="Call"
+                        android:textColor="@color/blue"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/sms_teacher_profile"
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:clickable="true">
+
+                    <ImageButton
+                        android:id="@+id/sms_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/white"
+                        android:clickable="false"
+                        android:src="@drawable/ic_sms"
+                        android:tint="@color/blue" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/sms_icon"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:clickable="false"
+                        android:text="Sms"
+                        android:textColor="@color/blue"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/email_teacher_profile"
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageButton
+                        android:id="@+id/email_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/white"
+                        android:clickable="false"
+                        android:src="@drawable/ic_mail"
+                        android:tint="@color/blue" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/email_icon"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:clickable="false"
+                        android:text="Email"
+                        android:textColor="@color/blue"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/whatsapp_teacher_profile"
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageButton
+                        android:id="@+id/whatsapp_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/white"
+                        android:clickable="false"
+                        android:src="@drawable/ic_whatsapp"
+                        android:tint="@color/blue" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/whatsapp_icon"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:clickable="false"
+                        android:text="Whatsapp"
+                        android:textAlignment="center"
+                        android:textColor="@color/blue"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/form_class"
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageButton
+                        android:id="@+id/class_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/white"
+                        android:clickable="false"
+                        android:src="@drawable/ic_class"
+                        android:tint="@color/blue" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/class_icon"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:clickable="false"
+                        android:fontFamily="@font/arimo"
+                        android:text="Class"
+                        android:textAlignment="center"
+                        android:textColor="@color/blue"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/courses"
+                    android:layout_width="65dp"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageButton
+                        android:id="@+id/courses_icon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@android:color/white"
+                        android:clickable="false"
+                        android:src="@drawable/ic_collections"
+                        android:tint="@color/blue" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/courses_icon"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:clickable="false"
+                        android:fontFamily="@font/arimo"
+                        android:text="Courses"
+                        android:textAlignment="center"
+                        android:textColor="@color/blue"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <FrameLayout
+            android:id="@+id/courseAssigned_unempty_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/course_assigned_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingBottom="130dp">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/assign_course"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_margin="20dp"
+                android:backgroundTint="@color/tab_color"
+                android:src="@drawable/ic_add" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/save_course"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginBottom="90dp"
+                android:backgroundTint="@color/colorAccent"
+                android:src="@drawable/ic_save"
+                app:fabSize="mini"
+                app:layout_anchor="@id/assign_course"
+                app:layout_anchorGravity="top" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/course_assigned_empty_state"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_warning"
+                    app:tint="@color/light_gray" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:text="There is no course assigned yet"
+                    android:textColor="@android:color/black" />
+
+            </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/assign_course2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:layout_margin="20dp"
+                android:backgroundTint="@color/blue"
+                android:src="@drawable/ic_add" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+</LinearLayout>

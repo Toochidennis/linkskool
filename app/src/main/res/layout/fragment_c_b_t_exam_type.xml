@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:context=".fragments.CBTExamTypeFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tab_color"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/tab_color"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/test_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/test_taken"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="56dp"
+                    android:layout_toEndOf="@id/test_count"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:text="test taken"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+
+                <TextView
+                    android:id="@+id/test_completion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/test_taken"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:text="0%"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/test_taken"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toEndOf="@id/test_completion"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:text="completion rate"
+                    android:textColor="@color/white"
+                    android:textSize="12sp" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ProgressBar
+                        android:id="@+id/progress_bar"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:indeterminateOnly="false"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/progress_circle"
+                        android:textAlignment="center"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/progress_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_alternates"
+                        android:gravity="center"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
+                        app:layout_constraintEnd_toEndOf="@+id/progress_bar"
+                        app:layout_constraintStart_toStartOf="@+id/progress_bar"
+                        app:layout_constraintTop_toTopOf="@+id/progress_bar" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_alternates"
+                        android:gravity="center"
+                        android:text="Average"
+                        android:textColor="@color/white"
+                        android:textSize="11sp"
+                        app:layout_constraintEnd_toEndOf="@+id/progress_bar"
+                        app:layout_constraintStart_toStartOf="@+id/progress_bar"
+                        app:layout_constraintTop_toBottomOf="@id/progress_text" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </RelativeLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:text="Recently taken test"
+                    android:textColor="@color/text_bg_color"
+                    android:textSize="18sp"
+                    ads:layout_constraintBottom_toBottomOf="parent"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toTopOf="parent"
+                    ads:layout_constraintVertical_bias="0.5" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    ads:layout_constraintBottom_toBottomOf="parent"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintTop_toTopOf="parent"
+                    ads:layout_constraintVertical_bias="0.5"
+                    app:cardCornerRadius="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/text_bg_color"
+                        android:fontFamily="@font/montserrat"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="@string/see_all"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ProgressBar
+                            android:id="@+id/maths_progress_bar"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:indeterminateOnly="false"
+                            android:progress="0"
+                            android:progressDrawable="@drawable/score_circle"
+                            android:textAlignment="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/maths_progress_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:gravity="center"
+                            android:text="0% "
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="11sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/maths_progress_bar"
+                            app:layout_constraintEnd_toEndOf="@+id/maths_progress_bar"
+                            app:layout_constraintStart_toStartOf="@+id/maths_progress_bar"
+                            app:layout_constraintTop_toTopOf="@+id/maths_progress_bar" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:gravity="center"
+                            android:text="Score"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toEndOf="@+id/maths_progress_bar"
+                            app:layout_constraintStart_toStartOf="@+id/maths_progress_bar"
+                            app:layout_constraintTop_toBottomOf="@id/maths_progress_text" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <RelativeLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:id="@+id/maths"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Maths"
+                            android:textColor="@color/color_3"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/maths_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/maths"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:lines="2"
+                            android:text="Joint Admission and matriculation board"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/maths_year"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/maths_title"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:text="2022"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="12sp" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/maths_year"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:cardCornerRadius="5dp">
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="23dp"
+                                android:background="@color/color_3"
+                                android:fontFamily="@font/montserrat"
+                                android:text="RETAKE"
+                                android:textColor="@color/button_text_color"
+                                android:textSize="11sp" />
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </RelativeLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ProgressBar
+                            android:id="@+id/english_progress_bar"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:indeterminateOnly="false"
+                            android:progress="0"
+                            android:progressDrawable="@drawable/progress_circle_1"
+                            android:textAlignment="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/english_progress_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="11sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/english_progress_bar"
+                            app:layout_constraintEnd_toEndOf="@+id/english_progress_bar"
+                            app:layout_constraintStart_toStartOf="@+id/english_progress_bar"
+                            app:layout_constraintTop_toTopOf="@+id/english_progress_bar" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:gravity="center"
+                            android:text="Score"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toEndOf="@+id/english_progress_bar"
+                            app:layout_constraintStart_toStartOf="@+id/english_progress_bar"
+                            app:layout_constraintTop_toBottomOf="@id/english_progress_text" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <RelativeLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:id="@+id/english"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="English"
+                            android:textColor="@color/color_3"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/english_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/english"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:lines="2"
+                            android:text="Joint Admission and matriculation board"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/english_year"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/english_title"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:text="2022"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="12sp" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/english_year"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:cardCornerRadius="5dp">
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="23dp"
+                                android:background="@color/color_3"
+                                android:fontFamily="@font/montserrat"
+                                android:text="RETAKE"
+                                android:textColor="@color/button_text_color"
+                                android:textSize="11sp" />
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </RelativeLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ProgressBar
+                            android:id="@+id/physics_progress_bar"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:indeterminateOnly="false"
+                            android:progress="0"
+                            android:progressDrawable="@drawable/progress_circle_2"
+                            android:textAlignment="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/physics_progress_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="11sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/physics_progress_bar"
+                            app:layout_constraintEnd_toEndOf="@+id/physics_progress_bar"
+                            app:layout_constraintStart_toStartOf="@+id/physics_progress_bar"
+                            app:layout_constraintTop_toTopOf="@+id/physics_progress_bar" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:gravity="center"
+                            android:text="Score"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toEndOf="@+id/physics_progress_bar"
+                            app:layout_constraintStart_toStartOf="@+id/physics_progress_bar"
+                            app:layout_constraintTop_toBottomOf="@id/physics_progress_text" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <RelativeLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:id="@+id/physics"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Physics"
+                            android:textColor="@color/color_3"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/physics_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/physics"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:lines="2"
+                            android:text="Joint Admission and matriculation board"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/physics_year"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/physics_title"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:text="2022"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="12sp" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/physics_year"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:cardCornerRadius="5dp">
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="23dp"
+                                android:background="@color/color_3"
+                                android:fontFamily="@font/montserrat"
+                                android:text="RETAKE"
+                                android:textColor="@color/button_text_color"
+                                android:textSize="11sp" />
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </RelativeLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ProgressBar
+                            android:id="@+id/biology_progress_bar"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:indeterminateOnly="false"
+                            android:progress="0"
+                            android:progressDrawable="@drawable/progress_circle_3"
+                            android:textAlignment="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/biology_progress_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="11sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/biology_progress_bar"
+                            app:layout_constraintEnd_toEndOf="@+id/biology_progress_bar"
+                            app:layout_constraintStart_toStartOf="@+id/biology_progress_bar"
+                            app:layout_constraintTop_toTopOf="@+id/biology_progress_bar" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:gravity="center"
+                            android:text="Score"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toEndOf="@+id/biology_progress_bar"
+                            app:layout_constraintStart_toStartOf="@+id/biology_progress_bar"
+                            app:layout_constraintTop_toBottomOf="@id/biology_progress_text" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <RelativeLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:id="@+id/biology"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Biology"
+                            android:textColor="@color/color_3"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/biology_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/biology"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:lines="2"
+                            android:text="Joint Admission and matriculation board"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/biology_year"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/biology_title"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:text="2015"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="12sp" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/biology_year"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:cardCornerRadius="5dp">
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="23dp"
+                                android:background="@color/color_3"
+                                android:fontFamily="@font/montserrat"
+                                android:text="RETAKE"
+                                android:textColor="@color/button_text_color"
+                                android:textSize="11sp" />
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </RelativeLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ProgressBar
+                            android:id="@+id/chemistry_progress_bar"
+                            android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:indeterminateOnly="false"
+                            android:progress="0"
+                            android:progressDrawable="@drawable/score_circle"
+                            android:textAlignment="center"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/chemistry_progress_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="11sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/chemistry_progress_bar"
+                            app:layout_constraintEnd_toEndOf="@+id/chemistry_progress_bar"
+                            app:layout_constraintStart_toStartOf="@+id/chemistry_progress_bar"
+                            app:layout_constraintTop_toTopOf="@+id/chemistry_progress_bar" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:gravity="center"
+                            android:text="Score"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="11sp"
+                            app:layout_constraintEnd_toEndOf="@id/chemistry_progress_bar"
+                            app:layout_constraintStart_toStartOf="@id/chemistry_progress_bar"
+                            app:layout_constraintTop_toBottomOf="@id/chemistry_progress_text" />
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <RelativeLayout
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:id="@+id/chemistry"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Chemistry"
+                            android:textColor="@color/color_3"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/chemistry_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/chemistry"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:lines="2"
+                            android:text="Joint Admission and matriculation board"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/chemistry_year"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/chemistry_title"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:text="2022"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="12sp" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/chemistry_year"
+                            android:layout_gravity="bottom"
+                            android:layout_marginTop="5dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:cardCornerRadius="5dp">
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="23dp"
+                                android:background="@color/color_3"
+                                android:fontFamily="@font/montserrat"
+                                android:text="RETAKE"
+                                android:textColor="@color/button_text_color"
+                                android:textSize="11sp" />
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="Choose test"
+                android:textColor="@color/text_bg_color"
+                android:textSize="20sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/exam_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
+
+                <RelativeLayout
+                    android:id="@+id/empty_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/error_image"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/ic_warning" />
+
+                    <TextView
+                        android:id="@+id/error_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/error_image"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/no_data" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimen_16"
+    android:layout_marginEnd="@dimen/dimen_16"
+    android:background="@color/white"
+    android:backgroundTint="@color/test_color_7"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="@dimen/dimen_10"
+    app:cardElevation="2dp"
+    app:contentPadding=".5dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="@dimen/dimen_10"
+        app:cardElevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:id="@+id/fileImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/file_icon"
+                android:scaleType="center"
+                android:src="@drawable/ic_document24" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignWithParentIfMissing="true"
+                android:layout_above="@id/progressBar"
+                android:background="@color/test_color_2">
+
+                <TextView
+                    android:id="@+id/fileNameTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toStartOf="@id/deleteBtn"
+                    android:drawablePadding="5dp"
+                    android:ellipsize="marquee"
+                    android:lines="2"
+                    android:padding="@dimen/dimen_10"
+                    android:maxLines="2"
+                    android:layout_alignWithParentIfMissing="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_12"
+                    app:drawableTint="@color/color1" />
+
+                <ImageButton
+                    android:id="@+id/deleteBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/ripple_effect12"
+                    android:contentDescription="@string/exit_btn"
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/ic_close"
+                    app:tint="@color/white" />
+
+            </RelativeLayout>
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:layout_alignParentBottom="true"
+                android:progressTint="@color/test_color_1"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.cardview.widget.CardView>

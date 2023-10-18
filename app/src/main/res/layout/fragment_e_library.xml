@@ -1,0 +1,870 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".fragments.ELibraryFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appBar"
+        android:layout_marginBottom="70dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/imageSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    app:iss_auto_cycle="true"
+                    app:iss_delay="1000"
+                    app:iss_period="1000"
+                    app:iss_selected_dot="@drawable/default_selected_dot"
+                    app:iss_title_background="@drawable/gradient" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/recent_viewed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp">
+
+                <TextView
+                    android:id="@+id/view_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:text="@string/top_videos"
+                    android:textColor="@color/text_bg_color"
+                    android:textSize="20sp"
+                    ads:layout_constraintBottom_toBottomOf="parent"
+                    ads:layout_constraintStart_toStartOf="parent"
+                    ads:layout_constraintTop_toTopOf="parent"
+                    ads:layout_constraintVertical_bias="0.5" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="15dp"
+                    ads:layout_constraintBottom_toBottomOf="parent"
+                    ads:layout_constraintEnd_toEndOf="parent"
+                    ads:layout_constraintTop_toTopOf="parent"
+                    ads:layout_constraintVertical_bias="0.5"
+                    app:cardCornerRadius="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/text_bg_color"
+                        android:fontFamily="@font/montserrat"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:text="@string/see_all"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                </androidx.cardview.widget.CardView>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:backgroundTint="@android:color/transparent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="150dp"
+                            android:layout_height="110dp"
+                            android:layout_gravity="start"
+                            android:backgroundTint="@color/color_2"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp"
+                            app:contentPadding="10dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                app:cardCornerRadius="5dp">
+
+                                <Button
+                                    android:layout_width="70dp"
+                                    android:layout_height="23dp"
+                                    android:background="@color/test_color_3"
+                                    android:drawableStart="@drawable/exo_icon_play"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="@string/play"
+                                    android:textColor="@color/white"
+                                    android:textSize="11sp" />
+
+                            </androidx.cardview.widget.CardView>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/mathematics"
+                            android:textColor="@color/gray"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginTop="20dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:lines="2"
+                            android:text="@string/subject_description"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginTop="70dp"
+                            android:contentDescription="@string/todo"
+                            android:src="@drawable/ic_timer"
+                            app:tint="@color/gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="190dp"
+                            android:layout_marginTop="69dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/time"
+                            android:textColor="@color/gray"
+                            android:textSize="11sp" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginTop="95dp"
+                            android:contentDescription="@string/todo"
+                            android:src="@drawable/ic_person"
+                            app:tint="@color/gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="190dp"
+                            android:layout_marginTop="94dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/developer"
+                            android:textColor="@color/gray"
+                            android:textSize="11sp" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:backgroundTint="@android:color/transparent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="150dp"
+                            android:layout_height="110dp"
+                            android:layout_gravity="start"
+                            android:backgroundTint="@color/color_2"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp"
+                            app:contentPadding="10dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                app:cardCornerRadius="5dp">
+
+                                <Button
+                                    android:layout_width="70dp"
+                                    android:layout_height="23dp"
+                                    android:background="@color/test_color_3"
+                                    android:drawableStart="@drawable/exo_icon_play"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="@string/play"
+                                    android:textColor="@color/white"
+                                    android:textSize="11sp" />
+
+                            </androidx.cardview.widget.CardView>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/mathematics"
+                            android:textColor="@color/gray"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginTop="20dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:lines="2"
+                            android:text="@string/subject_description"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginTop="70dp"
+                            android:contentDescription="@string/todo"
+                            android:src="@drawable/ic_timer"
+                            app:tint="@color/gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="190dp"
+                            android:layout_marginTop="69dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/time"
+                            android:textColor="@color/gray"
+                            android:textSize="11sp" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginTop="95dp"
+                            android:contentDescription="@string/todo"
+                            android:src="@drawable/ic_person"
+                            app:tint="@color/gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="190dp"
+                            android:layout_marginTop="94dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/developer"
+                            android:textColor="@color/gray"
+                            android:textSize="11sp" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:backgroundTint="@android:color/transparent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="150dp"
+                            android:layout_height="110dp"
+                            android:layout_gravity="start"
+                            android:backgroundTint="@color/color_2"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp"
+                            app:contentPadding="10dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                app:cardCornerRadius="5dp">
+
+                                <Button
+                                    android:layout_width="70dp"
+                                    android:layout_height="23dp"
+                                    android:background="@color/test_color_3"
+                                    android:drawableStart="@drawable/exo_icon_play"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="@string/play"
+                                    android:textColor="@color/white"
+                                    android:textSize="11sp" />
+
+                            </androidx.cardview.widget.CardView>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/mathematics"
+                            android:textColor="@color/gray"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginTop="20dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:lines="2"
+                            android:text="@string/subject_description"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginTop="70dp"
+                            android:contentDescription="@string/todo"
+                            android:src="@drawable/ic_timer"
+                            app:tint="@color/gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="190dp"
+                            android:layout_marginTop="69dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/time"
+                            android:textColor="@color/gray"
+                            android:textSize="11sp" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginTop="95dp"
+                            android:contentDescription="@string/todo"
+                            android:src="@drawable/ic_person"
+                            app:tint="@color/gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="190dp"
+                            android:layout_marginTop="94dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/developer"
+                            android:textColor="@color/gray"
+                            android:textSize="11sp" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:backgroundTint="@android:color/transparent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="150dp"
+                            android:layout_height="110dp"
+                            android:layout_gravity="start"
+                            android:backgroundTint="@color/color_2"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp"
+                            app:contentPadding="10dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                app:cardCornerRadius="5dp">
+
+                                <Button
+                                    android:layout_width="70dp"
+                                    android:layout_height="23dp"
+                                    android:background="@color/test_color_3"
+                                    android:drawableStart="@drawable/exo_icon_play"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="@string/play"
+                                    android:textColor="@color/white"
+                                    android:textSize="11sp" />
+
+                            </androidx.cardview.widget.CardView>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/mathematics"
+                            android:textColor="@color/gray"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginTop="20dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:lines="2"
+                            android:text="@string/subject_description"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginTop="70dp"
+                            android:contentDescription="@string/todo"
+                            android:src="@drawable/ic_timer"
+                            app:tint="@color/gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="190dp"
+                            android:layout_marginTop="69dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/time"
+                            android:textColor="@color/gray"
+                            android:textSize="11sp" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginTop="95dp"
+                            android:contentDescription="@string/todo"
+                            android:src="@drawable/ic_person"
+                            app:tint="@color/gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="190dp"
+                            android:layout_marginTop="94dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/developer"
+                            android:textColor="@color/gray"
+                            android:textSize="11sp" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginEnd="15dp"
+                        android:backgroundTint="@android:color/transparent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="0dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="150dp"
+                            android:layout_height="110dp"
+                            android:layout_gravity="start"
+                            android:backgroundTint="@color/color_2"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            app:cardCornerRadius="10dp"
+                            app:cardElevation="0dp"
+                            app:contentPadding="10dp">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:foreground="?android:attr/selectableItemBackground"
+                                app:cardCornerRadius="5dp">
+
+                                <Button
+                                    android:layout_width="70dp"
+                                    android:layout_height="23dp"
+                                    android:background="@color/test_color_3"
+                                    android:drawableStart="@drawable/exo_icon_play"
+                                    android:fontFamily="@font/montserrat"
+                                    android:text="@string/play"
+                                    android:textColor="@color/white"
+                                    android:textSize="11sp" />
+
+                            </androidx.cardview.widget.CardView>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/mathematics"
+                            android:textColor="@color/gray"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:layout_width="170dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginTop="20dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/montserrat_alternates"
+                            android:lines="2"
+                            android:text="@string/subject_description"
+                            android:textColor="@color/text_bg_color"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginTop="70dp"
+                            android:contentDescription="@string/todo"
+                            android:src="@drawable/ic_timer"
+                            app:tint="@color/gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="190dp"
+                            android:layout_marginTop="69dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/time"
+                            android:textColor="@color/gray"
+                            android:textSize="11sp" />
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="170dp"
+                            android:layout_marginTop="95dp"
+                            android:contentDescription="@string/todo"
+                            android:src="@drawable/ic_person"
+                            app:tint="@color/gray" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginStart="190dp"
+                            android:layout_marginTop="94dp"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/developer"
+                            android:textColor="@color/gray"
+                            android:textSize="11sp" />
+
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:id="@+id/video_categories"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/montserrat_alternates"
+                    android:text="@string/categories"
+                    android:textColor="@color/text_bg_color"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cbt_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/color_4"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="3dp"
+                    app:layout_constraintEnd_toStartOf="@+id/videos_btn"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/video_categories">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="top|start"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/ic_cbt"
+                        app:tint="@color/icons_color" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/montserrat"
+                        android:lines="1"
+                        android:text="COMPUTER BASED TEST"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/videos_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="15dp"
+                    android:backgroundTint="@color/color_1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="3dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/cbt_btn"
+                    app:layout_constraintTop_toBottomOf="@id/video_categories">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="top|start"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/ic_video"
+                        app:tint="@color/icons_color" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/montserrat"
+                        android:lines="1"
+                        android:text="VIDEOS"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/games_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/color_5"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="3dp"
+                    app:layout_constraintEnd_toEndOf="@+id/cbt_btn"
+                    app:layout_constraintStart_toStartOf="@+id/cbt_btn"
+                    app:layout_constraintTop_toBottomOf="@+id/cbt_btn">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="top|start"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/ic_game_pad"
+                        app:tint="@color/icons_color" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/montserrat"
+                        android:lines="1"
+                        android:text="GAMES"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/books_btn"
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/color_6"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="3dp"
+                    app:layout_constraintEnd_toEndOf="@+id/videos_btn"
+                    app:layout_constraintStart_toStartOf="@+id/videos_btn"
+                    app:layout_constraintTop_toBottomOf="@id/videos_btn">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_gravity="top|start"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/ic_books"
+                        app:tint="@color/icons_color" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/montserrat"
+                        android:lines="1"
+                        android:text="BOOKS"
+                        android:textColor="@color/white"
+                        android:textSize="12sp" />
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

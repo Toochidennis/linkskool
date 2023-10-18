@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/question_pic"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            />
+
+        <LinearLayout
+            android:layout_below="@id/question_pic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:id="@+id/card_lin">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/qs_num"
+                    android:gravity="center_horizontal"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_marginStart="30dp"
+                    android:text="QUESTION 1"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/question_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    />
+                <ImageView
+                    android:id="@+id/edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_edit"
+                    android:layout_alignParentEnd="true"
+                     android:layout_marginEnd="20dp"
+                    android:visibility="gone"
+                    app:tint="@color/gray" />
+            </RelativeLayout>
+
+            <TextView
+                android:fontFamily="sans-serif-condensed"
+                android:id="@+id/qo_text"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

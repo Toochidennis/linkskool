@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="15dp"
+    android:layout_marginLeft="10dp"
+    app:cardElevation="0.5dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="5dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            >
+            <LinearLayout
+                android:id="@+id/initial_bg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/circle_bg"
+                android:gravity="center"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/initials"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="3dp"
+                >
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mr chuks"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_gravity="center_vertical"
+                    />
+
+                <TextView
+                    android:id="@+id/date_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="June 20"
+                    android:textColor="@color/gray"
+                    android:textSize="10sp"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_gravity="center_vertical"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/answer_display"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            >
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="5dp"
+            android:visibility="gone"
+            >
+            <TextView
+                android:id="@+id/like"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.4k"
+                android:drawableLeft="@drawable/ic_thumb"
+                android:drawablePadding="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/montserrat"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:id="@+id/comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30"
+                android:drawableLeft="@drawable/ic_mode_comment"
+                android:drawablePadding="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/montserrat"
+                android:textSize="11sp"
+                />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

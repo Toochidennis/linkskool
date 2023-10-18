@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AddExpenditureFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <LinearLayout
+        android:id="@+id/debt_icon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="32dp"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/ic_person"
+                app:tint="@color/color_5" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/customer_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Somto Obi"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/customer_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/montserrat"
+            android:text="09036683427"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/expenditure_amount_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/debt_icon"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="15dp"
+        android:autofillHints="emailAddress"
+        android:background="@drawable/edit_text_bg"
+        android:drawableStart="@drawable/ic_money"
+        android:drawableTint="@color/color_5"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="@string/amount"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/date_input"
+        android:layout_width="154dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/expenditure_amount_input"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:autofillHints="creditCardExpirationDate"
+        android:background="@drawable/edit_text_bg"
+        android:clickable="true"
+        android:cursorVisible="false"
+        android:drawableStart="@drawable/ic_date"
+        android:drawableTint="@color/color_5"
+        android:focusable="true"
+        android:focusableInTouchMode="false"
+        android:fontFamily="@font/montserrat"
+        android:hint="yyyy-mm-dd"
+        android:inputType="date"
+        android:minHeight="48dp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+    <EditText
+        android:id="@+id/reference_number_input"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_input"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:autofillHints="postalAddress"
+        android:background="@drawable/edit_text_bg"
+        android:drawableStart="@drawable/ic_reference_number"
+        android:drawableTint="@color/color_5"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="Reference number"
+        android:inputType="textPostalAddress"
+        android:minHeight="48dp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="10dp"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+    <RelativeLayout
+        android:id="@+id/account_ref_input"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_below="@id/reference_number_input"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_toStartOf="@id/refresh_btn"
+        android:background="@drawable/edit_text_bg"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinner_account_reference"
+            style="@style/mySpinnerItemStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:background="@android:color/transparent"
+            android:spinnerMode="dropdown" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/refresh_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reference_number_input"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="15dp"
+        android:clickable="true"
+        android:contentDescription="@string/refresh"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/ic_wifi_protected_setup"
+        app:tint="@color/color_5" />
+
+
+    <EditText
+        android:id="@+id/purpose_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/account_ref_input"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:autofillHints="postalAddress"
+        android:background="@drawable/edit_text_bg"
+        android:drawableStart="@drawable/ic_comment"
+        android:drawableTint="@color/color_5"
+        android:ems="5"
+        android:fontFamily="@font/montserrat"
+        android:hint="Description(required)"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="10dp"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/add_expenditure_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/purpose_input"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/ripple_effect"
+        android:text="Record Expenditure"
+        android:textColor="@color/color_5"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

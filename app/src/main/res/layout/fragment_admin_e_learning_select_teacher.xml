@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".fragments.AdminELearningSelectTeacherFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/white">
+
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/ripple_effect11"
+                android:clickable="true"
+                android:contentDescription="@string/todo"
+                android:focusable="true"
+                android:padding="@dimen/dimen_10"
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                app:tint="@color/test_color_7" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:layout_toStartOf="@id/doneBtn"
+                android:layout_toEndOf="@id/backBtn"
+                android:text="Select teachers"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <Button
+                android:id="@+id/doneBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:background="@drawable/ripple_effect6"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="Done"
+                android:textAllCaps="false"
+                android:textColor="@color/test_color_1"
+                android:textSize="@dimen/text_14" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:id="@+id/selectAllLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_8"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:background="@drawable/left_curved_drawable1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/initialsLayout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:layout_marginBottom="@dimen/dimen_10"
+            android:background="@drawable/circle7"
+            android:backgroundTint="@android:color/transparent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/ic_group"
+                app:tint="@color/test_color_1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/selectedStateLayout"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:layout_marginBottom="@dimen/dimen_10"
+            android:background="@drawable/circle7"
+            android:backgroundTint="@color/test_color_1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/ic_check_"
+                app:tint="@color/white" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/initialsLayout"
+            android:padding="@dimen/dimen_16"
+            android:text="All teachers"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/teacherRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

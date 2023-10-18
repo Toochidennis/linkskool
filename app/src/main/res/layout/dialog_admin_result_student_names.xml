@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg"
+    tools:context=".fragments.ReceiptStudentNameFragment">
+
+
+    <EditText
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints="name"
+        android:background="@drawable/edit_text_bg2"
+        android:drawableStart="@drawable/ic_search_24"
+        android:drawableTint="@color/gray"
+        android:ems="10"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="start|top"
+        android:hint="Search for student"
+        android:inputType="textFilter"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/student_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_bar"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/student_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:clipToPadding="true"
+                android:layout_marginBottom="15dp"/>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/error_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_bar"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/error_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/no_internet" />
+
+        <TextView
+            android:id="@+id/term_error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:lines="2"
+            android:text="@string/no_data"
+            android:textAlignment="center"
+            android:textColor="@color/text_bg_color"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

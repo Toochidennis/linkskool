@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AdminELearningAssignmentStudentWorkDetailsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/android_ash">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/detailsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_above="@id/markingLayout"
+        android:layout_below="@id/appBar" />
+
+    <LinearLayout
+        android:id="@+id/markingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height=".5dp"
+            android:background="@color/test_color_7" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_16">
+
+            <EditText
+                android:id="@+id/scoreEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:layout_toStartOf="@id/returnBtn"
+                android:background="@drawable/edit_text_bg5"
+                android:inputType="number"
+                android:padding="@dimen/dimen_16"
+                android:textSize="@dimen/text_16"
+                android:autofillHints="" />
+
+            <Button
+                android:id="@+id/returnBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/ripple_effect10"
+                android:hint="Mark"
+                android:paddingStart="@dimen/dimen_32"
+                android:paddingEnd="@dimen/dimen_32"
+                android:text="Return"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

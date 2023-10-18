@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/sms_selection"
+        android:icon="@drawable/ic_sms_white"
+        app:showAsAction="always"
+        android:title="sms"/>
+    <item android:id="@+id/email_selection"
+        android:icon="@drawable/ic_email_white"
+        android:title="email"
+        app:showAsAction="always"
+        />
+
+    <item android:id="@+id/select_all"
+        android:title="select all"
+        app:showAsAction="never"
+        />
+
+</menu>

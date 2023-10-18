@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginEnd="@dimen/dimen_16"
+        app:cardCornerRadius="@dimen/dimen_10">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/file_icon"
+            android:scaleType="centerCrop"
+            android:src="@drawable/question_image" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/dimen_16"
+                android:paddingTop="@dimen/dimen_16"
+                android:paddingEnd="@dimen/dimen_16"
+                android:paddingBottom="@dimen/dimen_10"
+                android:text="First C/A test"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_18" />
+
+            <TextView
+                android:id="@+id/courseNameTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:text="English Language"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_16" />
+
+            <TextView
+                android:id="@+id/dateTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_16"
+                android:text="Due october 2023"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_24" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

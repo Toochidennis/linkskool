@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.StudentELearningQuestionFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/android_ash">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:elevation="0dp"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:layout_weight="1"
+                android:background="@drawable/edit_text_bg5"
+                android:gravity="center"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/dateTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/startBtn"
+        android:layout_below="@id/appBar"
+        android:contentDescription="@string/nested_scrollview">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="@dimen/dimen_16"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/test_color_1"
+                android:textSize="@dimen/text_24" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_16">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dimen_16"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/test_color_2"
+                    app:cardCornerRadius="@dimen/dimen_10"
+                    app:contentPadding="@dimen/dimen_10">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|top"
+                        android:contentDescription="@string/file_icon"
+                        android:src="@drawable/ic_question"
+                        app:tint="@color/white" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/questionCountTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_10"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Questions"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_16" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/color1"
+                    app:cardCornerRadius="@dimen/dimen_10"
+                    app:contentPadding="@dimen/dimen_10">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|top"
+                        android:contentDescription="@string/file_icon"
+                        android:src="@drawable/ic_access_time_black_24dp"
+                        app:tint="@color/white" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/durationTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_bold"
+                            android:text=""
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_10"
+                            android:fontFamily="@font/poppins_regular"
+                            android:text="Minutes"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_16" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="@dimen/dimen_16"
+                android:text="Instructions"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/descriptionTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:drawablePadding="@dimen/dimen_16"
+                android:fontFamily="@font/poppins_regular"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_14"
+                app:drawableStartCompat="@drawable/ic_description" />
+
+            <TextView
+                android:id="@+id/startDateTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/dimen_16"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="@dimen/dimen_16"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_14"
+                app:drawableStartCompat="@drawable/ic_access_time_black_24dp" />
+
+            <TextView
+                android:id="@+id/warningTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/dimen_16"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingStart="@dimen/dimen_16"
+                android:paddingEnd="@dimen/dimen_16"
+                android:text="@string/quiz_warning"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_14"
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_warning_24"
+                app:drawableTint="@color/test_color_3" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/startBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:layout_marginEnd="@dimen/dimen_16"
+        android:layout_marginBottom="@dimen/dimen_32"
+        android:background="@drawable/ripple_effect8"
+        android:fontFamily="@font/poppins_regular"
+        android:padding="@dimen/dimen_16"
+        android:text="Start"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_18" />
+
+</RelativeLayout>

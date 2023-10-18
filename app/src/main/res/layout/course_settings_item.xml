@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:contentPadding="10dp"
+    android:layout_height="70dp"
+    android:layout_marginBottom="0.5dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:orientation="vertical"
+        android:layout_centerVertical="true">
+        <TextView
+            android:id="@+id/course_name_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="English"
+            android:textSize="15sp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@android:color/black"
+            />
+        <TextView
+            android:id="@+id/course_code_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eng"
+            android:textSize="14sp"
+            android:fontFamily="@font/lato"
+            android:textColor="@android:color/black"
+            />
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/edit_course_setting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_edit"
+        android:tint="@color/blue"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,176 @@
+<resources>
+    <string name="app_name">Linkskool</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_result"><u>Add</u></string>
+    <string name="view_result"><u>View</u></string>
+    <string name="contact_phone"><u>09064660137</u></string>
+    <string name="contact_email"><u>enquiries@linkskool.com</u></string>
+    <string name="file_url">https://www.linkskool.com</string>
+    <string name="server_error">An error occurred, please contact your developer for more info</string>
+    <string name="base_url">http://linkskool.com/developmentportal/api</string>
+    <string name="linkskool"><font color="#FFFFFF">Link</font><font color="#FF7800">Skool</font></string>
+
+
+    <string name="news_body">These days, people are engaged in their mobile phone in such a way that, people almost do everything from their phone. From small things to the complex, people do all these things from their mobile phone. People almost replaced more than hundreds of things with the use of the mobile phone. Simple examples are that people do with their mobile phones are calling people, watching time, use of calendar, use of alarm clock, use of camera and many more. Among all of them, reading news is also one of them. Yes, watching news via mobile is commonly in practice these days. Therefore, here we will be talking about the News App Screen UI Design Inspiration.</string>
+    <string name="todo">TODO</string>
+    <string name="see_all">SEE ALL</string>
+    <string name="play">PlAY</string>
+    <string name="mathematics">Mathematics</string>
+    <string name="subject_description">Linear algebra and quantitative reasoning</string>
+    <string name="time">10 minutes</string>
+    <string name="developer">Toochi Dennis</string>
+    <string name="english_language">English Language</string>
+    <string name="biology">Biology</string>
+    <string name="computer_science">Computer Science</string>
+    <string name="chemistry">Chemistry</string>
+    <string name="economics">Economics</string>
+    <string name="commerce">Commerce</string>
+    <string name="marketing">Marketing</string>
+    <string name="view_all">VIEW ALL</string>
+    <string name="categories">Categories</string>
+    <string name="top_videos">Top Videos</string>
+    <string name="loading_please_wait">Loading, please wait…</string>
+    <string name="business_studies">Business Studies</string>
+    <string name="nothing_to_show">No attendance taken yet! Click the
+        button below to take attendance</string>
+    <string name="no_data">Nothing to show</string>
+    <string name="hide">****</string>
+    <string name="contact_developer">Something went wrong! Please check your internet
+        connection and try again</string>
+    <string name="no_internet">Something went wrong! Please check your internet
+        connection and try again</string>
+    <string name="failed_internet">Failed to load Students, please check your internet connection and try again</string>
+    <string name="can_not_retrieve">Failed to load data, please check your internet connection
+        and try again</string>
+    <string name="no_history">No payment made yet</string>
+    <string name="naira">\u20A6</string>
+    <string name="success">Success</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string-array name="account_type">
+        <item>Account Type</item>
+        <item>Income</item>
+        <item>Expenditure</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item>Select Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="school_type">
+        <item>Nursery School</item>
+        <item>Primary School</item>
+        <item>Secondary School</item>
+
+    </string-array>
+
+    <string-array name="states">
+
+        <item>Select state</item>
+        <item>Abia</item>
+        <item>Adamawa</item>
+        <item>Akwa Ibom</item>
+        <item>Anambra</item>
+        <item>Bauchi</item>
+        <item>Bayelsa</item>
+        <item>Benue</item>
+        <item>Borno</item>
+        <item>Cross River</item>
+        <item>Delta</item>
+        <item>Ebonyi</item>
+        <item>Enugu</item>
+        <item>Edo</item>
+        <item>Ekiti</item>
+        <item>Gombe</item>
+        <item>Imo</item>
+        <item>Jigawa</item>
+        <item>Kaduna</item>
+        <item>Kano</item>
+        <item>Katsina</item>
+        <item>Kebbi</item>
+        <item>Kogi</item>
+        <item>Kwara</item>
+        <item>Lagos</item>
+        <item>Nasarawa</item>
+        <item>Niger</item>
+        <item>Ogun</item>
+        <item>Ondo</item>
+        <item>Osun</item>
+        <item>Oyo</item>
+        <item>Plateau</item>
+        <item>Rivers</item>
+        <item>Sokoto</item>
+        <item>Taraba</item>
+        <item>Yobe</item>
+        <item>Zamfara</item>
+    </string-array>
+
+    <string-array name="terms">
+        <item>First Term</item>
+        <item>Second Term</item>
+        <item>Third Term</item>
+    </string-array>
+
+    <string name="title_activity_bar_chart">BarChart</string>
+    <string name="amount">Amount (₦)</string>
+    <string name="mandatory">Mandatory</string>
+    <string name="not_mandatory">Not mandatory</string>
+    <string name="zero_balance">₦0.00</string>
+    <string name="card_details">Card Details</string>
+    <string name="card_number">Card Number</string>
+    <string name="expiry">Expiry</string>
+    <string name="cvv">CVV</string>
+    <string name="mm_yy">MM/YY</string>
+    <string name="secured_by_paystack">Secured by Paystack</string>
+    <string name="amount_to_pay">Amount to pay</string>
+    <string name="refresh_layout">Refresh</string>
+    <string name="failed">Failed</string>
+    <string name="pay_now">Pay Now!</string>
+    <string name="view_details">View Details</string>
+    <string name="paid">Paid!</string>
+    <string name="first_term">First Term</string>
+    <string name="second_term">Second Term</string>
+    <string name="third_term">Third Term</string>
+    <string name="thanks_for_paying">Thanks for paying!</string>
+    <string name="payment_history">Payment History</string>
+    <string name="school_fees">School Fees</string>
+    <string name="expenditure">Expenditure</string>
+    <string name="refresh">Refresh</string>
+    <string name="skills_and_behaviour"><![CDATA[Skills & Behaviour]]></string>
+    <string name="comment">Comment</string>
+    <string name="students">Students</string>
+    <string name="no_result_yet">No result yet!</string>
+    <string name="start_date">Start date</string>
+    <string name="end_date">End date</string>
+    <string name="no_class">There\'s no class in this level</string>
+    <string name="select_class">Select Class</string>
+    <string name="select_level">Select Level</string>
+    <string name="confirm">Confirm</string>
+    <string name="and"><![CDATA[&]]></string>
+    <string name="close">Close</string>
+    <string name="navigate_back">Navigate back</string>
+    <string name="create_topic">Create topic</string>
+    <string name="topics_group_assignment_under_one_category">Topics group assignment under one category</string>
+    <string name="done">Done</string>
+    <string name="select_topic">Select topic</string>
+    <string name="add_content">Add content</string>
+    <string name="more_options">More options</string>
+    <string name="no_question_set_yet">No question set yet!</string>
+    <string name="tab_layout">Tab layout</string>
+    <string name="view_pager">View pager</string>
+    <string name="file_icon">file icon</string>
+    <string name="nested_scrollview">Nested scrollView</string>
+    <string name="dashed_line">dashed line</string>
+    <string name="quiz_warning">Please note that once you begin, you cannot exit until it\'s
+        completed. Exiting during the quiz will result to automatic submission.</string>
+    <string name="next">Next</string>
+    <string name="prev">Prev</string>
+    <string name="submit">Submit</string>
+    <string name="exit_btn">exit btn</string>
+    <string name="toochi_dennis">Toochi Dennis</string>
+</resources>

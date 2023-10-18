@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AdminELearningSelectTopicDialogFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="@dimen/dimen_12"
+                android:background="@drawable/ripple_effect11"
+                android:clickable="true"
+                android:contentDescription="@string/todo"
+                android:focusable="true"
+                android:padding="@dimen/dimen_10"
+                android:src="@drawable/ic_arrow_back_black_24dp"
+                app:tint="@color/test_color_7" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginTop="@dimen/dimen_24"
+                android:layout_toStartOf="@id/doneBtn"
+                android:layout_toEndOf="@id/backBtn"
+                android:text="@string/select_topic"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <Button
+                android:id="@+id/doneBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:layout_marginBottom="@dimen/dimen_16"
+                android:background="@drawable/ripple_effect10"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/done"
+                android:textAllCaps="false"
+                android:textSize="@dimen/text_14" />
+
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/separator1"
+            android:layout_width="match_parent"
+            android:layout_height=".5dp"
+            android:layout_below="@+id/appBar"
+            android:background="@color/test_color_7" />
+
+        <TextView
+            android:id="@+id/noTopicBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/separator1"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="@dimen/dimen_16"
+            android:text="No topic"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16" />
+
+        <View
+            android:id="@+id/separator2"
+            android:layout_width="match_parent"
+            android:layout_height=".5dp"
+            android:layout_below="@+id/noTopicBtn"
+            android:background="@color/test_color_7" />
+
+        <EditText
+            android:id="@+id/newTopicEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/separator2"
+            android:autofillHints=""
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_add_black"
+            android:drawablePadding="@dimen/dimen_16"
+            android:hint="New topic"
+            android:inputType="textCapSentences"
+            android:padding="@dimen/dimen_16"
+            android:textSize="@dimen/text_16" />
+
+        <View
+            android:id="@+id/separator3"
+            android:layout_width="match_parent"
+            android:layout_height=".5dp"
+            android:layout_below="@+id/newTopicEditText"
+            android:background="@color/test_color_7"
+            android:visibility="gone" />
+
+        <EditText
+            android:id="@+id/newObjectiveEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/separator3"
+            android:autofillHints=""
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_add_black"
+            android:drawablePadding="@dimen/dimen_16"
+            android:hint="Objectives"
+            android:inputType="textCapSentences|textMultiLine"
+            android:lineSpacingMultiplier="1"
+            android:lines="10"
+            android:minLines="1"
+            android:overScrollMode="always"
+            android:padding="@dimen/dimen_16"
+            android:textSize="@dimen/text_16"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/topicRecyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/newObjectiveEditText"
+            android:clipToPadding="true" />
+
+        <TextView
+            android:id="@+id/errorTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/newObjectiveEditText"
+            android:layout_marginTop="@dimen/dimen_64"
+            android:text="@string/no_data"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

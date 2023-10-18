@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.VendorFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <EditText
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:autofillHints="name"
+        android:background="@drawable/edit_text_bg"
+        android:drawableStart="@drawable/ic_search_24"
+        android:drawableTint="@color/gray"
+        android:ems="10"
+        android:minHeight="48dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="start|top"
+        android:hint="Search for a vendor"
+        android:inputType="textPersonName"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/vendor_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_bar"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/vendor_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:clipToPadding="true" />
+
+            <ImageView
+                android:id="@+id/error_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="150dp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/baseline_money_off_24"
+                android:visibility="gone"
+                app:tint="@color/color_7" />
+
+            <TextView
+                android:id="@+id/vendor_error_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginEnd="0dp"
+                android:fontFamily="@font/montserrat"
+                android:lines="2"
+                android:text="@string/no_history"
+                android:textAlignment="center"
+                android:textColor="@color/text_bg_color"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/error_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:lines="2"
+            android:text="@string/can_not_retrieve"
+            android:textAlignment="center"
+            android:textColor="@color/text_bg_color"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/refresh_btn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ripple_effect"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/refresh_layout"
+            android:textColor="@color/color_5"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_vendor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:clickable="true"
+            android:contentDescription="@string/todo"
+            android:focusable="true"
+            android:visibility="gone"
+            android:src="@drawable/ic_person_add"
+            app:backgroundTint="@color/color_2"
+            app:tint="@color/white" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

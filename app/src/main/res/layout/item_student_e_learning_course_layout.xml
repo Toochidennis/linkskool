@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimen_16"
+    android:layout_marginEnd="@dimen/dimen_16"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/courseCardView"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:cardCornerRadius="@dimen/dimen_10"
+        app:cardElevation="2dp"
+        app:contentPadding="@dimen/dimen_10">
+
+        <LinearLayout
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="start|top"
+            android:background="@drawable/circle_result_4"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/initialTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_16" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/courseNameTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:gravity="end"
+            android:text="Computer Science"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_12" />
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

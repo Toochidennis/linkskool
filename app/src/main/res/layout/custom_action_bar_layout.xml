@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_height="?actionBarSize"
+    android:background="@color/white">
+
+    <ImageButton
+        android:id="@+id/cancelBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ripple_effect11"
+        android:contentDescription="@string/navigate_back"
+        android:padding="@dimen/dimen_10"
+        android:src="@drawable/ic_close"
+        app:tint="@color/black" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dimen_8"
+        android:layout_toEndOf="@id/cancelBtn"
+        android:padding="@dimen/dimen_10"
+        android:text="0 selected"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_18" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:paddingStart="@dimen/dimen_32"
+        android:paddingEnd="@dimen/dimen_32"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/dimen_16"
+        android:background="@drawable/ripple_effect10"
+        android:text="Return"
+        android:layout_marginTop="4dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_14" />
+
+</RelativeLayout>

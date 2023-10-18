@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="8dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        >
+        <LinearLayout
+            android:id="@+id/student_count_container"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:gravity="center"
+            android:background="@color/blue"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/date_posted"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textAlignment="center"
+                android:text=""/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@id/student_count_container"
+            android:padding="5dp"
+            >
+        <TextView
+            android:id="@+id/news_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Design from scratch. From clickable wireframes to completely Design from scratch. From clickable wireframes to completely "
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/student_count_container"
+            android:fontFamily="@font/open_sans"
+            android:textSize="13sp"
+            android:textColor="#1d1d1d"
+            />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:minHeight="600dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:contentPadding="10dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Flashcard Settings"
+                android:fontFamily="@font/open_sans"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/gray"
+                android:layout_centerInParent="true"
+                />
+            <TextView
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NEXT"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textColor="@color/redH"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="7dp"
+                />
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <EditText
+        android:id="@+id/debt_fee_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Flashcard Title"
+        android:layout_margin="20dp"
+        />
+
+
+
+</LinearLayout>

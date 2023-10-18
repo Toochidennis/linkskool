@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+    android:foreground="?android:attr/selectableItemBackgroundBorderless"
+    app:cardCornerRadius="5dp"
+    app:cardElevation=".5dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/color_5"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="0dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_payment"
+            app:tint="@color/icons_color" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/payment_session"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/payment_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/gray"
+        android:textSize="11sp" />
+
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/color_5"
+        android:textSize="11sp" />
+
+</androidx.cardview.widget.CardView>

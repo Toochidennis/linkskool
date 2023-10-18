@@ -1,0 +1,36 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+
+    repositories {
+        google()
+        maven { url 'https://jitpack.io' }
+        jcenter()
+
+        
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.2'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.20-Beta'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        maven { url 'https://jitpack.io' }
+        jcenter()
+        configurations.matching { it.name == '_internal_aapt2_binary' }.all { config ->
+            config.resolutionStrategy.eachDependency { details ->
+                details.useVersion("3.5.0-alpha03-5252756")
+            }
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

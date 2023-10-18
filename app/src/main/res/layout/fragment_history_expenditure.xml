@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".fragments.ExpenditureHistoryFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/tab_color"
+        android:elevation="0dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/expenditure_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/tab_color"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="25dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Expenses"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Count"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/expenditure_sum"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat"
+                        android:textAlignment="viewStart"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/expenditure_count"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat"
+                        android:textAlignment="textEnd"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/expenditure_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/history_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/time_frame_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@android:color/transparent"
+                    android:clickable="true"
+                    android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                    android:drawablePadding="5dp"
+                    android:elevation="0dp"
+                    android:focusable="true"
+                    android:fontFamily="@font/poppins_regular"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:text="May, 2023"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/term_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@android:color/transparent"
+                    android:clickable="true"
+                    android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                    android:drawablePadding="5dp"
+                    android:elevation="0dp"
+                    android:textAllCaps="false"
+                    android:focusable="true"
+                    android:fontFamily="@font/poppins_regular"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:text="First Term"
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/expenditure_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/time_frame_btn"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@android:color/transparent"
+                    android:clipToPadding="true" />
+
+                <ImageView
+                    android:id="@+id/error_image"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="150dp"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/baseline_money_off_24"
+                    android:visibility="gone"
+                    app:tint="@color/color_7" />
+
+                <TextView
+                    android:id="@+id/expenditure_error_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="200dp"
+                    android:layout_marginEnd="0dp"
+                    android:fontFamily="@font/montserrat"
+                    android:lines="2"
+                    android:text="@string/no_history"
+                    android:textAlignment="center"
+                    android:textColor="@color/text_bg_color"
+                    android:textSize="14sp"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/error_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:lines="2"
+            android:text="@string/can_not_retrieve"
+            android:textAlignment="center"
+            android:textColor="@color/text_bg_color"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/refresh_btn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/ripple_effect"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/refresh_layout"
+            android:textColor="@color/color_5"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/open_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/dimen_16"
+            android:clickable="true"
+            app:backgroundTint="@color/test_color_3"
+            android:contentDescription="@string/todo"
+            android:focusable="true"
+            android:visibility="gone"
+            android:src="@drawable/ic_add" />
+
+        <LinearLayout
+            android:id="@+id/add_expenditure_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:layout_marginBottom="85dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/add_expenditure_btn1"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/ripple_effect8"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="Add expenditure"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <ImageButton
+                android:id="@+id/add_expenditure_btn2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ripple_effect8"
+                android:clickable="true"
+                android:contentDescription="@string/todo"
+                android:focusable="true"
+                android:src="@drawable/ic_add" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/setup_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:layout_marginBottom="130dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/setup_btn1"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/ripple_effect8"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="Setup report"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <ImageButton
+                android:id="@+id/setup_btn2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ripple_effect8"
+                android:clickable="true"
+                android:contentDescription="@string/todo"
+                android:focusable="true"
+                android:src="@drawable/ic_edit" />
+
+        </LinearLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

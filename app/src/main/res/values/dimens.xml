@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">12sp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="activity_my_margin">1dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">160dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="card_margin_horizontal">-3dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <dimen name="text_12">12sp</dimen>
+    <dimen name="text_14">14sp</dimen>
+    <dimen name="text_16">16sp</dimen>
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_20">20sp</dimen>
+    <dimen name="text_24">24sp</dimen>
+    <dimen name="text_28">28sp</dimen>
+    <dimen name="text_32">32sp</dimen>
+    <dimen name="dimen_5">5dp</dimen>
+    <dimen name="dimen_6">6dp</dimen>
+    <dimen name="dimen_8">8dp</dimen>
+    <dimen name="dimen_10">10dp</dimen>
+    <dimen name="dimen_12">12dp</dimen>
+    <dimen name="dimen_16">16dp</dimen>
+    <dimen name="dimen_20">20dp</dimen>
+    <dimen name="dimen_24">24dp</dimen>
+    <dimen name="dimen_32">32dp</dimen>
+    <dimen name="dimen_64">64dp</dimen>
+    <dimen name="image_height">420dp</dimen>
+
+    <dimen name="chart_line_thickness">2dp</dimen>
+    <dimen name="chart_point_radius">5dp</dimen>
+    <dimen name="text_10">10sp</dimen>
+</resources>

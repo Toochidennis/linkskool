@@ -1,0 +1,669 @@
+#
+# generated on 2020/06/08 03:56:00
+#
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.StudentTable
+tableName=studenttable
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=studentId
+# --field-end--
+# --field-start--
+fieldName=studentSurname
+# --field-end--
+# --field-start--
+fieldName=studentFirstname
+# --field-end--
+# --field-start--
+fieldName=studentMiddlename
+# --field-end--
+# --field-start--
+fieldName=studentGender
+# --field-end--
+# --field-start--
+fieldName=studentReg_no
+# --field-end--
+# --field-start--
+fieldName=studentClass
+# --field-end--
+# --field-start--
+fieldName=studentLevel
+columnName=studentLevel
+canBeNull=false
+# --field-end--
+# --field-start--
+fieldName=guardianName
+# --field-end--
+# --field-start--
+fieldName=guardianAddress
+# --field-end--
+# --field-start--
+fieldName=guardianEmail
+# --field-end--
+# --field-start--
+fieldName=guardianPhoneNo
+# --field-end--
+# --field-start--
+fieldName=lga
+# --field-end--
+# --field-start--
+fieldName=state_of_origin
+# --field-end--
+# --field-start--
+fieldName=nationality
+# --field-end--
+# --field-start--
+fieldName=date_admitted
+# --field-end--
+# --field-start--
+fieldName=date_of_birth
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.TeachersTable
+tableName=teacherstable
+# --table-fields-start--
+# --field-start--
+fieldName=id
+# --field-end--
+# --field-start--
+fieldName=staffId
+# --field-end--
+# --field-start--
+fieldName=staffFirstname
+# --field-end--
+# --field-start--
+fieldName=staffSurname
+# --field-end--
+# --field-start--
+fieldName=staffMiddlename
+# --field-end--
+# --field-start--
+fieldName=staffGender
+# --field-end--
+# --field-start--
+fieldName=staffAddress
+# --field-end--
+# --field-start--
+fieldName=staffNationality
+# --field-end--
+# --field-start--
+fieldName=staffPhone
+# --field-end--
+# --field-start--
+fieldName=staffEmail
+# --field-end--
+# --field-start--
+fieldName=staffNo
+# --field-end--
+# --field-start--
+fieldName=staffLGA
+# --field-end--
+# --field-start--
+fieldName=staffStateOrigin
+# --field-end--
+# --field-start--
+fieldName=staffAccessLevel
+# --field-end--
+# --field-start--
+fieldName=staffBirthday
+# --field-end--
+# --field-start--
+fieldName=password
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.ClassNameTable
+tableName=classnametable
+# --table-fields-start--
+# --field-start--
+fieldName=id
+# --field-end--
+# --field-start--
+fieldName=classId
+# --field-end--
+# --field-start--
+fieldName=level
+# --field-end--
+# --field-start--
+fieldName=className
+# --field-end--
+# --field-start--
+fieldName=formTeacher
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.LevelTable
+tableName=leveltable
+# --table-fields-start--
+# --field-start--
+fieldName=id
+# --field-end--
+# --field-start--
+fieldName=levelId
+# --field-end--
+# --field-start--
+fieldName=levelName
+# --field-end--
+# --field-start--
+fieldName=schoolType
+# --field-end--
+# --field-start--
+fieldName=rank
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.NewsTable
+tableName=newstable
+# --table-fields-start--
+# --field-start--
+fieldName=id
+# --field-end--
+# --field-start--
+fieldName=newsId
+# --field-end--
+# --field-start--
+fieldName=newsSubject
+# --field-end--
+# --field-start--
+fieldName=newsContent
+# --field-end--
+# --field-start--
+fieldName=datePosted
+# --field-end--
+# --field-start--
+fieldName=newsImageUrl
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.CourseTable
+tableName=coursetable
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=courseId
+# --field-end--
+# --field-start--
+fieldName=staffNo
+# --field-end--
+# --field-start--
+fieldName=classId
+# --field-end--
+# --field-start--
+fieldName=courseYear
+# --field-end--
+# --field-start--
+fieldName=courseTerm
+# --field-end--
+# --field-start--
+fieldName=courseName
+# --field-end--
+# --field-start--
+fieldName=className
+# --field-end--
+# --field-start--
+fieldName=levelId
+# --field-end--
+# --field-start--
+fieldName=courseCode
+# --field-end--
+# --field-start--
+fieldName=levelName
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.StudentResultDownloadTable
+tableName=studentresultdownloadtable
+# --table-fields-start--
+# --field-start--
+fieldName=firstTerm
+# --field-end--
+# --field-start--
+fieldName=secondTerm
+# --field-end--
+# --field-start--
+fieldName=thirdTerm
+# --field-end--
+# --field-start--
+fieldName=level
+# --field-end--
+# --field-start--
+fieldName=studentId
+# --field-end--
+# --field-start--
+fieldName=levelName
+# --field-end--
+# --field-start--
+fieldName=schoolYear
+# --field-end--
+# --field-start--
+fieldName=classId
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.StudentCourses
+tableName=studentcourses
+# --table-fields-start--
+# --field-start--
+fieldName=id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=courseId
+# --field-end--
+# --field-start--
+fieldName=classId
+# --field-end--
+# --field-start--
+fieldName=courseName
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.VideoTable
+tableName=videotable
+# --table-fields-start--
+# --field-start--
+fieldName=videoId
+# --field-end--
+# --field-start--
+fieldName=videoTitle
+# --field-end--
+# --field-start--
+fieldName=videoSubject
+# --field-end--
+# --field-start--
+fieldName=thumbnail
+# --field-end--
+# --field-start--
+fieldName=videoUrl
+# --field-end--
+# --field-start--
+fieldName=levelId
+# --field-end--
+# --field-start--
+fieldName=levelName
+# --field-end--
+# --field-start--
+fieldName=videoCategory
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.GradeModel
+tableName=grademodel
+# --table-fields-start--
+# --field-start--
+fieldName=gradeId
+# --field-end--
+# --field-start--
+fieldName=gradeName
+# --field-end--
+# --field-start--
+fieldName=gradeMinimuim
+# --field-end--
+# --field-start--
+fieldName=gradeRemark
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.GeneralSettingModel
+tableName=generalsettingmodel
+# --table-fields-start--
+# --field-start--
+fieldName=schoolName
+# --field-end--
+# --field-start--
+fieldName=schoolYear
+# --field-end--
+# --field-start--
+fieldName=schoolTerm
+# --field-end--
+# --field-start--
+fieldName=website
+# --field-end--
+# --field-start--
+fieldName=shcoolShortName
+# --field-end--
+# --field-start--
+fieldName=schoolAddress
+# --field-end--
+# --field-start--
+fieldName=city
+# --field-end--
+# --field-start--
+fieldName=state
+# --field-end--
+# --field-start--
+fieldName=country
+# --field-end--
+# --field-start--
+fieldName=schoolEmail
+# --field-end--
+# --field-start--
+fieldName=schoolPhone
+# --field-end--
+# --field-start--
+fieldName=studentPrefix
+# --field-end--
+# --field-start--
+fieldName=staffPrefix
+# --field-end--
+# --field-start--
+fieldName=alumniPrefix
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.VideoUtilTable
+tableName=videoutiltable
+# --table-fields-start--
+# --field-start--
+fieldName=videoCatId
+# --field-end--
+# --field-start--
+fieldName=videoCatTitle
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.AssessmentModel
+tableName=assessmentmodel
+# --table-fields-start--
+# --field-start--
+fieldName=assessmentId
+# --field-end--
+# --field-start--
+fieldName=assessmentName
+# --field-end--
+# --field-start--
+fieldName=maxScore
+# --field-end--
+# --field-start--
+fieldName=level
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.Exam
+tableName=exam
+# --table-fields-start--
+# --field-start--
+fieldName=Id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=examTypeId
+# --field-end--
+# --field-start--
+fieldName=examId
+# --field-end--
+# --field-start--
+fieldName=yearId
+# --field-end--
+# --field-start--
+fieldName=course
+# --field-end--
+# --field-start--
+fieldName=year
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.ExamQuestions
+tableName=examquestions
+# --table-fields-start--
+# --field-start--
+fieldName=Id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=examId
+# --field-end--
+# --field-start--
+fieldName=json
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.ExamType
+tableName=examtype
+# --table-fields-start--
+# --field-start--
+fieldName=Id
+generatedId=true
+# --field-end--
+# --field-start--
+fieldName=examTypeId
+# --field-end--
+# --field-start--
+fieldName=examName
+# --field-end--
+# --field-start--
+fieldName=examLogo
+# --field-end--
+# --field-start--
+fieldName=status
+# --field-end--
+# --field-start--
+fieldName=category
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.StaffTableUtil
+tableName=stafftableutil
+# --table-fields-start--
+# --field-start--
+fieldName=staffId
+# --field-end--
+# --field-start--
+fieldName=courseId
+# --field-end--
+# --field-start--
+fieldName=classId
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.FormClassModel
+tableName=formclassmodel
+# --table-fields-start--
+# --field-start--
+fieldName=staffId
+# --field-end--
+# --field-start--
+fieldName=className
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.TeacherCourseModel
+tableName=teachercoursemodel
+# --table-fields-start--
+# --field-start--
+fieldName=id
+# --field-end--
+# --field-start--
+fieldName=className
+# --field-end--
+# --field-start--
+fieldName=courseName
+# --field-end--
+# --field-start--
+fieldName=courseId
+# --field-end--
+# --field-start--
+fieldName=classId
+# --field-end--
+# --field-start--
+fieldName=staffId
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.TeacherCourseModelCopy
+tableName=teachercoursemodelcopy
+# --table-fields-start--
+# --field-start--
+fieldName=id
+# --field-end--
+# --field-start--
+fieldName=className
+# --field-end--
+# --field-start--
+fieldName=courseName
+# --field-end--
+# --field-start--
+fieldName=courseId
+# --field-end--
+# --field-start--
+fieldName=classId
+# --field-end--
+# --field-start--
+fieldName=staffId
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.CourseOutlineTable
+tableName=courseoutlinetable
+# --table-fields-start--
+# --field-start--
+fieldName=week
+# --field-end--
+# --field-start--
+fieldName=title
+# --field-end--
+# --field-start--
+fieldName=objective
+# --field-end--
+# --field-start--
+fieldName=levelId
+# --field-end--
+# --field-start--
+fieldName=courseId
+# --field-end--
+# --field-start--
+fieldName=noteMaterialPath
+# --field-end--
+# --field-start--
+fieldName=otherMatherialPath
+# --field-end--
+# --field-start--
+fieldName=id
+# --field-end--
+# --field-start--
+fieldName=levelName
+# --field-end--
+# --field-start--
+fieldName=courseName
+# --field-end--
+# --field-start--
+fieldName=startDate
+# --field-end--
+# --field-start--
+fieldName=endDate
+# --field-end--
+# --field-start--
+fieldName=duration
+# --field-end--
+# --field-start--
+fieldName=type
+# --field-end--
+# --field-start--
+fieldName=assessmentUrl
+# --field-end--
+# --field-start--
+fieldName=json
+# --field-end--
+# --field-start--
+fieldName=author
+# --field-end--
+# --field-start--
+fieldName=date
+# --field-end--
+# --field-start--
+fieldName=body
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=com.digitaldream.linkskool.models.CommentTable
+tableName=commenttable
+# --table-fields-start--
+# --field-start--
+fieldName=user_id
+# --field-end--
+# --field-start--
+fieldName=comment_id
+# --field-end--
+# --field-start--
+fieldName=comment
+# --field-end--
+# --field-start--
+fieldName=parent
+# --field-end--
+# --field-start--
+fieldName=username
+# --field-end--
+# --field-start--
+fieldName=content_id
+# --field-end--
+# --field-start--
+fieldName=content_title
+# --field-end--
+# --field-start--
+fieldName=course_id
+# --field-end--
+# --field-start--
+fieldName=course_name
+# --field-end--
+# --field-start--
+fieldName=level_id
+# --field-end--
+# --field-start--
+fieldName=date
+# --field-end--
+# --field-start--
+fieldName=status
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

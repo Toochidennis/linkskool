@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/option_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingStart="@dimen/dimen_16"
+        android:paddingEnd="0dp">
+
+        <RadioButton
+            android:id="@+id/radioButtonOption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10" />
+
+        <EditText
+            android:id="@+id/editTextAnswer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_toStartOf="@id/removeOptionButton"
+            android:layout_toEndOf="@id/radioButtonOption"
+            android:autofillHints="name"
+            android:hint="Option"
+            android:backgroundTint="@android:color/transparent"
+            android:inputType="textCapSentences|textMultiLine"
+            android:lineSpacingMultiplier="1"
+            android:lines="2"
+            android:minLines="1"
+            android:paddingTop="@dimen/dimen_16"
+            android:paddingBottom="@dimen/dimen_16" />
+
+        <ImageButton
+            android:id="@+id/removeOptionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/ripple_effect11"
+            android:contentDescription="@string/todo"
+            android:padding="@dimen/dimen_10"
+            android:src="@drawable/ic_more"
+            app:tint="@color/test_color_7" />
+
+        <TextView
+            android:id="@+id/attachmentName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_toStartOf="@id/removeAttachmentButton"
+            android:layout_toEndOf="@id/radioButtonOption"
+            android:clickable="true"
+            android:drawablePadding="@dimen/dimen_16"
+            android:ellipsize="end"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:lines="1"
+            android:paddingTop="@dimen/dimen_16"
+            android:paddingBottom="@dimen/dimen_16"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/removeAttachmentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/ripple_effect11"
+            android:contentDescription="@string/todo"
+            android:padding="@dimen/dimen_10"
+            android:src="@drawable/ic_more"
+            android:visibility="gone"
+            app:tint="@color/test_color_7" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:background="@color/test_color_7" />
+
+</LinearLayout>

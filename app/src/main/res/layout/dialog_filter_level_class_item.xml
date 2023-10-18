@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+    android:animateLayoutChanges="true"
+    android:backgroundTint="@color/white"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="1dp"
+    app:contentPadding="10dp">
+
+    <LinearLayout
+        android:id="@+id/layout_text"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_gravity="start|center"
+        android:background="@drawable/circle2"
+        android:backgroundTint="@color/test_color_1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_first_letter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_image_layout"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:layout_gravity="start|center"
+        android:background="@drawable/circle2"
+        android:backgroundTint="@color/test_color_3"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_check_"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center"
+        android:layout_marginStart="50dp"
+        android:fontFamily="@font/poppins_regular"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+</androidx.cardview.widget.CardView>

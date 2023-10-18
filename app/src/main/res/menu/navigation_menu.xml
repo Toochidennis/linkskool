@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/dashboard"
+            android:icon="@drawable/dashboard"
+            android:title="Dashboard"/>
+        <item android:id="@+id/student_contacts"
+            android:icon="@drawable/contacts"
+            android:title="Student contacts"
+            />
+        <item android:id="@+id/teachers_contacts"
+            android:icon="@drawable/contacts"
+            android:title="Teachers contacts"
+            />
+        <item android:id="@+id/view_result"
+            android:icon="@drawable/view_result"
+            android:title="View Result"
+            />
+
+        <item android:id="@+id/logout"
+            android:icon="@drawable/ic_power"
+            android:iconTint="@android:color/black"
+            android:title="Logout"
+            />
+
+    </group>
+</menu>

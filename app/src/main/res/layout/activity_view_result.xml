@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ViewResult"
+    android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <include layout="@layout/toolbar"/>
+    </androidx.cardview.widget.CardView>
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?actionBarSize"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@android:color/white"
+        app:tabIndicatorHeight="2dp"
+        app:tabBackground="@color/blue"
+        app:tabMode="fixed"
+        app:tabTextColor="@android:color/white"
+        app:tabSelectedTextColor="@android:color/white">
+
+    </com.google.android.material.tabs.TabLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.viewpager.widget.ViewPager>
+
+</LinearLayout>

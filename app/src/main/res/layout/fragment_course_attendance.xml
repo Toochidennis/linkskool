@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.CourseAttendanceFragment">
+
+    <RelativeLayout
+        android:id="@+id/un_empty_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/attendance_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/empty_state"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="150dp"
+            android:layout_marginTop="210dp"
+            android:contentDescription="TODO"
+            android:src="@drawable/ic_warning"
+            app:tint="@color/light_gray" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nothing to show!"
+            android:layout_below="@id/image"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/black" />
+
+    </RelativeLayout>
+
+
+</FrameLayout>

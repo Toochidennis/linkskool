@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.ExamActivity"
+    tools:showIn="@layout/activity_exam">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.linkskool.android.linkskool.ExamActivity"
+        tools:showIn="@layout/activity_exam">
+
+        <RelativeLayout
+            android:id="@+id/loadingPanel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/scrollview_exam"
+            android:gravity="center">
+
+            <ProgressBar
+                style="?android:progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:id="@+id/scrollview_exam"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="70dp"
+            android:visibility="gone">
+
+            <androidx.cardview.widget.CardView android:layout_width="match_parent"
+                app:cardElevation="5dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:id="@+id/displayExam">
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </ScrollView>
+
+        <ScrollView
+            android:id="@+id/sub_scroll"
+            android:layout_width="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+            <RelativeLayout
+                android:id="@+id/exam_submit"
+                android:layout_width="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_marginTop="16dp"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="center"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:orientation="vertical"
+                    android:id="@+id/submit_ll"
+                    android:background="@drawable/bgcircle">
+
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:id="@+id/submit_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:text="56"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:id="@+id/submit_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18sp"
+                        android:gravity="center"
+                        android:text="Out of"
+                        android:textColor="@color/white" />
+                    <TextView
+                        android:fontFamily="sans-serif-condensed"
+                        android:id="@+id/total_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="22sp"
+                        android:text="100"
+                        android:gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:fontFamily="sans-serif-condensed"
+                    android:id="@+id/submit_stat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="8dp"
+                    android:layout_marginTop="15dp"
+                    android:text="This assesment is based solely on the objective questions."
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/submit_ll"/>
+
+                <RelativeLayout
+                    android:id="@+id/an_test1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_below="@+id/submit_stat"
+                    android:background="@android:color/transparent"
+                    android:gravity="center">
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button2"
+                        android:textColor="@color/amberG"
+                        android:textSize="15sp"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="15dp"
+                        android:text="View results"
+                        android:paddingRight="15dp"
+                        android:onClick="viewResult"  />
+                </RelativeLayout>
+                <Button
+                    android:id="@+id/vRes"
+                    android:layout_below="@+id/an_test1"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/orange"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Click here to take another test"
+                    android:background="@android:color/transparent"
+                    android:padding="10dp"
+                    android:textSize="18sp"
+                    android:textAllCaps="false"
+                    android:onClick="anotherTest" />
+
+            </RelativeLayout>
+        </ScrollView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:layout_marginTop="15dp"
+            android:id="@+id/exam_introduction">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/intro_exam_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:fontFamily="sans-serif-condensed"
+                    android:id="@+id/exam_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:layout_below="@id/intro_exam_name"
+                    android:layout_marginTop="20dp"/>
+                <ImageView
+                    android:id="@+id/intro_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/exam_name"
+                    android:src="@drawable/stopwatch1"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="20dp"/>
+                <TextView
+                    android:fontFamily="sans-serif-condensed"
+                    android:id="@+id/intro_exam_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_below="@id/intro_image"/>
+                <TextView
+                    android:fontFamily="sans-serif-condensed"
+                    android:id="@+id/intro_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lineSpacingExtra="8dp"
+                    android:text="Try to attempt all the questions before the time elapses. Goodluck!"
+                    android:layout_below="@id/intro_exam_time"
+                    android:layout_margin="20dp"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+                <RelativeLayout
+                    android:id="@+id/start_test"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/intro_text"
+                    android:background="@android:color/transparent"
+                    android:layout_marginTop="20dp"
+                    android:layout_centerHorizontal="true">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Start Test"
+                        android:background="@drawable/button2"
+                        android:textColor="@color/amberG"
+                        android:padding="10dp"
+                        android:textSize="18sp"
+                        />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </ScrollView>
+        <RelativeLayout
+            android:id="@+id/nav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone">
+
+            <ImageButton
+                android:id="@+id/prev"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back"
+                android:layout_alignParentStart="true"
+                android:background="@drawable/circlefwd"
+                android:onClick="back"
+                android:visibility="gone"/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_centerHorizontal="true">
+                <Button
+                    android:id="@+id/submitBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Submit"
+                    android:background="@drawable/button2"
+                    android:textColor="@color/amberG"
+                    android:textSize="16sp"
+                    android:paddingEnd="8dp"
+                    android:onClick="check" />
+            </RelativeLayout>
+
+
+            <ImageButton
+                android:id="@+id/fwd"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/fw"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/circlefwd"
+                android:onClick="next"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

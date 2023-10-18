@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="20dp"
+    app:cardCornerRadius="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="1dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        >
+        <androidx.cardview.widget.CardView
+            android:id="@+id/icon_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            app:contentPadding="5dp"
+            app:cardBackgroundColor="@color/blue">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:scaleType="fitXY"
+                android:tint="@android:color/white"
+                android:src="@drawable/ic_location_"
+                />
+        </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/class_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="JS2A"
+        android:layout_marginLeft="20dp"
+        android:textSize="16sp"
+        android:layout_gravity="center_vertical"
+        android:fontFamily="@font/open_sans"
+        android:textColor="@android:color/black"/>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

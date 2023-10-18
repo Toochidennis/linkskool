@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AdminELearningMaterialDetailsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/android_ash"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:popupTheme="@style/Theme.AppCompat.Light" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:contentDescription="@string/todo"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/fileLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/titleTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_16"
+                    android:textColor="@color/test_color_1"
+                    android:textSize="@dimen/text_24" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:layout_marginEnd="@dimen/dimen_16"
+                    android:background="@color/test_color_1" />
+
+                <TextView
+                    android:id="@+id/descriptionTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_16"
+                    android:text=""
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/attachmentTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_16"
+                    android:paddingStart="@dimen/dimen_16"
+                    android:paddingEnd="@dimen/dimen_16"
+                    android:text="Attachments"
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/attachmentRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:nestedScrollingEnabled="false" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/sep"
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:layout_below="@id/fileLayout"
+                android:background="@color/white" />
+
+            <LinearLayout
+                android:id="@+id/commentLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/sep"
+                android:layout_alignParentBottom="true"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/commentGuide"
+                    android:layout_width="match_parent"
+                    android:layout_height=".5dp"
+                    android:layout_marginTop="@dimen/dimen_16"
+                    android:background="@color/test_color_7"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/commentTitleTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_16"
+                    android:text="Class comments"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/commentRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:layout_marginEnd="@dimen/dimen_16"
+                    android:nestedScrollingEnabled="false" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height=".5dp"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:background="@color/test_color_7" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/commentEditText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="64dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_toStartOf="@id/sendMessageBtn"
+                        android:autofillHints=""
+                        android:background="@android:color/transparent"
+                        android:hint="Class comment"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:lineSpacingMultiplier="1"
+                        android:lines="1"
+                        android:minLines="5"
+                        android:overScrollMode="ifContentScrolls"
+                        android:paddingStart="@dimen/dimen_16"
+                        android:paddingEnd="@dimen/dimen_16"
+                        android:scrollbars="vertical"
+                        android:textSize="@dimen/text_14" />
+
+                    <ImageButton
+                        android:id="@+id/sendMessageBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginEnd="6dp"
+                        android:background="@drawable/ripple_effect11"
+                        android:contentDescription="send message"
+                        android:padding="@dimen/dimen_10"
+                        android:src="@drawable/ic_send"
+                        app:tint="@color/test_color_7" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

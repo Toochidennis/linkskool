@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottomSheet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_6"
+            android:background="@drawable/ripple_effect11"
+            android:contentDescription="@string/file_icon"
+            android:padding="@dimen/dimen_10"
+            android:src="@drawable/ic_close"
+            app:tint="@color/test_color_7" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_weight="1"
+            android:text="Your work"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_20" />
+
+        <TextView
+            android:id="@+id/dateTxt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:layout_weight="1"
+            android:text="Missing"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16" />
+
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/buttonLayout"
+        android:layout_below="@id/appBar"
+        android:contentDescription="@string/todo">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:text="Attachments"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/attachmentRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:nestedScrollingEnabled="false" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:background="@color/test_color_7" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_16"
+                android:text="Class comments"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_14" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/commentRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:nestedScrollingEnabled="false" />
+
+            <TextView
+                android:id="@+id/addCommentTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_16"
+                android:text="Add class comment"
+                android:textColor="@color/test_color_1"
+                android:textSize="@dimen/text_14" />
+
+            <RelativeLayout
+                android:id="@+id/editTextLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/commentInputText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:layout_toStartOf="@id/sendBtn"
+                    android:hint=""
+                    app:hintAnimationEnabled="true"
+                    app:hintTextColor="@color/test_color_1">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/edit_text_bg5"
+                        android:inputType="textCapSentences"
+                        android:padding="@dimen/dimen_16"
+                        android:textSize="@dimen/text_14" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageButton
+                    android:id="@+id/sendBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:layout_marginEnd="@dimen/dimen_6"
+                    android:background="@drawable/ripple_effect11"
+                    android:contentDescription="@string/submit"
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/ic_send" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height=".5dp"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:background="@color/test_color_7" />
+
+        <Button
+            android:id="@+id/addWorkBtn"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/dimen_16"
+            android:background="@drawable/ripple_effect7"
+            android:text="Add work"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_16" />
+
+        <Button
+            android:id="@+id/handInBtn"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:layout_marginBottom="@dimen/dimen_32"
+            android:background="@drawable/ripple_effect6"
+            android:text="Hand in"
+            android:textAllCaps="false"
+            android:textColor="@color/test_color_1"
+            android:textSize="@dimen/text_16" />
+
+    </LinearLayout>
+
+</RelativeLayout>

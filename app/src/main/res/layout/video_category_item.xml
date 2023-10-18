@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="0.5dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+        <TextView
+            android:id="@+id/video_category_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="English Language"
+            android:layout_centerVertical="true"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_forward"
+            android:layout_centerVertical="true"
+            android:tint="@android:color/white"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

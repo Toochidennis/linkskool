@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="1dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/icon_card"
+            android:layout_width="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="5dp"
+            android:backgroundTint="@color/color_5"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/ic_payment"
+                app:tint="@color/icons_color" />
+
+        </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/fee_name"
+                android:layout_width="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@id/icon_card"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/check_box"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/mandatory_text"
+                android:layout_below="@id/fee_name"
+                android:layout_toEndOf="@id/icon_card"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/text_bg_color"
+                android:textSize="11sp" />
+
+        <ImageView
+            android:id="@+id/check_box"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_check"
+            android:layout_marginTop="10dp"
+            app:tint="@color/color_5"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/todo"
+            android:layout_marginEnd="15dp"/>
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

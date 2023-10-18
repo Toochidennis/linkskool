@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.StudentProfile">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <ScrollView
+        android:id="@+id/main_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:background="@drawable/background_gradient_color"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/circle_initials"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/initials_student"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/lato"
+                            android:text="A"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/white"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/studentName_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="30dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="Dike kingsley"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="-30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                app:contentPadding="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/call_student_profile"
+                        android:layout_width="65dp"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageButton
+                            android:id="@+id/call_icon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@android:color/white"
+                            android:clickable="false"
+                            android:src="@drawable/ic_call"
+                            android:tint="@color/blue" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/call_icon"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:clickable="false"
+                            android:fontFamily="@font/arimo"
+                            android:text="Call"
+                            android:textColor="@color/blue"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/sms_student_profile"
+                        android:layout_width="65dp"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageButton
+                            android:id="@+id/sms_icon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@android:color/white"
+                            android:clickable="false"
+                            android:src="@drawable/ic_sms"
+                            android:tint="@color/blue" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/sms_icon"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:clickable="false"
+                            android:fontFamily="@font/arimo"
+                            android:text="Sms"
+                            android:textColor="@color/blue"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/email_student_profile"
+                        android:layout_width="65dp"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageButton
+                            android:id="@+id/email_icon"
+                            android:layout_width="24dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@android:color/white"
+                            android:clickable="false"
+                            android:src="@drawable/ic_mail"
+                            android:tint="@color/blue" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/email_icon"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:clickable="false"
+                            android:fontFamily="@font/arimo"
+                            android:text="Email"
+                            android:textColor="@color/blue"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/whatsapp_student_profile"
+                        android:layout_width="65dp"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageButton
+                            android:id="@+id/whatsapp_icon"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@android:color/white"
+                            android:clickable="false"
+                            android:src="@drawable/ic_whatsapp"
+                            android:tint="@color/blue" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/whatsapp_icon"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:clickable="false"
+                            android:fontFamily="@font/arimo"
+                            android:text="Whatsapp"
+                            android:textAlignment="center"
+                            android:textColor="@color/blue"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/view_result_student_profile"
+                        android:layout_width="65dp"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageButton
+                            android:id="@+id/v1"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@android:color/white"
+                            android:clickable="false"
+                            android:src="@drawable/ic_poll"
+                            android:tint="@color/blue" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/v1"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:clickable="false"
+                            android:fontFamily="@font/arimo"
+                            android:text="Result"
+                            android:textAlignment="center"
+                            android:textColor="@color/blue"
+                            android:textSize="12sp" />
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <LinearLayout
+                android:id="@+id/guardiance_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/roboto"
+                    android:text="Guardian's Information"
+                    android:textColor="@color/gray"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ListView
+                    android:id="@+id/guidance_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:visibility="gone">
+
+                </ListView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_margin="15dp"
+                    app:cardCornerRadius="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/icon_person"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            app:cardBackgroundColor="@color/blue"
+                            app:cardCornerRadius="15dp"
+                            app:contentPadding="5dp">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_person"
+                                app:tint="@android:color/white" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@id/icon_person"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/open_sans"
+                                android:text="Name"
+                                android:textColor="@color/blue"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/guardian_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:text="Dike kingsley"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_margin="15dp"
+                    app:cardCornerRadius="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/icon_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            app:cardBackgroundColor="@color/blue"
+                            app:cardCornerRadius="15dp"
+                            app:contentPadding="5dp">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_call"
+                                app:tint="@android:color/white" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@id/icon_phone"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/open_sans"
+                                android:text="Telephone"
+                                android:textColor="@color/blue"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/guardian_phone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:text="07030870355"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_margin="15dp"
+                    app:cardCornerRadius="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/icon_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            app:cardBackgroundColor="@color/blue"
+                            app:cardCornerRadius="15dp"
+                            app:contentPadding="5dp">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/ic_location_" />
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="10dp"
+                            android:layout_toEndOf="@id/icon_address"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/open_sans"
+                                android:text="Address"
+                                android:textColor="@color/blue"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/guardian_address"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto"
+                                android:text="No 5 annang"
+                                android:textColor="@android:color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

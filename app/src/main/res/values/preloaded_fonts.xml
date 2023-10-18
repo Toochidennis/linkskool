@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/amarante</item>
+        <item>@font/arimo</item>
+        <item>@font/arsenal_italic</item>
+        <item>@font/carrois_gothic</item>
+        <item>@font/kalam</item>
+        <item>@font/lato</item>
+        <item>@font/montserrat</item>
+        <item>@font/open_sans</item>
+        <item>@font/roboto</item>
+    </array>
+</resources>

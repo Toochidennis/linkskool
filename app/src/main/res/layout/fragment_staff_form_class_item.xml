@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="1dp"
+    app:cardCornerRadius="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:layout_toStartOf="@id/skills_behaviour"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/class_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/montserrat"
+                android:maxLines="2"
+                android:textColor="@color/text_bg_color"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/skills_behaviour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="25dp"
+            android:layout_toStartOf="@id/comment"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/circle_d"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/ic_add"
+                    app:tint="@android:color/holo_purple" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/skills_and_behaviour"
+                android:textColor="@color/black"
+                android:textSize="8sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="30dp"
+            android:layout_toStartOf="@id/view_student"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/circle_d"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/ic_add_comment"
+                    app:tint="@android:color/holo_purple" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/comment"
+                android:textColor="@color/black"
+                android:textSize="8sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/view_student"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="25dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/circle_g"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/ic_people"
+                    app:tint="@android:color/holo_orange_dark" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="@string/students"
+                android:textColor="@color/black"
+                android:textSize="8sp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

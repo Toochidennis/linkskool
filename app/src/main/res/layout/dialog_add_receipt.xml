@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_background"
+    android:padding="15dp">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Add Receipt"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/ic_close"
+        app:tint="@color/test_color_7" />
+
+    <TextView
+        android:id="@+id/name_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/dimen_32"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Name"
+        android:textColor="@color/test_color_1"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/student_name_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/name_txt"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:autofillHints="name"
+        android:background="@drawable/edit_text_bg"
+        android:ems="10"
+        android:focusable="true"
+        android:focusableInTouchMode="false"
+        android:fontFamily="@font/montserrat"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textAllCaps="false"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/amount_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/student_name_input"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Amount"
+        android:textColor="@color/test_color_1"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/amount_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/amount_txt"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:autofillHints="emailAddress"
+        android:background="@drawable/edit_text_bg"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="@string/amount"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/reference_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/amount_input"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Reference"
+        android:textColor="@color/test_color_1"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/reference_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reference_txt"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:autofillHints="postalAddress"
+        android:background="@drawable/edit_text_bg"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="affhjgvkAt"
+        android:inputType="textPostalAddress"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/date_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reference_input"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Date"
+        android:textColor="@color/test_color_1"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/date_input"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/date_txt"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:autofillHints="phone"
+        android:background="@drawable/edit_text_bg"
+        android:clickable="true"
+        android:ems="10"
+        android:focusable="true"
+        android:focusableInTouchMode="false"
+        android:fontFamily="@font/montserrat"
+        android:hint="2023-05-05"
+        android:inputType="date|time"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/add_receipt_btn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/date_input"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/test_color_1"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:textSize="16sp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="2dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="Record Payment"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

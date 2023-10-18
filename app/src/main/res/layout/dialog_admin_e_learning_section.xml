@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg"
+    android:gravity="center"
+    android:padding="@dimen/dimen_16">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Add section"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sectionInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:background="@color/test_color_6">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="Section"
+            android:inputType="textCapSentences" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/sectionInput"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:layout_marginEnd="@dimen/dimen_16"
+        android:layout_toStartOf="@id/addButton"
+        android:background="@drawable/ripple_effect6"
+        android:backgroundTint="@color/white"
+        android:text="Cancel"
+        android:textAllCaps="false"
+        android:textColor="@color/test_color_1"
+        android:textSize="@dimen/text_14" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/sectionInput"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:background="@drawable/ripple_effect6"
+        android:backgroundTint="@color/white"
+        android:text="Add"
+        android:textAllCaps="false"
+        android:textColor="@color/test_color_1"
+        android:textSize="@dimen/text_14" />
+
+</RelativeLayout>

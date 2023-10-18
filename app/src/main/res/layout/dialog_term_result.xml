@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/course_result"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        app:cardCornerRadius="2dp"
+        app:cardElevation=".5dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_student_result"
+            app:tint="@color/test_color_3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Course Result"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/composite_result"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:visibility="gone"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        app:cardCornerRadius="2dp"
+        app:cardElevation=".5dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_student_result"
+            app:tint="@color/test_color_4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Composite Result"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/view_course_result"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        app:cardCornerRadius="2dp"
+        app:cardElevation=".5dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_eye_view"
+            app:tint="@color/test_color_3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="View Result"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/edit_course_result"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:clickable="true"
+        android:visibility="gone"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        app:cardCornerRadius="2dp"
+        app:cardElevation=".5dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_edit"
+            app:tint="@color/test_color_4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="45dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Edit Result"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</LinearLayout>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="5dp"
+    android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="20dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/image_container"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/delete_pic_container"
+
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:elevation="5dp"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/border"
+                    >
+                    <ImageView
+                        android:id="@+id/delete_pic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_delete_"
+                        android:layout_margin="5dp"
+                        android:tint="@color/gray"
+                        />
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/option_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:scaleType="centerCrop"
+
+                    />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+    <CheckBox
+        android:id="@+id/point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/option_field"
+        android:layout_toRightOf="@id/point"
+        android:layout_width="0dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="1"
+        android:hint="Option"
+        android:textSize="12sp"
+        android:layout_marginLeft="3dp"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/clear_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@drawable/border"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:id="@+id/clear"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_clear"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/more_container"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/border"
+        android:orientation="vertical"
+        android:layout_marginRight="6dp"
+        android:layout_alignParentEnd="true"
+        >
+
+        <ImageView
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_more"
+            android:tint="@color/gray"
+            />
+    </LinearLayout>
+        </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

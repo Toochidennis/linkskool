@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimen_16"
+    android:layout_marginEnd="@dimen/dimen_16"
+    android:background="@color/white"
+    android:backgroundTint="@color/test_color_7"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="@dimen/dimen_10"
+    app:cardElevation="2dp"
+    app:contentPadding=".5dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="@dimen/dimen_10"
+        app:cardElevation="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <ImageView
+                android:id="@+id/fileImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/file_icon"
+                android:scaleType="center"
+                android:src="@drawable/ic_document24" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/test_color_2"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_10">
+
+                <TextView
+                    android:id="@+id/fileNameTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="5dp"
+                    android:ellipsize="marquee"
+                    android:lines="2"
+                    android:maxLines="2"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_12"
+                    app:drawableTint="@color/color1" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.cardview.widget.CardView>

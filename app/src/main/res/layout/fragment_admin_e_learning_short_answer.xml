@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingTop="@dimen/dimen_16"
+        android:paddingBottom="@dimen/dimen_16">
+
+        <ImageButton
+            android:id="@+id/dismissBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/ripple_effect11"
+            android:clickable="true"
+            android:layout_marginStart="6dp"
+            android:contentDescription="@string/todo"
+            android:focusable="true"
+            android:padding="@dimen/dimen_10"
+            android:src="@drawable/ic_close"
+            app:tint="@color/test_color_7" />
+
+        <Button
+            android:id="@+id/askBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:background="@drawable/ripple_effect10"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="Ask"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_14" />
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/todo">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/questionEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="title"
+                android:background="@android:color/transparent"
+                android:cursorVisible="true"
+                android:hint="Question"
+                android:inputType="textCapSentences|textMultiLine"
+                android:lineSpacingMultiplier="1"
+                android:lines="10"
+                android:minLines="1"
+                android:overScrollMode="always"
+                android:padding="@dimen/dimen_16"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:background="@color/test_color_7" />
+
+            <RelativeLayout
+                android:id="@+id/attachment_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/attachment_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:layout_marginTop="@dimen/dimen_16"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/ic_attachment" />
+
+                <TextView
+                    android:id="@+id/attachmentTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:layout_toStartOf="@id/removeQuestionAttachment"
+                    android:layout_toEndOf="@id/attachment_icon"
+                    android:drawablePadding="@dimen/dimen_16"
+                    android:ellipsize="end"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:lines="1"
+                    android:paddingTop="@dimen/dimen_16"
+                    android:paddingBottom="@dimen/dimen_16"
+                    android:text="Add attachment"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16" />
+
+                <ImageButton
+                    android:id="@+id/removeQuestionAttachment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/ripple_effect11"
+                    android:clickable="true"
+                    android:contentDescription="@string/todo"
+                    android:focusable="true"
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/ic_close"
+                    android:visibility="gone"
+                    app:tint="@color/test_color_7" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:background="@color/test_color_7" />
+
+            <EditText
+                android:id="@+id/answerEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="title"
+                android:background="@android:color/transparent"
+                android:hint="Your answer"
+                android:inputType="textCapSentences|textMultiLine"
+                android:lineSpacingMultiplier="1"
+                android:lines="10"
+                android:minLines="1"
+                android:overScrollMode="always"
+                android:padding="@dimen/dimen_16"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:background="@color/test_color_7" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

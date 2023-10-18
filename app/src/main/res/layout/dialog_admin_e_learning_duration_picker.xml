@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg"
+    android:gravity="center"
+    android:padding="@dimen/dimen_16">
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Due time"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16" />
+
+    <Button
+        android:id="@+id/startDurationBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@id/title1"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/dimen_32"
+        android:background="@drawable/ripple_effect6"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingStart="@dimen/dimen_12"
+        android:paddingEnd="@dimen/dimen_12"
+        android:text="22:11"
+        android:textAllCaps="false"
+        android:textSize="@dimen/text_14" />
+
+    <Button
+        android:id="@+id/endDurationBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@id/title1"
+        android:layout_marginStart="@dimen/dimen_10"
+        android:layout_marginTop="@dimen/dimen_32"
+        android:layout_toEndOf="@id/startDurationBtn"
+        android:background="@drawable/ripple_effect6"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingStart="@dimen/dimen_12"
+        android:paddingEnd="@dimen/dimen_12"
+        android:text="22:51"
+        android:textAllCaps="false"
+        android:textSize="@dimen/text_14" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/startDurationBtn"
+        android:layout_marginEnd="@dimen/dimen_32"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/dimen_16">
+
+        <Button
+            android:id="@+id/cancelBtn"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="65dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:background="@drawable/ripple_effect6"
+            android:backgroundTint="@color/white"
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/test_color_1"
+            android:textSize="@dimen/text_14" />
+
+        <Button
+            android:id="@+id/saveBtn"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ripple_effect6"
+            android:backgroundTint="@color/white"
+            android:text="Save"
+            android:textAllCaps="false"
+            android:textColor="@color/test_color_1"
+            android:textSize="@dimen/text_14" />
+    </LinearLayout>
+
+</RelativeLayout>

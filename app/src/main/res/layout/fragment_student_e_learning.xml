@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.StudentELearningFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/nested_scrollview">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_16"
+                    android:text="Upcoming quiz"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/quizViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:contentDescription="@string/view_pager" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/quizTabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/tab_layout"
+                    app:tabBackground="@drawable/indicator_selector"
+                    app:tabGravity="center"
+                    app:tabIndicatorHeight="0dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/dimen_16"
+                    android:text="Recent activity"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recentActivityRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_16" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/dimen_16"
+                    android:paddingTop="@dimen/dimen_16"
+                    android:paddingEnd="@dimen/dimen_16"
+                    android:paddingBottom="0dp"
+                    android:text="Course"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/emptyCourseTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_32"
+                    android:paddingStart="@dimen/dimen_16"
+                    android:paddingTop="@dimen/dimen_16"
+                    android:paddingEnd="@dimen/dimen_16"
+                    android:paddingBottom="0dp"
+                    android:text="@string/no_data"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/courseRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:nestedScrollingEnabled="false" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

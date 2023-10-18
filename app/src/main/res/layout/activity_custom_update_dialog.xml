@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:padding="20dp"
+    android:orientation="vertical"
+    tools:context=".dialog.CustomUpdateDialog">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEW VERSION AVAILABLE"
+        android:fontFamily="@font/lato"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="30dp"/>
+
+    <Button
+        android:id="@+id/update_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ok_button_custom_dialog"
+        android:text="UPDATE"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/cancel_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/cancel_btn_custom_dialog"
+        android:text="CANCEL"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

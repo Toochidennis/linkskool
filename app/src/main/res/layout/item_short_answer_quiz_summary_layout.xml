@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dimen_10"
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="@dimen/dimen_10"
+    app:contentPadding="@dimen/dimen_16">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/questionCountTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/questionImageView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:contentDescription="@string/file_icon"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/questionTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16" />
+
+
+        <TextView
+            android:id="@+id/userAnswerTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_32"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16" />
+
+        <TextView
+            android:id="@+id/correctAnswerTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Error"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/roboto"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="All fields are required"
+        android:fontFamily="@font/lato"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"/>
+
+    <Button
+        android:id="@+id/dialogueBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/cancel_btn_custom_dialog"
+        android:text="OK"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

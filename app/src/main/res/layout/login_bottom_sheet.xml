@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cordinatorLayout"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    android:layout_width="match_parent">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/linearLayout"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/loadingPanel1"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:id="@+id/course_spinner"
+                    android:elevation="3dp"
+                    android:textAlignment="center"
+                    android:paddingRight="15dp"
+                    android:background="@drawable/spinnerbackground"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="15dp"
+                    android:layout_height="50dp"/>
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:id="@+id/year_spinner"
+                    android:elevation="3dp"
+                    android:paddingRight="15dp"
+                    android:textAlignment="center"
+                    android:background="@drawable/spinnerbackground"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="15dp"
+                    android:layout_height="50dp"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:paddingBottom="15dp"
+                    android:paddingTop="15dp"
+                    android:text="Load Exam"
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/loadingButton"
+                    android:layout_marginBottom="15dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button1"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/loadingPanel2"
+                android:visibility="gone"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content">
+                <ProgressBar
+                    android:layout_width="35dp"
+                    android:id="@+id/progressbar3"
+                    android:layout_gravity="center_vertical"
+                    android:progressBackgroundTint="@color/amberG"
+                    android:indeterminateTint="@color/amberG"
+                    android:indeterminate="true"
+                    android:layout_height="35dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="Loading Exam...."
+                    android:id="@+id/loadingText"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@color/amberG"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/load"
+                    android:visibility="gone"
+                    android:padding="10dp"
+                    android:textColor="@color/amberG"
+                    android:text="Take Exam"
+                    android:background="@drawable/button2"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_toStartOf="@id/close_btn"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Session &amp; Term"
+        android:textAlignment="center"
+        android:textColor="@color/text_bg_color"
+        android:textSize="14sp" />
+
+    <ImageView
+        android:id="@+id/close_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/ic_close"
+        app:tint="@color/test_color_7" />
+
+    <LinearLayout
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/line_separator"
+        android:orientation="horizontal" />
+
+    <LinearLayout
+        android:id="@+id/picker_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/separator"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <NumberPicker
+            android:id="@+id/session_picker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <NumberPicker
+            android:id="@+id/term_picker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/confirm_btn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/picker_layout"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:backgroundTint="@color/test_color_1"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="2dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="@string/confirm"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:focusableInTouchMode="true">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        style="@style/CustomTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:contentDescription="@string/todo" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/tab_layout"
+        android:contentDescription="@string/view_pager" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/confirm_btn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/view_pager"
+        android:layout_margin="15dp"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:backgroundTint="@color/test_color_1"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="2dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="Generate Report"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

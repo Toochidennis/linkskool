@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.ContactUs">
+    <include layout="@layout/toolbar"
+        android:id="@+id/toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:contentPadding="10dp"
+            android:layout_margin="20dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+        <TextView
+            android:id="@+id/welxcome_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hello"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_gravity="center_horizontal"
+            android:textSize="18sp"
+            android:fontFamily="@font/open_sans"
+            android:textColor="@android:color/black"
+            android:layout_margin="15dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="We hope you will enjoy using this application for learning as much as we do"
+            android:fontFamily="@font/roboto"
+            android:textColor="@android:color/black"
+            android:layout_margin="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This app is powered by Linkskool online and it is our desire to help every school bring learning online"
+            android:fontFamily="@font/roboto"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/call_us"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Call Us"
+            android:textSize="13sp"
+            android:minHeight="0dp"
+            android:padding="8dp"
+            android:textAllCaps="false"
+            android:background="@drawable/button_style3"
+            android:textColor="@android:color/white"
+            android:layout_margin="20dp"
+            />
+
+        <Button
+            android:id="@+id/email_us"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send us mail"
+            android:textSize="13sp"
+            android:minHeight="0dp"
+            android:padding="8dp"
+            android:textAllCaps="false"
+            android:background="@drawable/button_style3"
+            android:textColor="@android:color/white"
+            android:layout_margin="20dp"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/add_question"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:background="@color/blue"
+            android:gravity="center"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Refer A school"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/roboto"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/continue_btn"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:gravity="center"
+            android:background="@color/orange"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Continue"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/roboto"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

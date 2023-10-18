@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
+        android:layout_alignParentBottom="true"
+        android:scrollIndicators="left"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="true"
+        android:overScrollMode="ifContentScrolls"
+        android:scrollbarFadeDuration="@integer/material_motion_duration_short_1"
+        android:contentDescription="@string/nested_scrollview"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/questionCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:paddingStart="@dimen/dimen_16"
+                android:paddingTop="@dimen/dimen_16"
+                android:paddingEnd="0dp"
+                android:paddingBottom="@dimen/dimen_16"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_24" />
+
+            <TextView
+                android:id="@+id/questionTotalCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@id/questionCount"
+                android:paddingStart="0dp"
+                android:paddingTop="@dimen/dimen_24"
+                android:paddingEnd="@dimen/dimen_16"
+                android:paddingBottom="@dimen/dimen_16"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <ImageView
+                android:id="@+id/dashedLine"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@id/questionCount"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:contentDescription="@string/dashed_line"
+                android:src="@drawable/dashed_line" />
+
+            <TextView
+                android:id="@+id/sectionTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:text=""
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_24"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/questionRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/dashedLine"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:layout_marginBottom="90dp"
+                android:nestedScrollingEnabled="false" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:background="@color/white">
+
+                <Button
+                    android:id="@+id/prevBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/ripple_effect6"
+                    android:clickable="true"
+                    android:drawableStart="@drawable/ic_arrow_back_black_24dp"
+                    android:drawablePadding="@dimen/dimen_16"
+                    android:focusable="true"
+                    android:paddingStart="@dimen/dimen_16"
+                    android:paddingEnd="@dimen/dimen_16"
+                    android:text="Prev"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_16" />
+
+                <Button
+                    android:id="@+id/nextBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/ripple_effect6"
+                    android:clickable="true"
+                    android:drawableEnd="@drawable/baseline_arrow_forward_24"
+                    android:drawablePadding="@dimen/dimen_16"
+                    android:focusable="true"
+                    android:paddingStart="@dimen/dimen_16"
+                    android:paddingEnd="@dimen/dimen_16"
+                    android:text="Next"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_16" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:padding="@dimen/dimen_16">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dimen_10"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/ic_profile_pic" />
+
+    <TextView
+        android:id="@+id/studentNameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_toStartOf="@id/studentScoreTxt"
+        android:layout_toEndOf="@id/imageView"
+        android:text="Toochi Dennis"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16" />
+
+    <TextView
+        android:id="@+id/studentScoreTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:text="100/200"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_18" />
+
+</RelativeLayout>

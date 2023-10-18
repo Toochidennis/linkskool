@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg2"
+    android:padding="@dimen/dimen_16">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Change point value"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/dimen_8">
+
+        <RadioButton
+            android:id="@+id/pointButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_16" />
+
+        <RadioButton
+            android:id="@+id/noPointButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dimen_16" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/pointEditText"
+        android:layout_width="100dp"
+        android:layout_height="38dp"
+        android:layout_below="@id/textView"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:layout_toEndOf="@id/radioGroup"
+        android:autofillHints="100"
+        android:text="100"
+        android:textColor="@color/black"
+        android:hint="Point"
+        android:textSize="@dimen/text_16"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView"
+        android:layout_marginTop="22dp"
+        android:layout_toEndOf="@id/pointEditText"
+        android:text="points"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/noPointTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/pointEditText"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@id/radioGroup"
+        android:text="Unmarked"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16" />
+
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="55dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/noPointTxt"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:layout_marginEnd="@dimen/dimen_16"
+        android:layout_toStartOf="@id/saveButton"
+        android:background="@drawable/ripple_effect6"
+        android:backgroundTint="@color/white"
+        android:text="Cancel"
+        android:textAllCaps="false"
+        android:textColor="@color/test_color_1"
+        android:textSize="@dimen/text_14" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/noPointTxt"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:background="@drawable/ripple_effect6"
+        android:backgroundTint="@color/white"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:textColor="@color/test_color_1"
+        android:textSize="@dimen/text_14" />
+
+</RelativeLayout>

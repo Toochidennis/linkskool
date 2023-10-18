@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginRight="30dp"
+    android:layout_marginLeft="30dp"
+    android:padding="10dp"
+    >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/choose_content_upload"
+    android:padding="20dp">
+    <LinearLayout
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:orientation="vertical"
+        android:background="@drawable/circle2"
+        android:backgroundTint="@color/amberG"
+        android:layout_marginRight="30dp"
+        android:gravity="center">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_library_books"
+        android:tint="@color/white"
+        />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload Content"
+        android:textColor="@color/gray"
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/roboto"
+        />
+</LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:id="@+id/test"
+        >
+        <LinearLayout
+            android:id="@+id/bg_color"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:orientation="vertical"
+            android:background="@drawable/circle2"
+            android:backgroundTint="@color/amberD"
+            android:layout_marginRight="30dp"
+            android:gravity="center">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_assignment_black_24dp"
+        android:tint="@color/white"
+
+        />
+        </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Assessment"
+        android:layout_gravity="center_vertical"
+        android:textSize="16sp"
+        android:textColor="@color/gray"
+        android:fontFamily="@font/roboto"
+        />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:id="@+id/create_video"
+        >
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:orientation="vertical"
+            android:background="@drawable/circle2"
+            android:backgroundTint="@color/greenA"
+            android:layout_marginRight="30dp"
+            android:gravity="center">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_video_library_black_24dp"
+            android:tint="@color/white"
+
+            />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Video Link"
+            android:layout_gravity="center_vertical"
+            android:textSize="16sp"
+            android:textColor="@color/gray"
+            android:fontFamily="@font/roboto"
+            />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@android:color/darker_gray"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        android:id="@+id/create_flashcard"
+        >
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:orientation="vertical"
+            android:background="@drawable/circle2"
+            android:backgroundTint="@color/color3"
+            android:layout_marginRight="30dp"
+            android:gravity="center">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_sd_card"
+            android:tint="@color/white"
+
+            />
+        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Flashcard"
+            android:layout_gravity="center_vertical"
+            android:textSize="16sp"
+            android:textColor="@color/gray"
+            android:fontFamily="@font/roboto"
+            />
+    </LinearLayout>
+
+</LinearLayout>

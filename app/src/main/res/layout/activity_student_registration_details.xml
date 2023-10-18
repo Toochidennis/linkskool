@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.StudentRegistrationDetails">
+    <include layout="@layout/toolbar"/>
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:background="@drawable/bg_drawable"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/debt_fee_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="JS1 A"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/roboto"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                />
+            <TextView
+                android:id="@+id/desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/lato"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                />
+            <TextView
+                android:id="@+id/desc1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/lato"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/courses"
+                >
+
+            </androidx.recyclerview.widget.RecyclerView>
+            <LinearLayout
+                android:id="@+id/empty_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:visibility="gone"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Oops nothing to display"
+                    android:textSize="14sp"
+                    android:layout_marginTop="150dp"
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/black"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

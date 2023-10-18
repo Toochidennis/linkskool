@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:focusable="false"
+    android:focusableInTouchMode="true"
+    android:padding="15dp"
+    tools:context=".fragments.DateRangeFragment">
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Duration"
+        android:textColor="@color/test_color_1"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/buttons_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/duration">
+
+        <LinearLayout
+            android:id="@+id/duration_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/custom_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/ripple_effect6"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="10dp"
+                android:text="Custom"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/today_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/ripple_effect6"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="10dp"
+                android:text="Today"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/yesterday_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/ripple_effect6"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="10dp"
+                android:text="Yesterday"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/this_week_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/ripple_effect6"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="10dp"
+                android:text="This Week"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/last_7_days_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/ripple_effect6"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="10dp"
+                android:text="Last 7 days"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/last_week_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/ripple_effect6"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="10dp"
+                android:text="Last Week"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/this_month_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/ripple_effect6"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="10dp"
+                android:text="This Month"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/last_30_days_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:background="@drawable/ripple_effect6"
+                android:fontFamily="@font/poppins_regular"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="10dp"
+                android:text="Last 30 days"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:background="@drawable/line_separator"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/buttons_holder" />
+
+    <TextView
+        android:id="@+id/start_date_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/start_date"
+        android:textColor="@color/test_color_1"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/separator" />
+
+    <EditText
+        android:id="@+id/start_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:autofillHints="creditCardExpirationDate"
+        android:background="@drawable/edit_text_bg3"
+        android:clickable="true"
+        android:drawableEnd="@drawable/arrow_forward"
+        android:focusable="true"
+        android:focusableInTouchMode="false"
+        android:fontFamily="@font/poppins_regular"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:hint="@string/start_date"
+        android:inputType="date"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/start_date_txt" />
+
+    <TextView
+        android:id="@+id/end_date_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/end_date"
+        android:textColor="@color/test_color_1"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/start_date" />
+
+    <EditText
+        android:id="@+id/end_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:autofillHints="creditCardExpirationDate"
+        android:background="@drawable/edit_text_bg3"
+        android:clickable="true"
+        android:drawableEnd="@drawable/arrow_forward"
+        android:focusable="true"
+        android:focusableInTouchMode="false"
+        android:fontFamily="@font/poppins_regular"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:hint="@string/end_date"
+        android:inputType="date"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="15dp"
+        android:minHeight="48dp"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/end_date_txt" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

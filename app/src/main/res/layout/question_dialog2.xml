@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/toolbar"
+        android:background="@drawable/bg_drawable"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/ic_baseline_keyboard_arrow_down_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/backBtn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="20dp"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:text="Question"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"/>
+
+    </RelativeLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_below="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <LinearLayout
+        android:id="@+id/root_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="60dp">
+
+    </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        >
+        <LinearLayout
+            android:id="@+id/back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_keyboard_arrow_left_black_24dp"
+                app:tint="@color/gray" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prev"
+                android:textSize="11sp"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/add_opt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:visibility="gone"
+            >
+            <ImageView
+                android:id="@+id/add_option"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_add"
+                app:tint="@color/gray" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Options"
+                android:textSize="11sp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/previ"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/preview"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_eye_view"
+                app:tint="@color/gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preview"
+                android:textSize="11sp"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/apply2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:id="@+id/apply"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_check_"
+                app:tint="@color/gray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Apply"
+                android:textSize="11sp"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/forward"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            >
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_keyboard_arrow_right"
+                app:tint="@color/gray" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next"
+                android:textSize="11sp"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

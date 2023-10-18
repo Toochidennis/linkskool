@@ -1,0 +1,113 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryDark">@color/blue</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionModeBackground">@color/tab_color</item>
+        <item name="actionMenuTextColor">@color/white</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="mySpinnerItemStyle" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="TextLabel" parent="TextAppearance.AppCompat">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/orange</item>
+        <item name="android:textSize">20sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/orange</item>
+        <item name="colorControlNormal">@color/orange</item>
+        <item name="colorControlActivated">@color/orange</item>
+    </style>
+
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.DialogWhenLarge">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:windowAnimationStyle">
+            @style/Animation.Design.BottomSheetDialog
+        </item>
+
+        <!-- No backgrounds, titles or window float -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+
+    <style name="FullScreenDialog" parent="Theme.AppCompat.Light.DialogWhenLarge">
+        <item name="android:windowAnimationStyle">@style/Animation.Design.BottomSheetDialog</item>
+        <item name="windowNoTitle">true</item>
+       <!--// <item name="android:windowBackground">@android:color/transparent</item>-->
+    </style>
+
+    <style name="TabStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:text">11sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TabStyle2" parent="TextAppearance.Design.Tab">
+        <item name="android:text">12sp</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabIndicator">@drawable/tab_indicator_drawable</item>
+        <item name="tabIndicatorAnimationDuration">100</item>
+        <item name="tabIndicatorAnimationMode">elastic</item>
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabGravity">fill</item>
+        <item name="tabIndicatorColor">@color/test_color_1</item>
+        <item name="tabMode">fixed</item>
+        <item name="tabSelectedTextColor">@color/test_color_1</item>
+        <item name="tabInlineLabel">true</item>
+        <item name="tabTextAppearance">@style/TabStyle2</item>
+        <item name="tabBackground">@color/white</item>
+    </style>
+
+    <style name="TransparentBottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+
+    <style name="newTabStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:text">11sp</item>
+        <item name="android:textColor">@color/text_bg_color</item>
+        <item name="fontFamily">@font/montserrat</item>
+    </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in</item>
+        <item name="android:windowExitAnimation">@anim/slide_out</item>
+    </style>
+
+    <style name="Widget.AppTheme.MyView" parent="">
+        <item name="android:background">@color/gray_400</item>
+        <item name="exampleColor">@color/light_blue_400</item>
+    </style>
+
+
+    <!--<style name="TextAppearance.AppCompat.Widget.ActionBar.Title"
+        parent="@android:style/TextAppearance">
+        <item name="android:textSize">11sp</item>
+    </style>-->
+
+
+</resources>

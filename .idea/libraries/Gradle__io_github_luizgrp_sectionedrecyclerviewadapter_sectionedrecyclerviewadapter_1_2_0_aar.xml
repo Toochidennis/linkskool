@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:1.2.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/11c11ae33b97339fe0f1da0e9bac97c0/transformed/jetified-sectionedrecyclerviewadapter-1.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/11c11ae33b97339fe0f1da0e9bac97c0/transformed/jetified-sectionedrecyclerviewadapter-1.2.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.luizgrp.sectionedrecyclerviewadapter/sectionedrecyclerviewadapter/1.2.0/4f93bad5680d3b2d948dd7cac89124cd45bf8706/sectionedrecyclerviewadapter-1.2.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.github.luizgrp.sectionedrecyclerviewadapter/sectionedrecyclerviewadapter/1.2.0/2c700bf1b10fb804548e3e256348b6f32b9f8f20/sectionedrecyclerviewadapter-1.2.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

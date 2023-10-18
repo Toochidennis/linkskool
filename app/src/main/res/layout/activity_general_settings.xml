@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context=".activities.GeneralSettings">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tab_color"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appBar"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/sch_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:hint="School name"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/borderline"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <Spinner
+                    android:id="@+id/sch_year"
+                    style="@style/mySpinnerItemStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_arrow_drop" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/borderline"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <Spinner
+                    android:id="@+id/sch_term"
+                    style="@style/mySpinnerItemStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="5dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_arrow_drop" />
+
+            </RelativeLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/sch_website"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:hint="Website"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/sch_short_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:hint="Short Name"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/sch_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:hint="Address"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/sch_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:hint="City"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/sch_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:hint="State"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/sch_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:hint="Country"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/sch_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:hint="Email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/sch_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:hint="Phone"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/sch_student_prefix"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:hint="Student Prefix"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/sch_staff_prefix"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:hint="Staff Prefix"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="60dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/sch_alumni_prefix"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:hint="Alumni Prefix"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/save_general_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/tab_color"
+        android:text="Save"
+        android:textColor="@android:color/white" />
+
+</RelativeLayout>

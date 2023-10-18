@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="0.5dp"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/initials_bg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:orientation="vertical"
+            android:background="@drawable/circle2"
+            android:layout_margin="10dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/initials"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="A"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:textAlignment="center"
+                android:textSize="16sp"
+                android:visibility="gone"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/debt_fee_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/arimo"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

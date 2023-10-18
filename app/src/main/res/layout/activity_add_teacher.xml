@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context=".activities.AddTeacher">
+
+    <include layout="@layout/toolbar" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="Add New Teacher"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/new_teacher_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:drawableLeft="@drawable/ic_perm"
+                    android:drawablePadding="5dp"
+                    android:hint="Surname*"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/new_teacher_firstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:drawableLeft="@drawable/ic_perm"
+                    android:drawablePadding="5dp"
+                    android:hint="Firstname*"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/new_teacher_middlename"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:drawableLeft="@drawable/ic_perm"
+                    android:drawablePadding="5dp"
+                    android:hint="Middlename"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/borderline"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <Spinner
+                    android:id="@+id/spinner_new_teacher_gender"
+                    style="@style/mySpinnerItemStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_arrow_drop" />
+
+            </RelativeLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/new_teacher_birthday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:drawableLeft="@drawable/ic_date"
+                    android:drawablePadding="5dp"
+                    android:focusable="false"
+                    android:hint="Birthday*"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/new_staff_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:drawableLeft="@drawable/ic_confirmation_number"
+                    android:drawablePadding="5dp"
+                    android:hint="Staff no.*"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/borderline"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <Spinner
+                    android:id="@+id/new_spinner_teacher_state_origin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_arrow_drop" />
+
+            </RelativeLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/new_staff_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:drawableLeft="@drawable/ic_location"
+                    android:drawablePadding="5dp"
+                    android:hint="Staff Address*"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/new_staff_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:drawableLeft="@drawable/ic_mail_add"
+                    android:drawablePadding="5dp"
+                    android:hint="Staff Email*"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:textColorHint="@color/gray">
+
+                <EditText
+                    android:id="@+id/new_staff_phone_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/borderline"
+                    android:drawableLeft="@drawable/ic_phone_black"
+                    android:drawablePadding="5dp"
+                    android:hint="Phone no.*"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:padding="10dp"
+                    android:textColor="@color/gray"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/new_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@color/tab_color"
+                android:text="Save"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

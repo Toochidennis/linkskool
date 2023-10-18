@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.StudentPaymentFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/appBar">
+
+        <LinearLayout
+            android:id="@+id/paid_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:backgroundTint="@color/color_5"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="2dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|top"
+                    android:layout_marginTop="@dimen/dimen_24"
+                    android:fontFamily="@font/montserrat"
+                    android:gravity="center_horizontal"
+                    android:text="@string/thanks_for_paying"
+                    android:textColor="@color/icons_color"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dimen_16"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/hand_shake_icon"
+                    app:tint="@color/white" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/slider_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:visibility="gone">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/card_pager"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:contentDescription="@string/todo" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/card_tab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_pager"
+                android:contentDescription="@string/todo"
+                app:tabBackground="@drawable/indicator_selector"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/history_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp">
+
+            <TextView
+                android:id="@+id/history_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/montserrat_alternates"
+                android:text="@string/payment_history"
+                android:textColor="@color/text_bg_color"
+                android:textSize="16sp" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/history_text"
+                android:layout_marginBottom="105dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/history_recycler"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:clipToPadding="true" />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+            <ImageView
+                android:id="@+id/error_image"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:visibility="gone"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="150dp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/baseline_money_off_24"
+                app:tint="@color/color_7" />
+
+            <TextView
+                android:id="@+id/history_error_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginEnd="0dp"
+                android:fontFamily="@font/montserrat"
+                android:lines="2"
+                android:text="@string/can_not_retrieve"
+                android:textAlignment="center"
+                android:textColor="@color/text_bg_color"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/error_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:fontFamily="@font/montserrat"
+        android:lines="2"
+        android:text="@string/can_not_retrieve"
+        android:textAlignment="center"
+        android:textColor="@color/text_bg_color"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appBar" />
+
+    <Button
+        android:id="@+id/refresh_btn"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/error_message"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ripple_effect"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/refresh_layout"
+        android:textColor="@color/color_5"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/error_message" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,627 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.AdminTransactionDetailsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_color"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/receipt_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:backgroundTint="@android:color/transparent"
+                android:visibility="gone"
+                app:cardElevation="2dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/school_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/montserrat"
+                        android:lines="2"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/receipt_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/school_name"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Reciept"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/receipt_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/receipt_title"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="32dp"
+                        android:gravity="center_horizontal"
+                        android:lines="1"
+                        android:textColor="@color/color_5"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/separator"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/receipt_amount"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="5dp">
+
+                            <TextView
+                                android:id="@+id/receipt_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:paddingStart="15dp"
+                                android:paddingEnd="15dp"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/name_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/separator"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Name"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/student_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/separator"
+                        android:layout_alignBaseline="@id/name_label"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_toEndOf="@id/name_label"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="end"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/level_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/name_label"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Level"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/student_level"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/student_name"
+                        android:layout_alignBaseline="@id/level_label"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_toEndOf="@id/level_label"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="end"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/class_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/level_label"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Class"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/student_class"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/student_level"
+                        android:layout_alignBaseline="@id/class_label"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_toEndOf="@id/class_label"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="end"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/reg_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/class_label"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Registration number"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/registration_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/student_class"
+                        android:layout_alignBaseline="@id/reg_label"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_toEndOf="@id/reg_label"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="end"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/session_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/reg_label"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Session"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/session"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/registration_no"
+                        android:layout_alignBaseline="@id/session_label"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_toEndOf="@id/session_label"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="end"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/term_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/session_label"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Term"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/term"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/session"
+                        android:layout_alignBaseline="@id/term_label"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_toEndOf="@id/term_label"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="end"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/ref_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/term_label"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Reference number"
+                        android:textColor="@color/gray"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/reference_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/term"
+                        android:layout_alignBaseline="@id/ref_label"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_toEndOf="@id/ref_label"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="end"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/expenditure_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:backgroundTint="@android:color/transparent"
+                android:visibility="gone"
+                app:cardElevation="2dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/expenditure_school_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/montserrat"
+                        android:lines="2"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/expenditure_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/expenditure_school_name"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="12dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Payment Reciept"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/expenditure_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/expenditure_title"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="32dp"
+                        android:gravity="center_horizontal"
+                        android:lines="1"
+                        android:textColor="@color/color_5"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/expenditure_separator"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/expenditure_amount"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/line"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="5dp">
+
+                            <TextView
+                                android:id="@+id/expenditure_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:paddingStart="15dp"
+                                android:paddingEnd="15dp"
+                                android:textColor="@color/black"
+                                android:textSize="14sp" />
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/vendor_name_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/expenditure_separator"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Name"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/vendor_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/expenditure_separator"
+                        android:layout_alignBaseline="@id/vendor_name_label"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_toEndOf="@id/vendor_name_label"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="end"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/vendor_mobile_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/vendor_name_label"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Phone Number"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/vendor_mobile_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/vendor_name_label"
+                        android:layout_alignBaseline="@id/vendor_mobile_label"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_toEndOf="@id/vendor_mobile_label"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="end"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/account_reference_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/vendor_mobile_label"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Account Reference"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/account_reference"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/vendor_mobile_number"
+                        android:layout_alignBaseline="@id/account_reference_label"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_toEndOf="@id/account_reference_label"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="end"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/vendor_session_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/account_reference_label"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Session"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/vendor_session"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/account_reference"
+                        android:layout_alignBaseline="@id/vendor_session_label"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_toEndOf="@id/vendor_session_label"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="end"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/vendor_term_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/vendor_session_label"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Term"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/vendor_term"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/vendor_session"
+                        android:layout_alignBaseline="@id/vendor_term_label"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_toEndOf="@id/vendor_term_label"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="end"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/vendor_ref_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/vendor_term_label"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Reference number"
+                        android:textColor="@color/gray"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/vendor_reference_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/vendor_term"
+                        android:layout_alignBaseline="@id/vendor_ref_label"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_toEndOf="@id/vendor_ref_label"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="end"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/vendor_description_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/vendor_reference_number"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Description"
+                        android:textColor="@color/gray"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/vendor_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/vendor_reference_number"
+                        android:layout_alignBaseline="@id/vendor_description_label"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="16dp"
+                        android:layout_toEndOf="@id/vendor_description_label"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="end"
+                        android:lines="2"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/share_receipt"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/ripple_effect"
+                android:elevation="0dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Share"
+                android:textColor="@color/color_5"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/download_receipt"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/ripple_effect"
+                android:elevation="0dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Download"
+                android:textColor="@color/color_5"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

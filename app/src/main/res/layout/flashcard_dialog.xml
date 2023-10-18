@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Flashcard"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:fontFamily="@font/montserrat"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="15dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Term"
+        android:textSize="15sp"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/black"
+        />
+    <EditText
+        android:id="@+id/flash_term"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter term here"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Definition"
+        android:textSize="15sp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat"
+        android:textColor="@color/black"
+        />
+    <EditText
+        android:id="@+id/flash_definition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter definition here"/>
+
+</LinearLayout>

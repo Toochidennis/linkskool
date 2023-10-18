@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_color"
+    tools:context=".activities.NewsView">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/toolbar"
+            app:titleTextColor="@color/black"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            >
+
+        </androidx.appcompat.widget.Toolbar>
+    </androidx.cardview.widget.CardView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="20dp"
+                app:contentPaddingBottom="20dp"
+                app:contentPaddingTop="20dp"
+                app:cardElevation="0.5dp"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+
+    <TextView
+        android:id="@+id/news_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="News Header"
+        android:fontFamily="@font/roboto"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        />
+
+    <LinearLayout
+        android:id="@+id/news_body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        >
+
+    </LinearLayout>
+                    <TextView
+                        android:id="@+id/author"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/gray"
+                        android:textSize="12sp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="@font/montserrat"
+                        android:layout_gravity="center_vertical"
+                        />
+                    <TextView
+                        android:id="@+id/date_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="June 20"
+                        android:textColor="@color/gray"
+                        android:textSize="11sp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="@font/montserrat"
+                        android:layout_gravity="center_vertical"
+                        />
+        </LinearLayout>
+            </androidx.cardview.widget.CardView>
+            <EditText
+                android:id="@+id/reply"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_outline_gray"
+                android:padding="8dp"
+                android:hint="Add comment"
+                android:focusable="false"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"/>
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progress"
+                android:indeterminate="true"
+                android:max="100"
+                android:progress="45"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/answer_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </androidx.recyclerview.widget.RecyclerView>
+                <TextView
+                    android:id="@+id/empty_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="There is no comment yet"
+                    android:textColor="@color/gray"
+                    android:fontFamily="@font/arimo"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:textSize="13sp"
+                    android:visibility="gone"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="50dp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

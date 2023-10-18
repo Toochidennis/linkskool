@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@id/done_btn"
+        android:fontFamily="@font/poppins_regular"
+        android:textAlignment="center"
+        android:textColor="@color/text_bg_color"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/done_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/ripple_effect8"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="Done"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/close_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/ic_close"
+        app:tint="@color/test_color_7" />
+
+    <LinearLayout
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/line_separator"
+        android:orientation="horizontal" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/separator"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/error_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/error_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/no_data"
+            android:textAlignment="center"
+            android:textColor="@color/text_bg_color"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/refresh_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:layout_marginBottom="@dimen/dimen_16"
+            android:background="@drawable/ripple_effect6"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:text="@string/refresh_layout"
+            android:textAllCaps="false"
+            android:textColor="@color/color_5"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

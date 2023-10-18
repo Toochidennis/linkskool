@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingBottom="@dimen/dimen_16"
+    android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profileImageView"
+        android:layout_width="@dimen/dimen_32"
+        android:layout_height="@dimen/dimen_32"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_person" />
+
+    <TextView
+        android:id="@+id/authorNameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_toEndOf="@id/profileImageView"
+        android:text="Toochi Dennis"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_14"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/dateTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dimen_10"
+        android:layout_toEndOf="@id/authorNameTxt"
+        android:text="06 Sept"
+        android:textSize="@dimen/text_12" />
+
+    <TextView
+        android:id="@+id/commentTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/authorNameTxt"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@id/profileImageView"
+        android:text="When are we submitting the assignment?"
+        android:textColor="@color/black"
+        android:textSize="13sp" />
+
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context=".fragments.ExpenditureGroupingFragment">
+
+    <Button
+        android:id="@+id/month_btn"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/ripple_effect6"
+        android:fontFamily="@font/poppins_medium"
+        android:text="By Month"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/vendor_btn"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:background="@drawable/ripple_effect6"
+        android:fontFamily="@font/poppins_medium"
+        android:text="By Vendor"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/account_btn"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:background="@drawable/ripple_effect6"
+        android:fontFamily="@font/poppins_medium"
+        android:text="By Account"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="14sp" />
+
+</LinearLayout>

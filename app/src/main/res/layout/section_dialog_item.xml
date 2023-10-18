@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/question_pic"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        />
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="0dp"
+        android:gravity="center"
+        android:textColorHint="@color/gray">
+
+        <EditText
+            android:id="@+id/section_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/borderline"
+            android:padding="15dp"
+            android:hint="Section title"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="@color/gray"
+            android:textSize="14sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:visibility="gone"
+        >
+        <ImageView
+            android:id="@+id/add_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_attach_file_black_24dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_centerVertical="true"
+            />
+
+        <Button
+            android:id="@+id/apply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/button_style4"
+            android:minHeight="0dp"
+            android:padding="8dp"
+            android:text="Apply"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="13sp"
+
+            />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="150dp"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:padding="5dp"
+    android:background="@drawable/border_outline_gray"
+    >
+
+    <TextView
+        android:id="@+id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="English language"
+        android:textSize="12sp"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/arimo"
+        />
+
+
+
+</LinearLayout>

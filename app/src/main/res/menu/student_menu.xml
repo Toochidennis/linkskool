@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/student_dashboard"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/student_results"
+        android:icon="@drawable/ic_poll"
+        android:title="Results" />
+
+    <item
+        android:id="@+id/student_library"
+        android:icon="@drawable/ic_books"
+        android:title="E-library" />
+
+    <item
+        android:id="@+id/student_elearning"
+        android:icon="@drawable/ic_elearning"
+        android:title="E-learning" />
+
+    <item
+        android:id="@+id/payment"
+        android:icon="@drawable/ic_payment"
+        android:title="Payment" />
+</menu>

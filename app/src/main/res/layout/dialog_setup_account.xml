@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dialog_bg">
+
+    <ImageView
+        android:id="@+id/back_btn"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/todo"
+        android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+        app:tint="@color/black" />
+
+    <TextView
+        android:id="@+id/debt_fee_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/back_btn"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
+        android:layout_toEndOf="@id/back_btn"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center_vertical"
+        android:text="Add Account"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/account_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/debt_fee_title"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="15dp"
+        android:autofillHints="name"
+        android:background="@drawable/edit_text_bg"
+        android:ems="10"
+        android:focusable="true"
+        android:fontFamily="@font/montserrat"
+        android:hint="Account Name(Required)"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="14sp" />
+
+    <EditText
+        android:id="@+id/account_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/account_name"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:autofillHints="creditCardNumber"
+        android:background="@drawable/edit_text_bg"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="Account ID(Required)"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="14sp" />
+
+    <RelativeLayout
+        android:id="@+id/account_type"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@id/account_id"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/edit_text_bg"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinner_account_type"
+            style="@style/mySpinnerItemStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:background="@android:color/transparent"
+            android:entries="@array/account_type"
+            android:gravity="center"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_arrow_drop"
+            app:tint="@color/text_bg_color" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/add_account_btn"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/account_type"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/ripple_effect"
+        android:text="Done"
+        android:textColor="@color/color_5"
+        android:textSize="16sp" />
+
+</RelativeLayout>

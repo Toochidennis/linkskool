@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ReceiptStudentNameFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tab_color"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
+
+            <ImageView
+                android:id="@+id/back_btn"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:clickable="true"
+                android:contentDescription="@string/todo"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/arrow_left" />
+
+            <TextView
+                android:id="@+id/toolbar_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@id/level_name"
+                android:layout_toEndOf="@id/back_btn"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/level_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/ripple_effect2"
+                android:clickable="true"
+                android:contentDescription="@string/todo"
+                android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
+                android:drawableTint="@color/white"
+                android:focusable="true"
+                android:minHeight="48dp"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:tint="@color/white" />
+
+        </RelativeLayout>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <EditText
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBar"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
+        android:autofillHints="name"
+        android:background="@drawable/edit_text_bg"
+        android:drawableStart="@drawable/ic_search_24"
+        android:drawableTint="@color/gray"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:gravity="start|top"
+        android:hint="Search for student"
+        android:inputType="textFilter"
+        android:minHeight="48dp"
+        android:paddingStart="10dp"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/student_name_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_bar"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/student_name_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:clipToPadding="true" />
+
+            <ImageView
+                android:id="@+id/error_image"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="180dp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/no_internet"
+                android:visibility="gone"
+                app:tint="@color/color_7" />
+
+            <TextView
+                android:id="@+id/student_error_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="200dp"
+                android:layout_marginEnd="0dp"
+                android:fontFamily="@font/montserrat"
+                android:lines="2"
+                android:text="@string/no_data"
+                android:textAlignment="center"
+                android:textColor="@color/text_bg_color"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
