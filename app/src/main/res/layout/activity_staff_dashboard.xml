@@ -17,7 +17,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -26,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:itemHorizontalTranslationEnabled="false"
-        app:menu="@menu/student_menu"
+        app:menu="@menu/teacher_menu"
         android:background="@android:color/white"
         app:itemBackground="@android:color/white"
         app:itemIconTint="@drawable/selector"

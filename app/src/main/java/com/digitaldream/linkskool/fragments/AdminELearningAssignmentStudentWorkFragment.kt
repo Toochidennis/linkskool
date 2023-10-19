@@ -14,7 +14,7 @@ import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.adapters.AdminELearningAssignmentStudentWorkAdapter
 import com.digitaldream.linkskool.models.SharedViewModel
 import com.digitaldream.linkskool.models.StudentResponseModel
-import com.digitaldream.linkskool.utils.FunctionUtils
+import com.digitaldream.linkskool.utils.FunctionUtils.sendRequestToServer
 import com.digitaldream.linkskool.utils.VolleyCallback
 import org.json.JSONArray
 import org.json.JSONObject
@@ -105,7 +105,7 @@ class AdminELearningAssignmentStudentWorkFragment :
         val url =
             "${requireActivity().getString(R.string.base_url)}/getResponses.php?id=$contentId"
 
-        FunctionUtils.sendRequestToServer(
+        sendRequestToServer(
             Request.Method.GET,
             url,
             requireContext(),
@@ -123,7 +123,6 @@ class AdminELearningAssignmentStudentWorkFragment :
             },
             false
         )
-
     }
 
     private fun parseResponse(response: String) {

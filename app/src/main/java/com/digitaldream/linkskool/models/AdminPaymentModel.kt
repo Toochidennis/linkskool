@@ -1,7 +1,6 @@
 package com.digitaldream.linkskool.models
 
 class AdminPaymentModel {
-
     var mId: Int = 0
     var mInvoice: String? = null
     var mStudentId: String? = null
@@ -17,6 +16,4 @@ class AdminPaymentModel {
     var mTerm: String? = null
     var mSession: String? = null
     var mJson: String? = null
-
-
 }
