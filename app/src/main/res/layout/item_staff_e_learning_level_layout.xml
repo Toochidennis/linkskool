@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimen_16"
+    android:layout_marginEnd="@dimen/dimen_16"
+    android:background="@drawable/dialog_bg4"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:paddingStart="32dp"
+    android:paddingTop="34dp"
+    android:paddingEnd="@dimen/dimen_32"
+    android:paddingBottom="34dp">
+
+    <TextView
+        android:id="@+id/levelNameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="JSS1"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16" />
+
+</LinearLayout>
