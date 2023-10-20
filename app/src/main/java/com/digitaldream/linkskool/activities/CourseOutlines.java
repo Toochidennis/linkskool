@@ -330,37 +330,26 @@ public class CourseOutlines extends AppCompatActivity {
         PendingResult<LocationSettingsResult> result =
                 LocationServices.SettingsApi.checkLocationSettings(
                 googleApiClient, builder.build());
-        result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
-            @Override
-            public void onResult(LocationSettingsResult result) {
-                final Status status = result.getStatus();
-                switch (status.getStatusCode()) {
-                    case LocationSettingsStatusCodes.SUCCESS:
-                        //Log.i("tag", "All location settings are satisfied.");
-                        Toast.makeText(CourseOutlines.this, "Wifi turned on",
-                                Toast.LENGTH_SHORT).show();
-                        break;
-                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
-                        Log.i("tag",
-                                "Location settings are not satisfied. Show the user a dialog to " +
-                                        "upgrade location settings ");
-
-                        try {
-                            // Show the dialog by calling startResolutionForResult(), and check
-                            // the result
-                            // in onActivityResult().
-                            status.startResolutionForResult(CourseOutlines.this,
-                                    REQUEST_CHECK_SETTINGS);
-                        } catch (IntentSender.SendIntentException e) {
-                            Log.i("tag", "PendingIntent unable to execute request.");
-                        }
-                        break;
-                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
-                        Log.i("tag",
-                                "Location settings are inadequate, and cannot be fixed here. " +
-                                        "Dialog not created.");
-                        break;
-                }
+        result.setResultCallback(result1 -> {
+            final Status status = result1.getStatus();
+            switch (status.getStatusCode()) {
+                case LocationSettingsStatusCodes.SUCCESS:
+                    //Log.i("tag", "All location settings are satisfied.");
+                    Toast.makeText(CourseOutlines.this, "Wifi turned on",
+                            Toast.LENGTH_SHORT).show();
+                    break;
+                case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+                    try {
+                        // Show the dialog by calling startResolutionForResult(), and check
+                        // the result
+                        // in onActivityResult().
+                        status.startResolutionForResult(CourseOutlines.this,
+                                REQUEST_CHECK_SETTINGS);
+                    } catch (IntentSender.SendIntentException e) {
+                    }
+                    break;
+                case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                    break;
             }
         });
     }
