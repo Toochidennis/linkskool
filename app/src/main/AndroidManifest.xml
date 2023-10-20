@@ -42,6 +42,14 @@
         android:theme="@style/AppTheme"
         tools:targetApi="n">
 
+        <activity
+            android:name="com.digitaldream.linkskool.activities.StaffELearningActivity"
+            android:exported="false"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
         <activity
             android:name="com.digitaldream.linkskool.activities.StudentELearningActivity"
@@ -168,7 +176,7 @@
         <activity android:name="com.digitaldream.linkskool.activities.ContentDownload" />
         <activity android:name="com.digitaldream.linkskool.activities.ContentUpload" />
         <activity android:name="com.digitaldream.linkskool.activities.CourseOutlines" />
-        <activity android:name="com.digitaldream.linkskool.activities.ElearningCourses" />
+        <activity android:name="com.digitaldream.linkskool.activities.StaffElearningCourseOutlineActivity" />
         <activity android:name="com.digitaldream.linkskool.activities.ELearning" />
         <activity android:name="com.digitaldream.linkskool.activities.CoursesAssigned" />
         <activity android:name="com.digitaldream.linkskool.activities.FormClass" />
