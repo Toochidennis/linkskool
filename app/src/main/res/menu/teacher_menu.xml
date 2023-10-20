@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/teacher_dashboard"
+        android:icon="@drawable/ic_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/teacher_result"
+        android:icon="@drawable/ic_poll"
+        android:title="Result" />
+
+    <item
+        android:id="@+id/teacher_library"
+        android:icon="@drawable/ic_books"
+        android:title="E-library" />
+
+    <item
+        android:id="@+id/teacher_e_learning"
+        android:icon="@drawable/ic_elearning"
+        android:title="E-learning" />
+</menu>
