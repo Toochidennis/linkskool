@@ -25,16 +25,15 @@ import com.j256.ormlite.dao.Dao
 import com.j256.ormlite.dao.DaoManager
 import org.json.JSONArray
 import org.json.JSONObject
-import timber.log.Timber
 import java.util.Locale
 
 
-class AdminELearningCreateClassDialogFragment(
+class AdminELearningCreateCourseOutlineDialogFragment(
     private val levelId: String,
     private val courseName: String,
     private val courseId: String,
     private val onCreated: (String) -> Unit
-) : DialogFragment(R.layout.dialog_fragment_admin_e_learning_create_class) {
+) : DialogFragment(R.layout.dialog_fragment_admin_e_learning_create_course_outline) {
 
     private lateinit var mBackBtn: ImageButton
     private lateinit var mCreateBtn: Button
@@ -198,7 +197,6 @@ class AdminELearningCreateClassDialogFragment(
             }
         })
     }
-
 
     private fun createOutline() {
         mCreateBtn.setOnClickListener {

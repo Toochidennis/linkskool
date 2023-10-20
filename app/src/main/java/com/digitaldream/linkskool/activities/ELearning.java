@@ -80,7 +80,7 @@ public class ELearning extends AppCompatActivity implements ElearningLevelAdapte
 
     @Override
     public void onLevelClick(int position) {
-        Intent intent = new Intent(this, ElearningCourses.class);
+        Intent intent = new Intent(this, StaffElearningCourseOutlineActivity.class);
         intent.putExtra("levelId",coursesList.get(position).getLevelId());
         intent.putExtra("levelName",coursesList.get(position).getLevelName());
         Log.i("levelname",coursesList.get(position).getLevelName());

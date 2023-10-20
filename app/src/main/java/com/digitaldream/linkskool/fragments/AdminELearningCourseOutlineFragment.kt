@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,7 +23,6 @@ import com.digitaldream.linkskool.utils.FunctionUtils.sendRequestToServer
 import com.digitaldream.linkskool.utils.VolleyCallback
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONArray
-import timber.log.Timber
 
 
 private const val COURSE_NAME = "course_name"
@@ -32,8 +30,7 @@ private const val COURSE_ID = "course_id"
 private const val LEVEL_NAME = "level_name"
 private const val LEVEL_ID = "level_id"
 
-class AdminELearningClassRoomFragment : Fragment(R.layout.fragment_admin_e_learning_class_room) {
-
+class AdminELearningCourseOutlineFragment : Fragment(R.layout.fragment_admin_e_learning_course_outline) {
 
     private lateinit var mAddCourseOutlineBtn: FloatingActionButton
     private lateinit var outlineRecyclerView: RecyclerView
@@ -65,7 +62,7 @@ class AdminELearningClassRoomFragment : Fragment(R.layout.fragment_admin_e_learn
 
         @JvmStatic
         fun newInstance(courseName: String, courseId: String, levelName: String, levelId: String) =
-            AdminELearningClassRoomFragment().apply {
+            AdminELearningCourseOutlineFragment().apply {
                 arguments = Bundle().apply {
                     putString(COURSE_NAME, courseName)
                     putString(COURSE_ID, courseId)
@@ -101,7 +98,7 @@ class AdminELearningClassRoomFragment : Fragment(R.layout.fragment_admin_e_learn
             val actionBar = (requireContext() as AppCompatActivity).supportActionBar
 
             actionBar?.apply {
-                title = "Classroom"
+                title = "Course outline"
                 setHomeButtonEnabled(true)
                 setDisplayHomeAsUpEnabled(true)
             }
@@ -210,7 +207,6 @@ class AdminELearningClassRoomFragment : Fragment(R.layout.fragment_admin_e_learn
         setUpRecyclerView()
     }
 
-
     private fun setUpRecyclerView() {
         outlineRecyclerView.apply {
             hasFixedSize()
@@ -221,7 +217,7 @@ class AdminELearningClassRoomFragment : Fragment(R.layout.fragment_admin_e_learn
 
     private fun createCourseOutline() {
         mAddCourseOutlineBtn.setOnClickListener {
-            AdminELearningCreateClassDialogFragment(
+            AdminELearningCreateCourseOutlineDialogFragment(
                 mLevelId ?: "",
                 mCourseName ?: "",
                 mCourseId ?: ""

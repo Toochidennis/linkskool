@@ -30,7 +30,7 @@ import com.digitaldream.linkskool.dialog.AdminClassesDialog;
 import com.digitaldream.linkskool.dialog.AdminELearningDialog;
 import com.digitaldream.linkskool.dialog.ContactUsDialog;
 import com.digitaldream.linkskool.fragments.AdminDashboardFragment;
-import com.digitaldream.linkskool.fragments.AdminELearningClassRoomFragment;
+import com.digitaldream.linkskool.fragments.AdminELearningCourseOutlineFragment;
 import com.digitaldream.linkskool.fragments.AdminPaymentDashboardFragment;
 import com.digitaldream.linkskool.fragments.ELibraryFragment;
 import com.digitaldream.linkskool.fragments.FlashCardList;
@@ -296,7 +296,7 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
                                             .beginTransaction()
                                             .replace(
                                                     R.id.payment_container,
-                                                    AdminELearningClassRoomFragment.newInstance(
+                                                    AdminELearningCourseOutlineFragment.newInstance(
                                                             courseName,
                                                             courseId,
                                                             levelName,
