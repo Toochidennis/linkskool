@@ -45,7 +45,6 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.json.JSONArray
 import org.json.JSONObject
-import timber.log.Timber
 import java.io.File
 
 private const val ARG_PARAM1 = "param1"
@@ -55,8 +54,8 @@ private const val ARG_PARAM4 = "param4"
 private const val ARG_PARAM5 = "param5"
 
 
-class AdminELearningMaterialFragment :
-    Fragment(R.layout.fragment_admin_e_learning_material) {
+class AdminELearningCreateMaterialFragment :
+    Fragment(R.layout.fragment_admin_e_learning_create_material) {
 
     private lateinit var mBackBtn: ImageButton
     private lateinit var mPostBtn: Button
@@ -123,7 +122,7 @@ class AdminELearningMaterialFragment :
             json: String,
             courseName: String,
             from: String
-        ) = AdminELearningMaterialFragment().apply {
+        ) = AdminELearningCreateMaterialFragment().apply {
             arguments = Bundle().apply {
                 putString(ARG_PARAM1, levelId)
                 putString(ARG_PARAM2, courseId)
@@ -282,7 +281,6 @@ class AdminELearningMaterialFragment :
             e.printStackTrace()
         }
     }
-
 
     private fun setUpFileRecyclerView() {
         mAttachmentRecyclerView.apply {
@@ -477,7 +475,6 @@ class AdminELearningMaterialFragment :
         topic = mTopicTxt.text.toString()
     }
 
-
     private fun postMaterial() {
         val url = "${getString(R.string.base_url)}/addContent.php"
         val hashMap = createMaterialObject()
@@ -520,7 +517,6 @@ class AdminELearningMaterialFragment :
             onBackPressed()
         }
     }
-
 
     private fun selectTopic() = if (selectedClassItems.isEmpty()) {
         showToast("Please select a class")
