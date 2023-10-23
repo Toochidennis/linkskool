@@ -14,7 +14,7 @@ import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.adapters.SectionPagerAdapter
-import com.digitaldream.linkskool.utils.FunctionUtils
+import com.digitaldream.linkskool.utils.FunctionUtils.sendRequestToServer
 import com.digitaldream.linkskool.utils.VolleyCallback
 import com.google.android.material.tabs.TabLayout
 
@@ -23,7 +23,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 
-class StaffELearningPostDashboardFragment : Fragment() {
+class StaffELearningContentDashboardFragment : Fragment() {
 
     private lateinit var courseViewPager: ViewPager
     private lateinit var courseTabLayout: TabLayout
@@ -49,14 +49,14 @@ class StaffELearningPostDashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_staff_e_learning_post_dashboard, container, false)
+        return inflater.inflate(R.layout.fragment_staff_e_learning_content_dashboard, container, false)
     }
 
     companion object {
 
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            StaffELearningPostDashboardFragment().apply {
+            StaffELearningContentDashboardFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
@@ -68,6 +68,8 @@ class StaffELearningPostDashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpViews(view)
+
+        loadOutline()
     }
 
     private fun setUpViews(view: View) {
@@ -85,6 +87,8 @@ class StaffELearningPostDashboardFragment : Fragment() {
                 setDisplayHomeAsUpEnabled(true)
             }
 
+            toolbar.setNavigationOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
+
             val sharedPreferences = requireActivity().getSharedPreferences(
                 "loginDetail", AppCompatActivity.MODE_PRIVATE
             )
@@ -100,14 +104,14 @@ class StaffELearningPostDashboardFragment : Fragment() {
 
     private fun setUpViewPager(response: String) {
         val pagerAdapter = SectionPagerAdapter(parentFragmentManager).apply {
-            addFragment(StaffELearningStreamFragment(), "Stream")
-            addFragment(StaffELearningCourseWorkFragment(), "Coursework")
+            addFragment(StaffELearningStreamFragment.newInstance(response, ""), "Stream")
+            addFragment(StaffELearningCourseWorkFragment.newInstance(response, ""), "Coursework")
         }
 
         courseViewPager.adapter = pagerAdapter
         courseTabLayout.setupWithViewPager(courseViewPager, true)
-        courseTabLayout.getTabAt(0)?.setIcon(R.drawable.ic_assignment_black_24dp)
-        courseTabLayout.getTabAt(1)?.setIcon(R.drawable.ic_forum_24)
+        courseTabLayout.getTabAt(0)?.setIcon(R.drawable.ic_forum_24)
+        courseTabLayout.getTabAt(1)?.setIcon(R.drawable.ic_assignment_black_24dp)
     }
 
 
@@ -115,7 +119,7 @@ class StaffELearningPostDashboardFragment : Fragment() {
         val url = "${requireContext().getString(R.string.base_url)}/getOutline.php?" +
                 "course=$courseId&&level=$levelId&&term=$term"
 
-        FunctionUtils.sendRequestToServer(
+        sendRequestToServer(
             Request.Method.GET,
             url,
             requireContext(),
@@ -130,8 +134,6 @@ class StaffELearningPostDashboardFragment : Fragment() {
                         requireContext(),
                         getString(R.string.no_internet), Toast.LENGTH_SHORT
                     ).show()
-
-                    requireActivity().onBackPressedDispatcher.onBackPressed()
                 }
             }
         )
