@@ -16,7 +16,7 @@ import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.adapters.GenericAdapter
 import com.digitaldream.linkskool.dialog.StaffELearningCreateCourseOutlineDialogFragment
 import com.digitaldream.linkskool.models.CourseOutlineModel
-import com.digitaldream.linkskool.utils.FunctionUtils
+import com.digitaldream.linkskool.utils.FunctionUtils.capitaliseFirstLetter
 import com.digitaldream.linkskool.utils.FunctionUtils.sendRequestToServer
 import com.digitaldream.linkskool.utils.VolleyCallback
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -32,23 +32,26 @@ class StaffElearningCourseOutlineActivity : AppCompatActivity() {
     private lateinit var outlineAdapter: GenericAdapter<CourseOutlineModel>
     private var outlineList = mutableListOf<CourseOutlineModel>()
 
-    private var mCourseName: String? = null
-    private var mCourseId: String? = null
-    private var mLevelName: String? = null
-    private var mLevelId: String? = null
-    private var mTerm: String? = null
+    private var courseName: String? = null
+    private var courseId: String? = null
+    private var levelId: String? = null
+    private var term: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_staff_e_learning_course_outline)
 
         setUpViews()
 
+        getCourseOutline()
+
+        createCourseOutline()
+
+        refresh()
     }
 
 
     private fun setUpViews() {
-        setContentView(R.layout.activity_staff_e_learning_course_outline)
-
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         outlineRecyclerView = findViewById(R.id.outlineRecyclerView)
         mAddCourseOutlineBtn = findViewById(R.id.addCourseLineButton)
@@ -63,15 +66,20 @@ class StaffElearningCourseOutlineActivity : AppCompatActivity() {
             setDisplayHomeAsUpEnabled(true)
         }
 
+        val sharedPreferences = getSharedPreferences("loginDetail", MODE_PRIVATE)
 
-        mTerm = getSharedPreferences("loginDetail", MODE_PRIVATE)
-            .getString("term", "")
+        with(sharedPreferences) {
+            term = getString("term", "")
+            courseId = getString("courseId", "")
+            courseName = getString("course_name", "")
+            levelId = getString("level", "")
+        }
     }
 
 
     private fun getCourseOutline() {
         val url = "${getString(R.string.base_url)}/getOutlineList" +
-                ".php?course=$mCourseId&level=$mLevelId&term=$mTerm"
+                ".php?course=$courseId&level=$levelId&term=$term"
 
         sendRequestToServer(Request.Method.GET, url, this, null,
             object : VolleyCallback {
@@ -142,20 +150,20 @@ class StaffElearningCourseOutlineActivity : AppCompatActivity() {
             outlineList,
             R.layout.item_course_outline_layout,
             bindItem = { itemView, model, _ ->
-                val courseName: TextView = itemView.findViewById(R.id.courseNameTxt)
+                val outlineTitle: TextView = itemView.findViewById(R.id.courseNameTxt)
                 val levelName: TextView = itemView.findViewById(R.id.levelNameTxt)
                 val teacherName: TextView = itemView.findViewById(R.id.teacherNameTxt)
 
-                courseName.text = FunctionUtils.capitaliseFirstLetter(model.title)
-                teacherName.text = FunctionUtils.capitaliseFirstLetter(model.teacherName)
+                outlineTitle.text = capitaliseFirstLetter(model.title)
+                teacherName.text = capitaliseFirstLetter(model.teacherName)
             }
         ) {
+            val itemPosition = outlineList[it]
+
             startActivity(
                 Intent(this, StaffELearningActivity::class.java)
-                    .putExtra("from", "view_post")
-                    .putExtra("levelId", mLevelId)
-                    .putExtra("courseId", mCourseId)
-                    .putExtra("courseName", mCourseName)
+                    .putExtra("from", "content_dashboard")
+                    .putExtra("title", itemPosition.title)
             )
         }
 
@@ -174,9 +182,9 @@ class StaffElearningCourseOutlineActivity : AppCompatActivity() {
     private fun createCourseOutline() {
         mAddCourseOutlineBtn.setOnClickListener {
             StaffELearningCreateCourseOutlineDialogFragment(
-                mLevelId ?: "",
-                mCourseName ?: "",
-                mCourseId ?: ""
+                levelId ?: "",
+                courseName ?: "",
+                courseId ?: ""
             ) {
                 getCourseOutline()
             }.show(supportFragmentManager, "")

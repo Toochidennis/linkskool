@@ -46,7 +46,7 @@ class AdminELearningActivity : AppCompatActivity(R.layout.activity_admin_e_learn
                 supportFragmentManager.commit {
                     replace(
                         R.id.learning_container,
-                        AdminELearningQuestionFragment.newInstance(json, task)
+                        AdminELearningCreateQuestionFragment.newInstance(json, task)
                     )
                 }
             }
@@ -55,7 +55,7 @@ class AdminELearningActivity : AppCompatActivity(R.layout.activity_admin_e_learn
                 supportFragmentManager.commit {
                     replace(
                         R.id.learning_container,
-                        AdminELearningMaterialFragment
+                        AdminELearningCreateMaterialFragment
                             .newInstance(
                                 levelId, courseId,
                                 json, courseName, task
@@ -68,7 +68,7 @@ class AdminELearningActivity : AppCompatActivity(R.layout.activity_admin_e_learn
                 supportFragmentManager.commit {
                     replace(
                         R.id.learning_container,
-                        AdminELearningAssignmentFragment
+                        AdminELearningCreateAssignmentFragment
                             .newInstance(
                                 levelId, courseId,
                                 json, courseName,
@@ -98,7 +98,7 @@ class AdminELearningActivity : AppCompatActivity(R.layout.activity_admin_e_learn
                 supportFragmentManager.commit {
                     replace(
                         R.id.learning_container,
-                        AdminELearningAssignmentDetailsFragment.newInstance(json, task)
+                        AdminELearningAssignmentDashboardFragment.newInstance(json, task)
                     )
                 }
             }
@@ -107,7 +107,7 @@ class AdminELearningActivity : AppCompatActivity(R.layout.activity_admin_e_learn
                 supportFragmentManager.commit {
                     replace(
                         R.id.learning_container,
-                        AdminELearningQuestionDetailsFragment.newInstance(json, task)
+                        AdminELearningQuestionDashboardFragment.newInstance(json, task)
                     )
                 }
             }

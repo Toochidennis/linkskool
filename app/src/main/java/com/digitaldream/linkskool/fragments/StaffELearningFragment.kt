@@ -1,43 +1,56 @@
 package com.digitaldream.linkskool.fragments
 
-import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
+import com.android.volley.Request
+import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
+import com.digitaldream.linkskool.activities.StudentELearningActivity
 import com.digitaldream.linkskool.adapters.GenericAdapter
 import com.digitaldream.linkskool.config.DatabaseHelper
 import com.digitaldream.linkskool.dialog.StaffELearningLevelBottomSheet
 import com.digitaldream.linkskool.models.CourseTable
+import com.digitaldream.linkskool.models.RecentActivityModel
+import com.digitaldream.linkskool.utils.FunctionUtils
+import com.digitaldream.linkskool.utils.FunctionUtils.sendRequestToServer
+import com.digitaldream.linkskool.utils.VolleyCallback
+import com.google.android.material.tabs.TabLayout
 import com.j256.ormlite.dao.DaoManager
+import org.json.JSONArray
+import org.json.JSONObject
 
 class StaffELearningFragment : Fragment() {
 
-    private lateinit var submissionRecyclerView: RecyclerView
+    private lateinit var submissionViewPager: ViewPager2
+    private lateinit var submissionTabLayout: TabLayout
     private lateinit var commentRecyclerView: RecyclerView
     private lateinit var courseRecyclerView: RecyclerView
 
-    private lateinit var menuHost: MenuHost
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var courseAdapter: GenericAdapter<CourseTable>
-    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var commentAdapter: GenericAdapter<RecentActivityModel>
 
     private var courseTable = mutableListOf<CourseTable>()
+    private val commentList = mutableListOf<RecentActivityModel>()
+
+    private var userId: String? = null
+    private var term: String? = null
+    private var year: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,24 +62,22 @@ class StaffELearningFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setUpViews(view)
 
-        setUpMenu()
-
-        loadCourses()
-
+        getHomeContents()
     }
 
     private fun setUpViews(view: View) {
         view.apply {
             val toolbar: Toolbar = findViewById(R.id.toolbar)
-            submissionRecyclerView = findViewById(R.id.submissionRecyclerView)
+            submissionViewPager = findViewById(R.id.submissionViewPager)
+            submissionTabLayout = findViewById(R.id.submissionTabLayout)
             commentRecyclerView = findViewById(R.id.commentRecyclerView)
             courseRecyclerView = findViewById(R.id.courseRecyclerView)
 
             (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
             val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
-            menuHost = requireActivity()
 
             actionBar?.apply {
                 title = "Classroom"
@@ -77,13 +88,78 @@ class StaffELearningFragment : Fragment() {
             toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
 
             databaseHelper = DatabaseHelper(requireContext())
-            sharedPreferences = requireActivity().getSharedPreferences("loginDetail", MODE_PRIVATE)
 
+            val sharedPreferences = requireActivity().getSharedPreferences(
+                "loginDetail", Context.MODE_PRIVATE
+            )
+
+            with(sharedPreferences) {
+                term = getString("term", "")
+                year = getString("school_year", "")
+                userId = getString("user_id", "")
+            }
         }
     }
 
+    private fun getHomeContents() {
+        val url = "${requireActivity().getString(R.string.base_url)}/getStaffLearning.php?" +
+                "id=$userId&year=$year&term=$term"
 
-    private fun loadCourses() {
+        sendRequestToServer(
+            Request.Method.GET,
+            url,
+            requireContext(),
+            null,
+            object : VolleyCallback {
+                override fun onResponse(response: String) {
+                    try {
+                        with(JSONObject(response)) {
+                            val comment = getString("comment")
+
+                            if (comment != "[]") {
+                                parseCommentJson(JSONArray(comment))
+                            }
+
+                            parseCourseJson()
+                        }
+
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
+                }
+
+                override fun onError(error: VolleyError) {
+                }
+            })
+    }
+
+    private fun parseCommentJson(comments: JSONArray) {
+        with(comments) {
+            for (i in 0 until length()) {
+                getJSONObject(i).let {
+                    val id = it.getString("content_id")
+                    val userName = it.getString("author_name")
+                    val date = it.getString("upload_date")
+                    val description = it.getString("content_title")
+                    val contentType = it.getString("content_type")
+                    val courseName = it.getString("course_name")
+
+                    if (contentType.isNotEmpty()) {
+                        val recentActivityModel = RecentActivityModel(
+                            id, userName, description, courseName,
+                            date, contentType
+                        )
+
+                        commentList.add(recentActivityModel)
+                    }
+                }
+            }
+        }
+
+        setUpCommentAdapter()
+    }
+
+    private fun parseCourseJson() {
         try {
             val courseDao =
                 DaoManager.createDao(databaseHelper.connectionSource, CourseTable::class.java)
@@ -94,8 +170,8 @@ class StaffELearningFragment : Fragment() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-    }
 
+    }
 
     private fun setUpCourseAdapter() {
         val colors = intArrayOf(
@@ -125,15 +201,34 @@ class StaffELearningFragment : Fragment() {
                 )
             }
         ) { position ->
-            sharedPreferences.edit().apply {
-                putString("course_name", courseTable[position].courseName)
-                putString("courseId", courseTable[position].courseId)
-            }.apply()
-
-            StaffELearningLevelBottomSheet().show(parentFragmentManager, "")
+            StaffELearningLevelBottomSheet
+                .newInstance(courseTable[position].courseId)
+                .show(parentFragmentManager, "")
         }
 
         setUpCourseRecyclerView()
+    }
+
+    private fun setUpCommentAdapter() {
+        commentAdapter = GenericAdapter(
+            commentList,
+            R.layout.item_recent_activity_layout,
+            bindItem = { itemView, model, _ ->
+                val userNameTxt: TextView = itemView.findViewById(R.id.userNameTxt)
+                val commentTxt: TextView = itemView.findViewById(R.id.commentTxt)
+                val dateTxt: TextView = itemView.findViewById(R.id.dateTxt)
+
+                userNameTxt.text = model.userName
+                dateTxt.text = FunctionUtils.formatDate2(model.date, "custom")
+                "Commented on ${model.description}".let { commentTxt.text = it }
+            }
+        ) { position ->
+            val recentItem = commentList[position]
+
+            /*  handleSubmissionAndCommentClick(getUrl(recentItem.id, recentItem.type), "material")*/
+        }
+
+        setUpCommentRecyclerView()
     }
 
 
@@ -143,15 +238,49 @@ class StaffELearningFragment : Fragment() {
         courseRecyclerView.adapter = courseAdapter
     }
 
-    private fun setUpMenu() {
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return false
-            }
-        })
+    private fun setUpCommentRecyclerView() {
+        commentRecyclerView.apply {
+            hasFixedSize()
+            layoutManager = LinearLayoutManager(
+                requireContext(), LinearLayoutManager.HORIZONTAL,
+                false
+            )
+            adapter = commentAdapter
+        }
     }
+
+    private fun sendContentRequest(url: String, onResponse: (String) -> Unit) {
+        sendRequestToServer(Request.Method.GET, url, requireContext(), null,
+            object : VolleyCallback {
+                override fun onResponse(response: String) {
+                    onResponse(response)
+                }
+
+                override fun onError(error: VolleyError) {
+                    Toast.makeText(
+                        context, "Something went wrong please try again",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        )
+    }
+
+    private fun launchActivity(from: String, response: String) {
+        startActivity(
+            Intent(requireActivity(), StudentELearningActivity::class.java)
+                .putExtra("from", from)
+                .putExtra("json", response)
+        )
+    }
+
+    private fun handleSubmissionAndCommentClick(url: String, from: String) {
+        sendContentRequest(url) { response ->
+            launchActivity(from, response)
+        }
+    }
+
+    private fun getUrl(id: String, type: String) =
+        "${requireActivity().getString(R.string.base_url)}/getContent.php?id=$id&type=$type"
+
 }

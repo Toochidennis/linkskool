@@ -266,9 +266,9 @@ class AdminELearningQuestionSettingsFragment :
         showToast("Please select a class")
     } else {
         AdminELearningSelectTopicDialogFragment(
-            courseId = courseId!!,
-            levelId = levelId!!,
-            courseName = courseName!!,
+            courseId = courseId ?: "",
+            levelId = levelId ?: "",
+            courseName = courseName ?: "",
             selectedClass = selectedItems,
             topic ?: ""
         ) { id, topicText ->
@@ -317,7 +317,7 @@ class AdminELearningQuestionSettingsFragment :
             parentFragmentManager.commit {
                 replace(
                     R.id.learning_container,
-                    AdminELearningQuestionFragment.newInstance(json.toString(), "settings")
+                    AdminELearningCreateQuestionFragment.newInstance(json.toString(), "settings")
                 )
             }
         }
@@ -451,7 +451,7 @@ class AdminELearningQuestionSettingsFragment :
             parentFragmentManager.commit {
                 replace(
                     R.id.learning_container,
-                    AdminELearningQuestionFragment.newInstance(settingsObject!!, "settings")
+                    AdminELearningCreateQuestionFragment.newInstance(settingsObject!!, "settings")
                 )
             }
         } else {

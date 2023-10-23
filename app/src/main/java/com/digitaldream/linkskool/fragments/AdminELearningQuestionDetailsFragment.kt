@@ -2,43 +2,39 @@ package com.digitaldream.linkskool.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
-import androidx.appcompat.app.ActionBar
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
+import android.widget.Button
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.activities.AdminELearningActivity
-import com.digitaldream.linkskool.adapters.SectionPagerAdapter
-import com.digitaldream.linkskool.models.SharedViewModel
-import com.digitaldream.linkskool.utils.CustomViewPager2
-import com.google.android.material.tabs.TabLayout
+import com.digitaldream.linkskool.utils.FunctionUtils.formatDate2
+import org.json.JSONObject
+import java.util.Locale
 
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
+
 class AdminELearningQuestionDetailsFragment :
     Fragment(R.layout.fragment_admin_e_learning_question_details) {
 
-    private lateinit var tabLayout: TabLayout
-    private lateinit var viewPager: CustomViewPager2
-    private lateinit var menuHost: MenuHost
+    // Define UI elements
+    private lateinit var dueDateTxt: TextView
+    private lateinit var titleTxt: TextView
+    private lateinit var durationTxt: TextView
+    private lateinit var descriptionTxt: TextView
+    private lateinit var viewQuestionBtn: Button
 
-    private lateinit var sharedViewModel: SharedViewModel
-
-    private var actionBar: ActionBar? = null
-    private var customActionBarView: View? = null
-    private var isCustomBarShowing = false
-
+    // Variables to store data
     private var jsonData: String? = null
     private var taskType: String? = null
+
+    private var title: String? = null
+    private var description: String? = null
+    private var dueDate: String? = null
+    private var duration: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,9 +43,7 @@ class AdminELearningQuestionDetailsFragment :
             taskType = it.getString(ARG_PARAM2)
         }
 
-        sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
     }
-
 
     companion object {
 
@@ -63,139 +57,66 @@ class AdminELearningQuestionDetailsFragment :
             }
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setUpView(view)
+        setUpViews(view)
 
-        setUpMenu()
+        viewQuestions()
 
-        setUpViewPager()
-
-        observeCustomBar()
+        parseQuestionJson()
     }
 
-    private fun setUpView(view: View) {
+    private fun setUpViews(view: View) {
         view.apply {
-            val toolbar: Toolbar = findViewById(R.id.toolbar)
-            tabLayout = findViewById(R.id.tabLayout)
-            viewPager = findViewById(R.id.viewPager)
+            dueDateTxt = findViewById(R.id.questionDueDateTxt)
+            titleTxt = findViewById(R.id.questionTitleTxt)
+            durationTxt = findViewById(R.id.questionDurationTxt)
+            descriptionTxt = findViewById(R.id.descriptionTxt)
+            viewQuestionBtn = findViewById(R.id.viewQuestionsButton)
 
-            menuHost = requireActivity()
-            (activity as AppCompatActivity).setSupportActionBar(toolbar)
-
-            hideCustomActionBar()
         }
     }
 
-    private fun setUpViewPager() {
-        SectionPagerAdapter(childFragmentManager).apply {
-            addFragment(
-                AdminELearningQuestionViewFragment.newInstance(jsonData ?: "", taskType ?: ""),
-                "Question"
+    private fun viewQuestions() {
+        viewQuestionBtn.setOnClickListener {
+            startActivity(
+                Intent(requireContext(), AdminELearningActivity::class.java)
+                    .putExtra("from", "question_test")
+                    .putExtra("json", jsonData)
             )
-            addFragment(
-                AdminELearningQuestionAnswersFragment
-                    .newInstance(jsonData ?: "", ""),
-                "Student answers"
-            )
-        }.let {
-            viewPager.apply {
-                adapter = it
-                currentItem = 1
-                tabLayout.setupWithViewPager(viewPager, true)
-            }
         }
     }
 
-    private fun observeCustomBar() {
-        sharedViewModel.customActionBarVisible.observe(requireActivity()) { showCustomActionBar ->
-            viewPager.setCustomBarVisibility(showCustomActionBar)
+    private fun parseQuestionJson() {
+        with(JSONObject(JSONObject(jsonData!!).getString("e"))) {
+            title = getString("title")
+            description = getString("description")
+            duration = getString("objective")
+            dueDate = getString("end_date")
+        }
 
-            for (i in 0 until tabLayout.tabCount) {
-                tabLayout.getTabAt(i)?.view?.isClickable = !showCustomActionBar
-            }
+        setTextOnFields()
+    }
 
-            if (showCustomActionBar) {
-                showCustomActionBar()
-            } else {
-                hideCustomActionBar()
-            }
+    private fun setTextOnFields() {
+        if (title?.isNotBlank() == true) {
+            titleTxt.text = title
+        }
+
+        if (description?.isNotBlank() == true) {
+            descriptionTxt.text = description
+        }
+
+        if (duration?.isNotBlank() == true) {
+            val durationString = String.format(Locale.getDefault(), "%s minutes", duration)
+            durationTxt.text = durationString
+        }
+
+        if (dueDate?.isNotBlank() == true) {
+            val date = formatDate2(dueDate!!, "date time")
+            dueDateTxt.text = date
         }
     }
 
-    private fun hideCustomActionBar() {
-        actionBar = (activity as AppCompatActivity).supportActionBar
-        isCustomBarShowing = false
-        requireActivity().invalidateOptionsMenu()
-
-        actionBar?.apply {
-            displayOptions = ActionBar.DISPLAY_SHOW_TITLE
-            setHomeButtonEnabled(true)
-            setDisplayHomeAsUpEnabled(true)
-            title = "Question"
-            customView = null
-        }
-
-    }
-
-    private fun showCustomActionBar() {
-        customActionBarView = layoutInflater.inflate(R.layout.custom_action_bar_layout, null)
-        isCustomBarShowing = true
-
-        requireActivity().invalidateOptionsMenu()
-
-        actionBar?.apply {
-            displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
-            customView = customActionBarView
-        }
-
-    }
-
-    private fun setUpMenu() {
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onPrepareMenu(menu: Menu) {
-                if (isCustomBarShowing) {
-                    menu.clear()
-                }
-                super.onPrepareMenu(menu)
-            }
-
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_e_learning_details, menu)
-
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    R.id.refresh -> {
-                        // setUpPager()
-
-                        true
-                    }
-
-                    R.id.edit -> {
-                        startActivity(
-                            Intent(requireContext(), AdminELearningActivity::class.java)
-                                .putExtra("from", "question")
-                                .putExtra("task", "edit")
-                                .putExtra("json", jsonData)
-                        )
-                        true
-                    }
-
-                    R.id.delete -> {
-                        true
-                    }
-
-                    else -> {
-                        requireActivity().finish()
-                        true
-                    }
-
-                }
-            }
-        })
-    }
 }

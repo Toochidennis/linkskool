@@ -15,7 +15,6 @@ import com.digitaldream.linkskool.models.StudentResponseModel
 import com.digitaldream.linkskool.utils.FunctionUtils.capitaliseFirstLetter
 
 class AdminELearningAssignmentStudentWorkAdapter(
-    private val fragmentManager: FragmentManager,
     private val itemList: MutableList<StudentResponseModel>
 ) : RecyclerView.Adapter<AdminELearningAssignmentStudentWorkAdapter.StudentWorkViewHolder>() {
 

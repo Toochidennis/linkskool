@@ -76,7 +76,6 @@ class AdminELearningAssignmentInstructionsFragment :
     // Variables to store data
     private var jsonData: String? = null
     private var taskType: String? = null
-
     private var contentTitle: String? = null
     private var dueDate: String? = null
     private var description: String? = null
