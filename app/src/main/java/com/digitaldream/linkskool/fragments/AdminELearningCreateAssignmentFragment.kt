@@ -26,9 +26,9 @@ import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.adapters.AdminELearningQuestionSettingsAdapter
 import com.digitaldream.linkskool.adapters.GenericAdapter
 import com.digitaldream.linkskool.config.DatabaseHelper
+import com.digitaldream.linkskool.dialog.AdminELearningAssignmentDateDialog
 import com.digitaldream.linkskool.dialog.AdminELearningAssignmentGradeDialog
 import com.digitaldream.linkskool.dialog.AdminELearningAttachmentDialog
-import com.digitaldream.linkskool.dialog.AdminELearningDatePickerDialog
 import com.digitaldream.linkskool.models.AttachmentModel
 import com.digitaldream.linkskool.models.ClassNameTable
 import com.digitaldream.linkskool.models.TagModel
@@ -57,8 +57,8 @@ private const val ARG_PARAM3 = "param3"
 private const val ARG_PARAM4 = "param4"
 private const val ARG_PARAM5 = "param5"
 
-class AdminELearningAssignmentFragment :
-    Fragment(R.layout.fragment_admin_e_learning_assignment) {
+class AdminELearningCreateAssignmentFragment :
+    Fragment(R.layout.fragment_admin_e_learning_create_assignment) {
 
     private lateinit var mBackBtn: ImageButton
     private lateinit var mAssignBtn: Button
@@ -74,12 +74,9 @@ class AdminELearningAssignmentFragment :
     private lateinit var mGradeBtn: RelativeLayout
     private lateinit var mGradeTxt: TextView
     private lateinit var mResetGradeBtn: ImageButton
-    private lateinit var mDateBtn: RelativeLayout
-    private lateinit var mStartDateTxt: TextView
-    private lateinit var mEndDateTxt: TextView
-    private lateinit var mStartDateBtn: ImageButton
-    private lateinit var mEndDateBtn: ImageButton
-    private lateinit var mDateSeparator: View
+    private lateinit var dueDateBtn: RelativeLayout
+    private lateinit var dueDateTxt: TextView
+    private lateinit var clearDateBtn: ImageButton
     private lateinit var mTopicTxt: TextView
 
     private var mClassList = mutableListOf<ClassNameTable>()
@@ -92,7 +89,7 @@ class AdminELearningAssignmentFragment :
 
     private var mLevelId: String? = null
     private var mCourseId: String? = null
-    private var mStartDate: String? = null
+    private var dueDate: String? = null
     private var mEndDate: String? = null
     private var json: String? = null
     private var mCourseName: String? = null
@@ -138,7 +135,7 @@ class AdminELearningAssignmentFragment :
             json: String,
             courseName: String,
             from: String
-        ) = AdminELearningAssignmentFragment().apply {
+        ) = AdminELearningCreateAssignmentFragment().apply {
             arguments = Bundle().apply {
                 putString(ARG_PARAM1, levelId)
                 putString(ARG_PARAM2, courseId)
@@ -167,7 +164,7 @@ class AdminELearningAssignmentFragment :
             onEditAssignment()
         }
 
-        setDate()
+        setUpDate()
 
         setUpGrade()
 
@@ -206,12 +203,9 @@ class AdminELearningAssignmentFragment :
             mGradeBtn = findViewById(R.id.gradeBtn)
             mGradeTxt = findViewById(R.id.gradeTxt)
             mResetGradeBtn = findViewById(R.id.resetGradingBtn)
-            mDateBtn = findViewById(R.id.dateBtn)
-            mStartDateTxt = findViewById(R.id.startDateTxt)
-            mEndDateTxt = findViewById(R.id.endDateTxt)
-            mStartDateBtn = findViewById(R.id.startDateBtn)
-            mEndDateBtn = findViewById(R.id.endDateBtn)
-            mDateSeparator = findViewById(R.id.separator)
+            dueDateBtn = findViewById(R.id.dueDateBtn)
+            dueDateTxt = findViewById(R.id.startDateTxt)
+            clearDateBtn = findViewById(R.id.clearDateBtn)
             mTopicTxt = findViewById(R.id.topicBtn)
         }
 
@@ -267,13 +261,11 @@ class AdminELearningAssignmentFragment :
         }
     }
 
-    private fun setDate() {
-        mDateBtn.setOnClickListener {
-            AdminELearningDatePickerDialog(requireContext())
-            { startDate, endDate ->
-
-                mStartDate = startDate
-                mEndDate = endDate
+    private fun setUpDate() {
+        dueDateBtn.setOnClickListener {
+            AdminELearningAssignmentDateDialog(requireContext())
+            { date ->
+                dueDate = date
 
                 showDate()
             }.apply {
@@ -285,32 +277,17 @@ class AdminELearningAssignmentFragment :
             )
         }
 
-        mStartDateBtn.setOnClickListener {
-            "Date".let { mStartDateTxt.text = it }
-            mStartDateBtn.isVisible = false
-            mDateSeparator.isVisible = false
+        clearDateBtn.setOnClickListener {
+            "Due date".let { dueDateTxt.text = it }
+            clearDateBtn.isVisible = false
         }
 
-        mEndDateBtn.setOnClickListener {
-            mEndDateTxt.isVisible = false
-            mEndDateBtn.isVisible = false
-            mDateSeparator.isVisible = false
-        }
     }
 
     private fun showDate() {
-        val start = "Start ${formatDate2(mStartDate!!, "custom1")}"
-        val end = "Due ${formatDate2(mEndDate!!, "custom1")}"
-
-        mStartDateTxt.text = start
-        mEndDateTxt.text = end
-
-        mStartDateBtn.isVisible = true
-        mEndDateBtn.isVisible = true
-        mEndDateTxt.isVisible = true
-        mDateSeparator.isVisible = true
+        "Due ${formatDate2(dueDate ?: "", "date time")}".let { dueDateTxt.text = it  }
+        clearDateBtn.isVisible = true
     }
-
     private fun setUpGrade() {
         mGradeBtn.setOnClickListener {
             AdminELearningAssignmentGradeDialog(requireContext()) { point ->
@@ -497,7 +474,7 @@ class AdminELearningAssignmentFragment :
             showToast("Please select a class")
         } else if (descriptionText.isNullOrBlank()) {
             mDescriptionEditText.error = "Please enter a description"
-        } else if (mStartDate.isNullOrEmpty() && mEndDate.isNullOrEmpty()) {
+        } else if (dueDate.isNullOrEmpty() && mEndDate.isNullOrEmpty()) {
             showToast("Please set date")
         } else {
             postAssignment()
@@ -558,7 +535,7 @@ class AdminELearningAssignmentFragment :
             put("level", mLevelId!!)
             put("course", mCourseId!!)
             put("course_name", mCourseName!!)
-            put("start_date", mStartDate ?: "")
+            put("start_date", dueDate ?: "")
             put("end_date", mEndDate ?: "")
             put("author_id", userId!!)
             put("author_name", userName!!)
@@ -690,7 +667,7 @@ class AdminELearningAssignmentFragment :
                 mCourseId = getString("course")
                 mCourseName = getString("course_name")
                 mLevelId = getString("level")
-                mStartDate = getString("start_date")
+                dueDate = getString("start_date")
                 mEndDate = getString("end_date")
             }
 
@@ -712,7 +689,7 @@ class AdminELearningAssignmentFragment :
             setGradeText()
         }
 
-        if (!mStartDate.isNullOrBlank() && !mEndDate.isNullOrBlank()) {
+        if (!dueDate.isNullOrBlank() && !mEndDate.isNullOrBlank()) {
             showDate()
         }
     }

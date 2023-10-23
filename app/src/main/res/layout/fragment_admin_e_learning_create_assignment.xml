@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".fragments.AdminELearningAssignmentFragment">
+    tools:context=".fragments.AdminELearningCreateAssignmentFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -268,7 +267,7 @@
                 android:background="@color/test_color_7" />
 
             <RelativeLayout
-                android:id="@+id/dateBtn"
+                android:id="@+id/dueDateBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white">
@@ -291,62 +290,21 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="@dimen/dimen_16"
                     android:layout_marginEnd="@dimen/dimen_16"
-                    android:layout_toStartOf="@id/startDateBtn"
+                    android:layout_toStartOf="@id/clearDateBtn"
                     android:layout_toEndOf="@id/date_icon"
                     android:paddingTop="@dimen/dimen_16"
                     android:textColor="@color/black"
                     android:paddingBottom="@dimen/dimen_16"
-                    android:text="Date"
+                    android:text="Due date"
                     android:textSize="@dimen/text_16" />
 
-                <View
-                    android:id="@+id/separator"
-                    android:layout_width="match_parent"
-                    android:layout_height=".5dp"
-                    android:layout_below="@id/startDateTxt"
-                    android:layout_marginStart="@dimen/dimen_16"
-                    android:layout_toEndOf="@id/date_icon"
-                    android:background="@color/test_color_7"
-                    android:visibility="gone" />
-
-                <TextView
-                    android:id="@+id/endDateTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/separator"
-                    android:layout_marginStart="@dimen/dimen_16"
-                    android:layout_marginEnd="@dimen/dimen_16"
-                    android:layout_toStartOf="@id/endDateBtn"
-                    android:layout_toEndOf="@id/date_icon"
-                    android:paddingTop="@dimen/dimen_16"
-                    android:textColor="@color/black"
-                    android:paddingBottom="@dimen/dimen_16"
-                    android:text="@string/todo"
-                    android:textSize="@dimen/text_16"
-                    android:visibility="gone" />
-
                 <ImageButton
-                    android:id="@+id/startDateBtn"
+                    android:id="@+id/clearDateBtn"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="@dimen/dimen_16"
-                    android:layout_marginEnd="@dimen/dimen_16"
-                    android:background="@drawable/ripple_effect11"
-                    android:contentDescription="@string/todo"
-                    android:padding="@dimen/dimen_10"
-                    android:src="@drawable/ic_close"
-                    android:visibility="gone"
-                    app:tint="@color/test_color_7" />
-
-                <ImageButton
-                    android:id="@+id/endDateBtn"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:layout_below="@id/startDateBtn"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="38dp"
                     android:layout_marginEnd="@dimen/dimen_16"
                     android:background="@drawable/ripple_effect11"
                     android:contentDescription="@string/todo"
