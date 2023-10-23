@@ -23,8 +23,8 @@ import com.google.android.material.tabs.TabLayout
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class AdminELearningAssignmentDetailsFragment :
-    Fragment(R.layout.fragment_admin_e_learning_assignment_details) {
+class AdminELearningAssignmentDashboardFragment :
+    Fragment(R.layout.fragment_admin_e_learning_assignment_dashboard) {
 
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: CustomViewPager2
@@ -54,7 +54,7 @@ class AdminELearningAssignmentDetailsFragment :
 
         @JvmStatic
         fun newInstance(jsonData: String, taskType: String = "") =
-            AdminELearningAssignmentDetailsFragment().apply {
+            AdminELearningAssignmentDashboardFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, jsonData)
                     putString(ARG_PARAM2, taskType)
