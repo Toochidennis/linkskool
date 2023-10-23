@@ -4,10 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,13 +43,13 @@ public class StaffEnterResult extends AppCompatActivity {
         actionBar.setHomeButtonEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.arrow_left);
         SharedPreferences sharedPreferences = getSharedPreferences("loginDetail", Context.MODE_PRIVATE);
-        String staffId = sharedPreferences.getString("user_id","");
+        String staffId = sharedPreferences.getString("user_id", "");
+        String db = sharedPreferences.getString("db", "");
+
         Intent i = getIntent();
         String status = i.getStringExtra("status");
         String courseId = i.getStringExtra("course_id");
         String classId = i.getStringExtra("class_id");
-        String levelId = i.getStringExtra("level_id");
-
 
 
         mWebview = findViewById(R.id.webview_staff_result);
@@ -57,11 +61,6 @@ public class StaffEnterResult extends AppCompatActivity {
         dialog1.setCanceledOnTouchOutside(false);
         dialog1.show();
 
-        String db = sharedPreferences.getString("db","");
-
-        Log.i("response",classId+" "+courseId+" "+levelId);
-
-
         WebSettings webSettings = mWebview.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
@@ -72,11 +71,11 @@ public class StaffEnterResult extends AppCompatActivity {
         webSettings.setSupportZoom(true);
         webSettings.setDefaultTextEncodingName("utf-8");
         mWebview.setWebViewClient(new WebViewClient());
-        mWebview.setWebChromeClient(new WebChromeClient(){
+        mWebview.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 super.onProgressChanged(view, newProgress);
-                if(newProgress==100){
+                if (newProgress == 100) {
                     dialog1.dismiss();
                     mWebview.setVisibility(View.VISIBLE);
                 }
@@ -89,23 +88,27 @@ public class StaffEnterResult extends AppCompatActivity {
                 super.onReceivedTitle(view, title);
             }
         });
-        if (mWebview.canGoBack()){
+
+        if (mWebview.canGoBack()) {
             mWebview.goBack();
         }
-        if(status.equals("view_result")) {
-            mWebview.loadUrl(Login.urlBase+"/viewResult.php?class="+classId+"&course="+courseId+"&_db="+db+"&staff_id="+staffId);
-        }else if(status.equals("add_result")){
-            mWebview.loadUrl(Login.urlBase+"/addResults.php?class="+classId+"&course="+courseId+"&_db="+db+"&staff_id="+staffId);
+
+        assert status != null;
+        if (status.equals("view_result")) {
+            mWebview.loadUrl(getString(R.string.base_url) + "/viewResult.php?class=" + classId +
+                    "&course=" + courseId + "&_db=" + db + "&staff_id=" + staffId);
+        } else if (status.equals("add_result")) {
+            mWebview.loadUrl(getString(R.string.base_url) + "/addResults.php?class=" + classId +
+                    "&course=" + courseId + "&_db=" + db + "&staff_id=" + staffId);
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-                onBackPressed();
-                return true;
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
         }
-        return super.onOptionsItemSelected(item);
+        return false;
     }
 }
