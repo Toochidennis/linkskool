@@ -2,6 +2,7 @@ package com.digitaldream.linkskool.fragments
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Resources.NotFoundException
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -74,7 +75,8 @@ import timber.log.Timber
 private const val ARG_JSON_DATA = "param1"
 private const val ARG_TASK_TYPE = "param2"
 
-class AdminELearningQuestionFragment : Fragment(R.layout.fragment_admin_e_learning_question) {
+class AdminELearningCreateQuestionFragment :
+    Fragment(R.layout.fragment_admin_e_learning_create_question) {
 
     // Define UI elements
     private lateinit var topicButton: CardView
@@ -134,7 +136,7 @@ class AdminELearningQuestionFragment : Fragment(R.layout.fragment_admin_e_learni
 
         @JvmStatic
         fun newInstance(jsonData: String = "", taskType: String = "") =
-            AdminELearningQuestionFragment().apply {
+            AdminELearningCreateQuestionFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_JSON_DATA, jsonData)
                     putString(ARG_TASK_TYPE, taskType)
@@ -208,7 +210,7 @@ class AdminELearningQuestionFragment : Fragment(R.layout.fragment_admin_e_learni
             val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
 
             actionBar?.apply {
-                title = "Question"
+                title = "Create question"
                 setHomeButtonEnabled(true)
                 setDisplayHomeAsUpEnabled(true)
             }
@@ -332,9 +334,9 @@ class AdminELearningQuestionFragment : Fragment(R.layout.fragment_admin_e_learni
                 replace(
                     R.id.learning_container,
                     AdminELearningQuestionSettingsFragment.newInstance(
-                        levelId!!,
-                        courseId!!,
-                        courseName!!,
+                        levelId ?: "",
+                        courseId ?: "",
+                        courseName ?: "",
                         "edit",
                         settingsObject.toString()
                     )
