@@ -31,7 +31,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Collections
 
-class AdminELearningClassAdapter(
+class AdminELearningCourseWorkAdapter(
     private val itemList: MutableList<ContentModel>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), ItemTouchHelperAdapter {
 
@@ -308,7 +308,6 @@ class AdminELearningClassAdapter(
             })
     }
 
-
     private fun warningDialog(context: Context, contentModel: ContentModel, position: Int) {
         val title = "Delete ${contentModel.viewType}?"
 
@@ -414,7 +413,6 @@ class AdminELearningClassAdapter(
         itemList.addAll(itemList.indexOf(draggedTopic) + 1, draggedTopicItems)
         itemList.addAll(itemList.indexOf(targetTopic) + 1, targetTopicItems)
     }
-
 
     private fun getAssociatedItems(topicModel: ContentModel): MutableList<ContentModel> {
         val topicPosition = itemList.indexOf(topicModel)
