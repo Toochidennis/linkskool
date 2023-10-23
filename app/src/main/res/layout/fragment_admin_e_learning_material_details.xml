@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="@color/android_ash"
-        android:theme="@style/ThemeOverlay.AppCompat.Light"
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
