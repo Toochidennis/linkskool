@@ -45,22 +45,18 @@ class AdminELearningCreateContentDialog(
 
         assignmentBtn.setOnClickListener {
             launchActivity("assignment")
-            dismiss()
         }
 
         questionBtn.setOnClickListener {
             launchActivity("question_settings")
-            dismiss()
         }
 
         materialBtn.setOnClickListener {
             launchActivity("material")
-            dismiss()
         }
 
         topicBtn.setOnClickListener {
             launchActivity("topic")
-            dismiss()
         }
     }
 
@@ -74,5 +70,6 @@ class AdminELearningCreateContentDialog(
                 .putExtra("json", "")
         )
 
+        dismiss()
     }
 }
