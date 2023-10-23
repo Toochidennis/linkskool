@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg"
+    android:padding="@dimen/dimen_16">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Due date"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16" />
+
+    <Button
+        android:id="@+id/dateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@id/title"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:background="@drawable/ripple_effect6"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingStart="@dimen/dimen_12"
+        android:paddingEnd="@dimen/dimen_12"
+        android:text="@string/start_date"
+        android:textAllCaps="false"
+        android:textSize="@dimen/text_14" />
+
+    <Button
+        android:id="@+id/timeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_below="@id/title"
+        android:layout_marginStart="@dimen/dimen_32"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:layout_toEndOf="@id/dateBtn"
+        android:background="@drawable/ripple_effect6"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingStart="@dimen/dimen_12"
+        android:paddingEnd="@dimen/dimen_12"
+        android:text="22:11"
+        android:textAllCaps="false"
+        android:textSize="@dimen/text_14" />
+
+
+    <Button
+        android:id="@+id/cancelBtn"
+        android:layout_width="65dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/dateBtn"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:layout_marginEnd="@dimen/dimen_16"
+        android:layout_toStartOf="@id/saveBtn"
+        android:background="@drawable/ripple_effect6"
+        android:backgroundTint="@color/white"
+        android:text="Cancel"
+        android:textAllCaps="false"
+        android:textColor="@color/test_color_1"
+        android:textSize="@dimen/text_14" />
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/dateBtn"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:background="@drawable/ripple_effect6"
+        android:backgroundTint="@color/white"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:textColor="@color/test_color_1"
+        android:textSize="@dimen/text_14" />
+
+</RelativeLayout>
