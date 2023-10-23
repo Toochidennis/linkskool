@@ -28,6 +28,7 @@
               <args>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/eb33b62576da2d8afdf10d66231b3567/transformed/jetified-achartengine-1.2.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/c7e45cd9adb3d79af2b625e5f92f108b/transformed/jetified-YouTubeAndroidPlayerApi.jar</arg>
+                <arg>$MODULE_DIR$/../../../app/build/intermediates/compile_app_classes_jar/debug/classes.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/8e1a8f60ee6e5d581199826a3e1af032/transformed/espresso-core-3.1.0-alpha4-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/7e407361235855834e58c4e322b70541/transformed/runner-1.1.0-alpha4-api.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/0866e9aa02b888fcece54727543c6a18/transformed/material-1.8.0-api.jar</arg>
