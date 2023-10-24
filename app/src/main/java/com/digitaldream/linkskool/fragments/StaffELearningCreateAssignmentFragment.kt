@@ -1,6 +1,5 @@
 package com.digitaldream.linkskool.fragments
 
-import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.net.Uri
@@ -291,7 +290,7 @@ class StaffELearningCreateAssignmentFragment : Fragment() {
             if (fileList.isNotEmpty()) {
                 attachmentAdapter = GenericAdapter(
                     fileList,
-                    R.layout.fragment_admin_e_learning_assigment_attachment_item,
+                    R.layout.item_e_learning_assignment_attachment,
                     bindItem = { itemView, model, position ->
                         val itemTxt: TextView = itemView.findViewById(R.id.itemTxt)
                         val deleteButton: ImageView =
@@ -696,7 +695,7 @@ class StaffELearningCreateAssignmentFragment : Fragment() {
     private fun setTextOnViews() {
         assignmentTitleEditText.setText(titleText)
         descriptionEditText.setText(descriptionText)
-        topicTxt.text = topic
+        topicTxt.text = topic.takeIf { !it.isNullOrBlank() } ?: "Topic"
 
         if (!gradeText.isNullOrBlank()) {
             setGradeText()
