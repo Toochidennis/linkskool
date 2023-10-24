@@ -27,6 +27,15 @@
                 android:textSize="@dimen/text_16" />
 
             <TextView
+                android:id="@+id/courseNameTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <TextView
                 android:id="@+id/studentNameTxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
