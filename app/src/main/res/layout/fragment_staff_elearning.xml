@@ -39,7 +39,9 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/dimen_16"
+                    android:paddingStart="@dimen/dimen_16"
+                    android:paddingEnd="@dimen/dimen_16"
+                    android:paddingTop="@dimen/dimen_16"
                     android:text="Recent submissions"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_18"
@@ -49,7 +51,7 @@
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/submissionViewPager"
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="220dp"
                     android:contentDescription="@string/view_pager" />
 
                 <com.google.android.material.tabs.TabLayout
