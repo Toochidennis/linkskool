@@ -33,6 +33,12 @@ import com.digitaldream.linkskool.utils.VolleyCallback
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.j256.ormlite.dao.DaoManager
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -55,6 +61,8 @@ class StaffELearningFragment : Fragment() {
     private var userId: String? = null
     private var term: String? = null
     private var year: String? = null
+    private var autoSlidingJob: Job? = null
+    private val delayMillis = 3000L
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -125,6 +133,8 @@ class StaffELearningFragment : Fragment() {
                             }
 
                             parseCourseJson()
+
+                            setUpSubmissionAdapter()
                         }
 
                     } catch (e: Exception) {
@@ -179,6 +189,35 @@ class StaffELearningFragment : Fragment() {
 
 
     private fun setUpSubmissionAdapter() {
+        submissionList.apply {
+            add(
+                UpcomingQuizModel(
+                    "id",
+                    "Assignment submitted",
+                    "24 Oct, 2023",
+                    "Somto Obi",
+                    "English language",
+                    "",
+                    "",
+                    ""
+                )
+            )
+
+            add(
+                UpcomingQuizModel(
+                    "id",
+                    "Assignment submitted",
+                    "24 Oct, 2023",
+                    "Toochi Obi",
+                    "Maths",
+                    "",
+                    "",
+                    ""
+                )
+            )
+        }
+
+
         submissionAdapter = GenericAdapter(
             submissionList,
             R.layout.item_submission_layout,
@@ -186,17 +225,47 @@ class StaffELearningFragment : Fragment() {
                 val titleTxt: TextView = itemView.findViewById(R.id.titleTxt)
                 val studentNameTxt: TextView = itemView.findViewById(R.id.studentNameTxt)
                 val submissionDateTxt: TextView = itemView.findViewById(R.id.submissionDateTxt)
+                val courseNameTxt: TextView = itemView.findViewById(R.id.courseNameTxt)
 
-                submissionDateTxt.text = formatDate2(model.date, "date time")
+                titleTxt.text = model.title
+                studentNameTxt.text = model.type
+                courseNameTxt.text = model.courseName
+                submissionDateTxt.text = model.date
             }
         ) { position ->
-              val submissionItem = submissionList[position]
+            val submissionItem = submissionList[position]
 
         }
 
         submissionViewPager.adapter = submissionAdapter
 
         TabLayoutMediator(submissionTabLayout, submissionViewPager) { _, _ -> }.attach()
+    }
+
+
+    private fun startAutoSliding() {
+        autoSlidingJob = CoroutineScope(Dispatchers.Default).launch {
+            while (true) {
+                delay(delayMillis)
+
+                withContext(Dispatchers.Main) {
+                    // Upcoming quiz
+                    if (submissionViewPager.currentItem < submissionList.size - 1) {
+                        submissionViewPager.currentItem++
+                    } else {
+                        submissionViewPager.currentItem = 0
+                    }
+
+                    val position = submissionViewPager.currentItem
+                    submissionTabLayout.selectTab(submissionTabLayout.getTabAt(position))
+                }
+            }
+        }
+    }
+
+    private fun stopAutoSliding() {
+        autoSlidingJob?.cancel()
+        autoSlidingJob = null
     }
 
     private fun setUpCourseAdapter() {
@@ -308,5 +377,16 @@ class StaffELearningFragment : Fragment() {
 
     private fun getUrl(id: String, type: String) =
         "${requireActivity().getString(R.string.base_url)}/getContent.php?id=$id&type=$type"
+
+
+    override fun onResume() {
+        super.onResume()
+        startAutoSliding()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        stopAutoSliding()
+    }
 
 }
