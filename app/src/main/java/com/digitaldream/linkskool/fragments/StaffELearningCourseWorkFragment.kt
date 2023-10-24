@@ -103,6 +103,8 @@ class StaffELearningCourseWorkFragment : Fragment() {
     }
 
     private fun parseResponse() {
+        contentList.clear()
+
         responseFromServer?.let { response ->
             with(JSONArray(response)) {
                 for (i in 0 until length()) {

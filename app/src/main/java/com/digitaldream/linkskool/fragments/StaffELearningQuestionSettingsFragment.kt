@@ -26,6 +26,7 @@ import com.digitaldream.linkskool.dialog.AdminELearningDurationPickerDialog
 import com.digitaldream.linkskool.models.CourseTable
 import com.digitaldream.linkskool.models.TagModel
 import com.digitaldream.linkskool.utils.FunctionUtils
+import com.digitaldream.linkskool.utils.FunctionUtils.compareJsonObjects
 import com.digitaldream.linkskool.utils.FunctionUtils.formatDate2
 import com.digitaldream.linkskool.utils.FunctionUtils.showSoftInput
 import com.digitaldream.linkskool.utils.FunctionUtils.smoothScrollEditText
@@ -35,6 +36,7 @@ import org.json.JSONObject
 
 
 private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
 
 
 class StaffELearningQuestionSettingsFragment : Fragment() {
@@ -65,7 +67,7 @@ class StaffELearningQuestionSettingsFragment : Fragment() {
     private var levelId: String? = null
     private var courseId: String? = null
     private var courseName: String? = null
-    private var settingsObject: String? = null
+    private var settingsData: String? = null
     private var questionTitle: String? = null
     private var questionDescription: String? = null
     private var startDate: String? = null
@@ -81,7 +83,8 @@ class StaffELearningQuestionSettingsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            taskType = it.getString(ARG_PARAM1)
+            settingsData = it.getString(ARG_PARAM1)
+            taskType = it.getString(ARG_PARAM2)
         }
 
         val callBack = object : OnBackPressedCallback(true) {
@@ -108,10 +111,11 @@ class StaffELearningQuestionSettingsFragment : Fragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance(task: String) =
+        fun newInstance(data: String, task: String) =
             StaffELearningQuestionSettingsFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, task)
+                    putString(ARG_PARAM1, data)
+                    putString(ARG_PARAM2, task)
                 }
             }
     }
@@ -336,8 +340,8 @@ class StaffELearningQuestionSettingsFragment : Fragment() {
 
             parentFragmentManager.commit {
                 replace(
-                    R.id.learning_container,
-                    AdminELearningCreateQuestionFragment.newInstance(json.toString(), "settings")
+                    R.id.staffLearningContainer,
+                    StaffELearningCreateQuestionFragment.newInstance(json.toString(), "settings")
                 )
             }
         }
@@ -379,8 +383,8 @@ class StaffELearningQuestionSettingsFragment : Fragment() {
     private fun onEditSettings() {
         try {
             if (taskType == "edit")
-                if (!settingsObject.isNullOrBlank()) {
-                    settingsObject?.let { json ->
+                if (!settingsData.isNullOrBlank()) {
+                    settingsData?.let { json ->
                         JSONObject(json).run {
                             settingsId = getString("id")
                             questionTitle = getString("title")
@@ -436,9 +440,9 @@ class StaffELearningQuestionSettingsFragment : Fragment() {
         try {
             val json1 = createSettingsJsonObject()
 
-            if (!settingsObject.isNullOrBlank() && json1.length() != 0) {
-                val json2 = JSONObject(settingsObject!!)
-                val areContentSame = FunctionUtils.compareJsonObjects(json1, json2)
+            if (!settingsData.isNullOrBlank() && json1.length() != 0) {
+                val json2 = JSONObject(settingsData ?: "")
+                val areContentSame = compareJsonObjects(json1, json2)
 
                 if (areContentSame) {
                     exitDestination()
@@ -475,9 +479,9 @@ class StaffELearningQuestionSettingsFragment : Fragment() {
         if (taskType == "edit") {
             parentFragmentManager.commit {
                 replace(
-                    R.id.learning_container,
-                    AdminELearningCreateQuestionFragment.newInstance(
-                        settingsObject ?: "",
+                    R.id.staffLearningContainer,
+                    StaffELearningCreateQuestionFragment.newInstance(
+                        settingsData ?: "",
                         "settings"
                     )
                 )

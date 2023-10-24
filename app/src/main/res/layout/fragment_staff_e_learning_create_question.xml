@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    tools:context=".fragments.StaffELearningCreateQuestionFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/android_ash">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:popupTheme="@style/Theme.AppCompat.Light" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appBar"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/nested_scrollview"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/topicButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_margin="@dimen/dimen_16"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardCornerRadius="@dimen/dimen_10">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="120dp"
+                    android:contentDescription="@string/todo"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/question_image" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/questionTitleTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:layout_marginTop="@dimen/dimen_10"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lines="2"
+                        android:minLines="1"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_18" />
+
+                    <TextView
+                        android:id="@+id/descriptionTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/poppins_regular"
+                        android:lines="2"
+                        android:minLines="1"
+                        android:text=""
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/text_16" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/questionRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/topicButton"
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:layout_marginBottom="95dp"
+                android:clipToPadding="false" />
+
+            <TextView
+                android:id="@+id/emptyQuestionTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/topicButton"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dimen_64"
+                android:text="@string/no_question_set_yet"
+                android:textSize="@dimen/text_16"
+                android:visibility="gone" />
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <ImageButton
+                    android:id="@+id/previewQuestionsButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|start"
+                    android:background="@drawable/ripple_effect11"
+                    android:clickable="true"
+                    android:contentDescription="@string/add_content"
+                    android:focusable="true"
+                    android:padding="@dimen/dimen_32"
+                    android:src="@drawable/ic_preview"
+                    android:tooltipText="Preview questions"
+                    app:tint="@color/test_color_1" />
+
+                <ImageButton
+                    android:id="@+id/addQuestionsButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center"
+                    android:background="@drawable/ripple_effect11"
+                    android:clickable="true"
+                    android:contentDescription="@string/add_content"
+                    android:focusable="true"
+                    android:padding="@dimen/dimen_32"
+                    android:src="@drawable/ic_add"
+                    android:tooltipText="Add questions"
+                    app:tint="@color/test_color_1" />
+
+                <ImageButton
+                    android:id="@+id/submitQuestionsButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:background="@drawable/ripple_effect11"
+                    android:clickable="true"
+                    android:contentDescription="@string/add_content"
+                    android:focusable="true"
+                    android:padding="@dimen/dimen_32"
+                    android:src="@drawable/ic_send"
+                    android:tooltipText="Submit questions"
+                    app:tint="@color/test_color_1" />
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>

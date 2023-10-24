@@ -10,8 +10,7 @@
     <RelativeLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="wrap_content">
 
         <ImageButton
             android:id="@+id/close_btn"
@@ -38,8 +37,7 @@
             android:layout_marginTop="@dimen/dimen_10"
             android:layout_marginEnd="@dimen/dimen_16"
             android:background="@drawable/ripple_effect10"
-            android:clickable="true"
-            android:focusable="true"
+            android:textColor="@color/white"
             android:paddingStart="@dimen/dimen_16"
             android:paddingEnd="@dimen/dimen_16"
             android:text="Apply"

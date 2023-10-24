@@ -4,14 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.fragments.AdminELearningAssignmentDashboardFragment
-import com.digitaldream.linkskool.fragments.AdminELearningMaterialDetailsFragment
-import com.digitaldream.linkskool.fragments.AdminELearningQuestionDashboardFragment
-import com.digitaldream.linkskool.fragments.StaffELearningContentDashboardFragment
-import com.digitaldream.linkskool.fragments.StaffELearningCreateAssignmentFragment
-import com.digitaldream.linkskool.fragments.StaffELearningCreateMaterialFragment
-import com.digitaldream.linkskool.fragments.StaffELearningCreateTopicFragment
-import com.digitaldream.linkskool.fragments.StaffELearningQuestionSettingsFragment
+import com.digitaldream.linkskool.fragments.*
+
 
 class StaffELearningActivity : AppCompatActivity() {
 
@@ -23,20 +17,11 @@ class StaffELearningActivity : AppCompatActivity() {
         val task = intent.getStringExtra("task") ?: ""
 
         when (intent.getStringExtra("from")) {
-            "content_dashboard" -> {
-                supportFragmentManager.commit {
-                    replace(
-                        R.id.staffLearningContainer,
-                        StaffELearningContentDashboardFragment()
-                    )
-                }
-            }
-
             "create_assignment" -> {
                 supportFragmentManager.commit {
                     replace(
                         R.id.staffLearningContainer,
-                        StaffELearningCreateAssignmentFragment()
+                        StaffELearningCreateAssignmentFragment.newInstance(json, task)
                     )
                 }
             }
@@ -54,7 +39,7 @@ class StaffELearningActivity : AppCompatActivity() {
                 supportFragmentManager.commit {
                     replace(
                         R.id.staffLearningContainer,
-                        StaffELearningCreateMaterialFragment()
+                        StaffELearningCreateMaterialFragment.newInstance(json, task)
                     )
                 }
             }
@@ -63,34 +48,43 @@ class StaffELearningActivity : AppCompatActivity() {
                 supportFragmentManager.commit {
                     replace(
                         R.id.staffLearningContainer,
-                        StaffELearningCreateTopicFragment()
+                        StaffELearningCreateTopicFragment.newInstance(json, task)
                     )
                 }
             }
 
-            "assignment" -> {
+            "create_question" -> {
                 supportFragmentManager.commit {
                     replace(
                         R.id.staffLearningContainer,
-                        AdminELearningAssignmentDashboardFragment.newInstance(json, task)
+                        StaffELearningCreateQuestionFragment.newInstance(json, task)
                     )
                 }
             }
 
-            "question" -> {
+            "assignment_dashboard" -> {
                 supportFragmentManager.commit {
                     replace(
                         R.id.staffLearningContainer,
-                        AdminELearningQuestionDashboardFragment.newInstance(json, task)
+                        StaffELearningAssignmentDashboardFragment.newInstance(json, task)
                     )
                 }
             }
 
-            "material" -> {
+            "question_dashboard" -> {
                 supportFragmentManager.commit {
                     replace(
                         R.id.staffLearningContainer,
-                        AdminELearningMaterialDetailsFragment.newInstance(json, task)
+                        StaffELearningQuestionDashboardFragment.newInstance(json, task)
+                    )
+                }
+            }
+
+            "material_dashboard" -> {
+                supportFragmentManager.commit {
+                    replace(
+                        R.id.staffLearningContainer,
+                        StaffELearningMaterialDetailsFragment.newInstance(json, task)
                     )
                 }
             }

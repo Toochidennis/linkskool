@@ -187,11 +187,11 @@ class AdminELearningCourseOutlineFragment : Fragment(R.layout.fragment_admin_e_l
             outlineList,
             R.layout.item_course_outline_layout,
             bindItem = { itemView, model, _ ->
-                val courseName: TextView = itemView.findViewById(R.id.courseNameTxt)
+                val outlineTitleTxt: TextView = itemView.findViewById(R.id.outlineTitleTxt)
                 val levelName: TextView = itemView.findViewById(R.id.levelNameTxt)
                 val teacherName: TextView = itemView.findViewById(R.id.teacherNameTxt)
 
-                courseName.text = capitaliseFirstLetter(model.title)
+                outlineTitleTxt.text = capitaliseFirstLetter(model.title)
                 teacherName.text = capitaliseFirstLetter(model.teacherName)
             }
         ) {

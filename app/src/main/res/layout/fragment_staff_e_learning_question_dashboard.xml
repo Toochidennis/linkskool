@@ -10,8 +10,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        android:background="@color/android_ash"
         app:elevation="1dp">
 
         <androidx.appcompat.widget.Toolbar

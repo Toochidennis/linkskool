@@ -79,7 +79,7 @@
         <item name="tabSelectedTextColor">@color/test_color_1</item>
         <item name="tabInlineLabel">true</item>
         <item name="tabTextAppearance">@style/TabStyle2</item>
-        <item name="tabBackground">@color/white</item>
+        <item name="tabBackground">@color/android_ash</item>
     </style>
 
     <style name="TransparentBottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_16">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="@dimen/dimen_10"
+        app:cardElevation="0dp"
+        app:contentPadding="@dimen/dimen_16">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <TextView
+                android:id="@+id/courseNameTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <TextView
+                android:id="@+id/studentNameTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+            <TextView
+                android:id="@+id/submissionDateTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_16"
+                android:text=""
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

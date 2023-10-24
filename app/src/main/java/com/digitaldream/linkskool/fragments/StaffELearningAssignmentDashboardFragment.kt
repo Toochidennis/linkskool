@@ -2,7 +2,6 @@ package com.digitaldream.linkskool.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -13,8 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.Fragment
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.activities.AdminELearningActivity
+import com.digitaldream.linkskool.activities.StaffELearningActivity
 import com.digitaldream.linkskool.adapters.SectionPagerAdapter
 import com.digitaldream.linkskool.utils.CustomViewPager2
 import com.google.android.material.tabs.TabLayout
@@ -96,7 +96,7 @@ class StaffELearningAssignmentDashboardFragment : Fragment() {
     }
 
     private fun setUpViewPager() {
-        SectionPagerAdapter(childFragmentManager).apply {
+        SectionPagerAdapter(parentFragmentManager).apply {
             addFragment(
                 StaffELearningAssignmentInstructionsFragment.newInstance(
                     assignmentData ?: "",
@@ -133,7 +133,7 @@ class StaffELearningAssignmentDashboardFragment : Fragment() {
 
                     R.id.edit -> {
                         startActivity(
-                            Intent(requireContext(), AdminELearningActivity::class.java)
+                            Intent(requireContext(), StaffELearningActivity::class.java)
                                 .putExtra("from", "create_assignment")
                                 .putExtra("task", "edit")
                                 .putExtra("json", assignmentData)

@@ -1,10 +1,10 @@
 package com.digitaldream.linkskool.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
@@ -12,7 +12,7 @@ import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.adapters.AdminELearningAssignmentStudentWorkAdapter
 import com.digitaldream.linkskool.models.StudentResponseModel
-import com.digitaldream.linkskool.utils.FunctionUtils
+import com.digitaldream.linkskool.utils.FunctionUtils.sendRequestToServer
 import com.digitaldream.linkskool.utils.VolleyCallback
 import org.json.JSONArray
 import org.json.JSONObject
@@ -80,13 +80,12 @@ class StaffELearningAssignmentStudentWorkFragment : Fragment() {
     private fun loadResponses() {
         try {
             assignmentData?.let {
-                val contentId = JSONObject(assignmentData?:"").getString("id")
+                val contentId = JSONObject(assignmentData ?: "").getString("id")
                 getResponses(contentId)
             }
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
 
 
@@ -94,7 +93,7 @@ class StaffELearningAssignmentStudentWorkFragment : Fragment() {
         val url =
             "${requireActivity().getString(R.string.base_url)}/getResponses.php?id=$contentId"
 
-        FunctionUtils.sendRequestToServer(
+        sendRequestToServer(
             Request.Method.GET,
             url,
             requireContext(),
@@ -151,9 +150,7 @@ class StaffELearningAssignmentStudentWorkFragment : Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        studentWorkAdapter = AdminELearningAssignmentStudentWorkAdapter(
-            studentResponseList
-        )
+        studentWorkAdapter = AdminELearningAssignmentStudentWorkAdapter(studentResponseList)
 
         studentWorkRecyclerView.apply {
             hasFixedSize()

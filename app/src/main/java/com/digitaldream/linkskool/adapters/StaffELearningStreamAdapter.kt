@@ -167,7 +167,7 @@ class StaffELearningStreamAdapter(
     private fun launchActivity(from: String, response: String) {
         context.startActivity(
             Intent(context, StaffELearningActivity::class.java)
-                .putExtra("from", from)
+                .putExtra("from", "${from}_dashboard")
                 .putExtra("json", response)
                 .putExtra("task", "edit")
         )

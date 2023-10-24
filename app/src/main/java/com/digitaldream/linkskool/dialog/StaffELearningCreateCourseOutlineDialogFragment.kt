@@ -15,19 +15,15 @@ import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.config.DatabaseHelper
-import com.digitaldream.linkskool.models.ClassNameTable
+import com.digitaldream.linkskool.models.CourseTable
 import com.digitaldream.linkskool.utils.FunctionUtils.sendRequestToServer
 import com.digitaldream.linkskool.utils.VolleyCallback
 import com.google.android.material.textfield.TextInputLayout
-import com.j256.ormlite.dao.Dao
 import com.j256.ormlite.dao.DaoManager
 import org.json.JSONArray
 import org.json.JSONObject
 
 class StaffELearningCreateCourseOutlineDialogFragment(
-    private val levelId: String,
-    private val courseName: String,
-    private val courseId: String,
     private val onCreated: (String) -> Unit
 ) : DialogFragment() {
 
@@ -36,8 +32,7 @@ class StaffELearningCreateCourseOutlineDialogFragment(
     private lateinit var mCourseOutlineTitleInputText: TextInputLayout
     private lateinit var mDescriptionInputText: TextInputLayout
 
-
-    private var mClassList = mutableListOf<ClassNameTable>()
+    private var classList = mutableListOf<CourseTable>()
     private var selectedClasses = hashMapOf<String, String>()
 
     private lateinit var mDatabaseHelper: DatabaseHelper
@@ -46,6 +41,9 @@ class StaffELearningCreateCourseOutlineDialogFragment(
     private var term: String? = null
     private var userId: String? = null
     private var userName: String? = null
+    private var levelId: String? = null
+    private var courseName: String? = null
+    private var courseId: String? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,6 +70,13 @@ class StaffELearningCreateCourseOutlineDialogFragment(
 
         setUpViews(view)
 
+        loadClasses()
+
+        editTextWatcher()
+
+        createOutline()
+
+        dismissDialog()
     }
 
     private fun setUpViews(view: View) {
@@ -80,7 +85,6 @@ class StaffELearningCreateCourseOutlineDialogFragment(
             mCreateBtn = findViewById(R.id.createBtn)
             mCourseOutlineTitleInputText = findViewById(R.id.courseOutlineTitleInputText)
             mDescriptionInputText = findViewById(R.id.descriptionInputText)
-
         }
 
         mDatabaseHelper = DatabaseHelper(requireContext())
@@ -93,19 +97,22 @@ class StaffELearningCreateCourseOutlineDialogFragment(
             term = getString("term", "")
             userId = getString("user_id", "")
             userName = getString("user", "")
+            courseId = getString("courseId", "")
+            levelId = getString("level", "")
+            courseName = getString("course_name", "")
         }
 
     }
 
-    private fun loadDataset() {
+    private fun loadClasses() {
         try {
-            val classDao: Dao<ClassNameTable, Long> = DaoManager.createDao(
-                mDatabaseHelper.connectionSource, ClassNameTable::class.java
+            val classDao = DaoManager.createDao(
+                mDatabaseHelper.connectionSource, CourseTable::class.java
             )
+            classList = classDao.queryBuilder().groupBy("classId")
+                .where().eq("levelId", levelId).query()
 
-            mClassList = classDao.queryBuilder().where().eq("level", levelId).query()
-
-            mClassList.forEach { item ->
+            classList.forEach { item ->
                 selectedClasses[item.classId] = item.className
             }
 
@@ -188,21 +195,21 @@ class StaffELearningCreateCourseOutlineDialogFragment(
                 }
 
                 override fun onError(error: VolleyError) {
-                    showToast("Something went wrong, please try again.")
+                    Toast.makeText(
+                        requireContext(),
+                        "Something went wrong, please try again.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
         )
     }
 
-    private fun showToast(message: String) {
-        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-    }
 
     private fun dismissDialog() {
         mBackBtn.setOnClickListener {
             dismiss()
         }
     }
-
 
 }

@@ -2,7 +2,6 @@ package com.digitaldream.linkskool.fragments
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.content.res.Resources.NotFoundException
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.adapters.AdminELearningQuestionAdapter
+import com.digitaldream.linkskool.adapters.AdminELearningCreateQuestionAdapter
 import com.digitaldream.linkskool.dialog.AdminELearningQuestionDialog
 import com.digitaldream.linkskool.dialog.AdminELearningQuestionPreviewFragment
 import com.digitaldream.linkskool.models.MultiChoiceQuestion
@@ -89,7 +88,7 @@ class AdminELearningCreateQuestionFragment :
     private lateinit var addQuestionButton: ImageButton
 
     // Initialize adapters and data structures
-    private lateinit var sectionAdapter: AdminELearningQuestionAdapter
+    private lateinit var sectionAdapter: AdminELearningCreateQuestionAdapter
     private var sectionItems = mutableListOf<SectionModel>()
     private var selectedClassArray = JSONArray()
 
@@ -109,7 +108,7 @@ class AdminELearningCreateQuestionFragment :
     private var userId: String? = null
     private var userName: String? = null
     private var taskType: String? = null
-    private var id: String? = null
+    private var questionId: String? = null
     private var durationMinutes: String? = null
 
     private var questionData: String? = null
@@ -125,7 +124,7 @@ class AdminELearningCreateQuestionFragment :
 
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                onExit()
+                onExitQuestion()
             }
         }
 
@@ -150,9 +149,6 @@ class AdminELearningCreateQuestionFragment :
         // Initialize UI elements and listeners
         setUpViews(view)
 
-        // Load shared preferences and data
-        sharedPreferences =
-            requireActivity().getSharedPreferences("loginDetail", Context.MODE_PRIVATE)
 
         if (taskType == "edit" && !jsonData.isNullOrBlank()) {
             try {
@@ -216,9 +212,13 @@ class AdminELearningCreateQuestionFragment :
             }
 
             toolbar.apply {
-                setNavigationOnClickListener { onExit() }
+                setNavigationOnClickListener { onExitQuestion() }
             }
         }
+
+        // Load shared preferences and data
+        sharedPreferences =
+            requireActivity().getSharedPreferences("loginDetail", Context.MODE_PRIVATE)
     }
 
 
@@ -272,7 +272,7 @@ class AdminELearningCreateQuestionFragment :
     // Set up the RecyclerView for displaying questions and sections
     private fun setupQuestionRecyclerView() {
         sectionAdapter =
-            AdminELearningQuestionAdapter(parentFragmentManager, sectionItems, taskType ?: "")
+            AdminELearningCreateQuestionAdapter(parentFragmentManager, sectionItems, taskType ?: "")
 
         sectionRecyclerView.apply {
             hasFixedSize()
@@ -306,7 +306,7 @@ class AdminELearningCreateQuestionFragment :
     // Parse JSON data from question settings
     private fun parseJsonFromQuestionSettings(json: String) {
         JSONObject(json).run {
-            id = getString("id")
+            questionId = getString("id")
             questionTitle = getString("title")
             questionDescription = getString("description")
             startDate = getString("start_date")
@@ -347,7 +347,6 @@ class AdminELearningCreateQuestionFragment :
             showToast("Something went wrong")
         }
     }
-
 
     // Check if questions already exist and set them up if they do
     private fun setQuestionsIfExist() {
@@ -566,7 +565,7 @@ class AdminELearningCreateQuestionFragment :
     // Create and return the settings object as a JSONObject
     private fun createSettingsJsonObject(): JSONObject {
         return JSONObject().apply {
-            put("id", id)
+            put("id", questionId)
             put("author_id", userId)
             put("author_name", userName)
             put("title", questionTitle)
@@ -932,7 +931,7 @@ class AdminELearningCreateQuestionFragment :
 
 
     // Handle the back button press event
-    private fun onExit() {
+    private fun onExitQuestion() {
         try {
             val assessmentObject = createAssessmentObject()
 
