@@ -20,6 +20,7 @@ import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.activities.AdminELearningActivity
+import com.digitaldream.linkskool.activities.StaffELearningActivity
 import com.digitaldream.linkskool.interfaces.ItemTouchHelperAdapter
 import com.digitaldream.linkskool.models.ContentModel
 import com.digitaldream.linkskool.utils.FunctionUtils
@@ -223,7 +224,7 @@ class StaffELearningCourseWorkAdapter(
             popupMenu.setOnMenuItemClickListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.editSection -> {
-                        viewOrEditContentDetails(itemView, topicModel, from)
+                        viewOrEditContentDetails(itemView, topicModel, "create_$from")
                         true
                     }
 
@@ -281,7 +282,7 @@ class StaffELearningCourseWorkAdapter(
 
     private fun launchActivity(itemView: View, from: String, response: String) {
         itemView.context.startActivity(
-            Intent(itemView.context, AdminELearningActivity::class.java)
+            Intent(itemView.context, StaffELearningActivity::class.java)
                 .putExtra("from", from)
                 .putExtra("task", "edit")
                 .putExtra("json", response)
