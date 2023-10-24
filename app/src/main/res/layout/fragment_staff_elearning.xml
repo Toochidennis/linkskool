@@ -50,7 +50,6 @@
                     android:id="@+id/submissionViewPager"
                     android:layout_width="match_parent"
                     android:layout_height="140dp"
-                    android:layout_marginStart="@dimen/dimen_16"
                     android:contentDescription="@string/view_pager" />
 
                 <com.google.android.material.tabs.TabLayout
@@ -85,8 +84,7 @@
                     android:text="Courses"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_18"
-                    android:textStyle="bold"
-                    app:drawableEndCompat="@drawable/arrow_forward" />
+                    android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/courseRecyclerView"
