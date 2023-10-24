@@ -26,10 +26,12 @@ import com.digitaldream.linkskool.config.DatabaseHelper
 import com.digitaldream.linkskool.dialog.StaffELearningLevelBottomSheet
 import com.digitaldream.linkskool.models.CourseTable
 import com.digitaldream.linkskool.models.RecentActivityModel
-import com.digitaldream.linkskool.utils.FunctionUtils
+import com.digitaldream.linkskool.models.UpcomingQuizModel
+import com.digitaldream.linkskool.utils.FunctionUtils.formatDate2
 import com.digitaldream.linkskool.utils.FunctionUtils.sendRequestToServer
 import com.digitaldream.linkskool.utils.VolleyCallback
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.j256.ormlite.dao.DaoManager
 import org.json.JSONArray
 import org.json.JSONObject
@@ -44,9 +46,11 @@ class StaffELearningFragment : Fragment() {
     private lateinit var databaseHelper: DatabaseHelper
     private lateinit var courseAdapter: GenericAdapter<CourseTable>
     private lateinit var commentAdapter: GenericAdapter<RecentActivityModel>
+    private lateinit var submissionAdapter: GenericAdapter<UpcomingQuizModel>
 
     private var courseTable = mutableListOf<CourseTable>()
     private val commentList = mutableListOf<RecentActivityModel>()
+    private val submissionList = mutableListOf<UpcomingQuizModel>()
 
     private var userId: String? = null
     private var term: String? = null
@@ -173,6 +177,28 @@ class StaffELearningFragment : Fragment() {
 
     }
 
+
+    private fun setUpSubmissionAdapter() {
+        submissionAdapter = GenericAdapter(
+            submissionList,
+            R.layout.item_submission_layout,
+            bindItem = { itemView, model, _ ->
+                val titleTxt: TextView = itemView.findViewById(R.id.titleTxt)
+                val studentNameTxt: TextView = itemView.findViewById(R.id.studentNameTxt)
+                val submissionDateTxt: TextView = itemView.findViewById(R.id.submissionDateTxt)
+
+                submissionDateTxt.text = formatDate2(model.date, "date time")
+            }
+        ) { position ->
+              val submissionItem = submissionList[position]
+
+        }
+
+        submissionViewPager.adapter = submissionAdapter
+
+        TabLayoutMediator(submissionTabLayout, submissionViewPager) { _, _ -> }.attach()
+    }
+
     private fun setUpCourseAdapter() {
         val colors = intArrayOf(
             R.color.test_color_2, R.color.color_1, R.color.test_color_1,
@@ -219,7 +245,7 @@ class StaffELearningFragment : Fragment() {
                 val dateTxt: TextView = itemView.findViewById(R.id.dateTxt)
 
                 userNameTxt.text = model.userName
-                dateTxt.text = FunctionUtils.formatDate2(model.date, "custom")
+                dateTxt.text = formatDate2(model.date, "custom")
                 "Commented on ${model.description}".let { commentTxt.text = it }
             }
         ) { position ->
