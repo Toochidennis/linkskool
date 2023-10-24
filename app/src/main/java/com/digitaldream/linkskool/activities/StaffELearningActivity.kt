@@ -17,15 +17,6 @@ class StaffELearningActivity : AppCompatActivity() {
         val task = intent.getStringExtra("task") ?: ""
 
         when (intent.getStringExtra("from")) {
-            "content_dashboard" -> {
-                supportFragmentManager.commit {
-                    replace(
-                        R.id.staffLearningContainer,
-                        StaffELearningContentDashboardFragment()
-                    )
-                }
-            }
-
             "create_assignment" -> {
                 supportFragmentManager.commit {
                     replace(
