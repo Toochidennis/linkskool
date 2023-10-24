@@ -1,6 +1,7 @@
 package com.digitaldream.linkskool.fragments
 
 import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.text.Editable
@@ -29,6 +30,7 @@ import com.digitaldream.linkskool.models.AttachmentModel
 import com.digitaldream.linkskool.models.CommentDataModel
 import com.digitaldream.linkskool.utils.FileViewModel
 import com.digitaldream.linkskool.utils.FunctionUtils
+import com.digitaldream.linkskool.utils.FunctionUtils.showSoftInput
 import com.digitaldream.linkskool.utils.VolleyCallback
 import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.CoroutineScope
@@ -149,7 +151,7 @@ class StaffELearningAssignmentInstructionsFragment : Fragment() {
 
         val sharedPreferences = requireActivity().getSharedPreferences(
             "loginDetail",
-            Context.MODE_PRIVATE
+            MODE_PRIVATE
         )
 
         with(sharedPreferences) {
@@ -319,7 +321,7 @@ class StaffELearningAssignmentInstructionsFragment : Fragment() {
             editTextLayout.isVisible = true
 
             commentInput.editText?.let { editText ->
-                FunctionUtils.showSoftInput(requireContext(), editText)
+                showSoftInput(requireContext(), editText)
             }
         }
     }
