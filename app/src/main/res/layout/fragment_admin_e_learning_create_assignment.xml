@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/dimen_16"
-        android:paddingBottom="@dimen/dimen_16"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:paddingBottom="@dimen/dimen_16">
 
         <ImageButton
             android:id="@+id/close_btn"
@@ -38,6 +37,7 @@
             android:layout_marginEnd="@dimen/dimen_16"
             android:background="@drawable/ripple_effect10"
             android:clickable="true"
+            android:textColor="@color/white"
             android:focusable="true"
             android:paddingStart="@dimen/dimen_16"
             android:paddingEnd="@dimen/dimen_16"
@@ -55,7 +55,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:orientation="vertical">
 
             <EditText
@@ -160,8 +159,7 @@
             <RelativeLayout
                 android:id="@+id/attachmentBtn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/attachment_icon"
@@ -223,7 +221,6 @@
                 android:id="@+id/gradeBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:padding="@dimen/dimen_16">
 
                 <ImageView
@@ -269,8 +266,7 @@
             <RelativeLayout
                 android:id="@+id/dueDateBtn"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/date_icon"
