@@ -6,7 +6,6 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -23,6 +22,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,8 +30,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.activities.AdminELearningActivity
 import com.digitaldream.linkskool.activities.CourseAttendance
+import com.digitaldream.linkskool.activities.StaffELearningActivity
 import com.digitaldream.linkskool.adapters.AdminELearningCommentAdapter
 import com.digitaldream.linkskool.adapters.AdminELearningFilesAdapter
 import com.digitaldream.linkskool.models.AttachmentModel
@@ -121,6 +121,7 @@ class StaffELearningMaterialDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setUpViews(view)
+
         init()
     }
 
@@ -451,7 +452,7 @@ class StaffELearningMaterialDetailsFragment : Fragment() {
 
                     R.id.edit -> {
                         startActivity(
-                            Intent(requireContext(), AdminELearningActivity::class.java)
+                            Intent(requireContext(), StaffELearningActivity::class.java)
                                 .putExtra("from", "create_material")
                                 .putExtra("task", "edit")
                                 .putExtra("json", materialData)
