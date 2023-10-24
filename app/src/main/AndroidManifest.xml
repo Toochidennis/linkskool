@@ -176,8 +176,7 @@
         <activity android:name="com.digitaldream.linkskool.activities.ContentDownload" />
         <activity android:name="com.digitaldream.linkskool.activities.ContentUpload" />
         <activity android:name="com.digitaldream.linkskool.activities.CourseOutlines" />
-        <activity android:name="com.digitaldream.linkskool.activities.StaffElearningCourseOutlineActivity" />
-        <activity android:name="com.digitaldream.linkskool.activities.ELearning" />
+        <activity android:name="com.digitaldream.linkskool.activities.StaffELearningContentDashboardActivity" />
         <activity android:name="com.digitaldream.linkskool.activities.CoursesAssigned" />
         <activity android:name="com.digitaldream.linkskool.activities.FormClass" />
         <activity android:name="com.digitaldream.linkskool.activities.ExamActivity" />
