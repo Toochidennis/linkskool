@@ -6,10 +6,10 @@
     android:layout_marginEnd="@dimen/dimen_16"
     android:background="@drawable/dialog_bg4"
     android:foreground="?android:attr/selectableItemBackground"
-    android:paddingStart="32dp"
-    android:paddingTop="34dp"
+    android:paddingStart="@dimen/dimen_32"
+    android:paddingTop="@dimen/dimen_16"
     android:paddingEnd="@dimen/dimen_32"
-    android:paddingBottom="34dp">
+    android:paddingBottom="@dimen/dimen_16">
 
     <TextView
         android:id="@+id/levelNameTxt"
