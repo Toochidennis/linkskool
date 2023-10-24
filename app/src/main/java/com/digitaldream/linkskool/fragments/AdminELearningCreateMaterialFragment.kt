@@ -251,7 +251,7 @@ class AdminELearningCreateMaterialFragment :
             if (mFileList.isNotEmpty()) {
                 mFileAdapter = GenericAdapter(
                     mFileList,
-                    R.layout.fragment_admin_e_learning_assigment_attachment_item,
+                    R.layout.item_e_learning_assignment_attachment,
                     bindItem = { itemView, model, position ->
                         val itemTxt: TextView = itemView.findViewById(R.id.itemTxt)
                         val deleteButton: ImageView =
