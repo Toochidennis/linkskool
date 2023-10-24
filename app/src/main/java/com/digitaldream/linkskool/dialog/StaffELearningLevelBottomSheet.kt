@@ -2,19 +2,25 @@ package com.digitaldream.linkskool.dialog
 
 import android.content.Context.MODE_PRIVATE
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.activities.StaffElearningCourseOutlineActivity
+import com.digitaldream.linkskool.activities.StaffELearningContentDashboardActivity
 import com.digitaldream.linkskool.adapters.GenericAdapter
 import com.digitaldream.linkskool.config.DatabaseHelper
 import com.digitaldream.linkskool.models.CourseTable
+import com.digitaldream.linkskool.utils.FunctionUtils.sendRequestToServer
+import com.digitaldream.linkskool.utils.VolleyCallback
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.j256.ormlite.dao.DaoManager
 
@@ -27,6 +33,7 @@ class StaffELearningLevelBottomSheet : BottomSheetDialogFragment() {
 
     private lateinit var levelAdapter: GenericAdapter<CourseTable>
     private lateinit var databaseHelper: DatabaseHelper
+    private lateinit var sharedPreferences: SharedPreferences
 
     private var levelTable = mutableListOf<CourseTable>()
 
@@ -73,6 +80,8 @@ class StaffELearningLevelBottomSheet : BottomSheetDialogFragment() {
 
         databaseHelper = DatabaseHelper(requireContext())
 
+        sharedPreferences = requireActivity().getSharedPreferences("loginDetail", MODE_PRIVATE)
+
         backBtn.setOnClickListener { dismiss() }
     }
 
@@ -81,6 +90,7 @@ class StaffELearningLevelBottomSheet : BottomSheetDialogFragment() {
             val levelDao =
                 DaoManager.createDao(databaseHelper.connectionSource, CourseTable::class.java)
             levelTable = levelDao.queryBuilder().where().eq("courseId", courseId ?: "").query()
+            levelTable.sortBy { it.levelName }
 
             setUpLevelAdapter()
 
@@ -101,16 +111,13 @@ class StaffELearningLevelBottomSheet : BottomSheetDialogFragment() {
         ) {
             val itemPosition = levelTable[it]
 
-            requireActivity().getSharedPreferences("loginDetail", MODE_PRIVATE)
-                .edit().apply {
-                    putString("course_name", itemPosition.courseName)
-                    putString("courseId", itemPosition.courseId)
-                    putString("level", itemPosition.levelId)
-                }.apply()
+            sharedPreferences.edit().apply {
+                putString("course_name", itemPosition.courseName)
+                putString("courseId", itemPosition.courseId)
+                putString("level", itemPosition.levelId)
+            }.apply()
 
-            startActivity(Intent(requireContext(), StaffElearningCourseOutlineActivity::class.java))
-
-            dismiss()
+            getCourseOutline(itemPosition.levelId, itemPosition.courseName)
         }
 
         setUpRecyclerView()
@@ -124,4 +131,38 @@ class StaffELearningLevelBottomSheet : BottomSheetDialogFragment() {
         }
     }
 
+    private fun getCourseOutline(levelId: String, courseName: String) {
+        val term = sharedPreferences.getString("term", "")
+
+        val url = "${getString(R.string.base_url)}/getOutlineList" +
+                ".php?course=$courseId&level=$levelId&term=$term"
+
+        sendRequestToServer(
+            Request.Method.GET, url, requireContext(), null,
+            object : VolleyCallback {
+                override fun onResponse(response: String) {
+                    parseResponseJson(response, levelId, courseName)
+                }
+
+                override fun onError(error: VolleyError) {
+                    Toast.makeText(
+                        requireContext(), "Oops! Something went wrong. Please try again.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        )
+    }
+
+    private fun parseResponseJson(response: String, levelId: String, courseName: String) {
+        if (response != "[]") {
+            sharedPreferences.edit().putString("outline", response).apply()
+            startActivity(Intent(requireContext(), StaffELearningContentDashboardActivity::class.java))
+            dismiss()
+        } else {
+            StaffELearningCreateCourseOutlineDialogFragment{
+                getCourseOutline(levelId, courseName)
+            }.show(parentFragmentManager, "")
+        }
+    }
 }
