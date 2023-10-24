@@ -3,7 +3,6 @@ package com.digitaldream.linkskool.adapters
 
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -28,7 +27,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.util.Collections
 
-class AdminELearningQuestionAdapter(
+class AdminELearningCreateQuestionAdapter(
     private val fragmentManager: FragmentManager,
     private val itemList: MutableList<SectionModel>,
     private val taskType: String
