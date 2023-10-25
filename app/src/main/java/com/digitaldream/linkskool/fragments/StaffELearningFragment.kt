@@ -20,13 +20,14 @@ import androidx.viewpager2.widget.ViewPager2
 import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.activities.StudentELearningActivity
+import com.digitaldream.linkskool.activities.StaffELearningActivity
 import com.digitaldream.linkskool.adapters.GenericAdapter
 import com.digitaldream.linkskool.config.DatabaseHelper
 import com.digitaldream.linkskool.dialog.StaffELearningLevelBottomSheet
 import com.digitaldream.linkskool.models.CourseTable
 import com.digitaldream.linkskool.models.RecentActivityModel
 import com.digitaldream.linkskool.models.UpcomingQuizModel
+import com.digitaldream.linkskool.utils.FunctionUtils.capitaliseFirstLetter
 import com.digitaldream.linkskool.utils.FunctionUtils.formatDate2
 import com.digitaldream.linkskool.utils.FunctionUtils.sendRequestToServer
 import com.digitaldream.linkskool.utils.VolleyCallback
@@ -97,7 +98,10 @@ class StaffELearningFragment : Fragment() {
                 setDisplayHomeAsUpEnabled(true)
             }
 
-            toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
+            toolbar.setNavigationOnClickListener {
+                @Suppress("DEPRECATION")
+                requireActivity().onBackPressed()
+            }
 
             databaseHelper = DatabaseHelper(requireContext())
 
@@ -158,7 +162,7 @@ class StaffELearningFragment : Fragment() {
                     val contentType = it.getString("content_type")
                     val courseName = it.getString("course_name")
 
-                    if (contentType.isNotEmpty()) {
+                    if (contentType.isNotBlank()) {
                         val recentActivityModel = RecentActivityModel(
                             id, userName, description, courseName,
                             date, contentType
@@ -232,8 +236,8 @@ class StaffELearningFragment : Fragment() {
                 courseNameTxt.text = model.courseName
                 submissionDateTxt.text = model.date
             }
-        ) { position ->
-            val submissionItem = submissionList[position]
+        ) {
+            //  val submissionItem = submissionList[position]
 
         }
 
@@ -313,14 +317,20 @@ class StaffELearningFragment : Fragment() {
                 val commentTxt: TextView = itemView.findViewById(R.id.commentTxt)
                 val dateTxt: TextView = itemView.findViewById(R.id.dateTxt)
 
-                userNameTxt.text = model.userName
+                userNameTxt.text = capitaliseFirstLetter(model.userName)
                 dateTxt.text = formatDate2(model.date, "custom")
                 "Commented on ${model.description}".let { commentTxt.text = it }
             }
         ) { position ->
             val recentItem = commentList[position]
 
-            /*  handleSubmissionAndCommentClick(getUrl(recentItem.id, recentItem.type), "material")*/
+            val from = when (recentItem.type) {
+                "1" -> "material_dashboard"
+                "3" -> "assignment_dashboard"
+                else -> null
+            }
+
+            handleSubmissionAndCommentClick(getUrl(recentItem.id, recentItem.type), from ?: "")
         }
 
         setUpCommentRecyclerView()
@@ -363,7 +373,7 @@ class StaffELearningFragment : Fragment() {
 
     private fun launchActivity(from: String, response: String) {
         startActivity(
-            Intent(requireActivity(), StudentELearningActivity::class.java)
+            Intent(requireActivity(), StaffELearningActivity::class.java)
                 .putExtra("from", from)
                 .putExtra("json", response)
         )
