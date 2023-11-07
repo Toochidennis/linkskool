@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +17,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.digitaldream.linkskool.config.DatabaseHelper;
 import com.digitaldream.linkskool.R;
 import com.digitaldream.linkskool.activities.CourseAttendance;
+import com.digitaldream.linkskool.config.DatabaseHelper;
 import com.digitaldream.linkskool.models.CourseTable;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
@@ -85,8 +84,6 @@ public class StaffCourseAttendanceFragment extends Fragment {
                     DaoManager.createDao(mDatabaseHelper.getConnectionSource(),
                             CourseTable.class);
             mCourseTableList = mCourseTableDao.queryForAll();
-
-            Log.i("data", mCourseTableList.toString());
 
 
             List<String> stringList = new ArrayList<>();
