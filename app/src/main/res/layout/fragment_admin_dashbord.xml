@@ -1,263 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefresh"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.AdminDashboardFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scroll_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/appBar"
-        android:fillViewport="true">
-
-        <LinearLayout
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:background="@drawable/background_gradient_color">
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
 
-                <TextView
-                    android:id="@+id/user_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="12dp"
-                    android:fontFamily="@font/open_sans"
-                    android:text=""
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp" />
+        </com.google.android.material.appbar.AppBarLayout>
 
-                <TextView
-                    android:id="@+id/school_name_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/lato"
-                    android:text="Raymond College, Enugu"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/white"
-                    android:textSize="25sp" />
-            </RelativeLayout>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/appBar"
+            android:layout_marginBottom="@dimen/dimen_64"
+            android:fillViewport="true">
 
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="-30dp"
-                android:layout_marginRight="20dp"
-                app:contentPadding="10dp">
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/dimen_10"
+                    android:paddingTop="@dimen/dimen_10"
+                    android:paddingEnd="@dimen/dimen_10"
+                    android:text="Upcoming events"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_18"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    app:drawableEndCompat="@drawable/arrow_forward" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:contentDescription="@string/view_pager"
+                    android:visibility="gone" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/tab_layout"
+                    android:visibility="gone"
+                    app:tabBackground="@drawable/indicator_selector"
+                    app:tabGravity="center"
+                    app:tabIndicatorHeight="0dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_10"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:layout_marginEnd="@dimen/dimen_10"
                     android:orientation="horizontal">
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/studentBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/dimen_10"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/color_1"
+                        app:cardCornerRadius="@dimen/dimen_10"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:padding="@dimen/dimen_12">
+
+                            <TextView
+                                android:id="@+id/noOfStudentsTxt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_28"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen_10"
+                                android:text="Students"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_16" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/teachersBtn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:backgroundTint="@color/test_color_1"
+                        app:cardCornerRadius="@dimen/dimen_10"
+                        app:cardElevation="2dp">
 
                         <LinearLayout
-                            android:id="@+id/student_no_cont"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:background="@drawable/circle_blue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:padding="@dimen/dimen_12">
 
                             <TextView
-                                android:id="@+id/no_of_student_txt1"
+                                android:id="@+id/noOfTeachersTxt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat"
-                                android:text="5"
-                                android:textColor="@android:color/holo_blue_dark"
-                                android:textSize="16sp"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_28"
                                 android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen_10"
+                                android:text="Teachers"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_16" />
+
                         </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat"
-                            android:text="Students"
-                            android:textColor="@color/black"
-                            android:textSize="12sp" />
+                    </androidx.cardview.widget.CardView>
 
-
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/classBtn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_10"
                         android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:backgroundTint="@color/color2"
+                        app:cardCornerRadius="@dimen/dimen_10"
+                        app:cardElevation="2dp">
 
                         <LinearLayout
-                            android:id="@+id/teacher_no_container"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:background="@drawable/circle_g"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:gravity="center"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:padding="@dimen/dimen_12">
 
                             <TextView
-                                android:id="@+id/no_of_teacher_txt1"
+                                android:id="@+id/noOfClassTxt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat"
-                                android:text="5"
-                                android:textColor="@android:color/holo_orange_dark"
-                                android:textSize="16sp"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_28"
                                 android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat"
-                            android:text="Teachers"
-                            android:textColor="@color/black"
-                            android:textSize="12sp" />
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:id="@+id/class_no_container"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:background="@drawable/circle_d"
-                            android:gravity="center"
-                            android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/no_of_classes"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat"
-                                android:text="5"
-                                android:textColor="@android:color/holo_purple"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
+                                android:layout_marginTop="@dimen/dimen_10"
+                                android:text="Class"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_16" />
+
                         </LinearLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat"
-                            android:text="Classes"
-                            android:textColor="@color/black"
-                            android:textSize="12sp" />
-
-
-                    </LinearLayout>
-
+                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <LinearLayout
-                    android:id="@+id/recy_con"
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_6"
+                    android:padding="@dimen/dimen_10"
+                    android:text="@string/feeds"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_18"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/qa_recycler"
+                        android:id="@+id/questionRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clipToPadding="false">
+                        android:nestedScrollingEnabled="true"
+                        android:paddingBottom="@dimen/dimen_32" />
 
-                    </androidx.recyclerview.widget.RecyclerView>
-
-                    <ProgressBar
-                        android:id="@+id/progress_bar"
+                    <TextView
+                        android:id="@+id/errorMessageTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:paddingBottom="140dp"
+                        android:layout_centerInParent="true"
+                        android:text="@string/no_data"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_16"
                         android:visibility="gone" />
 
-                    <LinearLayout
-                        android:id="@+id/qa_empty_state"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:visibility="gone">
+                </RelativeLayout>
 
-                        <TextView
-                            android:id="@+id/error_message"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_margin="20dp"
-                            android:fontFamily="@font/roboto"
-                            android:text="There are no Questions"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
+            </LinearLayout>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+        </androidx.core.widget.NestedScrollView>
 
-                        <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/add_question"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentBottom="true"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginBottom="70dp"
-                            android:backgroundTint="@color/tab_color"
-                            android:contentDescription="@string/todo"
-                            android:src="@drawable/ic_add" />
-                    </RelativeLayout>
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true">
 
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/addQuestionBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:layout_marginBottom="70dp"
+                android:backgroundTint="@color/color_1"
+                android:contentDescription="@string/add_content"
+                android:src="@drawable/ic_add" />
 
-                </LinearLayout>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-            </RelativeLayout>
+    </RelativeLayout>
 
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
-</RelativeLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
