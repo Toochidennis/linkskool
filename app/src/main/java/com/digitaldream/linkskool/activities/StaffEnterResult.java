@@ -1,5 +1,6 @@
 package com.digitaldream.linkskool.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,25 +30,28 @@ public class StaffEnterResult extends AppCompatActivity {
     private WebView mWebview;
     private Toolbar toolbar;
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_result);
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+
         assert actionBar != null;
         actionBar.setTitle("Result");
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
-        actionBar.setHomeAsUpIndicator(R.drawable.arrow_left);
+
+
         SharedPreferences sharedPreferences = getSharedPreferences("loginDetail", Context.MODE_PRIVATE);
         String staffId = sharedPreferences.getString("user_id", "");
         String db = sharedPreferences.getString("db", "");
 
         Intent i = getIntent();
-        String status = i.getStringExtra("status");
+        String status = i.getStringExtra("from");
         String courseId = i.getStringExtra("course_id");
         String classId = i.getStringExtra("class_id");
 
@@ -71,6 +75,7 @@ public class StaffEnterResult extends AppCompatActivity {
         webSettings.setSupportZoom(true);
         webSettings.setDefaultTextEncodingName("utf-8");
         mWebview.setWebViewClient(new WebViewClient());
+
         mWebview.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
@@ -81,7 +86,6 @@ public class StaffEnterResult extends AppCompatActivity {
                 }
 
             }
-
 
             @Override
             public void onReceivedTitle(WebView view, String title) {
@@ -94,12 +98,15 @@ public class StaffEnterResult extends AppCompatActivity {
         }
 
         assert status != null;
+        String viewUrl = getString(R.string.base_url) + "/viewResult.php?class=" + classId +
+                "&course=" + courseId + "&_db=" + db + "&staff_id=" + staffId;
+        String addUrl = getString(R.string.base_url) + "/addResults.php?class=" + classId +
+                "&course=" + courseId + "&_db=" + db + "&staff_id=" + staffId;
+
         if (status.equals("view_result")) {
-            mWebview.loadUrl(getString(R.string.base_url) + "/viewResult.php?class=" + classId +
-                    "&course=" + courseId + "&_db=" + db + "&staff_id=" + staffId);
+            mWebview.loadUrl(viewUrl);
         } else if (status.equals("add_result")) {
-            mWebview.loadUrl(getString(R.string.base_url) + "/addResults.php?class=" + classId +
-                    "&course=" + courseId + "&_db=" + db + "&staff_id=" + staffId);
+            mWebview.loadUrl(addUrl);
         }
     }
 

@@ -2,16 +2,17 @@ package com.digitaldream.linkskool.fragments;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,11 +22,11 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.digitaldream.linkskool.R;
-import com.digitaldream.linkskool.activities.Login;
-import com.digitaldream.linkskool.activities.StaffUtils;
+import com.digitaldream.linkskool.adapters.StaffFormClassAdapter;
 import com.digitaldream.linkskool.config.DatabaseHelper;
 import com.digitaldream.linkskool.models.ClassNameTable;
 import com.digitaldream.linkskool.models.LevelTable;
+import com.digitaldream.linkskool.models.StaffFormClassModel;
 import com.digitaldream.linkskool.models.StudentTable;
 import com.digitaldream.linkskool.utils.FunctionUtils;
 import com.digitaldream.linkskool.utils.VolleyCallback;
@@ -41,22 +42,19 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import io.github.luizgrp.sectionedrecyclerviewadapter.Section;
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters;
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
-
 
 public class StaffFormClassFragment extends Fragment {
 
-    private TextView mErrorMessage;
-    private SwipeRefreshLayout mSwipeRefreshLayout;
-    private LinearLayout mLinearLayout;
-    private RecyclerView mRecyclerView;
-    private SectionedRecyclerViewAdapter mAdapter;
+    private TextView errorMessage;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private Toolbar toolbar;
+    private RecyclerView formClassRecyclerView;
+
     private DatabaseHelper mDatabaseHelper;
     private Dao<StudentTable, Long> studentDao;
     private Dao<ClassNameTable, Long> classDao;
     private Dao<LevelTable, Long> levelDao;
+
 
     public StaffFormClassFragment() {
         // Required empty public constructor
@@ -66,17 +64,34 @@ public class StaffFormClassFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_staff_form_class, container, false);
+        return inflater.inflate(R.layout.fragment_staff_form_class, container, false);
 
-        Toolbar toolbar = view.findViewById(R.id.toolbar);
-        mRecyclerView = view.findViewById(R.id.student_recycler);
-        mSwipeRefreshLayout = view.findViewById(R.id.refresh_layout);
-        mLinearLayout = view.findViewById(R.id.recycler_container);
-        mErrorMessage = view.findViewById(R.id.error_message);
+    }
 
-        toolbar.setNavigationIcon(R.drawable.arrow_left);
-        toolbar.setTitle("Form Class");
-        toolbar.setNavigationOnClickListener(v -> requireActivity().onBackPressed());
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        setUpViews(view);
+
+        init();
+    }
+
+    private void setUpViews(View view) {
+        toolbar = view.findViewById(R.id.toolbar);
+        formClassRecyclerView = view.findViewById(R.id.formClassRecyclerView);
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefresh);
+        errorMessage = view.findViewById(R.id.emptyTxt);
+    }
+
+    private void init() {
+        ((AppCompatActivity) (requireActivity())).setSupportActionBar(toolbar);
+        ActionBar actionBar = ((AppCompatActivity) (requireActivity())).getSupportActionBar();
+        assert actionBar != null;
+        actionBar.setTitle("Form class");
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        toolbar.setNavigationOnClickListener(view -> requireActivity().onBackPressed());
 
         try {
             mDatabaseHelper = new DatabaseHelper(getContext());
@@ -91,21 +106,11 @@ public class StaffFormClassFragment extends Fragment {
             e.printStackTrace();
         }
 
-        mAdapter = new SectionedRecyclerViewAdapter();
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        mRecyclerView.setHasFixedSize(true);
+        swipeRefreshLayout.setOnRefreshListener(this::refreshStudentList);
 
-        mSwipeRefreshLayout.setOnRefreshListener(this::refreshStudentList);
-
-        return view;
-    }
-
-
-    @Override
-    public void onResume() {
-        super.onResume();
         refreshStudentList();
     }
+
 
     private void refreshStudentList() {
         SharedPreferences sharedPreferences = requireContext().getSharedPreferences("loginDetail",
@@ -213,24 +218,21 @@ public class StaffFormClassFragment extends Fragment {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        mSwipeRefreshLayout.setRefreshing(false);
+                        swipeRefreshLayout.setRefreshing(false);
                     }
 
                     @Override
                     public void onError(@NonNull VolleyError error) {
-                        mSwipeRefreshLayout.setRefreshing(false);
-                        mLinearLayout.setVisibility(View.GONE);
-                        mErrorMessage.setVisibility(View.VISIBLE);
-                        mErrorMessage.setText(getString(R.string.can_not_retrieve));
+                        swipeRefreshLayout.setRefreshing(false);
+                        errorMessage.setVisibility(View.VISIBLE);
+                        errorMessage.setText(getString(R.string.can_not_retrieve));
                     }
                 }, true);
     }
 
     private void setRecyclerViewItems() {
-        mAdapter.removeAllSections();
-
         try {
-            List<ClassNameTable> classList = new ArrayList<>();
+            List<StaffFormClassModel> formClassModel = new ArrayList<>();
             List<LevelTable> levelList = levelDao.queryForAll();
 
             Collections.sort(levelList, (s1, s2) ->
@@ -239,121 +241,31 @@ public class StaffFormClassFragment extends Fragment {
             for (int i = 0; i < levelList.size(); i++) {
                 String levelName = levelList.get(i).getLevelName();
 
-                classList = classDao.queryBuilder().where().eq("level",
-                        levelList.get(i).getLevelId()).query();
+                List<ClassNameTable> classList =
+                        classDao.queryBuilder().where().eq("level",
+                                levelList.get(i).getLevelId()).query();
 
-                mAdapter.addSection(new SectionAdapter(requireContext(), classList, levelName));
+                formClassModel.add(new StaffFormClassModel(levelName, classList));
             }
 
-            if (!classList.isEmpty()) {
-                mRecyclerView.setAdapter(mAdapter);
-                mLinearLayout.setVisibility(View.VISIBLE);
-                mErrorMessage.setVisibility(View.GONE);
+            if (formClassModel.isEmpty()) {
+                errorMessage.setVisibility(View.VISIBLE);
             } else {
-                mLinearLayout.setVisibility(View.GONE);
-                mErrorMessage.setVisibility(View.VISIBLE);
+                setUpFormClassAdapter(formClassModel);
+                errorMessage.setVisibility(View.GONE);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
-
-    public static class SectionAdapter extends Section {
-        private final Context mContext;
-        private final List<ClassNameTable> mClassNameList;
-        private final String headerTitle;
-
-        public SectionAdapter(Context sContext,
-                              List<ClassNameTable> sClassList,
-                              String sHeaderTitle) {
-
-            super(SectionParameters.builder()
-                    .itemResourceId(R.layout.fragment_staff_form_class_item)
-                    .headerResourceId(R.layout.head)
-                    .build());
-
-            mContext = sContext;
-            mClassNameList = sClassList;
-            headerTitle = sHeaderTitle;
-        }
-
-        @Override
-        public int getContentItemsTotal() {
-            return mClassNameList.size();
-        }
-
-        @Override
-        public RecyclerView.ViewHolder getItemViewHolder(View view) {
-            return new SectionAdapter.ItemViewHolder(view);
-        }
-
-        @Override
-        public RecyclerView.ViewHolder getHeaderViewHolder(View view) {
-            return new SectionAdapter.HeaderViewHolder(view);
-        }
-
-        @Override
-        public void onBindItemViewHolder(RecyclerView.ViewHolder sViewHolder, int sI) {
-            SectionAdapter.ItemViewHolder holder =
-                    (SectionAdapter.ItemViewHolder) sViewHolder;
-            final ClassNameTable classTable = mClassNameList.get(sI);
-
-            holder.mClassName.setText(classTable.getClassName());
-
-            holder.mViewStudents.setOnClickListener(view ->
-                    mContext.startActivity(new Intent(mContext, StaffUtils.class)
-                            .putExtra("classId", classTable.getClassId())
-                            .putExtra("from", "form_class"))
-            );
-
-            holder.mComment.setOnClickListener(view ->
-                    mContext.startActivity(new Intent(mContext, StaffUtils.class)
-                            .putExtra("classId", classTable.getClassId())
-                            .putExtra("from", "staff_comment"))
-            );
-
-            holder.mSkills.setOnClickListener(view ->
-                    mContext.startActivity(new Intent(mContext, StaffUtils.class)
-                            .putExtra("classId", classTable.getClassId())
-                            .putExtra("from", "skills_behaviour"))
-            );
-
-        }
-
-        @Override
-        public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder) {
-            SectionAdapter.HeaderViewHolder headerViewHolder =
-                    (SectionAdapter.HeaderViewHolder) holder;
-
-            headerViewHolder.mHeader.setText(headerTitle);
-        }
-
-        public static class ItemViewHolder extends RecyclerView.ViewHolder {
-
-            private final TextView mClassName;
-            private final LinearLayout mSkills;
-            private final LinearLayout mComment;
-            private final LinearLayout mViewStudents;
-
-            public ItemViewHolder(@NonNull View itemView) {
-                super(itemView);
-                mClassName = itemView.findViewById(R.id.class_name);
-                mSkills = itemView.findViewById(R.id.skills_behaviour);
-                mComment = itemView.findViewById(R.id.comment);
-                mViewStudents = itemView.findViewById(R.id.view_student);
-            }
-
-        }
-
-        public static class HeaderViewHolder extends RecyclerView.ViewHolder {
-            private final TextView mHeader;
-
-            public HeaderViewHolder(@NonNull View itemView) {
-                super(itemView);
-                mHeader = itemView.findViewById(R.id.course_name);
-            }
-        }
+    private void setUpFormClassAdapter(List<StaffFormClassModel> formClassModel) {
+        StaffFormClassAdapter staffFormClassAdapter =
+                new StaffFormClassAdapter(getParentFragmentManager(), formClassModel);
+        formClassRecyclerView.hasFixedSize();
+        formClassRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        formClassRecyclerView.setAdapter(staffFormClassAdapter);
     }
+
 }

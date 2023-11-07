@@ -23,7 +23,7 @@ import com.digitaldream.linkskool.config.ForceUpdateAsync;
 import com.digitaldream.linkskool.R;
 import com.digitaldream.linkskool.fragments.ELibraryFragment;
 import com.digitaldream.linkskool.fragments.FlashCardList;
-import com.digitaldream.linkskool.fragments.StudentDashboard;
+import com.digitaldream.linkskool.fragments.StudentDashboardFragment;
 import com.digitaldream.linkskool.fragments.StudentELearningFragment;
 import com.digitaldream.linkskool.fragments.StudentPaymentFragment;
 import com.digitaldream.linkskool.fragments.StudentResultFragment;
@@ -79,6 +79,7 @@ public class StudentDashboardActivity extends AppCompatActivity {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         bottomNavigationView = findViewById(R.id.bottom_navigation_student);
 
         if (from != null && from.equals("testupload")) {
@@ -90,17 +91,18 @@ public class StudentDashboardActivity extends AppCompatActivity {
 
         } else {
             getSupportFragmentManager().beginTransaction().replace(
-                    R.id.payment_container, new StudentDashboard()).commit();
+                    R.id.payment_container, new StudentDashboardFragment()).commit();
             bottomNavigationView.getMenu().findItem(
                     R.id.student_dashboard).setChecked(true);
         }
+
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 menuItem -> {
                     switch (menuItem.getItemId()) {
                         case R.id.student_dashboard:
                             getSupportFragmentManager().beginTransaction().replace(
                                     R.id.payment_container,
-                                    new StudentDashboard()).commit();
+                                    new StudentDashboardFragment()).commit();
                             return true;
                         case R.id.student_results:
                             getSupportFragmentManager().beginTransaction().replace(
@@ -130,34 +132,13 @@ public class StudentDashboardActivity extends AppCompatActivity {
                 });
 
         fromLogin = getIntent().getBooleanExtra("isFromLogin", false);
+
         if (fromLogin == true) {
             isFirstTime = true;
         }
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.staff_logout:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("CONTINUE ?");
-                builder.setPositiveButton("LOGOUT",
-                        (dialog, which) -> logout());
-                builder.setNegativeButton("CANCEL",
-                        (dialog, which) -> {
-
-                        });
-                builder.show();
-                break;
-
-            case R.id.info:
-                Intent intent = new Intent(this, ContactUs.class);
-                startActivity(intent);
-                break;
-        }
-        return false;
-    }
 
     @Override
     public void onBackPressed() {
@@ -206,11 +187,6 @@ public class StudentDashboardActivity extends AppCompatActivity {
         finish();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.staff_logout_menu, menu);
-        return true;
-    }
 
     @Override
     protected void onResume() {
