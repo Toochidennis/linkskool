@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -82,10 +83,10 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
         setContentView(R.layout.activity_dashboard);
         check = "";
 
-        //  setSupportActionBar(toolbar);
         Intent i = getIntent();
         String from = i.getStringExtra("from");
         databaseHelper = new DatabaseHelper(this);
+
         try {
             generalSettingDao = DaoManager.createDao(
                     databaseHelper.getConnectionSource(),
@@ -241,17 +242,12 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
         bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
                 case R.id.student_dashboard:
-
                     getSupportFragmentManager().beginTransaction().replace(
                             R.id.payment_container,
                             new AdminDashboardFragment()).commit();
                     return true;
 
                 case R.id.student_results:
-                    /* getSupportFragmentManager().beginTransaction().replace(
-                            R.id.payment_container,
-                            new AdminResultFragment()).commit();*/
-
                     AdminClassesDialog adminResultDialog = new AdminClassesDialog(this, "result",
                             null, null);
                     adminResultDialog.setCancelable(true);
@@ -276,7 +272,6 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
                     return true;
 
                 case R.id.student_elearning:
-
                     AdminELearningDialog mAdminELearningDialog = new AdminELearningDialog(this,
                             new ELearningListener() {
                                 @Override
@@ -346,33 +341,6 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
 
         navigationView.getMenu().getItem(0).setChecked(true);
 
-        /*int seletedItemId = bottomNavigationView.getSelectedItemId();
-        switch (seletedItemId){
-                case R.id.student_dashboard:
-                    getSupportFragmentManager().beginTransaction().replace(R
-                    .id.fragment_container,new AdminDashbordFragment())
-                    .commit();
-                    break;
-                case R.id.student_results:
-                    getSupportFragmentManager().beginTransaction().replace(R
-                    .id.fragment_container,new AdminResultFragment()).commit();
-                    break;
-
-                case R.id.flashcard:
-                    getSupportFragmentManager().beginTransaction().replace(R
-                    .id.fragment_container,new FlashCardList()).commit();
-                    break;
-                case R.id.student_cbt:
-                    getSupportFragmentManager().beginTransaction().replace(R
-                    .id.fragment_container,new ExamFragment()).commit();
-                    break;
-
-                case R.id.student_elearning:
-                    getSupportFragmentManager().beginTransaction().replace(R
-                    .id.fragment_container,new AdminElearning()).commit();
-                    break;
-
-        }*/
     }
 
     @Override
@@ -399,14 +367,6 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
         new ForceUpdateAsync(currentVersion, Dashboard.this).execute();
     }
 
-
-    public String stripHtml(String html) {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            return Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY).toString();
-        } else {
-            return Html.fromHtml(html).toString();
-        }
-    }
 
     public void setHomeItem(Activity activity) {
 

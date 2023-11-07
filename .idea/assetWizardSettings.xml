@@ -310,8 +310,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="baseline_arrow_forward_24" />
-                            <entry key="sourceFile" value="C:\Users\tooch\Downloads\file-word-regular.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="skill_behaviour" />
+                            <entry key="sourceFile" value="C:\Users\tooch\Downloads\psychology_FILL0_wght400_GRAD0_opsz24.svg" />
                           </map>
                         </option>
                       </PersistentState>

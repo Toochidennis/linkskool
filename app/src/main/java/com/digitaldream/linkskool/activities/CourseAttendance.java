@@ -139,7 +139,6 @@ public class CourseAttendance extends AppCompatActivity implements CourseAttenda
 
         fabButtonAction();
 
-
     }
 
 
@@ -248,7 +247,7 @@ public class CourseAttendance extends AppCompatActivity implements CourseAttenda
         String url = getString(R.string.base_url) + "/getAttendanceList.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 url, response -> {
-            Log.i("response", response);
+
             dialog1.dismiss();
             try {
                 JSONArray jsonArray = new JSONArray(response);
@@ -410,7 +409,6 @@ public class CourseAttendance extends AppCompatActivity implements CourseAttenda
         String currentDate = sYear + "-" + month + "-" + sDayOfMonth;
         currentDate = currentDate.concat(" 00:00:00");
 
-        Log.i("date", currentDate);
         Intent newIntent = new Intent(CourseAttendance.this,
                 AttendanceDetails.class);
         newIntent.putExtra("from", "course");

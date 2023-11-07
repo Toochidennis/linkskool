@@ -21,7 +21,7 @@ import com.digitaldream.linkskool.config.ForceUpdateAsync;
 import com.digitaldream.linkskool.dialog.ContactUsDialog;
 import com.digitaldream.linkskool.fragments.ELibraryFragment;
 import com.digitaldream.linkskool.fragments.FlashCardList;
-import com.digitaldream.linkskool.fragments.ResultStaff;
+import com.digitaldream.linkskool.fragments.StaffResultDashboardFragment;
 import com.digitaldream.linkskool.fragments.StaffDashboardFragment;
 import com.digitaldream.linkskool.fragments.StaffELearningFragment;
 import com.digitaldream.linkskool.models.ClassNameTable;
@@ -81,7 +81,7 @@ public class StaffDashboardActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.payment_container, new StaffDashboardFragment()).commit();
                     return true;
                 case R.id.teacher_result:
-                    getSupportFragmentManager().beginTransaction().replace(R.id.payment_container, new ResultStaff()).commit();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.payment_container, new StaffResultDashboardFragment()).commit();
                     return true;
 
                 case R.id.teacher_library:
@@ -110,11 +110,6 @@ public class StaffDashboardActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.staff_logout_menu, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

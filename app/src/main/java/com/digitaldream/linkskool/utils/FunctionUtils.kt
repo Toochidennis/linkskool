@@ -548,8 +548,7 @@ object FunctionUtils {
     @JvmStatic
     fun getRandomColor(view: View) {
         val mutate = view.background.mutate() as GradientDrawable
-        val random = Random()
-        val hue = random.nextInt(256)
+        val hue = Random().nextInt(256)
         val color = Color.HSVToColor(floatArrayOf(hue.toFloat(), 2f, 5f))
         val colorStateList = ColorStateList.valueOf(color)
         mutate.color = colorStateList
