@@ -95,7 +95,6 @@ class AdminPaymentDashboardFragment : Fragment(R.layout.fragment_dashboard_payme
             actionBar!!.apply {
                 setHomeButtonEnabled(true)
                 title = "Payment"
-               // setHomeAsUpIndicator(R.drawable.arrow_left)
                 setDisplayHomeAsUpEnabled(true)
             }
 
