@@ -43,6 +43,15 @@
         tools:targetApi="n">
 
         <activity
+            android:name="com.digitaldream.linkskool.activities.StaffAttendanceActivity"
+            android:exported="false"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+        <activity
             android:name="com.digitaldream.linkskool.activities.StaffELearningActivity"
             android:exported="false"
             android:screenOrientation="portrait">
@@ -181,7 +190,6 @@
         <activity android:name="com.digitaldream.linkskool.activities.FormClass" />
         <activity android:name="com.digitaldream.linkskool.activities.ExamActivity" />
         <activity android:name="com.digitaldream.linkskool.utils.VideoUtils" />
-        <activity android:name="com.digitaldream.linkskool.activities.StaffCourses" />
         <activity android:name="com.digitaldream.linkskool.activities.StaffUtils" />
         <activity android:name="com.digitaldream.linkskool.activities.AddCourse" />
         <activity android:name="com.digitaldream.linkskool.activities.AllTeachers" />
