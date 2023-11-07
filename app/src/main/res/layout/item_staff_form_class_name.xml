@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dimen_16"
+    android:layout_marginEnd="@dimen/dimen_16"
+    android:background="@drawable/dialog_bg4"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:paddingStart="@dimen/dimen_32"
+    android:paddingTop="@dimen/dimen_16"
+    android:paddingEnd="@dimen/dimen_32"
+    android:paddingBottom="@dimen/dimen_16">
+
+    <TextView
+        android:id="@+id/classNameTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JSS1"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16" />
+
+</LinearLayout>
