@@ -31,10 +31,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.digitaldream.linkskool.adapters.AnswerAdapter;
-import com.digitaldream.linkskool.adapters.QAAdapter;
 import com.digitaldream.linkskool.models.AnswerModel;
 import com.digitaldream.linkskool.models.CommentTable;
 import com.digitaldream.linkskool.R;
+import com.digitaldream.linkskool.models.QAObject;
 import com.digitaldream.linkskool.utils.AnswerBottomSheet;
 import com.digitaldream.linkskool.utils.RefreshListener;
 import com.squareup.picasso.Picasso;
@@ -55,7 +55,7 @@ import java.util.Map;
 
 public class AnswerView extends AppCompatActivity implements AnswerAdapter.OnAnswerClickListener, RefreshListener {
     TextView name,date,initial,answer,commentNo,upvotes,sharesCount,user,date1;
-    public static QAAdapter.QAObject feed;
+    public static QAObject feed;
     private RecyclerView recyclerView;
     private List<AnswerModel> answerList;
     private EditText replyEDT;
@@ -83,7 +83,7 @@ public class AnswerView extends AppCompatActivity implements AnswerAdapter.OnAns
                 onBackPressed();
             }
         });
-        feed = (QAAdapter.QAObject) getIntent().getSerializableExtra("feed");
+        feed = (QAObject) getIntent().getSerializableExtra("feed");
         TextView questionText = findViewById(R.id.question);
         String question = feed.getQuestion().trim();
         Log.i("response",question);
