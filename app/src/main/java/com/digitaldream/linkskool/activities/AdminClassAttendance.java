@@ -194,7 +194,7 @@ public class AdminClassAttendance extends AppCompatActivity implements AdminClas
             }
 
             takeClassAttendance(mStudentClassId, staffId, courseId,
-                    jsonArray.toString(), year, term, db,
+                    jsonArray.toString(), year, term,
                     (String) actionBar.getTitle());
 
         });
@@ -325,7 +325,7 @@ public class AdminClassAttendance extends AppCompatActivity implements AdminClas
     private void takeClassAttendance(String sClassId, String sStaffId,
                                      String sCourseId,
                                      String sStudents, String sYear,
-                                     String sTerm, String sDb, String sCount) {
+                                     String sTerm, String sCount) {
         final ACProgressFlower dialog1 = new ACProgressFlower.Builder(this)
                 .direction(ACProgressConstant.DIRECT_CLOCKWISE)
                 .textMarginTop(10)
@@ -377,7 +377,7 @@ public class AdminClassAttendance extends AppCompatActivity implements AdminClas
                 stringMap.put("register", sStudents);
                 stringMap.put("count", sCount);
                 stringMap.put("date", getDate());
-                stringMap.put("_db", sDb);
+                stringMap.put("_db", db);
                 return stringMap;
             }
         };
