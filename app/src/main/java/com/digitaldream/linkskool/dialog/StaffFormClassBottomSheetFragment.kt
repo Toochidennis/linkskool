@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.activities.StaffAttendanceActivity
+import com.digitaldream.linkskool.activities.AttendanceActivity
 import com.digitaldream.linkskool.activities.StaffUtils
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
+private const val ARG_PARAM3 = "param3"
 
 class StaffFormClassBottomSheetFragment : BottomSheetDialogFragment() {
 
@@ -21,23 +23,30 @@ class StaffFormClassBottomSheetFragment : BottomSheetDialogFragment() {
     private lateinit var attendanceBtn: TextView
 
     private var classId: String? = null
+    private var className: String? = null
+    private var levelId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         arguments?.let {
             classId = it.getString(ARG_PARAM1)
+            className = it.getString(ARG_PARAM2)
+            levelId = it.getString(ARG_PARAM3)
         }
     }
 
     companion object {
 
         @JvmStatic
-        fun newInstance(classId: String) = StaffFormClassBottomSheetFragment().apply {
-            arguments = Bundle().apply {
-                putString(ARG_PARAM1, classId)
+        fun newInstance(classId: String, className: String, levelId: String) =
+            StaffFormClassBottomSheetFragment().apply {
+                arguments = Bundle().apply {
+                    putString(ARG_PARAM1, classId)
+                    putString(ARG_PARAM2, className)
+                    putString(ARG_PARAM3, levelId)
+                }
             }
-        }
     }
 
     override fun onCreateView(
@@ -79,7 +88,8 @@ class StaffFormClassBottomSheetFragment : BottomSheetDialogFragment() {
         }
 
         attendanceBtn.setOnClickListener {
-            launchActivity("class_attendance", StaffAttendanceActivity::class.java)
+
+            launchActivity("class_attendance", AttendanceActivity::class.java)
         }
 
     }
@@ -88,7 +98,9 @@ class StaffFormClassBottomSheetFragment : BottomSheetDialogFragment() {
         startActivity(
             Intent(requireContext(), activity)
                 .putExtra("from", from)
-                .putExtra("classId", classId ?: "")
+                .putExtra("class_id", classId)
+                .putExtra("class_name", className)
+                .putExtra("level_id", levelId)
         )
 
         dismiss()
