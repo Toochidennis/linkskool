@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.activities.CourseAttendance.getDate
+import com.digitaldream.linkskool.utils.FunctionUtils.getDate
 import com.digitaldream.linkskool.dialog.DatePickerBottomSheet
 import com.digitaldream.linkskool.interfaces.DateListener
 import com.digitaldream.linkskool.models.TimeFrameDataModel
@@ -103,7 +103,7 @@ class DateRangeFragment(
             calendar.add(Calendar.MONTH, -1)
             mStartDate = sdf.format(calendar.time)
 
-            mStartDateInput.setText(FunctionUtils.formatDate(mStartDate!!))
+            mStartDateInput.setText(FunctionUtils.formatDate(mStartDate?:""))
             mEndDateInput.setText(FunctionUtils.formatDate((getDate())))
 
             sTimeFrameDataModel.startDate = mStartDate
@@ -171,7 +171,6 @@ class DateRangeFragment(
 
     private fun handleButtonClick(button: Button) {
         when (button.id) {
-
             R.id.custom_btn -> {
                 if (!mCustomBtn.isSelected) {
                     deselectAllButtonExcept(mCustomBtn)
@@ -338,6 +337,4 @@ class DateRangeFragment(
         mStartDateTxt.setTextColor(ContextCompat.getColor(requireContext(), R.color.test_color_7))
         mEndDateTxt.setTextColor(ContextCompat.getColor(requireContext(), R.color.test_color_7))
     }
-
-
 }
