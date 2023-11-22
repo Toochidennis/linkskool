@@ -43,7 +43,7 @@
         tools:targetApi="n">
 
         <activity
-            android:name="com.digitaldream.linkskool.activities.StaffAttendanceActivity"
+            android:name="com.digitaldream.linkskool.activities.AttendanceActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data
@@ -124,23 +124,16 @@
                 android:value="" />
         </activity>
         <activity android:name="com.digitaldream.linkskool.activities.BooksActivity" />
-        <activity android:name="com.digitaldream.linkskool.activities.StaffCourseAttendance" />
+        <activity android:name="com.digitaldream.linkskool.activities.StaffCourseAttendanceActivity" />
         <activity
-            android:name="com.digitaldream.linkskool.activities.AttendanceDetails"
+            android:name="com.digitaldream.linkskool.activities.AttendanceDetailsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.digitaldream.linkskool.activities.CourseAttendance"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name="com.digitaldream.linkskool.activities.AdminClassAttendance"
+            android:name="com.digitaldream.linkskool.activities.ClassAttendanceActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data
@@ -148,7 +141,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="com.digitaldream.linkskool.activities.AttendanceActivity"
+            android:name="com.digitaldream.linkskool.activities.AdminAttendanceActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data

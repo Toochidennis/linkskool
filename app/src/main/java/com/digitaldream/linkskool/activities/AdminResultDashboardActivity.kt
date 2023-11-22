@@ -118,7 +118,7 @@ class AdminResultDashboardActivity : AppCompatActivity(R.layout.activity_admin_r
 
         mAttendance.setOnClickListener {
             startActivity(
-                Intent(this, AttendanceActivity::class.java)
+                Intent(this, AdminAttendanceActivity::class.java)
                     .putExtra("levelId", mLevelId)
                     .putExtra("classId", mClassId)
                     .putExtra("className", mClassName)

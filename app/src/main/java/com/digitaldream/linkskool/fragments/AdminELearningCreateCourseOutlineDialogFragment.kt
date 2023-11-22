@@ -146,7 +146,7 @@ class AdminELearningCreateCourseOutlineDialogFragment(
 
     private fun selectClass() {
         mSelectAllClassesBtn.setOnClickListener {
-            AdminELearningSelectClassFragment(selectedClasses, levelId!!) { classes ->
+            AdminELearningSelectClassFragment(selectedClasses, levelId) { classes ->
                 if (classes.isEmpty())
                     loadDataset()
                 else

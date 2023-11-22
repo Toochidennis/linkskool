@@ -11,7 +11,6 @@ import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.dialog.StaffFormClassBottomSheetFragment
 import com.digitaldream.linkskool.models.ClassNameTable
 import com.digitaldream.linkskool.models.StaffFormClassModel
-import com.digitaldream.linkskool.utils.FunctionUtils.capitaliseFirstLetter
 
 class StaffFormClassAdapter(
     private val fragmentManager: FragmentManager,
@@ -39,7 +38,7 @@ class StaffFormClassAdapter(
         private lateinit var itemAdapter: GenericAdapter<ClassNameTable>
 
         fun bind(formClassModel: StaffFormClassModel) {
-            courseNameTxt.text = capitaliseFirstLetter(formClassModel.levelName)
+            courseNameTxt.text = formClassModel.levelName
 
             setUpItemAdapter(formClassModel.classList)
         }
@@ -58,7 +57,9 @@ class StaffFormClassAdapter(
 
                 StaffFormClassBottomSheetFragment
                     .newInstance(
-                        itemPosition.classId
+                        itemPosition.classId,
+                        itemPosition.className,
+                        itemPosition.level
                     ).show(fragmentManager, "Form class")
 
             }

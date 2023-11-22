@@ -247,6 +247,7 @@ object FunctionUtils {
             val sdf = when (format) {
                 "default" -> SimpleDateFormat("dd, MMM", Locale.getDefault())
                 "custom" -> SimpleDateFormat("dd MMM", Locale.getDefault())
+                "full"-> SimpleDateFormat("EEE, dd MMM, yyyy", Locale.getDefault())
                 else -> SimpleDateFormat("EEE, dd MMM HH:mm", Locale.getDefault())
             }
             formattedDate = sdf.format(parseDate)
