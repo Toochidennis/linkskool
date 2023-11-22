@@ -10,6 +10,7 @@
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/dimen_16"
         android:layout_marginTop="@dimen/dimen_16"
+        android:textAllCaps="true"
         android:layout_marginEnd="@dimen/dimen_16"
         android:text="@string/select_class"
         android:textColor="@color/black"
