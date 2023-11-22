@@ -46,12 +46,12 @@ public class StaffUtils extends AppCompatActivity {
                         R.id.fragment_container, new StaffFormClassFragment()).commit();
                 break;
 
-            case "staff":
+        /*    case "staff":
                 getSupportFragmentManager().beginTransaction().replace(
                         R.id.fragment_container,
                         AdminClassAttendanceFragment.newInstance(classId,
                                 levelId, className, "staff")).commit();
-                break;
+                break;*/
 
             case "cbt":
                 getSupportFragmentManager().beginTransaction().replace(
