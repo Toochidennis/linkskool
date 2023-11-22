@@ -15,20 +15,19 @@ import androidx.viewpager.widget.ViewPager;
 import com.digitaldream.linkskool.R;
 import com.digitaldream.linkskool.adapters.SectionPagerAdapter;
 import com.digitaldream.linkskool.fragments.AdminClassAttendanceFragment;
-import com.digitaldream.linkskool.fragments.CourseAttendanceFragment;
-import com.digitaldream.linkskool.fragments.StaffClassAttendanceFragment;
-import com.digitaldream.linkskool.fragments.StaffCourseAttendanceFragment;
+import com.digitaldream.linkskool.fragments.AdminCourseAttendanceFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.Locale;
 
 
-public class AttendanceActivity extends AppCompatActivity {
+public class AdminAttendanceActivity extends AppCompatActivity {
     String mStudentLevelId, mStudentClassId, mClassName, from;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_attendance);
+        setContentView(R.layout.activity_admin_attendance);
 
         Toolbar toolbar = findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
@@ -54,7 +53,6 @@ public class AttendanceActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(
                 "loginDetail", Context.MODE_PRIVATE);
         String term = sharedPreferences.getString("term", "");
-        // year = mSettingModels.get(0).getSchoolTerm();
         String year = sharedPreferences.getString("school_year", "");
 
         try {
@@ -84,21 +82,9 @@ public class AttendanceActivity extends AppCompatActivity {
                                 previousYear, year, termText));
 
                 adapter.addFragment(AdminClassAttendanceFragment.newInstance(
-                        mStudentClassId, mStudentLevelId, mClassName,
-                        "admin"), "Class");
-                adapter.addFragment(
-                        CourseAttendanceFragment.newInstance(mStudentClassId,
-                                mStudentLevelId), "Course");
+                        mStudentLevelId, mStudentClassId, mClassName), "Class");
+                adapter.addFragment(AdminCourseAttendanceFragment.newInstance(mStudentClassId), "Course");
 
-            } else {
-                name.setText(termText);
-                classYear.setText(String.format(Locale.getDefault(), "%d/%s",
-                        previousYear, year));
-
-                adapter.addFragment(new StaffClassAttendanceFragment(),
-                        "Class");
-                adapter.addFragment(new StaffCourseAttendanceFragment(),
-                        "Course");
             }
 
             viewPager.setAdapter(adapter);
