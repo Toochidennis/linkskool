@@ -30,7 +30,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.activities.CourseAttendance
 import com.digitaldream.linkskool.activities.StaffELearningActivity
 import com.digitaldream.linkskool.adapters.AdminELearningCommentAdapter
 import com.digitaldream.linkskool.adapters.AdminELearningFilesAdapter
@@ -38,6 +37,7 @@ import com.digitaldream.linkskool.models.AttachmentModel
 import com.digitaldream.linkskool.models.CommentDataModel
 import com.digitaldream.linkskool.utils.FileViewModel
 import com.digitaldream.linkskool.utils.FunctionUtils
+import com.digitaldream.linkskool.utils.FunctionUtils.getDate
 import com.digitaldream.linkskool.utils.VolleyCallback
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -351,7 +351,7 @@ class StaffELearningMaterialDetailsFragment : Fragment() {
                 contentId ?: "",
                 userName ?: "",
                 comment,
-                CourseAttendance.getDate()
+                getDate()
             )
 
         val newCommentList = mutableListOf<CommentDataModel>().apply {
