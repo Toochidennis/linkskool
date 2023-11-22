@@ -5,9 +5,7 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -68,7 +66,8 @@ class StaffDashboardResultAdapter(
                     .newInstance(
                         itemPosition.levelId,
                         itemPosition.courseId,
-                        itemPosition.classId
+                        itemPosition.classId,
+                        itemPosition.courseName
                     ).show(fragmentManager, "")
 
             }
