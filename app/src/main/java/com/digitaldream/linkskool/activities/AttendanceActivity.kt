@@ -4,21 +4,27 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.digitaldream.linkskool.R
+import com.digitaldream.linkskool.fragments.CourseAttendanceFragment
 import com.digitaldream.linkskool.fragments.StaffClassAttendanceFragment
-import com.digitaldream.linkskool.fragments.StaffCourseAttendanceFragment
 
-class StaffAttendanceActivity : AppCompatActivity() {
+class AttendanceActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_staff_attendance)
+        setContentView(R.layout.activity_attendance)
+
+        val levelId = intent.getStringExtra("level_id") ?: ""
+        val className = intent.getStringExtra("class_name") ?: ""
+        val classId = intent.getStringExtra("class_id") ?: ""
+        val courseId = intent.getStringExtra("course_id") ?: ""
+        val courseName = intent.getStringExtra("course_name") ?: ""
 
         when (intent.getStringExtra("from")) {
             "course_attendance" -> {
                 supportFragmentManager.commit {
                     replace(
                         R.id.staff_attendance_container,
-                        StaffCourseAttendanceFragment()
+                        CourseAttendanceFragment.newInstance(courseId, classId, courseName)
                     )
                 }
             }
@@ -27,7 +33,7 @@ class StaffAttendanceActivity : AppCompatActivity() {
                 supportFragmentManager.commit {
                     replace(
                         R.id.staff_attendance_container,
-                        StaffClassAttendanceFragment()
+                        StaffClassAttendanceFragment.newInstance(levelId, classId, className)
                     )
                 }
             }
