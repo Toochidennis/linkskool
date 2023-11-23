@@ -27,7 +27,8 @@ import org.json.JSONArray
 import org.json.JSONObject
 
 
-class ClassAttendanceActivity : AppCompatActivity() {
+class ClassAttendanceActivity : AppCompatActivity(),
+    ClassAttendanceAdapter.AttendanceUpdateListener {
 
     private lateinit var studentsRecyclerView: RecyclerView
     private lateinit var selectAllLayout: RelativeLayout
@@ -186,7 +187,7 @@ class ClassAttendanceActivity : AppCompatActivity() {
     private fun setUpRecyclerView() {
         val attendanceAdapter = ClassAttendanceAdapter(
             tagList, selectedItems, selectAllLayout,
-            allTitleTxt, studentCountTxt, imageView, submitBtn
+            allTitleTxt, this
         )
 
         studentsRecyclerView.apply {
@@ -257,4 +258,20 @@ class ClassAttendanceActivity : AppCompatActivity() {
         return false
     }
 
+    override fun onAttendanceUpdate(hasChanges: Boolean, selectedItemsCount: Int) {
+        if (hasChanges && selectedItemsCount > 0) {
+            imageView.isVisible = false
+            studentCountTxt.isVisible = true
+            studentCountTxt.text = selectedItems.size.toString()
+
+            // Show the submit button only if items are selected
+            submitBtn.show()
+        } else {
+            imageView.isVisible = true
+            studentCountTxt.isVisible = false
+
+            // Hide the submit button if no items are selected
+            submitBtn.hide()
+        }
+    }
 }
