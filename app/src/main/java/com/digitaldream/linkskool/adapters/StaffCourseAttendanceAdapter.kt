@@ -39,7 +39,6 @@ class StaffCourseAttendanceAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(itemList[position])
-        updateSubmitButtonVisibility()
     }
 
     override fun getItemCount(): Int {
@@ -99,6 +98,8 @@ class StaffCourseAttendanceAdapter(
                     studentNameTxt.setTextColor(Color.BLACK)
                 }
 
+                updateSubmitButtonVisibility()
+
                 notifyDataSetChanged()
             }
 
@@ -109,6 +110,8 @@ class StaffCourseAttendanceAdapter(
                 } else {
                     selectAll()
                 }
+
+                updateSubmitButtonVisibility()
             }
         }
     }

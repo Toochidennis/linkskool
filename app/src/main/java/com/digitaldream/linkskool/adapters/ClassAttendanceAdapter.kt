@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -13,20 +12,15 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.models.TagModel
-import com.digitaldream.linkskool.utils.FunctionUtils
 import com.digitaldream.linkskool.utils.FunctionUtils.capitaliseFirstLetter
 import com.digitaldream.linkskool.utils.FunctionUtils.getRandomColor
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import timber.log.Timber
 
 class ClassAttendanceAdapter(
     private val itemList: List<TagModel>,
     private var selectedItems: HashMap<String, String>,
     private val selectAllLayout: RelativeLayout,
     private val allTitleTxt: TextView,
-    private val studentCountTxt: TextView,
-    private val imageView: ImageView,
-    private val submitBtn: FloatingActionButton
+    private val listener: AttendanceUpdateListener
 ) : RecyclerView.Adapter<ClassAttendanceAdapter.ViewHolder>() {
 
     private var initialSelectedItemsSize = selectedItems.size
@@ -40,7 +34,6 @@ class ClassAttendanceAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(itemList[position])
-        updateSubmitButtonVisibility()
     }
 
     override fun getItemCount(): Int {
@@ -99,6 +92,8 @@ class ClassAttendanceAdapter(
                     studentNameTxt.setTextColor(Color.BLACK)
                 }
 
+                updateSubmitButtonVisibility()
+
                 notifyDataSetChanged()
             }
 
@@ -108,6 +103,8 @@ class ClassAttendanceAdapter(
                 } else {
                     selectAll()
                 }
+
+                updateSubmitButtonVisibility()
             }
         }
     }
@@ -140,19 +137,10 @@ class ClassAttendanceAdapter(
         val hasChanges = selectedItems.size != initialSelectedItemsSize
         initialSelectedItemsSize = selectedItems.size
 
-        if (hasChanges && selectedItems.isNotEmpty()) {
-            imageView.isVisible = false
-            studentCountTxt.isVisible = true
-            studentCountTxt.text = selectedItems.size.toString()
+        listener.onAttendanceUpdate(hasChanges, initialSelectedItemsSize)
+    }
 
-            // Show the submit button only if items are selected
-            submitBtn.show()
-        } else {
-            imageView.isVisible = true
-            studentCountTxt.isVisible = false
-
-            // Hide the submit button if no items are selected
-            submitBtn.hide()
-        }
+    interface AttendanceUpdateListener {
+        fun onAttendanceUpdate(hasChanges: Boolean, selectedItemsCount: Int)
     }
 }
