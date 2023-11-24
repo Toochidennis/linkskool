@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
@@ -30,6 +31,7 @@ import org.json.JSONObject
 class ClassAttendanceActivity : AppCompatActivity(),
     ClassAttendanceAdapter.AttendanceUpdateListener {
 
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var studentsRecyclerView: RecyclerView
     private lateinit var selectAllLayout: RelativeLayout
     private lateinit var imageView: ImageView
@@ -41,6 +43,7 @@ class ClassAttendanceActivity : AppCompatActivity(),
     private var studentList = mutableListOf<StudentTable>()
     private val tagList = mutableListOf<TagModel>()
     private val selectedItems = hashMapOf<String, String>()
+    private var databaseHelper: DatabaseHelper? = null
 
     private var responseId: String? = null
     private var userId: String? = null
@@ -60,6 +63,7 @@ class ClassAttendanceActivity : AppCompatActivity(),
 
     private fun setUpViews() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
+        swipeRefreshLayout = findViewById(R.id.swipeRefresh)
         studentsRecyclerView = findViewById(R.id.studentsRecyclerView)
         selectAllLayout = findViewById(R.id.selectAllLayout)
         studentCountTxt = findViewById(R.id.studentCountTxt)
@@ -90,11 +94,11 @@ class ClassAttendanceActivity : AppCompatActivity(),
 
 
     private fun initData() {
-        val databaseHelper = DatabaseHelper(this)
+        databaseHelper = DatabaseHelper(this)
 
         try {
             val studentDao = DaoManager.createDao(
-                databaseHelper.connectionSource,
+                databaseHelper?.connectionSource,
                 StudentTable::class.java
             )
             studentList = studentDao.queryBuilder()
@@ -110,6 +114,8 @@ class ClassAttendanceActivity : AppCompatActivity(),
         submitBtn.setOnClickListener {
             takeAttendance()
         }
+
+        refreshData()
     }
 
 
@@ -138,10 +144,14 @@ class ClassAttendanceActivity : AppCompatActivity(),
 
     private fun parsePreviousAttendanceResponse(response: String) {
         try {
-            if (response != "[]")
+            if (response != "[]") {
                 with(JSONArray(response)) {
                     getJSONObject(0).let {
                         responseId = it.getString("id")
+                        studentCountTxt.text = it.getString("count")
+                        studentCountTxt.isVisible = true
+                        imageView.isVisible = false
+
                         val attendanceArray = it.getString("register")
 
                         JSONArray(attendanceArray).let { array ->
@@ -154,8 +164,10 @@ class ClassAttendanceActivity : AppCompatActivity(),
                         }
                     }
                 }
+                errorMessageTxt.isVisible = true
 
-            sortData()
+                sortData()
+            }
 
         } catch (e: Exception) {
             e.printStackTrace()
@@ -188,6 +200,7 @@ class ClassAttendanceActivity : AppCompatActivity(),
         val attendanceAdapter = ClassAttendanceAdapter(
             tagList, selectedItems, selectAllLayout,
             allTitleTxt, this
+
         )
 
         studentsRecyclerView.apply {
@@ -250,6 +263,16 @@ class ClassAttendanceActivity : AppCompatActivity(),
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
+    private fun refreshData() {
+        swipeRefreshLayout.setOnRefreshListener {
+            studentList.clear()
+            tagList.clear()
+            selectedItems.clear()
+            previousAttendance()
+            swipeRefreshLayout.isRefreshing = false
+        }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             finish()
@@ -273,5 +296,10 @@ class ClassAttendanceActivity : AppCompatActivity(),
             // Hide the submit button if no items are selected
             submitBtn.hide()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        databaseHelper?.close()
     }
 }
