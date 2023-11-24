@@ -17,12 +17,14 @@ import com.digitaldream.linkskool.activities.ViewClassResultWebview
 
 class TermResultDialog(
     sContext: Context,
-    private var sClassId: String,
-    private var sCourseId: String?,
-    private var sYear: String,
+    private var classId: String,
+    private var courseId: String?,
+    private var year: String,
     private var sTerm: String,
-    private var sFrom: String,
+    private var from: String,
 ) : Dialog(sContext) {
+
+    private var term: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,19 +39,18 @@ class TermResultDialog(
         val viewCourseResult: CardView = findViewById(R.id.view_course_result)
         val editCourseResult: CardView = findViewById(R.id.edit_course_result)
 
-        val term = when (sTerm.lowercase()) {
+        term = when (sTerm.lowercase()) {
             "First Term".lowercase() -> "1"
             "Second Term".lowercase() -> "2"
             "Third Term".lowercase() -> "3"
             else -> ""
         }
 
-        if (sFrom == "course") {
+        if (from == "course") {
             courseResult.isVisible = false
             compositeResult.isVisible = false
             viewCourseResult.isVisible = true
             editCourseResult.isVisible = true
-
         } else {
             courseResult.isVisible = true
             compositeResult.isVisible = true
@@ -58,48 +59,34 @@ class TermResultDialog(
         }
 
         editCourseResult.setOnClickListener {
-            context.startActivity(
-                Intent(context, SubjectResultUtil::class.java)
-                    .putExtra("classId", sClassId)
-                    .putExtra("courseId", sCourseId)
-                    .putExtra("year", sYear)
-                    .putExtra("term", sTerm)
-                    .putExtra("from", "edit")
-            )
-            dismiss()
+            launchActivity(SubjectResultUtil::class.java, "edit")
         }
 
         viewCourseResult.setOnClickListener {
-            context.startActivity(
-                Intent(context, SubjectResultUtil::class.java)
-                    .putExtra("classId", sClassId)
-                    .putExtra("courseId", sCourseId)
-                    .putExtra("year", sYear)
-                    .putExtra("term", sTerm)
-                    .putExtra("from", "view")
-            )
-            dismiss()
+            launchActivity(SubjectResultUtil::class.java, "view")
         }
 
         courseResult.setOnClickListener {
-            context.startActivity(
-                Intent(context, CourseResultActivity::class.java)
-                    .putExtra("class_id", sClassId)
-                    .putExtra("session", sYear)
-                    .putExtra("term", term)
-            )
-            dismiss()
+            launchActivity(CourseResultActivity::class.java)
         }
 
         compositeResult.setOnClickListener {
-            context.startActivity(
-                Intent(context, ViewClassResultWebview::class.java)
-                    .putExtra("class_Id", sClassId)
-                    .putExtra("session", sYear)
-                    .putExtra("term", term)
-            )
+            launchActivity(ViewClassResultWebview::class.java)
             dismiss()
         }
-
     }
+
+
+    private fun launchActivity(activity: Class<*>, from: String = "") {
+        context.startActivity(
+            Intent(context, activity)
+                .putExtra("class_id", classId)
+                .putExtra("course_id", courseId)
+                .putExtra("year", year)
+                .putExtra("term", term)
+                .putExtra("from", from)
+        )
+        dismiss()
+    }
+
 }
