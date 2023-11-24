@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
@@ -24,8 +25,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONArray
 import org.json.JSONObject
 
-class StaffCourseAttendanceActivity : AppCompatActivity() {
+class StaffCourseAttendanceActivity : AppCompatActivity(),
+    StaffCourseAttendanceAdapter.AttendanceUpdateListener {
 
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var studentsRecyclerView: RecyclerView
     private lateinit var selectAllLayout: RelativeLayout
     private lateinit var imageView: ImageView
@@ -41,7 +44,6 @@ class StaffCourseAttendanceActivity : AppCompatActivity() {
     private var userId: String? = null
     private var courseId: String? = null
     private var classId: String? = null
-    private var courseName: String? = null
     private var year: String? = null
     private var term: String? = null
 
@@ -56,6 +58,7 @@ class StaffCourseAttendanceActivity : AppCompatActivity() {
 
     private fun initViews() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
+        swipeRefreshLayout = findViewById(R.id.swipeRefresh)
         studentsRecyclerView = findViewById(R.id.studentsRecyclerView)
         selectAllLayout = findViewById(R.id.selectAllLayout)
         studentCountTxt = findViewById(R.id.countTxt)
@@ -81,7 +84,6 @@ class StaffCourseAttendanceActivity : AppCompatActivity() {
 
         classId = intent.getStringExtra("class_id")
         courseId = intent.getStringExtra("course_id")
-        courseName = intent.getStringExtra("class_name")
     }
 
     private fun initData() {
@@ -90,6 +92,8 @@ class StaffCourseAttendanceActivity : AppCompatActivity() {
         submitBtn.setOnClickListener {
             submitAttendance()
         }
+
+        refreshData()
     }
 
     private fun studentsParameters(): HashMap<String, String> {
@@ -113,7 +117,7 @@ class StaffCourseAttendanceActivity : AppCompatActivity() {
                 }
 
                 override fun onError(error: VolleyError) {
-                    errorMessageTxt.isVisible= true
+                    showToast(getString(R.string.no_internet))
                 }
             })
     }
@@ -137,23 +141,31 @@ class StaffCourseAttendanceActivity : AppCompatActivity() {
                             }
                         }
                     }
-                }
 
-                if (attendanceArray != "[]") {
-                    JSONArray(attendanceArray).run {
-                        responseId = getJSONObject(0).getString("id")
-                        JSONArray(getJSONObject(1).getString("register")).let { register ->
-                            for (i in 0 until register.length()) {
-                                getJSONObject(i).let {
-                                    selectedItems[it.getString("id")] = it.getString("name")
+                    if (attendanceArray != "[]") {
+                        JSONArray(attendanceArray).run {
+                            responseId = getJSONObject(0).getString("id")
+                            studentCountTxt.text = getJSONObject(0).getString("count")
+                            studentCountTxt.isVisible = true
+                            imageView.isVisible = false
+
+                            JSONArray(getJSONObject(0).getString("register")).let { register ->
+                                for (i in 0 until register.length()) {
+                                    register.getJSONObject(i).let {
+                                        selectedItems[it.getString("id")] = it.getString("name")
+                                    }
                                 }
                             }
                         }
                     }
-                }
-            }
 
-            sortData()
+                    sortData()
+                    errorMessageTxt.isVisible = false
+                } else {
+                    errorMessageTxt.isVisible = true
+                }
+
+            }
 
         } catch (e: Exception) {
             e.printStackTrace()
@@ -180,7 +192,7 @@ class StaffCourseAttendanceActivity : AppCompatActivity() {
     private fun setUpRecyclerView() {
         val attendanceAdapter = StaffCourseAttendanceAdapter(
             studentList, selectedItems, selectAllLayout,
-            allTitleTxt, studentCountTxt, imageView, submitBtn
+            allTitleTxt, this
         )
 
         studentsRecyclerView.apply {
@@ -242,6 +254,15 @@ class StaffCourseAttendanceActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
+    private fun refreshData() {
+        swipeRefreshLayout.setOnRefreshListener {
+            studentList.clear()
+            selectedItems.clear()
+            getStudents()
+            swipeRefreshLayout.isRefreshing = false
+        }
+    }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
@@ -249,6 +270,23 @@ class StaffCourseAttendanceActivity : AppCompatActivity() {
             return true
         }
         return false
+    }
+
+    override fun onAttendanceUpdate(hasChanges: Boolean, selectedItemsCount: Int) {
+        if (hasChanges && selectedItemsCount > 0) {
+            imageView.isVisible = false
+            studentCountTxt.isVisible = true
+            studentCountTxt.text = selectedItems.size.toString()
+
+            // Show the submit button only if items are selected
+            submitBtn.show()
+        } else {
+            imageView.isVisible = true
+            studentCountTxt.isVisible = false
+
+            // Hide the submit button if no items are selected
+            submitBtn.hide()
+        }
     }
 
 }
