@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -14,6 +15,7 @@ import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.models.TagModel
 import com.digitaldream.linkskool.utils.FunctionUtils.capitaliseFirstLetter
 import com.digitaldream.linkskool.utils.FunctionUtils.getRandomColor
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ClassAttendanceAdapter(
     private val itemList: List<TagModel>,
@@ -34,6 +36,7 @@ class ClassAttendanceAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(itemList[position])
+        updateSubmitButtonVisibility()
     }
 
     override fun getItemCount(): Int {
