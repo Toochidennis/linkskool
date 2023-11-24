@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
@@ -23,6 +24,7 @@ import org.json.JSONArray
 
 class AttendanceDetailsActivity : AppCompatActivity() {
 
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
     private lateinit var dateTxt: TextView
     private lateinit var detailsRecyclerView: RecyclerView
     private lateinit var errorMessageTxt: TextView
@@ -42,10 +44,13 @@ class AttendanceDetailsActivity : AppCompatActivity() {
         initViews()
 
         attendanceDetails()
+
+        refreshData()
     }
 
     private fun initViews() {
         val toolbar: Toolbar = findViewById(R.id.toolbar)
+        swipeRefreshLayout = findViewById(R.id.swipeRefresh)
         dateTxt = findViewById(R.id.dateTextView)
         detailsRecyclerView = findViewById(R.id.detailsRecyclerView)
         errorMessageTxt = findViewById(R.id.errorMessageTxt)
@@ -143,6 +148,14 @@ class AttendanceDetailsActivity : AppCompatActivity() {
             hasFixedSize()
             layoutManager = LinearLayoutManager(this@AttendanceDetailsActivity)
             adapter = detailsAdapter
+        }
+    }
+
+    private fun refreshData() {
+        swipeRefreshLayout.setOnRefreshListener {
+            studentTableList.clear()
+            attendanceDetails()
+            swipeRefreshLayout.isRefreshing = false
         }
     }
 

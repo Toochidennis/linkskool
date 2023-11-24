@@ -60,8 +60,8 @@ class CourseResultActivity : AppCompatActivity(R.layout.activity_course_result),
         mRefreshBtn = findViewById(R.id.refresh_btn)
 
         mClassId = intent.getStringExtra("class_id")
-        mCourseId = intent.getStringExtra("courseId")
-        mYear = intent.getStringExtra("session")
+        mCourseId = intent.getStringExtra("course_id")
+        mYear = intent.getStringExtra("year")
         mTerm = intent.getStringExtra("term")
 
         val previousYear = mYear!!.toInt() - 1

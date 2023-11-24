@@ -13,7 +13,6 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.models.TagModel
-import com.digitaldream.linkskool.utils.FunctionUtils
 import com.digitaldream.linkskool.utils.FunctionUtils.capitaliseFirstLetter
 import com.digitaldream.linkskool.utils.FunctionUtils.getRandomColor
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -23,9 +22,7 @@ class StaffCourseAttendanceAdapter(
     private var selectedItems: HashMap<String, String>,
     private val selectAllLayout: RelativeLayout,
     private val allTitleTxt: TextView,
-    private val studentCountTxt: TextView,
-    private val imageView: ImageView,
-    private val submitBtn: FloatingActionButton
+    private val listener: AttendanceUpdateListener
 ) : RecyclerView.Adapter<StaffCourseAttendanceAdapter.ViewHolder>() {
 
     private var initialSelectedItemsSize = selectedItems.size
@@ -57,8 +54,8 @@ class StaffCourseAttendanceAdapter(
             studentNameTxt.text = capitaliseFirstLetter(tag.tagName)
             initialsTxt.text = tag.tagName.substring(0, 1).uppercase()
             itemView.isSelected = tag.isSelected
-            getRandomColor(initialsLayout)
 
+            getRandomColor(initialsLayout)
 
             if (itemView.isSelected) {
                 selectedStateLayout.isVisible = true
@@ -144,19 +141,10 @@ class StaffCourseAttendanceAdapter(
         val hasChanges = selectedItems.size != initialSelectedItemsSize
         initialSelectedItemsSize = selectedItems.size
 
-        if (hasChanges && selectedItems.isNotEmpty()) {
-            imageView.isVisible = false
-            studentCountTxt.isVisible = true
-            studentCountTxt.text = selectedItems.size.toString()
+        listener.onAttendanceUpdate(hasChanges, initialSelectedItemsSize)
+    }
 
-            // Show the submit button only if items are selected
-            submitBtn.isVisible = true
-        } else {
-            imageView.isVisible = true
-            studentCountTxt.isVisible = false
-
-            // Hide the submit button if no items are selected
-            submitBtn.isVisible = false
-        }
+    interface AttendanceUpdateListener {
+        fun onAttendanceUpdate(hasChanges: Boolean, selectedItemsCount: Int)
     }
 }

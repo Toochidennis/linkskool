@@ -45,8 +45,8 @@ public class SubjectResultUtil extends AppCompatActivity {
         actionBar.setHomeAsUpIndicator(R.drawable.arrow_left);
         Intent i = getIntent();
 
-        String courseId = i.getStringExtra("courseId");
-        String classId = i.getStringExtra("classId");
+        String courseId = i.getStringExtra("course_id");
+        String classId = i.getStringExtra("class_id");
         String from = i.getStringExtra("from");
         String term = i.getStringExtra("term");
         String year = i.getStringExtra("year");

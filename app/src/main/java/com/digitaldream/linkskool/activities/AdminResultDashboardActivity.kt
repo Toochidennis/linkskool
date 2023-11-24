@@ -4,139 +4,133 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
-import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.adapters.AdminResultDashboardAdapter
-import com.digitaldream.linkskool.adapters.OnItemClickListener
 import com.digitaldream.linkskool.dialog.AdminClassesDialog
 import com.digitaldream.linkskool.dialog.AdminResultStudentNamesDialog
-import com.digitaldream.linkskool.dialog.TermResultDialog
 import com.digitaldream.linkskool.interfaces.ResultListener
 import com.digitaldream.linkskool.models.AdminResultDashboardModel
+import com.digitaldream.linkskool.models.AdminResultTermModel
 import com.digitaldream.linkskool.models.ChartModel
 import com.digitaldream.linkskool.utils.FunctionUtils.plotLineChart
 import com.digitaldream.linkskool.utils.FunctionUtils.sendRequestToServer
 import com.digitaldream.linkskool.utils.VolleyCallback
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter
 import org.achartengine.GraphicalView
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.*
 
-class AdminResultDashboardActivity : AppCompatActivity(R.layout.activity_admin_result_dashboard),
-    OnItemClickListener {
+class AdminResultDashboardActivity : AppCompatActivity(R.layout.activity_admin_result_dashboard) {
 
-    private lateinit var mBackBtn: ImageView
-    private lateinit var mTitle: TextView
-    private lateinit var mClassBtn: Button
-    private lateinit var mRootView: NestedScrollView
-    private lateinit var mTermErrorView: LinearLayout
-    private lateinit var mAverageScore: TextView
-    private lateinit var mAverageGraph: LinearLayout
-    private lateinit var mRecyclerView: RecyclerView
-    private lateinit var mAdapter: SectionedRecyclerViewAdapter
-    private lateinit var mStudentResult: CardView
-    private lateinit var mCourseRegistration: CardView
-    private lateinit var mAttendance: CardView
-    private lateinit var mErrorView: LinearLayout
-    private lateinit var mRefreshBtn: Button
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
+    private lateinit var backBtn: ImageButton
+    private lateinit var titleTxt: TextView
+    private lateinit var classBtn: Button
+    private lateinit var rootView: LinearLayout
+    private lateinit var averageScoreTxt: TextView
+    private lateinit var averageGraph: LinearLayout
+    private lateinit var resultRecyclerView: RecyclerView
+    private lateinit var studentResultCardView: CardView
+    private lateinit var courseRegistrationCardView: CardView
+    private lateinit var attendanceCardView: CardView
+    private lateinit var errorMessageTxt: TextView
+    private lateinit var termErrorMessageTxt: TextView
 
-    private val mTermList = mutableListOf<AdminResultDashboardModel>()
+    private val sessionList = mutableListOf<AdminResultDashboardModel>()
     private val mGraphList = arrayListOf<ChartModel>()
-    private var mGraphicalView: GraphicalView? = null
-    private var mClassId: String? = null
-    private var mClassName: String? = null
-    private var mLevelId: String? = null
+    private var graphicalView: GraphicalView? = null
+    private var classId: String? = null
+    private var className: String? = null
+    private var levelId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        mBackBtn = findViewById(R.id.back_btn)
-        mTitle = findViewById(R.id.toolbar_text)
-        mClassBtn = findViewById(R.id.class_name)
-        mRootView = findViewById(R.id.result_view)
-        mTermErrorView = findViewById(R.id.term_error_view)
-        mAverageScore = findViewById(R.id.average_score)
-        mAverageGraph = findViewById(R.id.chart)
-        mRecyclerView = findViewById(R.id.term_recycler)
-        mStudentResult = findViewById(R.id.student_result)
-        mCourseRegistration = findViewById(R.id.course_registration)
-        mAttendance = findViewById(R.id.attendance)
-        mErrorView = findViewById(R.id.error_view)
-        mRefreshBtn = findViewById(R.id.refresh_btn)
+        initViews()
+    }
 
-        mClassId = intent.getStringExtra("classId")
-        mClassName = intent.getStringExtra("class_name")
-        mLevelId = intent.getStringExtra("levelId")
+    private fun initViews() {
+        swipeRefreshLayout = findViewById(R.id.swipeRefresh)
+        backBtn = findViewById(R.id.back_btn)
+        titleTxt = findViewById(R.id.toolbar_text)
+        classBtn = findViewById(R.id.class_name)
+        rootView = findViewById(R.id.result_view)
+        averageScoreTxt = findViewById(R.id.average_score)
+        averageGraph = findViewById(R.id.chart)
+        resultRecyclerView = findViewById(R.id.term_recycler)
+        studentResultCardView = findViewById(R.id.student_result)
+        courseRegistrationCardView = findViewById(R.id.course_registration)
+        attendanceCardView = findViewById(R.id.attendance)
+        termErrorMessageTxt = findViewById(R.id.term_error_message_txt)
+        errorMessageTxt = findViewById(R.id.error_message_txt)
 
-        mBackBtn.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
+        classId = intent.getStringExtra("classId")
+        className = intent.getStringExtra("class_name")
+        levelId = intent.getStringExtra("levelId")
 
-        "Result".also { mTitle.text = it }
-        mClassBtn.text = mClassName
-
-        mAdapter = SectionedRecyclerViewAdapter()
-        mRecyclerView.run {
-            hasFixedSize()
-            layoutManager = LinearLayoutManager(this@AdminResultDashboardActivity)
-            isAnimating
-        }
-
+        "Result".also { titleTxt.text = it }
+        classBtn.text = className
 
         onCardClick()
 
         changeClass()
 
-        getTerms(mClassId!!)
+        getResults()
 
-        if (mGraphicalView == null) {
-            mGraphicalView = plotLineChart(
+        refreshData()
+
+        if (graphicalView == null) {
+            graphicalView = plotLineChart(
                 mGraphList,
                 this,
                 "Average",
                 "Month/Year"
             )
-            mAverageGraph.addView(mGraphicalView)
+            averageGraph.addView(graphicalView)
         } else {
-            mGraphicalView!!.repaint()
+            graphicalView!!.repaint()
         }
-
-        refresh()
 
     }
 
     private fun onCardClick() {
+        backBtn.setOnClickListener { onBackPressedDispatcher.onBackPressed() }
 
-        mAttendance.setOnClickListener {
+        attendanceCardView.setOnClickListener {
             startActivity(
                 Intent(this, AdminAttendanceActivity::class.java)
-                    .putExtra("levelId", mLevelId)
-                    .putExtra("classId", mClassId)
-                    .putExtra("className", mClassName)
+                    .putExtra("levelId", levelId)
+                    .putExtra("classId", classId)
+                    .putExtra("className", className)
                     .putExtra("from", "result")
             )
         }
 
-        mCourseRegistration.setOnClickListener {
+        courseRegistrationCardView.setOnClickListener {
             startActivity(
                 Intent(this, RegYearList::class.java)
-                    .putExtra("levelId", mLevelId)
-                    .putExtra("classId", mClassId)
+                    .putExtra("levelId", levelId)
+                    .putExtra("classId", classId)
             )
         }
 
-        mStudentResult.setOnClickListener {
-            AdminResultStudentNamesDialog(this, mClassId!!, "",
-                null).apply {
+        studentResultCardView.setOnClickListener {
+            AdminResultStudentNamesDialog(
+                this, classId ?: "", "",
+                null
+            ).apply {
                 setCancelable(true)
                 show()
             }.window?.setLayout(
@@ -148,25 +142,25 @@ class AdminResultDashboardActivity : AppCompatActivity(R.layout.activity_admin_r
     }
 
     private fun setClassName() {
-        mClassBtn.text = mClassName
+        classBtn.text = className
     }
 
     private fun changeClass() {
-        mClassBtn.setOnClickListener {
-            AdminClassesDialog(this, "result","changeLevel",
+        classBtn.setOnClickListener {
+            AdminClassesDialog(this, "result", "changeLevel",
                 object : ResultListener {
                     override fun sendClassName(sName: String) {
-                        mClassName = sName
+                        className = sName
                         setClassName()
                     }
 
                     override fun sendLevelId(sLevelId: String) {
-                        mLevelId = sLevelId
+                        levelId = sLevelId
                     }
 
                     override fun sendClassId(sClassId: String) {
-                        mClassId = sClassId
-                        getTerms(sClassId)
+                        classId = sClassId
+                        getResults()
                     }
                 }).apply {
                 setCancelable(true)
@@ -179,109 +173,92 @@ class AdminResultDashboardActivity : AppCompatActivity(R.layout.activity_admin_r
 
     }
 
-    private fun getTerms(sClassId: String) {
-        val url = "${getString(R.string.base_url)}/jsonTerms.php?class=$sClassId"
-        val hashMap = HashMap<String, String>()
+    private fun getResults() {
+        val url = "${getString(R.string.base_url)}/jsonTerms.php?class=$classId"
 
-        sendRequestToServer(Request.Method.GET, url, this, hashMap,
+        sendRequestToServer(Request.Method.GET, url, this, null,
             object : VolleyCallback {
                 override fun onResponse(response: String) {
-                    try {
-                        mAdapter.removeAllSections()
-                        mTermList.clear()
-
-                        JSONArray(response).also {
-                            if (it.get(0) is JSONObject) {
-                                val jsonObject = it.getJSONObject(0)
-                                val key = jsonObject.keys()
-                                while (key.hasNext()) {
-                                    val year = key.next()
-                                    if (year == "0000") continue
-                                    val sessionObject = jsonObject.getJSONObject(year)
-                                    val termObject = sessionObject.getJSONObject("terms")
-
-                                    val previousYear = year.toInt() - 1
-                                    val session = String.format(
-                                        Locale.getDefault(), "%d/%s",
-                                        previousYear, year
-                                    )
-
-
-                                    for (i in termObject.keys()) {
-                                        mTermList.add(
-                                            AdminResultDashboardModel(
-                                                termObject.getString(i),
-                                                year
-                                            )
-                                        )
-                                    }
-
-                                    mAdapter.addSection(
-                                        AdminResultDashboardAdapter(
-                                            mTermList,
-                                            "$session Session",
-                                            this@AdminResultDashboardActivity
-                                        )
-                                    )
-
-                                }
-
-                                mRecyclerView.adapter = mAdapter
-                                mRecyclerView.isVisible = true
-                                mRootView.isVisible = true
-                                mErrorView.isVisible = false
-                                mTermErrorView.isVisible = false
-
-                            } else {
-                                mTermErrorView.isVisible = true
-                                mRecyclerView.isVisible = false
-                                mErrorView.isVisible = false
-                            }
-
-                        }
-
-                    } catch (sE: Exception) {
-                        sE.printStackTrace()
+                    if (response != "[]") {
+                        parseResponse(response)
+                        termErrorMessageTxt.isVisible = false
+                        errorMessageTxt.isVisible = false
+                    } else {
+                        termErrorMessageTxt.isVisible = true
                     }
-
                 }
 
                 override fun onError(error: VolleyError) {
-                    mRootView.isVisible = false
-                    mErrorView.isVisible = true
+                    rootView.isVisible = false
+                    errorMessageTxt.isVisible = true
+                    Toast.makeText(
+                        this@AdminResultDashboardActivity, getString(
+                            R.string
+                                .no_internet
+                        ), Toast.LENGTH_SHORT
+                    ).show()
                 }
             })
 
     }
 
-    private fun refresh(){
-        mRefreshBtn.setOnClickListener {
-            getTerms(mClassId!!)
+    private fun parseResponse(response: String) {
+        try {
+            with(JSONArray(response)) {
+                getJSONObject(0).run {
+                    for (year in keys()) {
+                        if (year == "0000") continue
+
+                        val termList = mutableListOf<AdminResultTermModel>()
+
+                        JSONObject(getString(year)).let { terms ->
+                            JSONObject(terms.getString("terms")).let {
+                                for (termKey in it.keys()) {
+                                    val term = it.getString(termKey)
+                                    termList.add(AdminResultTermModel(term, year))
+                                }
+                            }
+                        }
+
+                        val previousYear = year.toInt() - 1
+                        val session = String.format(
+                            Locale.getDefault(), "%d/%s",
+                            previousYear, year
+                        )
+
+                        sessionList.add(AdminResultDashboardModel(session, termList))
+                    }
+                }
+            }
+
+            setUpAdapter()
+
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
+    private fun setUpAdapter() {
+        val resultAdapter = AdminResultDashboardAdapter(itemList = sessionList, classId ?: "")
 
-    override fun onItemClick(position: Int) {
-        val model = mTermList[position - 1]
+        resultRecyclerView.apply {
+            hasFixedSize()
+            layoutManager = LinearLayoutManager(this@AdminResultDashboardActivity)
+            adapter = resultAdapter
+        }
 
-        TermResultDialog(this, mClassId!!, null, model.session, model.term, "")
-            .apply {
-                setCancelable(true)
-                show()
-            }.window?.setLayout(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            )
     }
 
+    private fun refreshData() {
+        swipeRefreshLayout.setOnRefreshListener {
+            sessionList.clear()
+            getResults()
+            swipeRefreshLayout.isRefreshing = false
+        }
+    }
 
     /*   private fun callDeleteClassApi() {
-           val dialog1 = ACProgressFlower.Builder(this)
-               .direction(ACProgressConstant.DIRECT_CLOCKWISE)
-               .textMarginTop(10)
-               .fadeColor(Color.DKGRAY).build()
-           dialog1.setCanceledOnTouchOutside(false)
-           dialog1.show()
+
            val url = "http://linkskool.com/newportal/api/deleteClass.php?id=" + classId + "&_db=" + db
            val stringRequest = StringRequest(Request.Method.GET, url, { response ->
                dialog1.dismiss()
