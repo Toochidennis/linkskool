@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
@@ -77,7 +78,7 @@ class AdminStudentResultFragment : Fragment(), OnItemClickListener {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_admin_student_result, container, false)
 
-        val backBtn: ImageView = view.findViewById(R.id.back_btn)
+        val backBtn: ImageButton = view.findViewById(R.id.back_btn)
         val title: TextView = view.findViewById(R.id.toolbar_text)
         mStudentNameBtn = view.findViewById(R.id.student_name_btn)
         mRefreshBtn = view.findViewById(R.id.refresh_btn)
