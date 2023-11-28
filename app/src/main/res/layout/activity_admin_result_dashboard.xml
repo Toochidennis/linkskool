@@ -42,13 +42,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_marginTop="@dimen/dimen_6"
+                    android:layout_marginTop="4dp"
                     android:layout_toStartOf="@id/class_name"
                     android:layout_toEndOf="@id/back_btn"
                     android:fontFamily="@font/montserrat"
                     android:padding="@dimen/dimen_16"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
+                    android:textSize="@dimen/text_16"
                     android:textStyle="bold" />
 
                 <Button
