@@ -19,9 +19,9 @@
         android:padding="@dimen/dimen_16"
         android:text="Input result"
         android:textAlignment="center"
+        app:drawableTint="@color/color_1"
         android:textColor="@color/black"
         android:textSize="@dimen/text_16"
-        app:drawableTint="@color/black"
         app:drawableTopCompat="@drawable/ic_add" />
 
     <TextView
@@ -37,7 +37,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="@dimen/text_16"
-        app:drawableTint="@color/black"
+        app:drawableTint="@color/color_5"
         app:drawableTopCompat="@drawable/ic_eye_view" />
 
     <TextView
@@ -53,7 +53,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="@dimen/text_16"
-        app:drawableTint="@color/black"
+        app:drawableTint="@color/test_color_1"
         app:drawableTopCompat="@drawable/ic_attendance" />
 
 </LinearLayout>
