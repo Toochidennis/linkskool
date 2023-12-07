@@ -58,7 +58,6 @@ import java.util.Map;
 
 public class AdminDashboardFragment extends Fragment {
 
-
     private TextView noOfClassesTxt, noOfStudentsTxt, noOfTeachersTxt, errorMessageTxt;
     private SwipeRefreshLayout swipeRefreshLayout;
     private CardView classBtn, studentBtn, teachersBtn;
@@ -146,7 +145,6 @@ public class AdminDashboardFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
         studentBtn.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), StudentContacts.class);
