@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: C">
+  <library name="Gradle: C" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/app/libs/achartengine-1.2.0.jar!/" />
     </CLASSES>

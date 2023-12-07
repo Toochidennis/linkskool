@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: C (1)">
+  <library name="Gradle: C (1)" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/app/libs/YouTubeAndroidPlayerApi.jar!/" />
     </CLASSES>
