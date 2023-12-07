@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: androidx.exifinterface:exifinterface:1.0.0@aar">
+  <library name="Gradle: androidx.exifinterface:exifinterface:1.0.0@aar" external-system-id="GRADLE">
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0667c905bc101671cf55fc08d76539f4/transformed/exifinterface-1.0.0/annotations.zip!/" />
     </ANNOTATIONS>
