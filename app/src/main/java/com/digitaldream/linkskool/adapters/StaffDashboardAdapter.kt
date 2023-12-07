@@ -21,7 +21,6 @@ class StaffDashboardAdapter(
 
     private lateinit var replyAdapter: GenericAdapter<StaffReplyModel>
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_staff_dashboard, parent, false)
