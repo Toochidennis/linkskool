@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: com.google.android.exoplayer:exoplayer-hls:2.8.4@aar">
+  <library name="Gradle: com.google.android.exoplayer:exoplayer-hls:2.8.4@aar" external-system-id="GRADLE">
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f20b9f1d7056a3ed472b72fa0ff481c1/transformed/jetified-exoplayer-hls-2.8.4/annotations.zip!/" />
     </ANNOTATIONS>
