@@ -27,8 +27,8 @@ public class StaffUtils extends AppCompatActivity {
         setContentView(R.layout.activity_staff_utils);
 
         Intent i = getIntent();
-        String classId = i.getStringExtra("classId");
-        String levelId = i.getStringExtra("levelId");
+        String classId = i.getStringExtra("class_id");
+        String levelId = i.getStringExtra("level_id");
         String className = i.getStringExtra("class_name");
         String courseName = i.getStringExtra("course_name");
 
@@ -45,13 +45,6 @@ public class StaffUtils extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(
                         R.id.fragment_container, new StaffFormClassFragment()).commit();
                 break;
-
-        /*    case "staff":
-                getSupportFragmentManager().beginTransaction().replace(
-                        R.id.fragment_container,
-                        AdminClassAttendanceFragment.newInstance(classId,
-                                levelId, className, "staff")).commit();
-                break;*/
 
             case "cbt":
                 getSupportFragmentManager().beginTransaction().replace(
