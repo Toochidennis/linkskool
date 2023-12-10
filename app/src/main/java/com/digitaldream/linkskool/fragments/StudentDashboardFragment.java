@@ -344,5 +344,4 @@ public class StudentDashboardFragment extends Fragment {
         startActivity(intent);
         requireActivity().finish();
     }
-
 }
