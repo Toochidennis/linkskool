@@ -94,7 +94,7 @@ class StaffELearningQuestionDetailsFragment : Fragment() {
         viewQuestionBtn.setOnClickListener {
             startActivity(
                 Intent(requireContext(), AdminELearningActivity::class.java)
-                    .putExtra("from", "question_quiz")
+                    .putExtra("from", "question_test")
                     .putExtra("json", questionData)
             )
         }
