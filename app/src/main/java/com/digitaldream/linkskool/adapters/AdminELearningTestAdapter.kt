@@ -25,7 +25,7 @@ import com.digitaldream.linkskool.models.ShortAnswerModel
 import com.digitaldream.linkskool.utils.FunctionUtils
 import com.squareup.picasso.Picasso
 
-class AdminELearningQuizAdapter(
+class AdminELearningTestAdapter(
     private var itemList: MutableList<SectionModel>,
     private var userResponses: MutableMap<String, String>,
     private var userResponse: UserResponse
