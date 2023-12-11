@@ -1,25 +1,20 @@
 package com.digitaldream.linkskool.fragments
 
-import android.content.Context
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.Request
-import com.android.volley.VolleyError
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.adapters.AdminELearningClassAdapter
-import com.digitaldream.linkskool.dialog.AdminELearningCreateContentDialog
+import com.digitaldream.linkskool.adapters.StaffELearningCourseWorkAdapter
+import com.digitaldream.linkskool.dialog.StaffELearningCreateContentDialogFragment
 import com.digitaldream.linkskool.models.ContentModel
-import com.digitaldream.linkskool.utils.FunctionUtils
-import com.digitaldream.linkskool.utils.FunctionUtils.capitaliseFirstLetter
 import com.digitaldream.linkskool.utils.ItemTouchHelperCallback
-import com.digitaldream.linkskool.utils.VolleyCallback
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONArray
 
@@ -32,22 +27,22 @@ class StaffELearningCourseWorkFragment : Fragment() {
 
     private lateinit var contentRecyclerView: RecyclerView
     private lateinit var addContentButton: FloatingActionButton
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
-    private lateinit var contentAdapter: AdminELearningClassAdapter
+    private lateinit var contentAdapter: StaffELearningCourseWorkAdapter
     private var contentList = mutableListOf<ContentModel>()
 
     private var mLevelId: String? = null
     private var mCourseId: String? = null
     private var mCourseName: String? = null
 
-
-    private var param1: String? = null
+    private var responseFromServer: String? = null
     private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
+            responseFromServer = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
     }
@@ -75,152 +70,138 @@ class StaffELearningCourseWorkFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setUpViews(view)
+
+        parseResponse()
+
+        addContent()
+
+        refresh()
     }
 
     private fun setUpViews(view: View) {
         view.apply {
             contentRecyclerView = findViewById(R.id.contentRecyclerView)
             addContentButton = findViewById(R.id.add_btn)
+            swipeRefreshLayout = findViewById(R.id.swipeRefresh)
+        }
+
+        val sharedPreferences = requireActivity().getSharedPreferences("loginDetail", MODE_PRIVATE)
+
+        with(sharedPreferences) {
+            mLevelId = getString("level", "")
+            mCourseId = getString("courseId", "")
+            mCourseName = getString("course_name", "")
         }
     }
 
     private fun addContent() {
         addContentButton.setOnClickListener {
-            AdminELearningCreateContentDialog(
-                requireContext(), mLevelId!!,
-                mCourseId!!, mCourseName!!
-            ).apply {
-                setCancelable(true)
-                show()
-            }.window?.setLayout(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            )
+            StaffELearningCreateContentDialogFragment()
+                .show(parentFragmentManager, "Create Content")
         }
     }
 
-    private fun getCourseOutline() {
-        val currentTerm = requireActivity()
-            .getSharedPreferences("loginDetail", Context.MODE_PRIVATE)
-            .getString("term", "")
+    private fun parseResponse() {
+        contentList.clear()
 
-        val url = "${getString(R.string.base_url)}/getOutline.php?" +
-                "course=$mCourseId&&level=$mLevelId&&term=$currentTerm"
+        responseFromServer?.let { response ->
+            with(JSONArray(response)) {
+                for (i in 0 until length()) {
+                    val contentObject = getJSONObject(i)
 
-        FunctionUtils.sendRequestToServer(
-            Request.Method.GET,
-            url,
-            requireContext(),
-            null,
-            object : VolleyCallback {
-                override fun onResponse(response: String) {
-                    try {
-                        if (response != "[]") {
-                            with(JSONArray(response)) {
-                                for (i in 0 until length()) {
-                                    val contentObject = getJSONObject(i)
+                    contentObject.let {
+                        val id = it.getString("id")
+                        val title = it.getString("title")
+                        val description = it.getString("body")
+                        val courseId = it.getString("course_id")
+                        val levelId = it.getString("level")
+                        val authorId = it.getString("author_id")
+                        val authorName = it.getString("author_name")
+                        val term = it.getString("term")
+                        val date = it.getString("upload_date")
+                        val type = it.getString("type")
+                        val category = it.getString("category")
 
-                                    contentObject.let {
-                                        val id = it.getString("id")
-                                        val title = it.getString("title")
-                                        val description = it.getString("body")
-                                        val courseId = it.getString("course_id")
-                                        val levelId = it.getString("level")
-                                        val authorId = it.getString("author_id")
-                                        val authorName = it.getString("author_name")
-                                        val term = it.getString("term")
-                                        val date = it.getString("upload_date")
-                                        val type = it.getString("type")
-                                        val category = it.getString("category")
+                        when (it.getString("content_type")) {
+                            "Topic" -> {
+                                val content = ContentModel(
+                                    id, title,
+                                    description,
+                                    courseId,
+                                    levelId,
+                                    authorId, authorName, date, term, type,
+                                    "topic",
+                                    title
+                                )
 
-                                        when (it.getString("content_type")) {
-                                            "Topic" -> {
-                                                val content = ContentModel(
-                                                    id, title,
-                                                    description,
-                                                    courseId,
-                                                    levelId,
-                                                    authorId, authorName, date, term, type,
-                                                    "topic",
-                                                    title
-                                                )
-
-                                                contentList.add(content)
-                                            }
-
-                                            "Assignment" -> {
-                                                val content = ContentModel(
-                                                    id, title,
-                                                    description,
-                                                    courseId,
-                                                    levelId,
-                                                    authorId, authorName, date, term, type,
-                                                    "assignment",
-                                                    category
-                                                )
-
-                                                contentList.add(content)
-
-                                            }
-
-                                            "Material" -> {
-                                                val content = ContentModel(
-                                                    id, title,
-                                                    description,
-                                                    courseId,
-                                                    levelId,
-                                                    authorId, authorName, date, term, type,
-                                                    "material",
-                                                    category
-                                                )
-
-                                                contentList.add(content)
-                                            }
-
-                                            else -> {
-                                                val content = ContentModel(
-                                                    id, title,
-                                                    description,
-                                                    courseId,
-                                                    levelId,
-                                                    authorId, authorName, date, term, type,
-                                                    "question",
-                                                    category
-                                                )
-
-                                                contentList.add(content)
-                                            }
-                                        }
-                                    }
-                                }
+                                contentList.add(content)
                             }
 
-                            sortDataList()
+                            "Assignment" -> {
+                                val content = ContentModel(
+                                    id, title,
+                                    description,
+                                    courseId,
+                                    levelId,
+                                    authorId, authorName, date, term, type,
+                                    "assignment",
+                                    category
+                                )
 
-                            println(contentList)
+                                contentList.add(content)
+                            }
 
+                            "Material" -> {
+                                val content = ContentModel(
+                                    id, title,
+                                    description, courseId,
+                                    levelId, authorId,
+                                    authorName, date,
+                                    term, type,
+                                    "material",
+                                    category
+                                )
+
+                                contentList.add(content)
+                            }
+
+                            "Quiz" -> {
+                                val content = ContentModel(
+                                    id, title,
+                                    description, courseId,
+                                    levelId, authorId,
+                                    authorName, date,
+                                    term, type,
+                                    "question",
+                                    category
+                                )
+
+                                contentList.add(content)
+                            }
+
+                            else -> null
                         }
-
-                    } catch (e: Exception) {
-                        e.printStackTrace()
                     }
                 }
-
-                override fun onError(error: VolleyError) {
-
-                }
             }
-        )
+
+            setUpRecyclerView()
+        }
     }
 
     private fun setUpRecyclerView() {
-        contentAdapter = AdminELearningClassAdapter(contentList)
+        sortDataList()
+
+        contentAdapter = StaffELearningCourseWorkAdapter(contentList)
 
         contentRecyclerView.apply {
             hasFixedSize()
             layoutManager = LinearLayoutManager(requireContext())
             adapter = contentAdapter
         }
+
+        onTouchHelper()
     }
 
     private fun onTouchHelper() {
@@ -231,7 +212,15 @@ class StaffELearningCourseWorkFragment : Fragment() {
 
     private fun sortDataList() {
         contentList.sortBy { it.category }
+    }
 
-        contentAdapter.notifyDataSetChanged()
+    private fun refresh() {
+        swipeRefreshLayout.apply {
+            setColorSchemeResources(R.color.test_color_1)
+            setOnRefreshListener {
+                parseResponse()
+                isRefreshing = false
+            }
+        }
     }
 }

@@ -2,8 +2,6 @@ package com.digitaldream.linkskool.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,9 +26,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.digitaldream.linkskool.adapters.AnswerAdapter;
-import com.digitaldream.linkskool.adapters.QAAdapter;
 import com.digitaldream.linkskool.models.AnswerModel;
 import com.digitaldream.linkskool.R;
+import com.digitaldream.linkskool.models.QAObject;
 import com.digitaldream.linkskool.utils.AnswerBottomSheet;
 import com.digitaldream.linkskool.utils.RefreshListener;
 
@@ -50,7 +48,7 @@ import java.util.Map;
 
 public class QuestionView extends AppCompatActivity implements AnswerAdapter.OnAnswerClickListener, RefreshListener  {
     TextView name,date,initial,question,answer,commentNo,upvotes,sharesCount,user,date1,iniitials;
-    public static QAAdapter.QAObject feed;
+    public static QAObject feed;
     private RecyclerView recyclerView;
     private List<AnswerModel> answerList;
     private ProgressBar progressBar;
@@ -76,9 +74,10 @@ public class QuestionView extends AppCompatActivity implements AnswerAdapter.OnA
                 onBackPressed();
             }
         });
-        feed = (QAAdapter.QAObject) getIntent().getSerializableExtra("feed");
+        feed = (QAObject) getIntent().getSerializableExtra("feed");
         TextView questionText = findViewById(R.id.question);
         String question = feed.getQuestion().trim();
+
         try {
             question = question.substring(question.length() - 1);
             String q="";
@@ -96,16 +95,11 @@ public class QuestionView extends AppCompatActivity implements AnswerAdapter.OnA
             e.printStackTrace();
         }
         LinearLayout commentEDT = findViewById(R.id.comment);
-        commentEDT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction transaction = ((FragmentActivity) QuestionView.this)
-                        .getSupportFragmentManager()
-                        .beginTransaction();
-                AnswerBottomSheet answerBottomSheet = AnswerBottomSheet.newInstance("answer");
-                answerBottomSheet.show(transaction, "answerBottomSheet");
-                answerBottomSheet.DismissListener(QuestionView.this);
-            }
+        commentEDT.setOnClickListener(v -> {
+
+            AnswerBottomSheet answerBottomSheet = AnswerBottomSheet.newInstance("answer");
+            answerBottomSheet.show(getSupportFragmentManager(), "answerBottomSheet");
+            answerBottomSheet.DismissListener(QuestionView.this);
         });
 
         name = findViewById(R.id.name);

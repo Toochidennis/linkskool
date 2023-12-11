@@ -8,8 +8,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <!--    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"-->
-    <!--        tools:ignore="ScopedStorage" />-->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
@@ -41,6 +39,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="n">
+
+        <activity
+            android:name="com.digitaldream.linkskool.activities.AttendanceActivity"
+            android:exported="false"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
         <activity
             android:name="com.digitaldream.linkskool.activities.StaffELearningActivity"
@@ -115,23 +122,16 @@
                 android:value="" />
         </activity>
         <activity android:name="com.digitaldream.linkskool.activities.BooksActivity" />
-        <activity android:name="com.digitaldream.linkskool.activities.StaffCourseAttendance" />
+        <activity android:name="com.digitaldream.linkskool.activities.StaffCourseAttendanceActivity" />
         <activity
-            android:name="com.digitaldream.linkskool.activities.AttendanceDetails"
+            android:name="com.digitaldream.linkskool.activities.AttendanceDetailsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name="com.digitaldream.linkskool.activities.CourseAttendance"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name="com.digitaldream.linkskool.activities.AdminClassAttendance"
+            android:name="com.digitaldream.linkskool.activities.ClassAttendanceActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data
@@ -139,7 +139,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name="com.digitaldream.linkskool.activities.AttendanceActivity"
+            android:name="com.digitaldream.linkskool.activities.AdminAttendanceActivity"
             android:exported="false"
             android:screenOrientation="portrait">
             <meta-data
@@ -176,13 +176,11 @@
         <activity android:name="com.digitaldream.linkskool.activities.ContentDownload" />
         <activity android:name="com.digitaldream.linkskool.activities.ContentUpload" />
         <activity android:name="com.digitaldream.linkskool.activities.CourseOutlines" />
-        <activity android:name="com.digitaldream.linkskool.activities.StaffElearningCourseOutlineActivity" />
-        <activity android:name="com.digitaldream.linkskool.activities.ELearning" />
+        <activity android:name="com.digitaldream.linkskool.activities.StaffELearningContentDashboardActivity" />
         <activity android:name="com.digitaldream.linkskool.activities.CoursesAssigned" />
         <activity android:name="com.digitaldream.linkskool.activities.FormClass" />
         <activity android:name="com.digitaldream.linkskool.activities.ExamActivity" />
         <activity android:name="com.digitaldream.linkskool.utils.VideoUtils" />
-        <activity android:name="com.digitaldream.linkskool.activities.StaffCourses" />
         <activity android:name="com.digitaldream.linkskool.activities.StaffUtils" />
         <activity android:name="com.digitaldream.linkskool.activities.AddCourse" />
         <activity android:name="com.digitaldream.linkskool.activities.AllTeachers" />

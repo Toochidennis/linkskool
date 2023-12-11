@@ -27,7 +27,9 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/nested_scrollview">
+            android:contentDescription="@string/nested_scrollview"
+            android:layout_marginBottom="58dp"
+            android:fillViewport="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,18 +39,29 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/dimen_16"
+                    android:paddingStart="@dimen/dimen_16"
+                    android:paddingEnd="@dimen/dimen_16"
+                    android:paddingTop="@dimen/dimen_16"
                     android:text="Recent submissions"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_18"
                     android:textStyle="bold"
                     app:drawableEndCompat="@drawable/arrow_forward" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/submissionRecyclerView"
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/submissionViewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:contentDescription="@string/view_pager" />
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/submissionTabLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/dimen_16" />
+                    android:contentDescription="@string/tab_layout"
+                    app:tabBackground="@drawable/indicator_selector"
+                    app:tabGravity="center"
+                    app:tabIndicatorHeight="0dp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -73,8 +86,7 @@
                     android:text="Courses"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_18"
-                    android:textStyle="bold"
-                    app:drawableEndCompat="@drawable/arrow_forward" />
+                    android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/courseRecyclerView"

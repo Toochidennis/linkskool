@@ -104,42 +104,4 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height=".5dp"
-        android:layout_marginTop="@dimen/dimen_16"
-        android:background="@color/test_color_7" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/dimen_16">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/todo"
-            android:src="@drawable/ic_group" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:layout_marginStart="@dimen/dimen_16"
-            android:background="@drawable/ripple_effect6"
-            android:clickable="true"
-            android:focusable="true"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="All classes"
-            android:textAllCaps="false"
-            android:textSize="@dimen/text_14" />
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height=".5dp"
-        android:background="@color/test_color_7" />
-
 </LinearLayout>

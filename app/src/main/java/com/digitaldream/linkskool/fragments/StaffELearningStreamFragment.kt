@@ -1,21 +1,24 @@
 package com.digitaldream.linkskool.fragments
 
+import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.adapters.StudentELearningStreamAdapter
+import com.digitaldream.linkskool.adapters.StaffELearningStreamAdapter
 import com.digitaldream.linkskool.models.CommentDataModel
 import com.digitaldream.linkskool.models.ContentModel
 import com.digitaldream.linkskool.utils.FunctionUtils
+import com.digitaldream.linkskool.utils.FunctionUtils.capitaliseFirstLetter
+import com.digitaldream.linkskool.utils.FunctionUtils.formatDate2
 import com.digitaldream.linkskool.utils.VolleyCallback
 import org.json.JSONArray
 
@@ -28,8 +31,11 @@ class StaffELearningStreamFragment : Fragment() {
 
     private lateinit var streamRecyclerView: RecyclerView
     private lateinit var emptyTxt: TextView
+    private lateinit var levelNameTxt: TextView
+    private lateinit var outlineTitleTxt: TextView
+    private lateinit var teacherNameTxt: TextView
 
-    private lateinit var streamAdapter: StudentELearningStreamAdapter
+    private lateinit var streamAdapter: StaffELearningStreamAdapter
     private var contentList = mutableListOf<ContentModel>()
     private var commentMap = hashMapOf<String, MutableList<CommentDataModel>>()
 
@@ -67,6 +73,9 @@ class StaffELearningStreamFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setUpViews(view)
+
+        loadStreams()
 
     }
 
@@ -74,11 +83,15 @@ class StaffELearningStreamFragment : Fragment() {
         view.apply {
             streamRecyclerView = findViewById(R.id.streamRecyclerView)
             emptyTxt = findViewById(R.id.emptyTxt)
+            outlineTitleTxt = findViewById(R.id.outlineTitleTxt)
+            levelNameTxt = findViewById(R.id.levelNameTxt)
+            teacherNameTxt = findViewById(R.id.teacherNameTxt)
         }
     }
 
     private fun loadStreams() {
         getContentComment()
+        parseOutlineResponse()
     }
 
     private fun parseResponse(response: String) {
@@ -202,7 +215,7 @@ class StaffELearningStreamFragment : Fragment() {
                     val userName = it.getString("author_name")
                     val date = it.getString("upload_date")
 
-                    val formattedDate = FunctionUtils.formatDate2(date, "custom")
+                    val formattedDate = formatDate2(date, "custom")
 
                     val commentModel =
                         CommentDataModel(
@@ -218,6 +231,27 @@ class StaffELearningStreamFragment : Fragment() {
 
         filterContent()
     }
+
+    private fun parseOutlineResponse() {
+        try {
+            val response = requireActivity().getSharedPreferences("loginDetail", MODE_PRIVATE)
+                .getString("outline", "")
+
+            with(JSONArray(response)) {
+                for (i in 0 until length()) {
+                    getJSONObject(i).let {
+                        // val id = it.getString("id")
+                        outlineTitleTxt.text = it.getString("title")
+                        teacherNameTxt.text = capitaliseFirstLetter(it.getString("author_name"))
+                    }
+                }
+            }
+
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
 
     private fun updateCommentMap(comment: CommentDataModel) {
         val newCommentList =
@@ -251,7 +285,7 @@ class StaffELearningStreamFragment : Fragment() {
     }
 
     private fun setUpContentRecyclerView() {
-        streamAdapter = StudentELearningStreamAdapter(requireContext(),contentList, commentMap)
+        streamAdapter = StaffELearningStreamAdapter(requireContext(), contentList, commentMap)
 
         streamRecyclerView.apply {
             hasFixedSize()

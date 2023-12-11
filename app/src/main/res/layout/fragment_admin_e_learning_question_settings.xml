@@ -4,15 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".fragments.AdminELearningQuestionSettingsFragment">
 
     <RelativeLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="wrap_content">
 
         <ImageButton
             android:id="@+id/close_btn"
@@ -40,6 +38,7 @@
             android:layout_marginEnd="@dimen/dimen_16"
             android:background="@drawable/ripple_effect10"
             android:clickable="true"
+            android:textColor="@color/white"
             android:focusable="true"
             android:paddingStart="@dimen/dimen_16"
             android:paddingEnd="@dimen/dimen_16"
@@ -156,8 +155,7 @@
     <RelativeLayout
         android:id="@+id/dateBtn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/date_icon"

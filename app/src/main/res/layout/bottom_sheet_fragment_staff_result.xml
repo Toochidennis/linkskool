@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/dimen_16"
+    tools:context=".dialog.StaffResultBottomSheetFragment">
+
+    <TextView
+        android:id="@+id/inputResultBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:layout_weight="1"
+        android:drawablePadding="@dimen/dimen_10"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="@dimen/dimen_16"
+        android:text="Input result"
+        android:textAlignment="center"
+        app:drawableTint="@color/color_1"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16"
+        app:drawableTopCompat="@drawable/ic_add" />
+
+    <TextView
+        android:id="@+id/viewResultBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:layout_weight="1"
+        android:drawablePadding="@dimen/dimen_10"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="@dimen/dimen_16"
+        android:text="View result"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16"
+        app:drawableTint="@color/color_5"
+        app:drawableTopCompat="@drawable/ic_eye_view" />
+
+    <TextView
+        android:id="@+id/attendanceBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:layout_weight="1"
+        android:drawablePadding="@dimen/dimen_10"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="@dimen/dimen_16"
+        android:text="Attendance"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16"
+        app:drawableTint="@color/test_color_1"
+        app:drawableTopCompat="@drawable/ic_attendance" />
+
+</LinearLayout>

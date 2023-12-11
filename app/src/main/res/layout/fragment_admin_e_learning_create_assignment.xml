@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.AdminELearningCreateAssignmentFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/dimen_16"
+        android:paddingBottom="@dimen/dimen_16">
+
+        <ImageButton
+            android:id="@+id/close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/ripple_effect11"
+            android:clickable="true"
+            android:contentDescription="@string/todo"
+            android:focusable="true"
+            android:padding="@dimen/dimen_10"
+            android:src="@drawable/ic_close"
+            app:tint="@color/test_color_7" />
+
+        <Button
+            android:id="@+id/assignBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:background="@drawable/ripple_effect10"
+            android:clickable="true"
+            android:textColor="@color/white"
+            android:focusable="true"
+            android:paddingStart="@dimen/dimen_16"
+            android:paddingEnd="@dimen/dimen_16"
+            android:text="Assign"
+            android:textAllCaps="false"
+            android:textSize="@dimen/text_14" />
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/todo">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/assignmentTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="title"
+                android:background="@android:color/transparent"
+                android:focusableInTouchMode="true"
+                android:hint="Assignment title"
+                android:inputType="textCapSentences"
+                android:padding="@dimen/dimen_16"
+                android:textColor="@color/black"
+                android:textSize="22sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:background="@color/test_color_7" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_16">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/ic_group" />
+
+                <Button
+                    android:id="@+id/selectAllBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:background="@drawable/ripple_effect6"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="All classes"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/text_14" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/class_recyclerview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:orientation="horizontal" />
+
+                <TextView
+                    android:id="@+id/emptyClassTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:text="No class"
+                    android:textSize="@dimen/text_16"
+                    android:visibility="gone" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:background="@color/test_color_7" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:autofillHints="name"
+                    android:background="@android:color/transparent"
+                    android:drawableStart="@drawable/ic_description"
+                    android:drawablePadding="@dimen/dimen_16"
+                    android:focusableInTouchMode="true"
+                    android:hint="Description"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:lineSpacingMultiplier="1"
+                    android:lines="5"
+                    android:minLines="1"
+                    android:overScrollMode="ifContentScrolls"
+                    android:padding="@dimen/dimen_16"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_16" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:background="@color/test_color_7" />
+
+            <RelativeLayout
+                android:id="@+id/attachmentBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/attachment_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:layout_marginTop="@dimen/dimen_16"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/ic_attachment" />
+
+                <TextView
+                    android:id="@+id/attachmentTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="@dimen/dimen_16"
+                    android:layout_toEndOf="@id/attachment_icon"
+                    android:text="Add attachment"
+                    android:textSize="@dimen/text_16" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/attachment_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:layout_marginTop="@dimen/dimen_8"
+                    android:layout_marginEnd="@dimen/dimen_16"
+                    android:layout_toEndOf="@id/attachment_icon" />
+
+                <TextView
+                    android:id="@+id/addAttachmentButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/attachment_recyclerview"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:layout_marginEnd="@dimen/dimen_16"
+                    android:layout_toEndOf="@id/attachment_icon"
+                    android:clickable="true"
+                    android:drawablePadding="@dimen/dimen_16"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:paddingTop="@dimen/dimen_16"
+                    android:paddingBottom="@dimen/dimen_16"
+                    android:text="Add attachment"
+                    android:textSize="@dimen/text_16"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:background="@color/test_color_7" />
+
+            <RelativeLayout
+                android:id="@+id/gradeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_16">
+
+                <ImageView
+                    android:id="@+id/points_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/ic_grading" />
+
+                <TextView
+                    android:id="@+id/gradeTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:textColor="@color/black"
+                    android:layout_marginEnd="@dimen/dimen_16"
+                    android:layout_toStartOf="@id/resetGradingBtn"
+                    android:layout_toEndOf="@id/points_icon"
+                    android:text="100 points"
+                    android:textSize="@dimen/text_16" />
+
+                <ImageButton
+                    android:id="@+id/resetGradingBtn"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/ripple_effect11"
+                    android:contentDescription="@string/todo"
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/ic_close"
+                    app:tint="@color/test_color_7" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:background="@color/test_color_7" />
+
+            <RelativeLayout
+                android:id="@+id/dueDateBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/date_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:layout_marginTop="@dimen/dimen_16"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/ic_date1" />
+
+                <TextView
+                    android:id="@+id/startDateTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="@dimen/dimen_16"
+                    android:layout_marginEnd="@dimen/dimen_16"
+                    android:layout_toStartOf="@id/clearDateBtn"
+                    android:layout_toEndOf="@id/date_icon"
+                    android:paddingTop="@dimen/dimen_16"
+                    android:textColor="@color/black"
+                    android:paddingBottom="@dimen/dimen_16"
+                    android:text="Due date"
+                    android:textSize="@dimen/text_16" />
+
+                <ImageButton
+                    android:id="@+id/clearDateBtn"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/dimen_16"
+                    android:layout_marginEnd="@dimen/dimen_16"
+                    android:background="@drawable/ripple_effect11"
+                    android:contentDescription="@string/todo"
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/ic_close"
+                    android:visibility="gone"
+                    app:tint="@color/test_color_7" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:background="@color/test_color_7" />
+
+            <TextView
+                android:id="@+id/topicBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/dimen_16"
+                android:padding="@dimen/dimen_16"
+                android:text="Topic"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16"
+                app:drawableStartCompat="@drawable/ic_topic2" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height=".5dp"
+                android:background="@color/test_color_7" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

@@ -24,8 +24,6 @@ private const val ARG_PARAM2 = "param2"
 class AdminELearningQuestionAnswersFragment :
     Fragment(R.layout.fragment_admin_e_learning_question_answers) {
 
-    private lateinit var assignedCountTxt: TextView
-    private lateinit var handedCountTxt: TextView
     private lateinit var answerRecyclerView: RecyclerView
 
     private lateinit var answersAdapter: AdminELearningQuestionAnswersAdapter
@@ -65,8 +63,6 @@ class AdminELearningQuestionAnswersFragment :
 
     private fun setUpViews(view: View) {
         view.apply {
-            assignedCountTxt = findViewById(R.id.assignedCountTxt)
-            handedCountTxt = findViewById(R.id.handedCountTxt)
             answerRecyclerView = findViewById(R.id.answerRecyclerView)
         }
     }

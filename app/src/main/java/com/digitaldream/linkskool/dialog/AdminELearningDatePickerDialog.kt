@@ -30,7 +30,7 @@ class AdminELearningDatePickerDialog(
     private lateinit var mCancelBtn: Button
     private lateinit var mSaveBtn: Button
 
-    val calendar: Calendar = Calendar.getInstance()
+    private val calendar: Calendar = Calendar.getInstance()
 
     private var mStartDate: String? = null
     private var mEndDate: String? = null
@@ -53,7 +53,6 @@ class AdminELearningDatePickerDialog(
 
         mStartDateBtn.text = formatDate2(getDate(), "custom")
         mEndDateBtn.text = formatDate2(getDate(), "custom")
-
 
         setDate(mStartDateBtn, "start")
         setDate(mEndDateBtn, "end")
@@ -144,8 +143,8 @@ class AdminELearningDatePickerDialog(
 
                 if (endCalendar.before(startCalendar) || endCalendar == startCalendar) {
                     Toast.makeText(
-                        context, "End date and time must be in the future", Toast
-                            .LENGTH_SHORT
+                        context, "End date and time must be in the future",
+                        Toast.LENGTH_SHORT
                     ).show()
                 } else {
                     receiveDate("$mStartDate $mStartTime:00", "$mEndDate $mEndTime:00")

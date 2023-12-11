@@ -247,6 +247,7 @@ object FunctionUtils {
             val sdf = when (format) {
                 "default" -> SimpleDateFormat("dd, MMM", Locale.getDefault())
                 "custom" -> SimpleDateFormat("dd MMM", Locale.getDefault())
+                "full"-> SimpleDateFormat("EEE, dd MMM, yyyy", Locale.getDefault())
                 else -> SimpleDateFormat("EEE, dd MMM HH:mm", Locale.getDefault())
             }
             formattedDate = sdf.format(parseDate)
@@ -548,8 +549,7 @@ object FunctionUtils {
     @JvmStatic
     fun getRandomColor(view: View) {
         val mutate = view.background.mutate() as GradientDrawable
-        val random = Random()
-        val hue = random.nextInt(256)
+        val hue = Random().nextInt(256)
         val color = Color.HSVToColor(floatArrayOf(hue.toFloat(), 2f, 5f))
         val colorStateList = ColorStateList.valueOf(color)
         mutate.color = colorStateList

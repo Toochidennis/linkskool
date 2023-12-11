@@ -8,7 +8,7 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.digitaldream.linkskool" />
+                  <option name="appId" value="com.digitalDreams.millionaire_game" />
                 </ConnectionSetting>
               </option>
               <option name="failureTypes">

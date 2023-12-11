@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.adapters.AdminELearningClassAdapter
+import com.digitaldream.linkskool.adapters.AdminELearningCourseWorkAdapter
 import com.digitaldream.linkskool.dialog.AdminELearningCreateContentDialog
 import com.digitaldream.linkskool.models.ContentModel
 import com.digitaldream.linkskool.utils.FunctionUtils.capitaliseFirstLetter
@@ -33,7 +33,7 @@ class AdminELearningCourseWorkFragment :
     private lateinit var contentRecyclerView: RecyclerView
     private lateinit var addContentButton: FloatingActionButton
 
-    private lateinit var contentAdapter: AdminELearningClassAdapter
+    private lateinit var contentAdapter: AdminELearningCourseWorkAdapter
     private var contentList = mutableListOf<ContentModel>()
 
     private var mLevelId: String? = null
@@ -207,8 +207,6 @@ class AdminELearningCourseWorkFragment :
 
                             sortDataList()
 
-                            println(contentList)
-
                         }
 
                     } catch (e: Exception) {
@@ -224,7 +222,7 @@ class AdminELearningCourseWorkFragment :
     }
 
     private fun setUpRecyclerView() {
-        contentAdapter = AdminELearningClassAdapter(contentList)
+        contentAdapter = AdminELearningCourseWorkAdapter(contentList)
 
         contentRecyclerView.apply {
             hasFixedSize()

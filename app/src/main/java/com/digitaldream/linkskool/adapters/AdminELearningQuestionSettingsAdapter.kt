@@ -17,7 +17,7 @@ class AdminELearningQuestionSettingsAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
-            R.layout.fragment_admin_e_learning_question_settings_class_item, parent, false
+            R.layout.item_admin_e_learning_question_settings_class, parent, false
         )
 
         return ViewHolder(view)

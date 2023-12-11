@@ -1,66 +1,91 @@
 package com.digitaldream.linkskool.adapters
 
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.digitaldream.linkskool.R
+import com.digitaldream.linkskool.dialog.TermResultDialog
 import com.digitaldream.linkskool.models.AdminResultDashboardModel
+import com.digitaldream.linkskool.models.AdminResultTermModel
 import com.digitaldream.linkskool.utils.FunctionUtils.animateObject
-import io.github.luizgrp.sectionedrecyclerviewadapter.Section
-import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters
 
 class AdminResultDashboardAdapter(
-    private val sResultList: MutableList<AdminResultDashboardModel>,
-    private val sHeaderTitle: String,
-    private val sOnItemClickListener: OnItemClickListener,
-) : Section(
-    SectionParameters.builder()
-        .itemResourceId(R.layout.activity_admin_result_dashboard_item)
-        .headerResourceId(R.layout.head)
-        .build()
-) {
+    private val itemList: MutableList<AdminResultDashboardModel>,
+    private val classId: String
+) : RecyclerView.Adapter<AdminResultDashboardAdapter.ItemViewHolder>() {
 
+    private lateinit var termAdapter: GenericAdapter2<AdminResultTermModel>
 
-    override fun getHeaderViewHolder(view: View): RecyclerView.ViewHolder {
-        return HeaderViewHolder(view)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(
+            R.layout.item_admin_session_result, parent, false
+        )
 
-    override fun getContentItemsTotal() = sResultList.size
-
-    override fun getItemViewHolder(view: View): RecyclerView.ViewHolder {
         return ItemViewHolder(view)
+
     }
 
-    override fun onBindHeaderViewHolder(holder: RecyclerView.ViewHolder) {
-        val viewHolder = holder as HeaderViewHolder
-        viewHolder.mSession.text = sHeaderTitle
+    override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        holder.bind(itemList[position])
     }
 
-    override fun onBindItemViewHolder(sViewHolder: RecyclerView.ViewHolder, position: Int) {
-        val viewHolder = sViewHolder as ItemViewHolder
-        val model = sResultList[position]
-
-        viewHolder.mTerm.text = model.term
-
-        animateObject(viewHolder.mProgressBar, viewHolder.mProgressText, 52)
-    }
+    override fun getItemCount() = itemList.size
 
     inner class ItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val sessionTextView: TextView = itemView.findViewById(R.id.sessionTextView)
+        private val termRecyclerView: RecyclerView = itemView.findViewById(R.id.termRecyclerView)
 
-        val mTerm: TextView = itemView.findViewById(R.id.term_text)
-        val mProgressText: TextView = itemView.findViewById(R.id.progress_text)
-        val mProgressBar: ProgressBar = itemView.findViewById(R.id.progress_bar)
 
-        init {
-            itemView.setOnClickListener {
-                sOnItemClickListener.onItemClick(adapterPosition)
-            }
+        fun bind(itemModel: AdminResultDashboardModel) {
+            sessionTextView.text = itemModel.session
+
+            setUpTermAdapter(itemModel.termList)
         }
 
+        private fun setUpTermAdapter(termList: MutableList<AdminResultTermModel>) {
+            termAdapter = GenericAdapter2(
+                termList,
+                R.layout.item_admin_term_result,
+                bindItem = { itemView, model, _ ->
+                    val termText: TextView = itemView.findViewById(R.id.termTextView)
+                    val progressText: TextView = itemView.findViewById(R.id.progressTextView)
+                    val progressBar: ProgressBar = itemView.findViewById(R.id.progressBar)
+
+                    termText.text = model.term
+                    animateObject(progressBar, progressText, 52)
+
+                    itemView.setOnClickListener {
+                        TermResultDialog(
+                            itemView.context,
+                            classId,
+                            null,
+                            model.session,
+                            model.term,
+                            ""
+                        ).apply {
+                            show()
+                        }.window?.setLayout(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            ViewGroup.LayoutParams.WRAP_CONTENT
+                        )
+                    }
+                }
+            )
+
+            setUpRecyclerView()
+        }
+
+        private fun setUpRecyclerView() {
+            termRecyclerView.apply {
+                hasFixedSize()
+                layoutManager = LinearLayoutManager(itemView.context)
+                adapter = termAdapter
+            }
+        }
     }
 
-    inner class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val mSession: TextView = itemView.findViewById(R.id.course_name)
-    }
 }

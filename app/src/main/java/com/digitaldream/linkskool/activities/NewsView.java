@@ -33,9 +33,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.digitaldream.linkskool.adapters.AnswerAdapter;
-import com.digitaldream.linkskool.adapters.QAAdapter;
 import com.digitaldream.linkskool.models.AnswerModel;
 import com.digitaldream.linkskool.R;
+import com.digitaldream.linkskool.models.QAObject;
 import com.digitaldream.linkskool.utils.AnswerBottomSheet;
 import com.digitaldream.linkskool.utils.RefreshListener;
 import com.squareup.picasso.Picasso;
@@ -55,7 +55,7 @@ import java.util.List;
 import java.util.Map;
 
 public class NewsView extends AppCompatActivity implements RefreshListener, AnswerAdapter.OnAnswerClickListener {
-    public static QAAdapter.QAObject feed;
+    public static QAObject feed;
     public  static String title;
     private RecyclerView recyclerView;
     private List<AnswerModel> answerList;
@@ -77,7 +77,7 @@ public class NewsView extends AppCompatActivity implements RefreshListener, Answ
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp);
         Intent intent = getIntent();
-        feed = (QAAdapter.QAObject) intent.getSerializableExtra("feed");
+        feed = (QAObject) intent.getSerializableExtra("feed");
         title = feed.getQuestion().trim();
         String date = feed.getDate();
         try {

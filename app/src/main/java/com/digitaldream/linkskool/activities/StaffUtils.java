@@ -13,12 +13,13 @@ import com.digitaldream.linkskool.fragments.CBTYearFragment;
 import com.digitaldream.linkskool.fragments.StaffFormClassFragment;
 import com.digitaldream.linkskool.fragments.LibraryGamesFragment;
 import com.digitaldream.linkskool.fragments.LibraryVideosFragment;
-import com.digitaldream.linkskool.fragments.ResultStaff;
+import com.digitaldream.linkskool.fragments.StaffResultDashboardFragment;
 import com.digitaldream.linkskool.fragments.StaffFormClassStudentsFragment;
 import com.digitaldream.linkskool.fragments.StaffResultCommentFragment;
 import com.digitaldream.linkskool.fragments.StaffSkillsBehaviourFragment;
 
 public class StaffUtils extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,28 +27,23 @@ public class StaffUtils extends AppCompatActivity {
         setContentView(R.layout.activity_staff_utils);
 
         Intent i = getIntent();
-        String classId = i.getStringExtra("classId");
-        String levelId = i.getStringExtra("levelId");
+        String classId = i.getStringExtra("class_id");
+        String levelId = i.getStringExtra("level_id");
         String className = i.getStringExtra("class_name");
         String courseName = i.getStringExtra("course_name");
 
         switch (i.getStringExtra("from")) {
 
             case "result":
+
+            case "course":
                 getSupportFragmentManager().beginTransaction().replace(
-                        R.id.fragment_container, new ResultStaff()).commit();
+                        R.id.fragment_container, new StaffResultDashboardFragment()).commit();
                 break;
 
             case "student":
                 getSupportFragmentManager().beginTransaction().replace(
                         R.id.fragment_container, new StaffFormClassFragment()).commit();
-                break;
-
-            case "staff":
-                getSupportFragmentManager().beginTransaction().replace(
-                        R.id.fragment_container,
-                        AdminClassAttendanceFragment.newInstance(classId,
-                                levelId, className, "staff")).commit();
                 break;
 
             case "cbt":
@@ -80,7 +76,7 @@ public class StaffUtils extends AppCompatActivity {
                         new LibraryGamesFragment()).commit();
                 break;
 
-            case "form_class":
+            case "view_students":
                 getSupportFragmentManager().beginTransaction().replace(
                         R.id.fragment_container,
                         StaffFormClassStudentsFragment.newInstance(classId)).commit();
@@ -97,6 +93,7 @@ public class StaffUtils extends AppCompatActivity {
                         R.id.fragment_container,
                         StaffSkillsBehaviourFragment.newInstance(classId)).commit();
                 break;
+
         }
 
 
