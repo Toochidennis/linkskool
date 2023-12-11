@@ -121,11 +121,11 @@ class AdminELearningActivity : AppCompatActivity(R.layout.activity_admin_e_learn
                 }
             }
 
-            "question_quiz" -> {
+            "question_test" -> {
                 supportFragmentManager.commit {
                     replace(
                         R.id.learning_container,
-                        AdminELearningQuizFragment.newInstance(json)
+                        AdminELearningTestFragment.newInstance(json)
                     )
                 }
             }

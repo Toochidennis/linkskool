@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.viewpager2.widget.ViewPager2
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.adapters.AdminELearningQuizAdapter
+import com.digitaldream.linkskool.adapters.AdminELearningTestAdapter
 import com.digitaldream.linkskool.dialog.AdminELearningQuestionTestIntroDialogFragment
 import com.digitaldream.linkskool.models.MultiChoiceQuestion
 import com.digitaldream.linkskool.models.MultipleChoiceOption
@@ -33,9 +33,9 @@ import java.util.Locale
 
 private const val ARG_PARAM1 = "param1"
 
-class AdminELearningQuizFragment :
-    Fragment(R.layout.fragment_admin_e_learning_quiz),
-    AdminELearningQuizAdapter.UserResponse {
+class AdminELearningTestFragment :
+    Fragment(R.layout.fragment_admin_e_learning_test),
+    AdminELearningTestAdapter.UserResponse {
 
     private lateinit var dismissBtn: ImageButton
     private lateinit var countDownTxt: TextView
@@ -47,7 +47,7 @@ class AdminELearningQuizFragment :
     // Initialise section items
     private lateinit var quizItems: MutableList<SectionModel>
     private lateinit var countDownJob: Job
-    private lateinit var quizAdapter: AdminELearningQuizAdapter
+    private lateinit var quizAdapter: AdminELearningTestAdapter
     private var userResponses = mutableMapOf<String, String>()
 
     // Variables to store data
@@ -75,7 +75,7 @@ class AdminELearningQuizFragment :
 
         @JvmStatic
         fun newInstance(param1: String) =
-            AdminELearningQuizFragment().apply {
+            AdminELearningTestFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                 }
@@ -125,7 +125,7 @@ class AdminELearningQuizFragment :
 
 
     private fun showQuestion() {
-        quizAdapter = AdminELearningQuizAdapter(quizItems, userResponses, this)
+        quizAdapter = AdminELearningTestAdapter(quizItems, userResponses, this)
         questionViewPager.adapter = quizAdapter
 
         questionViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

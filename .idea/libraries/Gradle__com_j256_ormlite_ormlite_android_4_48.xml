@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: com.j256.ormlite:ormlite-android:4.48">
+  <library name="Gradle: com.j256.ormlite:ormlite-android:4.48" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.j256.ormlite/ormlite-android/4.48/afa06f539a4026c10b247386312aa67404b80a16/ormlite-android-4.48.jar!/" />
     </CLASSES>

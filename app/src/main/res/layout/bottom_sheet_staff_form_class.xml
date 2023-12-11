@@ -25,7 +25,7 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="@dimen/text_16"
-            app:drawableTint="@color/black"
+            app:drawableTint="@color/color_1"
             app:drawableTopCompat="@drawable/ic_comment_24" />
 
         <TextView
@@ -41,7 +41,7 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="@dimen/text_16"
-            app:drawableTint="@color/black"
+            app:drawableTint="@color/color_5"
             app:drawableTopCompat="@drawable/ic_skill_behaviour" />
 
     </LinearLayout>
@@ -64,7 +64,7 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="@dimen/text_16"
-            app:drawableTint="@color/black"
+            app:drawableTint="@color/color_2"
             app:drawableTopCompat="@drawable/ic_attendance" />
 
         <TextView
@@ -80,7 +80,7 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="@dimen/text_16"
-            app:drawableTint="@color/black"
+            app:drawableTint="@color/test_color_4"
             app:drawableTopCompat="@drawable/ic_people" />
 
     </LinearLayout>

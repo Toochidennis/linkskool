@@ -8,8 +8,8 @@ android {
         applicationId "com.digitaldream.linkskool"
         minSdkVersion 21
         targetSdk 34
-        versionCode 40
-        versionName "28.1"
+        versionCode 41
+        versionName "28.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         vectorDrawables {
@@ -37,6 +37,7 @@ android {
         }
     }
 
+
     compileOptions {
         sourceCompatibility = "11"
         targetCompatibility = "11"
@@ -57,6 +58,9 @@ android {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1,DEPENDENCIES}'
         }
+    }
+    buildFeatures {
+        buildConfig true
     }
 }
 

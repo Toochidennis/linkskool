@@ -12,6 +12,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -25,6 +28,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.core.view.MenuHost;
+import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -72,12 +77,12 @@ import java.util.Map;
 
 public class StaffDashboardFragment extends Fragment {
 
-
     private TextView classCountTxt, courseCountTxt, errorMessageTxt;
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView questionRecyclerView;
     private CardView formClassBtn, courseBtn;
     private FloatingActionButton addQuestionBtn;
+    private TextView usernameTxt;
 
 
     private DatabaseHelper databaseHelper;
@@ -123,44 +128,53 @@ public class StaffDashboardFragment extends Fragment {
         errorMessageTxt = view.findViewById(R.id.errorMessageTxt);
         addQuestionBtn = view.findViewById(R.id.addQuestionBtn);
         questionRecyclerView = view.findViewById(R.id.questionRecyclerView);
+        usernameTxt = view.findViewById(R.id.usernameTxt);
+
+        setUpToolbar();
     }
 
 
-    private void setUpToolbar(String username) {
+    private void setUpToolbar() {
         ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
         ActionBar actionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
         assert actionBar != null;
+        actionBar.setTitle("");
+        MenuHost mMenuHost = requireActivity();
 
-        View customActionBarView =
-                getLayoutInflater().inflate(R.layout.fragment_staff_custom_action_bar_view, null);
+        mMenuHost.addMenuProvider(new MenuProvider() {
+            @Override
+            public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+                menuInflater.inflate(R.menu.staff_logout_menu, menu);
+            }
 
-        actionBar.setCustomView(customActionBarView);
-        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            @Override
+            public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.staff_logout:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+                        builder.setMessage("Continue to logout?");
+                        builder.setNegativeButton("Cancel", (dialog, which) -> {
+                        });
 
-        TextView usernameTxt = customActionBarView.findViewById(R.id.usernameTxt);
-        //CircleImageView  imageView = customActionBarView.findViewById(R.id.imageView);
-        ImageButton logoutBtn = customActionBarView.findViewById(R.id.logoutBtn);
-        ImageButton infoBtn = customActionBarView.findViewById(R.id.infoBtn);
+                        builder.setPositiveButton("Logout", (dialog, which) -> logout());
+                        builder.show();
+                        return true;
 
-        usernameTxt.setText(capitaliseFirstLetter(username));
-        logoutBtn.setOnClickListener(v -> {
-            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-            builder.setMessage("Continue to logout?");
-            builder.setNegativeButton("Cancel", (dialog, which) -> {
-            });
+                    case R.id.info:
+                        ContactUsDialog dialog = new ContactUsDialog(requireActivity());
+                        dialog.show();
+                        Window window = dialog.getWindow();
+                        assert window != null;
+                        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        return true;
 
-            builder.setPositiveButton("Logout", (dialog, which) -> logout());
-            builder.show();
+                    default:
+                        return false;
+
+                }
+            }
         });
 
-        infoBtn.setOnClickListener(v -> {
-            ContactUsDialog dialog = new ContactUsDialog(requireActivity());
-            dialog.show();
-            Window window = dialog.getWindow();
-            assert window != null;
-            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        });
     }
 
 
@@ -183,8 +197,7 @@ public class StaffDashboardFragment extends Fragment {
 
             classCountTxt.setText(String.valueOf(classList.size()));
             courseCountTxt.setText(String.valueOf(courseList.size()));
-
-            setUpToolbar(username);
+            usernameTxt.setText(capitaliseFirstLetter(username));
 
             courseBtn.setOnClickListener(v1 -> {
                 Intent intent = new Intent(getContext(), StaffUtils.class);
@@ -201,7 +214,8 @@ public class StaffDashboardFragment extends Fragment {
 
             addQuestionBtn.setOnClickListener(v13 -> {
                 questionBottomSheet = new QuestionBottomSheet();
-                questionBottomSheet.show(requireActivity().getSupportFragmentManager(), "questionBottomSheet");
+                questionBottomSheet.show(requireActivity().getSupportFragmentManager(),
+                        "questionBottomSheet");
             });
 
         } catch (Exception e) {

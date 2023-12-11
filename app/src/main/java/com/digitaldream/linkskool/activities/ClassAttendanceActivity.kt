@@ -164,10 +164,9 @@ class ClassAttendanceActivity : AppCompatActivity(),
                         }
                     }
                 }
-                errorMessageTxt.isVisible = true
-
-                sortData()
             }
+
+            sortData()
 
         } catch (e: Exception) {
             e.printStackTrace()
