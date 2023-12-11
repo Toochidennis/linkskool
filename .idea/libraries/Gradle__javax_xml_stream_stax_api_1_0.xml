@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: javax.xml.stream:stax-api:1.0">
+  <library name="Gradle: javax.xml.stream:stax-api:1.0" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.xml.stream/stax-api/1.0/a5be00d58ecaf5b01037b149f70e93ebcfb18fd1/stax-api-1.0.jar!/" />
     </CLASSES>

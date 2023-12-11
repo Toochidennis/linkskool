@@ -12,7 +12,7 @@
         <option name="ASSETS_FOLDER_RELATIVE_PATH" value="/src/main/assets" />
       </configuration>
     </facet>
-    <facet type="kotlin-language" name="Kotlin">
+    <facet external-system-id="GRADLE" type="kotlin-language" name="Kotlin">
       <configuration version="5" platform="JVM 11" allPlatforms="JVM [11]" useProjectSettings="false">
         <compilerSettings>
           <option name="additionalArguments" value="-Xallow-no-source-files" />
@@ -108,7 +108,6 @@
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/b3a03a2c52b743a937340418d8d85385/transformed/jetified-ormlite-android-4.48.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/5149be357b98c54936888f4384d50d49/transformed/jetified-ormlite-core-4.48.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/b4befd616a813145cd03444c4465ac2c/transformed/jetified-circleimageview-3.0.1-api.jar</arg>
-                <arg>$USER_HOME$/.gradle/caches/transforms-3/d5aa5c2c8525344339ab99766530a7db/transformed/jetified-jsoup-1.8.3.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/f17f2fc0d6320a9b5ee33c80d5db3b9e/transformed/jetified-okhttp-3.10.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/0200a3dcdc2bf9ff01098f26b86703cf/transformed/jetified-okio-1.14.0.jar</arg>
                 <arg>$USER_HOME$/.gradle/caches/transforms-3/116cfdfc4441916f3bbe774789ae71b2/transformed/jetified-gson-2.8.6.jar</arg>
@@ -264,7 +263,6 @@
     <orderEntry type="library" name="Gradle: androidx.constraintlayout:constraintlayout-solver:2.0.1" level="project" />
     <orderEntry type="library" name="Gradle: com.j256.ormlite:ormlite-android:4.48" level="project" />
     <orderEntry type="library" name="Gradle: com.j256.ormlite:ormlite-core:4.48" level="project" />
-    <orderEntry type="library" name="Gradle: org.jsoup:jsoup:1.8.3" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okhttp3:okhttp:3.10.0" level="project" />
     <orderEntry type="library" name="Gradle: com.squareup.okio:okio:1.14.0" level="project" />
     <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.8.6" level="project" />

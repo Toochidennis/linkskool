@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: cc.cloudist.acplibrary:library:1.2.1@aar">
+  <library name="Gradle: cc.cloudist.acplibrary:library:1.2.1@aar" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/29122f8ae5fd72fe93ac8154f475256c/transformed/jetified-library-1.2.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/29122f8ae5fd72fe93ac8154f475256c/transformed/jetified-library-1.2.1/res" />

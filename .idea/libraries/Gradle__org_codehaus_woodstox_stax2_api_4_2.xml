@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: org.codehaus.woodstox:stax2-api:4.2">
+  <library name="Gradle: org.codehaus.woodstox:stax2-api:4.2" external-system-id="GRADLE">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.woodstox/stax2-api/4.2/13c2b30926bca0429c704c4b4ca0b5d0432b69cd/stax2-api-4.2.jar!/" />
     </CLASSES>
