@@ -28,7 +28,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.digitaldream.linkskool.utils.CustomViewPager2
+    <com.digitaldream.winskool.utils.CustomViewPager2
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

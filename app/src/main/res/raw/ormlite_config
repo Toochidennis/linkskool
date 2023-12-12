@@ -2,7 +2,7 @@
 # generated on 2020/06/08 03:56:00
 #
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.StudentTable
+dataClass=com.digitaldream.winskool.models.StudentTable
 tableName=studenttable
 # --table-fields-start--
 # --field-start--
@@ -66,7 +66,7 @@ fieldName=date_of_birth
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.TeachersTable
+dataClass=com.digitaldream.winskool.models.TeachersTable
 tableName=teacherstable
 # --table-fields-start--
 # --field-start--
@@ -121,7 +121,7 @@ fieldName=password
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.ClassNameTable
+dataClass=com.digitaldream.winskool.models.ClassNameTable
 tableName=classnametable
 # --table-fields-start--
 # --field-start--
@@ -143,7 +143,7 @@ fieldName=formTeacher
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.LevelTable
+dataClass=com.digitaldream.winskool.models.LevelTable
 tableName=leveltable
 # --table-fields-start--
 # --field-start--
@@ -165,7 +165,7 @@ fieldName=rank
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.NewsTable
+dataClass=com.digitaldream.winskool.models.NewsTable
 tableName=newstable
 # --table-fields-start--
 # --field-start--
@@ -190,7 +190,7 @@ fieldName=newsImageUrl
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.CourseTable
+dataClass=com.digitaldream.winskool.models.CourseTable
 tableName=coursetable
 # --table-fields-start--
 # --field-start--
@@ -231,7 +231,7 @@ fieldName=levelName
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.StudentResultDownloadTable
+dataClass=com.digitaldream.winskool.models.StudentResultDownloadTable
 tableName=studentresultdownloadtable
 # --table-fields-start--
 # --field-start--
@@ -262,7 +262,7 @@ fieldName=classId
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.StudentCourses
+dataClass=com.digitaldream.winskool.models.StudentCourses
 tableName=studentcourses
 # --table-fields-start--
 # --field-start--
@@ -282,7 +282,7 @@ fieldName=courseName
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.VideoTable
+dataClass=com.digitaldream.winskool.models.VideoTable
 tableName=videotable
 # --table-fields-start--
 # --field-start--
@@ -313,7 +313,7 @@ fieldName=videoCategory
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.GradeModel
+dataClass=com.digitaldream.winskool.models.GradeModel
 tableName=grademodel
 # --table-fields-start--
 # --field-start--
@@ -332,7 +332,7 @@ fieldName=gradeRemark
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.GeneralSettingModel
+dataClass=com.digitaldream.winskool.models.GeneralSettingModel
 tableName=generalsettingmodel
 # --table-fields-start--
 # --field-start--
@@ -381,7 +381,7 @@ fieldName=alumniPrefix
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.VideoUtilTable
+dataClass=com.digitaldream.winskool.models.VideoUtilTable
 tableName=videoutiltable
 # --table-fields-start--
 # --field-start--
@@ -394,7 +394,7 @@ fieldName=videoCatTitle
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.AssessmentModel
+dataClass=com.digitaldream.winskool.models.AssessmentModel
 tableName=assessmentmodel
 # --table-fields-start--
 # --field-start--
@@ -413,7 +413,7 @@ fieldName=level
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.Exam
+dataClass=com.digitaldream.winskool.models.Exam
 tableName=exam
 # --table-fields-start--
 # --field-start--
@@ -439,7 +439,7 @@ fieldName=year
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.ExamQuestions
+dataClass=com.digitaldream.winskool.models.ExamQuestions
 tableName=examquestions
 # --table-fields-start--
 # --field-start--
@@ -456,7 +456,7 @@ fieldName=json
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.ExamType
+dataClass=com.digitaldream.winskool.models.ExamType
 tableName=examtype
 # --table-fields-start--
 # --field-start--
@@ -482,7 +482,7 @@ fieldName=category
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.StaffTableUtil
+dataClass=com.digitaldream.winskool.models.StaffTableUtil
 tableName=stafftableutil
 # --table-fields-start--
 # --field-start--
@@ -498,7 +498,7 @@ fieldName=classId
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.FormClassModel
+dataClass=com.digitaldream.winskool.models.FormClassModel
 tableName=formclassmodel
 # --table-fields-start--
 # --field-start--
@@ -511,7 +511,7 @@ fieldName=className
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.TeacherCourseModel
+dataClass=com.digitaldream.winskool.models.TeacherCourseModel
 tableName=teachercoursemodel
 # --table-fields-start--
 # --field-start--
@@ -536,7 +536,7 @@ fieldName=staffId
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.TeacherCourseModelCopy
+dataClass=com.digitaldream.winskool.models.TeacherCourseModelCopy
 tableName=teachercoursemodelcopy
 # --table-fields-start--
 # --field-start--
@@ -561,7 +561,7 @@ fieldName=staffId
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.CourseOutlineTable
+dataClass=com.digitaldream.winskool.models.CourseOutlineTable
 tableName=courseoutlinetable
 # --table-fields-start--
 # --field-start--
@@ -625,7 +625,7 @@ fieldName=body
 # --table-end--
 #################################
 # --table-start--
-dataClass=com.digitaldream.linkskool.models.CommentTable
+dataClass=com.digitaldream.winskool.models.CommentTable
 tableName=commenttable
 # --table-fields-start--
 # --field-start--

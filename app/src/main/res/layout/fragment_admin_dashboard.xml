@@ -70,7 +70,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/dimen_10"
                         android:layout_toEndOf="@id/imageHolder"
-                        android:text="Welcome"
+                        android:text="Welcome,"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_18" />
 
@@ -81,7 +81,6 @@
                         android:layout_below="@id/welcomeTxt"
                         android:layout_marginStart="@dimen/dimen_10"
                         android:layout_toEndOf="@id/imageHolder"
-                        android:text="@string/toochi_dennis"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_16" />
 

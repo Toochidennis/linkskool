@@ -1,0 +1,54 @@
+package com.digitaldream.winskool.adapters
+
+import android.content.Intent
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.digitaldream.winskool.R
+import com.digitaldream.winskool.activities.AdminELearningActivity
+import com.digitaldream.winskool.models.StudentResponseModel
+import com.digitaldream.winskool.utils.FunctionUtils.capitaliseFirstLetter
+
+class AdminELearningAssignmentStudentWorkAdapter(
+    private val itemList: MutableList<StudentResponseModel>
+) : RecyclerView.Adapter<AdminELearningAssignmentStudentWorkAdapter.StudentWorkViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentWorkViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(
+            R.layout.item_assignment_student_work, parent, false
+        )
+
+        return StudentWorkViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: StudentWorkViewHolder, position: Int) {
+        val itemModel = itemList[position]
+        holder.bind(itemModel)
+    }
+
+    override fun getItemCount() = itemList.size
+
+    inner class StudentWorkViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val studentNameTxt: TextView = itemView.findViewById(R.id.studentNameTxt)
+        private val scoreTxt: TextView = itemView.findViewById(R.id.scoreTxt)
+
+        fun bind(responseModel: StudentResponseModel) {
+            studentNameTxt.text = capitaliseFirstLetter(responseModel.studentName)
+            scoreTxt.text = responseModel.score
+
+            viewAnswerDetails(itemView, responseModel.id)
+        }
+    }
+
+    private fun viewAnswerDetails(itemView: View, responseId: String) {
+        itemView.setOnClickListener {
+            it.context.startActivity(
+                Intent(it.context, AdminELearningActivity::class.java)
+                    .putExtra("json", responseId)
+                    .putExtra("from", "assignment_student_work")
+            )
+        }
+    }
+}

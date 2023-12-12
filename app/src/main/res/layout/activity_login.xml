@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_drawable"
     android:fitsSystemWindows="true"
     tools:context=".activities.Login">
 
@@ -17,43 +16,51 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/color_2"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="150dp"
-                android:layout_marginBottom="50dp"
-                android:contentDescription="@string/todo"
-                android:scaleType="fitCenter"
-                android:src="@drawable/logo_asset" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:background="@drawable/login_bg"
+                android:backgroundTint="@color/white">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginBottom="0dp"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/win_school" />
+
+            </RelativeLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/username_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginEnd="15dp"
                 android:autofillHints="username"
                 android:hint="Username/Registration no"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/white"
                 app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/gray">
+                app:hintTextColor="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@drawable/borderline"
+                    android:background="@drawable/login_input_bg"
                     android:drawableStart="@drawable/ic_person"
                     android:drawablePadding="5dp"
-                    android:drawableTint="@color/test_color_1"
+                    android:drawableTint="@color/white"
                     android:inputType="text"
                     android:maxLines="1"
                     android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -64,53 +71,24 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:hint="Password"
-                android:textColorHint="@color/gray"
+                android:textColorHint="@color/white"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/gray"
+                app:hintTextColor="@color/white"
                 app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/test_color_1">
+                app:passwordToggleTint="@color/white">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="@drawable/borderline"
+                    android:background="@drawable/login_input_bg"
                     android:drawableStart="@drawable/password"
                     android:drawablePadding="5dp"
-                    android:drawableTint="@color/test_color_1"
+                    android:drawableTint="@color/white"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:padding="10dp"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/code_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="@dimen/dimen_16"
-                android:layout_marginEnd="15dp"
-                android:hint="School Code"
-                android:textColorHint="@color/gray"
-                app:hintAnimationEnabled="true"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/gray"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/test_color_1">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:background="@drawable/borderline"
-                    android:drawableStart="@drawable/ic_reference_number"
-                    android:drawablePadding="5dp"
-                    android:drawableTint="@color/test_color_1"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="14sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,7 +99,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="40dp"
                 android:layout_marginEnd="15dp"
-                android:background="@drawable/ripple_effect9"
+                android:background="@drawable/ripple_effect3"
                 android:fontFamily="@font/montserrat"
                 android:text="Login"
                 android:textColor="@android:color/black"
