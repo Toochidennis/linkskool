@@ -13,6 +13,7 @@ import android.os.Bundle;
 
 import androidx.appcompat.widget.Toolbar;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -38,7 +39,7 @@ public class SubjectResultUtil extends AppCompatActivity {
         setSupportActionBar(toolbar);
         final ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
-        actionBar.setTitle("View Result");
+        actionBar.setTitle("Result");
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setHomeButtonEnabled(true);
@@ -50,6 +51,9 @@ public class SubjectResultUtil extends AppCompatActivity {
         String from = i.getStringExtra("from");
         String term = i.getStringExtra("term");
         String year = i.getStringExtra("year");
+
+
+        Log.d("response", courseId + " " + classId + " " + year + " " + term);
 
 
         mWebview = findViewById(R.id.webview_view_result_subject);
@@ -65,12 +69,11 @@ public class SubjectResultUtil extends AppCompatActivity {
         String db = sharedPreferences.getString("db", "");
         if (from.equals("view")) {
             mWebview.loadUrl(
-                    Login.urlBase + "/adminViewResult.php?class=" + classId + "&course=" + courseId
+                    getString(R.string.base_url) + "/adminViewResult.php?class=" + classId + "&course=" + courseId
                             + "&_db=" + db + "&year=" + year + "&term=" + term);
         } else if (from.equals("edit")) {
-            mWebview.loadUrl(
-                    Login.urlBase + "/adminAddResult.php?class=" + classId + "&course=" + courseId
-                            + "&_db=" + db + "&year=" + year + "&term=" + term);
+            mWebview.loadUrl(getString(R.string.base_url) + "/adminAddResult.php?class=" + classId + "&course=" + courseId
+                    + "&_db=" + db + "&year=" + year + "&term=" + term);
         }
 
 
