@@ -30,6 +30,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import timber.log.Timber;
+
 
 public class StaffResultDashboardFragment extends Fragment {
     private RecyclerView resultRecyclerView;
