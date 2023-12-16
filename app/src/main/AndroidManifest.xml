@@ -193,7 +193,7 @@
         <activity android:name="com.digitaldream.linkskool.activities.CourseSettings" />
         <activity android:name="com.digitaldream.linkskool.activities.Settings" />
         <activity android:name="com.digitaldream.linkskool.activities.ClassListUtil" />
-        <activity android:name="com.digitaldream.linkskool.activities.ViewClassResultWebview" />
+        <activity android:name="com.digitaldream.linkskool.activities.ViewCompositeResultWebView" />
         <activity android:name="com.digitaldream.linkskool.activities.AdminResultDashboardActivity" />
         <activity android:name="com.digitaldream.linkskool.activities.SubjectResultUtil" />
         <activity
