@@ -138,7 +138,6 @@ class AdminResultDashboardActivity : AppCompatActivity(R.layout.activity_admin_r
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
         }
-
     }
 
     private fun setClassName() {
@@ -170,7 +169,6 @@ class AdminResultDashboardActivity : AppCompatActivity(R.layout.activity_admin_r
                 ViewGroup.LayoutParams.WRAP_CONTENT
             )
         }
-
     }
 
     private fun getResults() {
@@ -199,11 +197,12 @@ class AdminResultDashboardActivity : AppCompatActivity(R.layout.activity_admin_r
                     ).show()
                 }
             })
-
     }
 
     private fun parseResponse(response: String) {
         try {
+            sessionList.clear()
+
             with(JSONArray(response)) {
                 getJSONObject(0).run {
                     for (year in keys()) {
@@ -212,10 +211,21 @@ class AdminResultDashboardActivity : AppCompatActivity(R.layout.activity_admin_r
                         val termList = mutableListOf<AdminResultTermModel>()
 
                         JSONObject(getString(year)).let { terms ->
-                            JSONObject(terms.getString("terms")).let {
-                                for (termKey in it.keys()) {
-                                    val term = it.getString(termKey)
-                                    termList.add(AdminResultTermModel(term, year))
+                            val termsObject = terms.get("terms")
+                            if (termsObject is JSONObject) {
+                                termsObject.let {
+                                    for (termKey in it.keys()) {
+                                        val term = it.getString(termKey)
+                                        termList.add(AdminResultTermModel(term, year))
+                                    }
+                                }
+                            } else if (termsObject is JSONArray) {
+                                termsObject.let {
+                                    for (termKey in 0 until it.length()) {
+                                        val term = it.getString(termKey)
+                                        if (term != "null")
+                                            termList.add(AdminResultTermModel(term, year))
+                                    }
                                 }
                             }
                         }
@@ -251,7 +261,6 @@ class AdminResultDashboardActivity : AppCompatActivity(R.layout.activity_admin_r
 
     private fun refreshData() {
         swipeRefreshLayout.setOnRefreshListener {
-            sessionList.clear()
             getResults()
             swipeRefreshLayout.isRefreshing = false
         }
