@@ -14,6 +14,7 @@ import com.digitaldream.linkskool.dialog.StaffResultBottomSheetFragment
 import com.digitaldream.linkskool.models.CourseTable
 import com.digitaldream.linkskool.models.StaffResultModel
 import com.digitaldream.linkskool.utils.FunctionUtils.capitaliseFirstLetter
+import timber.log.Timber
 import java.util.Random
 
 class StaffDashboardResultAdapter(
@@ -83,7 +84,7 @@ class StaffDashboardResultAdapter(
             }
         }
 
-        private fun randomColor():ColorStateList{
+        private fun randomColor(): ColorStateList {
             val hue = Random().nextInt(256)
             val color = Color.HSVToColor(floatArrayOf(hue.toFloat(), 21f, 5f))
             return ColorStateList.valueOf(color)

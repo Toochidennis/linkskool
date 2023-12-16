@@ -49,6 +49,7 @@ public class StaffDashboardActivity extends AppCompatActivity {
     public static String check = null;
     public static boolean refresh = false;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,6 +99,7 @@ public class StaffDashboardActivity extends AppCompatActivity {
 
     }
 
+
     @Override
     public void onBackPressed() {
         //BottomNavigationView bottomNavigationView = findViewById(R.id.student_dashboard);
@@ -111,7 +113,7 @@ public class StaffDashboardActivity extends AppCompatActivity {
     }
 
 
-    @Override
+   /* @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.staff_logout:
@@ -159,7 +161,7 @@ public class StaffDashboardActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
         finish();
-    }
+    }*/
 
     @Override
     protected void onResume() {
