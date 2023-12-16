@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.dialog.TermResultDialog
+import com.digitaldream.linkskool.dialog.AdminTermResultDialog
 import com.digitaldream.linkskool.models.AdminResultDashboardModel
 import com.digitaldream.linkskool.models.AdminResultTermModel
 import com.digitaldream.linkskool.utils.FunctionUtils.animateObject
@@ -59,7 +59,7 @@ class AdminResultDashboardAdapter(
                     animateObject(progressBar, progressText, 52)
 
                     itemView.setOnClickListener {
-                        TermResultDialog(
+                        AdminTermResultDialog(
                             itemView.context,
                             classId,
                             null,
