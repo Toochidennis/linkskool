@@ -32,8 +32,8 @@ class StaffResultBottomSheetFragment : BottomSheetDialogFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            courseId = it.getString(ARG_PARAM1)
-            levelId = it.getString(ARG_PARAM2)
+            levelId = it.getString(ARG_PARAM1)
+            courseId = it.getString(ARG_PARAM2)
             classId = it.getString(ARG_PARAM3)
             courseName = it.getString(ARG_PARAM4)
         }
