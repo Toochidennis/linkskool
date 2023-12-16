@@ -60,12 +60,12 @@
 
                             <ImageView
                                 android:id="@+id/profile_image"
-                                android:layout_width="120dp"
-                                android:layout_height="120dp"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
                                 android:layout_gravity="center"
                                 android:contentDescription="@string/todo"
-                                android:rotation="-15"
-                                android:src="@drawable/ic_profile_pic" />
+                                android:src="@drawable/ic_user"
+                                app:tint="@color/gray" />
 
                         </androidx.cardview.widget.CardView>
 
