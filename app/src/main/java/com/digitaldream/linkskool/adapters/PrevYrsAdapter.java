@@ -9,14 +9,15 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.digitaldream.linkskool.models.PrevYrModel;
-import com.digitaldream.linkskool.R;
-
-import java.util.List;
-import java.util.Random;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.digitaldream.linkskool.R;
+import com.digitaldream.linkskool.models.PrevYrModel;
+
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
 
 public class PrevYrsAdapter extends RecyclerView.Adapter<PrevYrsAdapter.PrevYrVH> {
     private Context context;
@@ -43,7 +44,9 @@ public class PrevYrsAdapter extends RecyclerView.Adapter<PrevYrsAdapter.PrevYrVH
         String year = pr.getYear();
         try {
             int prevYr = Integer.parseInt(year) - 1;
-            holder.title.setText(prevYr + "/" + pr.getYear() + " " + pr.getName());
+            String titleText = String.format(Locale.getDefault(), "%d/%s %s", prevYr,
+                    pr.getYear(), pr.getName());
+            holder.title.setText(titleText);
         }catch (NumberFormatException e){
             e.printStackTrace();
         }

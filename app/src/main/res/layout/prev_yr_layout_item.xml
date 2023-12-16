@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
+    android:orientation="vertical"
     app:cardCornerRadius="15dp"
-    app:cardElevation="0.5dp"
-    android:orientation="vertical">
+    app:cardElevation="0.5dp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal">
+
         <LinearLayout
             android:id="@+id/initials_bg"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:orientation="vertical"
-            android:background="@drawable/circle2"
             android:layout_margin="10dp"
-            android:gravity="center">
+            android:background="@drawable/circle2"
+            android:gravity="center"
+            android:orientation="vertical">
+
             <TextView
                 android:id="@+id/initials"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="A"
                 android:layout_gravity="center"
-                android:textColor="@android:color/white"
+                android:text="A"
                 android:textAlignment="center"
+                android:textColor="@android:color/white"
                 android:textSize="16sp"
-                android:visibility="gone"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:visibility="gone" />
         </LinearLayout>
 
         <TextView
