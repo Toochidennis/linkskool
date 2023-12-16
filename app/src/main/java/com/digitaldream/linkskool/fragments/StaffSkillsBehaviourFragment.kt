@@ -3,6 +3,7 @@ package com.digitaldream.linkskool.fragments
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -64,14 +65,14 @@ class StaffSkillsBehaviourFragment : Fragment() {
         sView: View,
     ) {
         val webView: WebView = sView.findViewById(R.id.web_view)
-        val sharedPreferences = requireContext().getSharedPreferences(
-            "loginDetail",
-            Context.MODE_PRIVATE
-        )
+        val sharedPreferences =
+            requireContext().getSharedPreferences("loginDetail", Context.MODE_PRIVATE)
         val staffId = sharedPreferences.getString("user_id", "")
         val db = sharedPreferences.getString("db", "")
 
-        val url = "${getString(R.string.base_url)}/addSkill.php?staff_id=$staffId&&class=$mClassId&&_db=$db"
+        val url =
+            "${getString(R.string.base_url)}/addSkill.php?staff_id=$staffId&&class=$mClassId&&_db=$db"
+        Log.d("response", "$mClassId")
 
         webView.settings.apply {
             javaScriptEnabled = true
@@ -83,6 +84,5 @@ class StaffSkillsBehaviourFragment : Fragment() {
 
         webViewProgress(requireContext(), webView)
     }
-
 
 }
