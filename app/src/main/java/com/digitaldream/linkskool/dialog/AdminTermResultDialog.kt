@@ -8,14 +8,16 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Gravity
 import android.view.Window
-import androidx.cardview.widget.CardView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.view.isVisible
 import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.activities.CourseResultActivity
+import com.digitaldream.linkskool.activities.StaffUtils
 import com.digitaldream.linkskool.activities.SubjectResultUtil
-import com.digitaldream.linkskool.activities.ViewClassResultWebview
+import com.digitaldream.linkskool.activities.ViewCompositeResultWebView
 
-class TermResultDialog(
+class AdminTermResultDialog(
     sContext: Context,
     private var classId: String,
     private var courseId: String?,
@@ -29,33 +31,40 @@ class TermResultDialog(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        window!!.attributes.windowAnimations = R.style.DialogAnimation
-        window!!.attributes.gravity = Gravity.BOTTOM
-        setContentView(R.layout.dialog_term_result)
+        window?.apply {
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            attributes.windowAnimations = R.style.DialogAnimation
+            attributes.gravity = Gravity.BOTTOM
+        }
 
-        val courseResult: CardView = findViewById(R.id.course_result)
-        val compositeResult: CardView = findViewById(R.id.composite_result)
-        val viewCourseResult: CardView = findViewById(R.id.view_course_result)
-        val editCourseResult: CardView = findViewById(R.id.edit_course_result)
+        setContentView(R.layout.dialog_admin_term_result)
+
+        val courseResult: TextView = findViewById(R.id.course_result)
+        val compositeResult: TextView = findViewById(R.id.composite_result)
+        val viewCourseResult: TextView = findViewById(R.id.view_course_result)
+        val editCourseResult: TextView = findViewById(R.id.edit_course_result)
+        val skillsBehaviourBtn: TextView = findViewById(R.id.skillsBehaviourBtn)
+        val commentBtn: TextView = findViewById(R.id.commentBtn)
+        val skillsLayout: LinearLayout = findViewById(R.id.skillsLayout)
+        val resultLayout: LinearLayout = findViewById(R.id.resultLayout)
+        val courseLayout: LinearLayout = findViewById(R.id.courseLayout)
 
         term = when (sTerm.lowercase()) {
             "First Term".lowercase() -> "1"
             "Second Term".lowercase() -> "2"
             "Third Term".lowercase() -> "3"
-            else -> ""
+            else -> sTerm
         }
 
+
         if (from == "course") {
-            courseResult.isVisible = false
-            compositeResult.isVisible = false
-            viewCourseResult.isVisible = true
-            editCourseResult.isVisible = true
+            skillsLayout.isVisible = false
+            resultLayout.isVisible = false
+            courseLayout.isVisible = true
         } else {
-            courseResult.isVisible = true
-            compositeResult.isVisible = true
-            viewCourseResult.isVisible = false
-            editCourseResult.isVisible = false
+            skillsLayout.isVisible = true
+            resultLayout.isVisible = true
+            courseLayout.isVisible = false
         }
 
         editCourseResult.setOnClickListener {
@@ -71,8 +80,16 @@ class TermResultDialog(
         }
 
         compositeResult.setOnClickListener {
-            launchActivity(ViewClassResultWebview::class.java)
+            launchActivity(ViewCompositeResultWebView::class.java)
             dismiss()
+        }
+
+        skillsBehaviourBtn.setOnClickListener {
+            launchActivity(StaffUtils::class.java, "skills_behaviour")
+        }
+
+        commentBtn.setOnClickListener {
+            launchActivity(StaffUtils::class.java, "staff_comment")
         }
     }
 
