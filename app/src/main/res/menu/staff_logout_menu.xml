@@ -6,7 +6,7 @@
         android:id="@+id/staff_logout"
         android:icon="@drawable/ic_power"
         android:title="Logout"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/info"

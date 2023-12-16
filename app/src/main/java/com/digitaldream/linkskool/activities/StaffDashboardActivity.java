@@ -49,7 +49,6 @@ public class StaffDashboardActivity extends AppCompatActivity {
     public static String check = null;
     public static boolean refresh = false;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +97,6 @@ public class StaffDashboardActivity extends AppCompatActivity {
         });
 
     }
-
 
     @Override
     public void onBackPressed() {
