@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.ViewClassResultWebview">
+    tools:context=".activities.ViewCompositeResultWebView">
     <include layout="@layout/toolbar" />
     <WebView
         android:id="@+id/webview_class_result"
