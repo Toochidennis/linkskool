@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,158 +7,161 @@
     android:orientation="vertical"
     tools:context=".activities.RegYearList">
 
-    <include layout="@layout/toolbar"
-        android:id="@+id/toolbar"/>
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:background="@color/tab_color"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/class_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="JS1 A"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                android:fontFamily="@font/roboto"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                />
-            <TextView
-                android:id="@+id/class_form_teacher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textSize="16sp"
-                android:textColor="@android:color/white"
-                android:fontFamily="@font/lato"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="30dp"/>
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="-30dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="10dp"
-        app:contentPadding="10dp">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            >
-            <RelativeLayout
-                android:id="@+id/copy_reg"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:layout_weight="1"
-                android:focusable="true">
+            android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/call_student_profile"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:clickable="false"
-                    android:background="@android:color/white"
-                    android:tint="@color/blue"
-                    android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_copy" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:text="Copy Previous Registration"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="5dp"
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@drawable/background_gradient_color"
                     android:gravity="center"
-                    android:textSize="12sp"
-                    android:textColor="@color/blue"
-                    android:layout_below="@id/call_student_profile"/>
-            </RelativeLayout>
+                    android:orientation="vertical"
+                    android:padding="10dp">
 
-            <RelativeLayout
-                android:id="@+id/course_registration"
-                android:layout_width="0dp"
+                    <TextView
+                        android:id="@+id/class_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="JS1 A"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/class_form_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="30dp"
+                        android:fontFamily="@font/lato"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:layout_weight="1"
-                android:focusable="true">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="-30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                app:contentPadding="10dp">
 
-                <ImageButton
-                    android:id="@+id/ic2"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:clickable="false"
-                    android:layout_centerHorizontal="true"
-                    android:background="@android:color/white"
-                    android:tint="@color/blue"
-                    android:src="@drawable/ic_library_books" />
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
-                    android:text="Bulk Registration"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="5dp"
-                    android:textSize="12sp"
-                    android:textColor="@color/blue"
-                    android:layout_below="@id/ic2"/>
-            </RelativeLayout>
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/copy_reg"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageButton
+                            android:id="@+id/call_student_profile"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@android:color/white"
+                            android:clickable="false"
+                            android:src="@drawable/ic_copy"
+                            app:tint="@color/blue" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/call_student_profile"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:clickable="false"
+                            android:gravity="center"
+                            android:text="Copy Previous Registration"
+                            android:textColor="@color/blue"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/course_registration"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageButton
+                            android:id="@+id/ic2"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_centerHorizontal="true"
+                            android:background="@android:color/white"
+                            android:clickable="false"
+                            android:src="@drawable/ic_library_books"
+                            app:tint="@color/blue" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/ic2"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:clickable="false"
+                            android:text="Bulk Registration"
+                            android:textColor="@color/blue"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
 
 
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/past_yrs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/past_yrs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="80dp"
-        android:layout_marginEnd="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/dimen_16"
+        android:layout_marginBottom="@dimen/dimen_32"
         android:backgroundTint="@color/tab_color"
-        android:visibility="visible"
-        android:src="@drawable/ic_add" />
+        android:contentDescription="TODO"
+        android:src="@drawable/ic_add"
+        android:visibility="visible" />
 
 </RelativeLayout>
