@@ -116,28 +116,25 @@ public class CourseRegistration extends AppCompatActivity implements CourseRegAd
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
         sendBtn = findViewById(R.id.send);
-        sendBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                JSONArray jsonArray = new JSONArray();
-                for(StudentTable st : studentList){
-                    if(st.isSelected()){
-                        JSONObject jsonObject = new JSONObject();
-                        try {
-                            jsonObject.put("student_id",st.getStudentId());
-                            jsonArray.put(jsonObject);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
+        sendBtn.setOnClickListener(v -> {
+            JSONArray jsonArray = new JSONArray();
+            for(StudentTable st : studentList){
+                if(st.isSelected()){
+                    JSONObject jsonObject = new JSONObject();
+                    try {
+                        jsonObject.put("student_id",st.getStudentId());
+                        jsonArray.put(jsonObject);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
+
                 }
-                Intent intent = new Intent(CourseRegistration.this,Courses.class);
-                intent.putExtra("level",studentLevelId);
-                intent.putExtra("class",studentClass);
-                intent.putExtra("student",jsonArray.toString());
-                startActivity(intent);
             }
+            Intent intent = new Intent(CourseRegistration.this,Courses.class);
+            intent.putExtra("level",studentLevelId);
+            intent.putExtra("class",studentClass);
+            intent.putExtra("student",jsonArray.toString());
+            startActivity(intent);
         });
 
 

@@ -16,7 +16,7 @@ import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.adapters.CourseResultAdapter
 import com.digitaldream.linkskool.adapters.OnItemClickListener
-import com.digitaldream.linkskool.dialog.TermResultDialog
+import com.digitaldream.linkskool.dialog.AdminTermResultDialog
 import com.digitaldream.linkskool.models.ChartModel
 import com.digitaldream.linkskool.models.CourseResultModel
 import com.digitaldream.linkskool.utils.FunctionUtils
@@ -24,7 +24,7 @@ import com.digitaldream.linkskool.utils.FunctionUtils.sendRequestToServer
 import com.digitaldream.linkskool.utils.VolleyCallback
 import org.achartengine.GraphicalView
 import org.json.JSONObject
-import java.util.*
+import java.util.Locale
 
 class CourseResultActivity : AppCompatActivity(R.layout.activity_course_result),
     OnItemClickListener {
@@ -63,6 +63,7 @@ class CourseResultActivity : AppCompatActivity(R.layout.activity_course_result),
         mCourseId = intent.getStringExtra("course_id")
         mYear = intent.getStringExtra("year")
         mTerm = intent.getStringExtra("term")
+
 
         val previousYear = mYear!!.toInt() - 1
         val session = String.format(Locale.getDefault(), "%d/%s", previousYear, mYear)
@@ -149,7 +150,6 @@ class CourseResultActivity : AppCompatActivity(R.layout.activity_course_result),
                     } catch (sE: Exception) {
                         sE.printStackTrace()
                     }
-
                 }
 
                 override fun onError(error: VolleyError) {
@@ -162,17 +162,15 @@ class CourseResultActivity : AppCompatActivity(R.layout.activity_course_result),
     override fun onItemClick(position: Int) {
         val model = mCourseList[position]
 
-        TermResultDialog(
-            this, mClassId!!,
-            model.courseId, mYear!!,
-            mTerm!!, "course"
+        AdminTermResultDialog(
+            this, mClassId ?: "",
+            model.courseId, mYear ?: "",
+            mTerm ?: "", "course"
+        ).apply {
+            show()
+        }.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
         )
-            .apply {
-                setCancelable(true)
-                show()
-            }.window?.setLayout(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            )
     }
 }
