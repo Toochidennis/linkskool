@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/skillsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/commentBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dimen_10"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="@dimen/dimen_16"
+            android:text="@string/comment"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16"
+            app:drawableTint="@color/color_1"
+            app:drawableTopCompat="@drawable/ic_comment_24" />
+
+        <TextView
+            android:id="@+id/skillsBehaviourBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dimen_10"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="@dimen/dimen_16"
+            android:text="@string/skills_and_behaviour"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16"
+            app:drawableTint="@color/color_5"
+            app:drawableTopCompat="@drawable/ic_skill_behaviour" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/resultLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/course_result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dimen_10"
+            android:fontFamily="@font/poppins_regular"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="@dimen/dimen_16"
+            android:text="Course result"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16"
+            app:drawableTint="@color/test_color_3"
+            app:drawableTopCompat="@drawable/ic_results" />
+
+        <TextView
+            android:id="@+id/composite_result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dimen_10"
+            android:fontFamily="@font/poppins_regular"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="@dimen/dimen_16"
+            android:text="Composite result"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16"
+            app:drawableTint="@color/test_color_4"
+            app:drawableTopCompat="@drawable/ic_results" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/courseLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/view_course_result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dimen_10"
+            android:fontFamily="@font/poppins_regular"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="@dimen/dimen_16"
+            android:text="View result"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16"
+            app:drawableTint="@color/test_color_3"
+            app:drawableTopCompat="@drawable/ic_eye_view" />
+
+        <TextView
+            android:id="@+id/edit_course_result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:layout_weight="1"
+            android:drawablePadding="@dimen/dimen_10"
+            android:fontFamily="@font/poppins_regular"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:padding="@dimen/dimen_16"
+            android:text="Edit result"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_16"
+            app:drawableTint="@color/test_color_4"
+            app:drawableTopCompat="@drawable/ic_edit" />
+
+    </LinearLayout>
+
+</LinearLayout>
