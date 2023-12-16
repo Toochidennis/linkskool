@@ -6,27 +6,17 @@ import static com.digitaldream.linkskool.utils.FunctionUtils.capitaliseFirstLett
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.MenuHost;
-import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -69,12 +59,13 @@ import java.util.Map;
 
 public class StudentDashboardFragment extends Fragment {
 
-    private Toolbar toolbar;
+
     private TextView errorMessageTxt;
     private RecyclerView questionRecyclerView;
     private FloatingActionButton addQuestionBtn;
     private SwipeRefreshLayout swipeRefreshLayout;
     private TextView usernameTxt;
+    private ImageView logoutBtn, infoBtn;
 
 
     List<StudentDashboardModel> questionList = new ArrayList<>();
@@ -107,12 +98,14 @@ public class StudentDashboardFragment extends Fragment {
     }
 
     private void setUpViews(View view) {
-        toolbar = view.findViewById(R.id.toolbar);
         questionRecyclerView = view.findViewById(R.id.questionRecyclerView);
         errorMessageTxt = view.findViewById(R.id.errorMessageTxt);
         swipeRefreshLayout = view.findViewById(R.id.swipeRefresh);
         addQuestionBtn = view.findViewById(R.id.addQuestionBtn);
         usernameTxt = view.findViewById(R.id.usernameTxt);
+        logoutBtn = view.findViewById(R.id.logoutBtn);
+        infoBtn = view.findViewById(R.id.infoBtn);
+
 
         databaseHelper = new DatabaseHelper(requireContext());
 
@@ -128,44 +121,22 @@ public class StudentDashboardFragment extends Fragment {
         usernameTxt.setText(capitaliseFirstLetter(username));
 
 
-        ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
-        ActionBar actionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
-        assert actionBar != null;
-        actionBar.setTitle("");
-        MenuHost menuHost = requireActivity();
+        logoutBtn.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            builder.setMessage("Continue to logout?");
+            builder.setNegativeButton("Cancel", (dialog, which) -> {
+            });
 
-        menuHost.addMenuProvider(new MenuProvider() {
-            @Override
-            public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
-                menuInflater.inflate(R.menu.staff_logout_menu, menu);
-            }
+            builder.setPositiveButton("Logout", (dialog, which) -> logout());
+            builder.show();
+        });
 
-            @Override
-            public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.staff_logout:
-                        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-                        builder.setMessage("Continue to logout?");
-                        builder.setNegativeButton("Cancel", (dialog, which) -> {
-                        });
-
-                        builder.setPositiveButton("Logout", (dialog, which) -> logout());
-                        builder.show();
-                        return true;
-
-                    case R.id.info:
-                        ContactUsDialog dialog = new ContactUsDialog(requireActivity());
-                        dialog.show();
-                        Window window = dialog.getWindow();
-                        assert window != null;
-                        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                        return true;
-
-                    default:
-                        return false;
-
-                }
-            }
+        infoBtn.setOnClickListener(v -> {
+            ContactUsDialog dialog = new ContactUsDialog(requireActivity());
+            dialog.show();
+            Window window = dialog.getWindow();
+            assert window != null;
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         });
     }
 
