@@ -5,15 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-
-import androidx.appcompat.widget.Toolbar;
-
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -21,12 +13,17 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.digitaldream.linkskool.R;
 
 import cc.cloudist.acplibrary.ACProgressConstant;
 import cc.cloudist.acplibrary.ACProgressFlower;
 
 public class StaffEnterResult extends AppCompatActivity {
+
     private WebView mWebview;
     private Toolbar toolbar;
 
@@ -54,8 +51,6 @@ public class StaffEnterResult extends AppCompatActivity {
         String status = i.getStringExtra("from");
         String courseId = i.getStringExtra("course_id");
         String classId = i.getStringExtra("class_id");
-
-
         mWebview = findViewById(R.id.webview_staff_result);
 
         final ACProgressFlower dialog1 = new ACProgressFlower.Builder(this)
@@ -84,7 +79,6 @@ public class StaffEnterResult extends AppCompatActivity {
                     dialog1.dismiss();
                     mWebview.setVisibility(View.VISIBLE);
                 }
-
             }
 
             @Override
