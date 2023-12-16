@@ -2,34 +2,23 @@ package com.digitaldream.linkskool.fragments;
 
 
 import static android.content.Context.MODE_PRIVATE;
-
 import static com.digitaldream.linkskool.utils.FunctionUtils.capitaliseFirstLetter;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
-import androidx.core.view.MenuHost;
-import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -83,10 +72,10 @@ public class StaffDashboardFragment extends Fragment {
     private CardView formClassBtn, courseBtn;
     private FloatingActionButton addQuestionBtn;
     private TextView usernameTxt;
+    private ImageView logoutBtn, infoBtn;
 
 
     private DatabaseHelper databaseHelper;
-    private Toolbar toolbar;
     private StaffDashboardAdapter questionAdapter;
     public static QuestionBottomSheet questionBottomSheet = null;
 
@@ -100,6 +89,11 @@ public class StaffDashboardFragment extends Fragment {
 
     public StaffDashboardFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 
     @Override
@@ -119,7 +113,6 @@ public class StaffDashboardFragment extends Fragment {
     }
 
     private void setUpViews(View view) {
-        toolbar = view.findViewById(R.id.toolbar);
         classCountTxt = view.findViewById(R.id.noOfClassTxt);
         courseCountTxt = view.findViewById(R.id.noOfCourseTxt);
         courseBtn = view.findViewById(R.id.courseBtn);
@@ -129,52 +122,31 @@ public class StaffDashboardFragment extends Fragment {
         addQuestionBtn = view.findViewById(R.id.addQuestionBtn);
         questionRecyclerView = view.findViewById(R.id.questionRecyclerView);
         usernameTxt = view.findViewById(R.id.usernameTxt);
+        logoutBtn = view.findViewById(R.id.logoutBtn);
+        infoBtn = view.findViewById(R.id.infoBtn);
 
         setUpToolbar();
     }
 
 
     private void setUpToolbar() {
-        ((AppCompatActivity) requireActivity()).setSupportActionBar(toolbar);
-        ActionBar actionBar = ((AppCompatActivity) requireActivity()).getSupportActionBar();
-        assert actionBar != null;
-        actionBar.setTitle("");
-        MenuHost mMenuHost = requireActivity();
+        logoutBtn.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+            builder.setMessage("Continue to logout?");
+            builder.setNegativeButton("Cancel", (dialog, which) -> {
+            });
 
-        mMenuHost.addMenuProvider(new MenuProvider() {
-            @Override
-            public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
-                menuInflater.inflate(R.menu.staff_logout_menu, menu);
-            }
-
-            @Override
-            public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.staff_logout:
-                        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
-                        builder.setMessage("Continue to logout?");
-                        builder.setNegativeButton("Cancel", (dialog, which) -> {
-                        });
-
-                        builder.setPositiveButton("Logout", (dialog, which) -> logout());
-                        builder.show();
-                        return true;
-
-                    case R.id.info:
-                        ContactUsDialog dialog = new ContactUsDialog(requireActivity());
-                        dialog.show();
-                        Window window = dialog.getWindow();
-                        assert window != null;
-                        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                        return true;
-
-                    default:
-                        return false;
-
-                }
-            }
+            builder.setPositiveButton("Logout", (dialog, which) -> logout());
+            builder.show();
         });
 
+        infoBtn.setOnClickListener(v -> {
+            ContactUsDialog dialog = new ContactUsDialog(requireActivity());
+            dialog.show();
+            Window window = dialog.getWindow();
+            assert window != null;
+            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        });
     }
 
 
