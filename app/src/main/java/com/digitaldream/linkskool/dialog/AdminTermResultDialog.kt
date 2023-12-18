@@ -56,7 +56,6 @@ class AdminTermResultDialog(
             else -> sTerm
         }
 
-
         if (from == "course") {
             skillsLayout.isVisible = false
             resultLayout.isVisible = false
