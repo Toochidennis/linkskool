@@ -162,7 +162,6 @@ public class AnswerBottomSheet extends BottomSheetDialogFragment {
                          //feed.setPreText(content);
                          checktext=false;
                      }
-
                  }
              }
              } catch (JSONException e) {
@@ -490,15 +489,12 @@ public class AnswerBottomSheet extends BottomSheetDialogFragment {
                 }
 
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                dialog.dismiss();
-                Toast.makeText(getContext(),"error: "+error.getMessage(),Toast.LENGTH_SHORT).show();
-            }
+        }, error -> {
+            dialog.dismiss();
+            Toast.makeText(getContext(),"error: "+error.getMessage(),Toast.LENGTH_SHORT).show();
         }){
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();
                 params.put("answer",jsonArray.toString());
                 params.put("title",QuestionView.feed.getQuestion());
