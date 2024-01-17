@@ -104,7 +104,9 @@ class AdminELearningCourseOutlineFragment : Fragment(R.layout.fragment_admin_e_l
             }
 
             toolbar.apply {
-                setNavigationOnClickListener { requireActivity().onBackPressed() }
+                setNavigationOnClickListener {
+                    @Suppress("DEPRECATION")
+                    requireActivity().onBackPressed() }
             }
 
         }
@@ -188,7 +190,7 @@ class AdminELearningCourseOutlineFragment : Fragment(R.layout.fragment_admin_e_l
             R.layout.item_course_outline_layout,
             bindItem = { itemView, model, _ ->
                 val outlineTitleTxt: TextView = itemView.findViewById(R.id.outlineTitleTxt)
-                val levelName: TextView = itemView.findViewById(R.id.levelNameTxt)
+              //  val levelName: TextView = itemView.findViewById(R.id.levelNameTxt)
                 val teacherName: TextView = itemView.findViewById(R.id.teacherNameTxt)
 
                 outlineTitleTxt.text = capitaliseFirstLetter(model.title)

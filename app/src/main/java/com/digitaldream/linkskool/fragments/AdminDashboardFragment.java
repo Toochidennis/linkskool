@@ -4,21 +4,15 @@ package com.digitaldream.linkskool.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
-import androidx.core.view.MenuHost;
-import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,6 +22,7 @@ import com.android.volley.Request;
 import com.android.volley.VolleyError;
 import com.digitaldream.linkskool.R;
 import com.digitaldream.linkskool.activities.ClassListUtil;
+import com.digitaldream.linkskool.activities.Settings;
 import com.digitaldream.linkskool.activities.StudentContacts;
 import com.digitaldream.linkskool.activities.TeacherContacts;
 import com.digitaldream.linkskool.adapters.AdminDashboardAdapter;
@@ -41,7 +36,6 @@ import com.digitaldream.linkskool.utils.AddNewsBottomSheet;
 import com.digitaldream.linkskool.utils.FunctionUtils;
 import com.digitaldream.linkskool.utils.QuestionBottomSheet;
 import com.digitaldream.linkskool.utils.VolleyCallback;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 
@@ -61,15 +55,12 @@ public class AdminDashboardFragment extends Fragment {
     private TextView noOfClassesTxt, noOfStudentsTxt, noOfTeachersTxt, errorMessageTxt;
     private SwipeRefreshLayout swipeRefreshLayout;
     private CardView classBtn, studentBtn, teachersBtn;
-    private FloatingActionButton addQuestionBtn;
+    private LinearLayout addQuestionBtn;
     private RecyclerView questionRecyclerView;
-    private Toolbar toolbar;
-
-
+    private ImageView settingsButton;
     List<AdminDashboardModel> questionList = new ArrayList<>();
 
     private DatabaseHelper databaseHelper;
-    private MenuHost menuHost;
     private AdminDashboardAdapter questionAdapter;
     public static QuestionBottomSheet questionBottomSheet = null;
 
@@ -93,11 +84,12 @@ public class AdminDashboardFragment extends Fragment {
         setUpViews(view);
 
         init();
+
     }
 
     private void setUpViews(View view) {
         errorMessageTxt = view.findViewById(R.id.errorMessageTxt);
-        toolbar = view.findViewById(R.id.toolbar);
+        settingsButton = view.findViewById(R.id.settingsButton);
         noOfStudentsTxt = view.findViewById(R.id.noOfStudentsTxt);
         noOfTeachersTxt = view.findViewById(R.id.noOfTeachersTxt);
         noOfClassesTxt = view.findViewById(R.id.noOfClassTxt);
@@ -109,21 +101,30 @@ public class AdminDashboardFragment extends Fragment {
         addQuestionBtn = view.findViewById(R.id.addQuestionBtn);
 
         databaseHelper = new DatabaseHelper(requireContext());
-
-        setUpToolBar();
     }
 
-    private void setUpToolBar() {
-        ((AppCompatActivity) (requireActivity())).setSupportActionBar(toolbar);
-        ActionBar actionBar = ((AppCompatActivity) (requireActivity())).getSupportActionBar();
+    private void handleClicks() {
+        settingsButton.setOnClickListener(v->{
+            startActivity(new Intent(requireContext(), Settings.class));
+        });
 
-        assert actionBar != null;
-        actionBar.setHomeButtonEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
-        menuHost = requireActivity();
+        teachersBtn.setOnClickListener(v -> {
+            Intent intent3 = new Intent(getContext(),
+                    TeacherContacts.class);
+            startActivity(intent3);
+        });
 
-        setUpMenu();
+
+        classBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), ClassListUtil.class);
+            startActivity(intent);
+        });
+
+        addQuestionBtn.setOnClickListener(v -> {
+            AddNewsBottomSheet addNewsBottomSheet = new AddNewsBottomSheet();
+            addNewsBottomSheet.show(getParentFragmentManager(), "newsBottomSheet");
+        });
+
     }
 
     private void init() {
@@ -151,25 +152,10 @@ public class AdminDashboardFragment extends Fragment {
             startActivity(intent);
         });
 
-        teachersBtn.setOnClickListener(v -> {
-            Intent intent3 = new Intent(getContext(),
-                    TeacherContacts.class);
-            startActivity(intent3);
-        });
-
-
-        classBtn.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), ClassListUtil.class);
-            startActivity(intent);
-        });
-
-        addQuestionBtn.setOnClickListener(v -> {
-            AddNewsBottomSheet addNewsBottomSheet = new AddNewsBottomSheet();
-            addNewsBottomSheet.show(getParentFragmentManager(), "newsBottomSheet");
-        });
 
         refreshFeeds();
 
+        handleClicks();
     }
 
 
@@ -313,24 +299,6 @@ public class AdminDashboardFragment extends Fragment {
         }*/
     }
 
-
-    private void setUpMenu() {
-        menuHost.addMenuProvider(new MenuProvider() {
-            @Override
-            public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
-                menuInflater.inflate(R.menu.settings_menu, menu);
-
-                menu.getItem(0).setVisible(true);
-                menu.getItem(2).setVisible(true);
-                menu.getItem(1).setVisible(false);
-            }
-
-            @Override
-            public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
-                return false;
-            }
-        });
-    }
 
     private void refreshFeeds() {
         swipeRefreshLayout.setOnRefreshListener(() -> {

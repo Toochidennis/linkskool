@@ -337,7 +337,6 @@ class AdminPaymentDashboardFragment : Fragment(R.layout.fragment_dashboard_payme
                 menuInflater.inflate(R.menu.settings_menu, menu)
 
                 menu.getItem(0).isVisible = false
-                menu.getItem(2).isVisible = false
                 menu.getItem(1).isVisible = true
             }
 
