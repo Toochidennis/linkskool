@@ -1,17 +1,20 @@
 package com.digitaldream.linkskool.adapters
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.core.graphics.ColorUtils
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.models.AdminDashboardModel
 import com.digitaldream.linkskool.models.AdminReplyModel
 import com.digitaldream.linkskool.utils.FunctionUtils
+import kotlin.random.Random
 
 class AdminDashboardAdapter(
     private val itemList: List<AdminDashboardModel>,
@@ -38,10 +41,7 @@ class AdminDashboardAdapter(
         private val commentNoTxt: TextView = itemView.findViewById(R.id.comments)
         private val noOfLikesTxt: TextView = itemView.findViewById(R.id.upVotes)
         private val sharesCountTxt: TextView = itemView.findViewById(R.id.share)
-        private val replySeparator: View = itemView.findViewById(R.id.replySeparator)
-        private val replyTitle: TextView = itemView.findViewById(R.id.replyTitle)
-        private val replyRecyclerView: RecyclerView = itemView.findViewById(R.id.replyRecyclerView)
-
+        private val imageCard: CardView = itemView.findViewById(R.id.imageHolder)
 
         fun bind(adminModel: AdminDashboardModel) {
             usernameTxt.text = FunctionUtils.capitaliseFirstLetter(adminModel.username)
@@ -51,9 +51,9 @@ class AdminDashboardAdapter(
             noOfLikesTxt.text = adminModel.likesNo
             sharesCountTxt.text = adminModel.noOfShared
 
-            replyTitle.isVisible = adminModel.replyList.isNotEmpty()
-            replySeparator.isVisible = adminModel.replyList.isNotEmpty()
-            setReplyAdapter(adminModel.replyList)
+            val randomTintedColor = generateRandomTintedColor()
+
+            imageCard.setCardBackgroundColor(randomTintedColor)
         }
 
         private fun setReplyAdapter(replyList: List<AdminReplyModel>) {
@@ -81,16 +81,27 @@ class AdminDashboardAdapter(
 
             }
 
-            setUpReplyRecyclerView()
+            // setUpReplyRecyclerView()
         }
 
-        private fun setUpReplyRecyclerView() {
-            replyRecyclerView.apply {
-                hasFixedSize()
-                layoutManager = LinearLayoutManager(itemView.context)
-                adapter = replyAdapter
-            }
+        /* private fun setUpReplyRecyclerView() {
+             replyRecyclerView.apply {
+                 hasFixedSize()
+                 layoutManager = LinearLayoutManager(itemView.context)
+                 adapter = replyAdapter
+             }
+         }*/
+
+
+        private fun generateRandomTintedColor(): Int {
+            // Create an HSB color with full saturation and brightness
+            val randomColor =
+                Color.rgb(Random.nextInt(256), Random.nextInt(256), Random.nextInt(256))
+
+            // Tint the color with white
+            return ColorUtils.blendARGB(randomColor, Color.WHITE, 0.2f)
         }
+
     }
 
 }

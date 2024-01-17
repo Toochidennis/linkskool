@@ -305,7 +305,7 @@
             android:clickable="true"
             android:contentDescription="@string/todo"
             android:focusable="true"
-            android:src="@drawable/ic_settings_black_24dp"
+            android:src="@drawable/ic_settings"
             android:visibility="gone"
             app:backgroundTint="@color/color_10" />
 
