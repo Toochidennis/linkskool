@@ -5,8 +5,9 @@
             <gradient
                 android:endColor="@color/tab_color"
                 android:gradientRadius="300dp"
-                android:startColor="@color/test_color_1"
-                android:type="linear" />
+                android:startColor="@color/test_color_9"
+                android:type="linear"
+                android:angle="90"/>
         </shape>
     </item>
 </selector>
