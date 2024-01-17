@@ -4,22 +4,16 @@
 
     <item
         android:id="@+id/settings"
-        android:icon="@drawable/ic_settings_black_24dp"
+        android:icon="@drawable/ic_settings"
         android:title="Settings"
         android:visible="false"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/setup"
-        android:icon="@drawable/ic_settings_black_24dp"
+        android:icon="@drawable/ic_settings"
         android:title="Setup"
         android:visible="false"
         app:showAsAction="always" />
 
-    <item
-        android:id="@+id/info"
-        android:icon="@drawable/ic_info"
-        android:title="Contact us"
-        android:visible="false"
-        app:showAsAction="always" />
 </menu>
