@@ -9,6 +9,7 @@
         <item name="actionModeBackground">@color/tab_color</item>
         <item name="actionMenuTextColor">@color/white</item>
         <item name="windowActionBar">false</item>
+        <item name="android:statusBarColor">@color/tab_color</item>
     </style>
 
     <style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance">
@@ -52,7 +53,7 @@
     <style name="FullScreenDialog" parent="Theme.AppCompat.Light.DialogWhenLarge">
         <item name="android:windowAnimationStyle">@style/Animation.Design.BottomSheetDialog</item>
         <item name="windowNoTitle">true</item>
-       <!--// <item name="android:windowBackground">@android:color/transparent</item>-->
+        <!--// <item name="android:windowBackground">@android:color/transparent</item>-->
     </style>
 
     <style name="TabStyle" parent="TextAppearance.Design.Tab">

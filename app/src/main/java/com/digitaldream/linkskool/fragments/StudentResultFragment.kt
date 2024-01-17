@@ -60,6 +60,7 @@ class StudentResultFragment : Fragment(), OnItemClickListener {
             title = "Result"
             setNavigationIcon(R.drawable.arrow_left)
             setNavigationOnClickListener {
+                @Suppress("DEPRECATION")
                 requireActivity().onBackPressed()
             }
             setTitleTextColor(Color.WHITE)
@@ -92,7 +93,7 @@ class StudentResultFragment : Fragment(), OnItemClickListener {
 
 
     private fun studentProfile(sView: View) {
-        val profileImage = sView.findViewById<ImageView>(R.id.profile_image)
+       // val profileImage = sView.findViewById<ImageView>(R.id.profile_image)
         val studentName = sView.findViewById<TextView>(R.id.student_name)
         val studentClass = sView.findViewById<TextView>(R.id.student_class)
         val studentReg = sView.findViewById<TextView>(R.id.student_id)
