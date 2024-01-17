@@ -84,7 +84,7 @@
             android:drawablePadding="5dp"
             android:text=""
             android:textSize="11sp"
-            app:drawableLeftCompat="@drawable/ic_thumb" />
+            app:drawableLeftCompat="@drawable/ic_thumbs_up" />
 
         <TextView
             android:id="@+id/comments"

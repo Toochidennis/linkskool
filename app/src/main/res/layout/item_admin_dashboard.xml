@@ -1,133 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/dimen_10"
-    android:layout_marginTop="@dimen/dimen_10"
-    android:layout_marginEnd="@dimen/dimen_10"
     android:background="@color/white"
-    android:orientation="vertical"
-    android:padding="@dimen/dimen_10">
+    android:padding="@dimen/dimen_16">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <androidx.cardview.widget.CardView
+        android:id="@+id/imageHolder"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="0dp">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/imageHolder"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:backgroundTint="@color/color3"
-            app:cardCornerRadius="40dp">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/file_icon"
+            android:src="@drawable/ic_user"
+            app:tint="@color/white" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                android:contentDescription="@string/file_icon"
-                android:src="@drawable/ic_user"
-                app:tint="@color/white" />
+    </androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/usernameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_toEndOf="@id/imageHolder"
+        android:fontFamily="@font/inter_regular"
+        android:text="@string/toochi_dennis"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_14"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/usernameTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="@dimen/dimen_10"
-            android:layout_toEndOf="@id/imageHolder"
-            android:text=""
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_16" />
+    <View
+        android:id="@+id/dotView"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dimen_10"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_toEndOf="@id/usernameTxt"
+        android:background="@drawable/circle2"
+        android:backgroundTint="@color/gray" />
 
-        <TextView
-            android:id="@+id/dateTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/usernameTxt"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="@dimen/dimen_10"
-            android:layout_toEndOf="@id/imageHolder"
-            android:text=""
-            android:textSize="@dimen/text_12" />
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/dateTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dimen_10"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@id/dotView"
+        android:fontFamily="@font/montserrat"
+        android:text=""
+        android:textSize="@dimen/text_12" />
 
     <TextView
         android:id="@+id/questionTxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_below="@id/usernameTxt"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_toEndOf="@id/imageHolder"
+        android:fontFamily="@font/montserrat"
         android:text="@string/contact_developer"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_16" />
+        android:textSize="@dimen/text_12" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/likeLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingTop="@dimen/dimen_16">
+        android:layout_below="@id/questionTxt"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:layout_marginEnd="@dimen/dimen_16"
+        android:layout_toEndOf="@id/imageHolder"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/likeBtn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_thumbs_up" />
 
         <TextView
             android:id="@+id/upVotes"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_marginStart="4dp"
             android:drawablePadding="5dp"
+            android:fontFamily="@font/montserrat"
             android:text=""
-            android:textSize="11sp"
-            app:drawableLeftCompat="@drawable/ic_thumb" />
-
-        <TextView
-            android:id="@+id/comments"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawablePadding="5dp"
-            android:text=""
-            android:textSize="@dimen/text_12"
-            app:drawableLeftCompat="@drawable/ic_mode_comment" />
-
-
-        <TextView
-            android:id="@+id/share"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawablePadding="5dp"
-            android:text=""
-            android:textSize="@dimen/text_12"
-            app:drawableLeftCompat="@drawable/ic_cached" />
+            android:textSize="14sp" />
 
     </LinearLayout>
 
-    <View
-        android:id="@+id/replySeparator"
+    <LinearLayout
+        android:id="@+id/commentLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/questionTxt"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:layout_marginEnd="@dimen/dimen_16"
+        android:layout_toStartOf="@id/repostLayout"
+        android:layout_toEndOf="@id/likeLayout"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/commentBtn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_mode_comment" />
+
+        <TextView
+            android:id="@+id/comments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/montserrat"
+            android:text=""
+            android:textSize="@dimen/text_14" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/repostLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/questionTxt"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/shareBtn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_repost" />
+
+        <TextView
+            android:id="@+id/share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/montserrat"
+            android:text=""
+            android:textSize="@dimen/text_14" />
+
+    </LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
         android:layout_height=".5dp"
+        android:layout_below="@id/likeLayout"
         android:layout_marginTop="@dimen/dimen_16"
-        android:background="@color/test_color_7" />
+        app:dividerColor="@color/gray" />
 
-    <TextView
-        android:id="@+id/replyTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_10"
-        android:text="Replies"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_16" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/replyRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dimen_10" />
-
-</LinearLayout>
+</RelativeLayout>
