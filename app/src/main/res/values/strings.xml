@@ -174,4 +174,7 @@
     <string name="toochi_dennis">Toochi Dennis</string>
     <string name="form_class">Form class</string>
     <string name="feeds">Feeds</string>
+    <string name="teachers">Teachers</string>
+    <string name="classes">Classes</string>
+    <string name="administrator">Administrator</string>
 </resources>
