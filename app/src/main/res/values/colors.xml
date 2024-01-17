@@ -6,7 +6,7 @@
     <color name="gray_ligth">#F6F7F9</color>
     <color name="blue">#033876</color>
     <color name="ligth_blue">@color/blue</color>
-    <color name="gray">#808080</color>
+    <color name="gray">#14000000</color>
     <color name="light_gray">#D4D4D4</color>
     <color name="white">#fff</color>
     <color name="color1">#7719AA</color>
@@ -39,7 +39,9 @@
     <color name="gray_400">#FFBDBDBD</color>
     <color name="gray_600">#FF757575</color>
 
-    <color name="color_1">#cc33ff</color>
+    <color name="color_1">#FF00FF</color>
+    <color name="tinted_color_1">#F3DBDB</color>
+    <color name="tinted_color_icon">#F1ACAC</color>
     <color name="color_2">#3366ff</color>
     <color name="color_3">@color/tab_color</color>
     <color name="color_4">#0066ff</color>
@@ -51,18 +53,22 @@
     <color name="color_10">#6600cc</color>
 
     <color name="test_color_1">#2C62FF</color>
-    <color name="test_color_9">#902C62FF</color>
+    <color name="test_color_9">#ADC3FF</color>
     <color name="test_color_2">#34AFFF</color>
     <color name="test_color_3">#FF5E5B</color>
-    <color name="test_color_4">#FBB41A</color>
-    <color name="test_color_5">#2BC999</color>
-    <color name="test_color_6">#F8F8FA</color>
+    <color name="test_color_4">#FFFFC0</color>
+    <color name="tinted_color_4">#FFFFD0</color>
+    <color name="tinted_color_icon_4">#6A6A01</color>
+    <color name="test_color_5">#EEFFF7</color>
+    <color name="tinted_color_5">#E9FFF4</color>
+    <color name="tinted_color_icon_5">#25EF8A</color>
+    <color name="test_color_6">#F8F8F8</color>
     <color name="test_color_7">#8496A2</color>
     <color name="test_color_8">#F3F3F3</color>
     <color name="transparent_black">#90000000</color>
     <color name="android_ash">#FAFAFA</color>
 
-    <color name="pathColor">#30d6af</color>
+    <color name="pathColor">#191F91</color>
 
     <color name="chart_line">@color/test_color_2</color>
     <color name="chart_text">@color/black</color>

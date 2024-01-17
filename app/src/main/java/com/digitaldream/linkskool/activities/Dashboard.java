@@ -33,6 +33,7 @@ import com.digitaldream.linkskool.dialog.ContactUsDialog;
 import com.digitaldream.linkskool.fragments.AdminDashboardFragment;
 import com.digitaldream.linkskool.fragments.AdminELearningCourseOutlineFragment;
 import com.digitaldream.linkskool.fragments.AdminPaymentDashboardFragment;
+import com.digitaldream.linkskool.fragments.AdminResultNavigationGraphFragment;
 import com.digitaldream.linkskool.fragments.ELibraryFragment;
 import com.digitaldream.linkskool.fragments.FlashCardList;
 import com.digitaldream.linkskool.interfaces.ELearningListener;
@@ -62,7 +63,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsClickListener {
-    private DrawerLayout drawerLayout;
+    //private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private List<NewsTable> newsTitleList;
     private DatabaseHelper databaseHelper;
@@ -98,6 +99,7 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
             e.printStackTrace();
         }
 
+
         addMenuProvider(new MenuProvider() {
             @Override
             public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
@@ -116,31 +118,22 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
                                         ("from", "settings")
                         );
                         return true;
-                    case R.id.info:
-                        ContactUsDialog dialog = new ContactUsDialog(Dashboard.this);
-                        dialog.show();
-                        Window window = dialog.getWindow();
-                        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
-                                ViewGroup.LayoutParams.WRAP_CONTENT);
-                        return true;
 
-                    case android.R.id.home:
-                        drawerLayout.openDrawer(GravityCompat.START);
-                        return true;
                 }
                 return false;
             }
         });
 
 
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.navigation_view);
-        drawerLayout.setDescendantFocusability(
-                ViewGroup.FOCUS_AFTER_DESCENDANTS);
+        // drawerLayout = findViewById(R.id.drawer_layout);
+        //navigationView = findViewById(R.id.navigation_view);
+       /* drawerLayout.setDescendantFocusability(
+                ViewGroup.FOCUS_AFTER_DESCENDANTS);*/
 
-        View headerView = navigationView.getHeaderView(0);
-        user = headerView.findViewById(R.id.user);
-        schoolName = headerView.findViewById(R.id.school_name);
+        //View headerView = navigationView.getHeaderView(0);
+        // user = headerView.findViewById(R.id.user);
+        // schoolName = headerView.findViewById(R.id.school_name);
+
         SharedPreferences sharedPreferences = getSharedPreferences(
                 "loginDetail", Context.MODE_PRIVATE);
         try {
@@ -155,28 +148,7 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
         db = sharedPreferences.getString("db", "");
 
 
-        if (!user_name.equals("null")) {
-            try {
-                user_name = user_name.substring(0,
-                        1).toUpperCase() + user_name.substring(1);
-                school_name = school_name.substring(0,
-                        1).toUpperCase() + school_name.substring(1);
-                user.setText(user_name);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        String[] strArray = school_name.split(" ");
-        StringBuilder builder = new StringBuilder();
-        try {
-            for (String s : strArray) {
-                String cap = s.substring(0, 1).toUpperCase() + s.substring(1);
-                builder.append(cap).append(" ");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        schoolName.setText(builder.toString());
+//        schoolName.setText(builder.toString());
         //school_Name.setText(builder.toString());
         bottomNavigationView = findViewById(R.id.bottom_navigation_student);
         if (from != null && from.equals("testupload")) {
@@ -194,7 +166,7 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
                     new AdminDashboardFragment()).commit();
         }
 
-        navigationView.setNavigationItemSelectedListener(menuItem -> {
+       /* navigationView.setNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
                 case R.id.dashboard:
                     menuItem.setChecked(true);
@@ -237,7 +209,7 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
 
         });
 
-        navigationView.getMenu().getItem(0).setChecked(true);
+        navigationView.getMenu().getItem(0).setChecked(true);*/
 
         bottomNavigationView.setOnNavigationItemSelectedListener(menuItem -> {
             switch (menuItem.getItemId()) {
@@ -248,13 +220,10 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
                     return true;
 
                 case R.id.student_results:
-                    AdminClassesDialog adminResultDialog = new AdminClassesDialog(this, "result",
-                            null, null);
-                    adminResultDialog.setCancelable(true);
-                    adminResultDialog.show();
-                    Window window = adminResultDialog.getWindow();
-                    window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT);
+                    getSupportFragmentManager().beginTransaction().replace(
+                            R.id.payment_container,
+                            new AdminResultNavigationGraphFragment()
+                    ).commit();
                     return true;
 
                 case R.id.payment:
@@ -262,8 +231,6 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
                             R.id.payment_container,
                             new AdminPaymentDashboardFragment()).commit();
 
-                    /*startActivity(new Intent(this, PaymentActivity.class).putExtra("from",
-                            "dashboard"));*/
                     return true;
                 case R.id.student_library:
                     getSupportFragmentManager().beginTransaction().replace(
@@ -339,16 +306,14 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
 
         }
 
-        navigationView.getMenu().getItem(0).setChecked(true);
+//        navigationView.getMenu().getItem(0).setChecked(true);
 
     }
 
     @Override
     public void onBackPressed() {
         int selectedItemId = bottomNavigationView.getSelectedItemId();
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else if (R.id.student_dashboard != selectedItemId) {
+        if (R.id.student_dashboard != selectedItemId) {
             setHomeItem(Dashboard.this);
         } else {
             super.onBackPressed();
