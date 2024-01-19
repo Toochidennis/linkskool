@@ -4,6 +4,7 @@
     android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground"
     android:background="@color/white"
     android:padding="@dimen/dimen_16">
 
@@ -91,6 +92,7 @@
             android:id="@+id/likeBtn"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            app:tint="@android:color/darker_gray"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_thumbs_up" />
 
@@ -101,7 +103,6 @@
             android:layout_marginStart="4dp"
             android:drawablePadding="5dp"
             android:fontFamily="@font/montserrat"
-            android:text=""
             android:textSize="14sp" />
 
     </LinearLayout>
@@ -122,6 +123,7 @@
         <ImageView
             android:id="@+id/commentBtn"
             android:layout_width="20dp"
+            app:tint="@android:color/darker_gray"
             android:layout_height="20dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_mode_comment" />
@@ -132,7 +134,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/montserrat"
-            android:text=""
             android:textSize="@dimen/text_14" />
 
     </LinearLayout>
@@ -152,6 +153,7 @@
             android:id="@+id/shareBtn"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            app:tint="@android:color/darker_gray"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_repost" />
 
@@ -161,7 +163,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/montserrat"
-            android:text=""
             android:textSize="@dimen/text_14" />
 
     </LinearLayout>

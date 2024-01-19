@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dimen_16">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/imageHolder"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:cardCornerRadius="40dp"
+        app:cardElevation="0dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/file_icon"
+            android:src="@drawable/ic_user"
+            app:tint="@color/white" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/usernameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_toEndOf="@id/imageHolder"
+        android:fontFamily="@font/inter_regular"
+        android:text="@string/toochi_dennis"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_14"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/dotView"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dimen_10"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:layout_toEndOf="@id/usernameTxt"
+        android:background="@drawable/circle2"
+        android:backgroundTint="@color/gray" />
+
+    <TextView
+        android:id="@+id/dateTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="@dimen/dimen_10"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@id/dotView"
+        android:fontFamily="@font/montserrat"
+        android:text=""
+        android:textSize="@dimen/text_12" />
+
+    <TextView
+        android:id="@+id/commentTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/usernameTxt"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_toEndOf="@id/imageHolder"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/contact_developer"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_12" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/imageCard"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_below="@id/commentTxt"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:layout_toEndOf="@id/imageHolder"
+        android:visibility="gone"
+        app:cardCornerRadius="@dimen/dimen_10">
+
+        <ImageView
+            android:id="@+id/commentImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/file_icon"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_profile_pic" />
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:layout_below="@id/imageCard"
+        android:layout_marginTop="@dimen/dimen_16"
+        app:dividerColor="@color/gray" />
+
+</RelativeLayout>
