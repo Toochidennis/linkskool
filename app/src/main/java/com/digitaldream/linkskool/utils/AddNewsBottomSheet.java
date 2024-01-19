@@ -91,8 +91,7 @@ public class AddNewsBottomSheet extends BottomSheetDialogFragment {
         ImageView closeBtn = view.findViewById(R.id.close);
         TextView submitBtn = view.findViewById(R.id.submit);
         gallery = view.findViewById(R.id.galleryGridView);
-        //TextView t = view.findViewById(R.id.title);
-        //EditText edt = view.findViewById(R.id.editT);
+
         titleEDT = view.findViewById(R.id.news_title);
 
         image1 = new ArrayList<>();
@@ -121,6 +120,7 @@ public class AddNewsBottomSheet extends BottomSheetDialogFragment {
                 }
 
             }
+
             if (null != images && !images.isEmpty()) {
                 View view1 = layoutInflater.inflate(R.layout.image_view_item, editorContainer,
                         false);
@@ -133,7 +133,6 @@ public class AddNewsBottomSheet extends BottomSheetDialogFragment {
                 editorContainer.addView(view1, itemPosition);
                 image1.add(images.get(position));
             }
-
 
         });
 
@@ -157,23 +156,23 @@ public class AddNewsBottomSheet extends BottomSheetDialogFragment {
                     Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) && (ContextCompat.checkSelfPermission(
                     getContext(),
                     Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)) {
-                if ((ActivityCompat.shouldShowRequestPermissionRationale(getActivity(),
+                if ((ActivityCompat.shouldShowRequestPermissionRationale(requireActivity(),
                         Manifest.permission.WRITE_EXTERNAL_STORAGE)) && (ActivityCompat.shouldShowRequestPermissionRationale(
-                        getActivity(),
+                        requireActivity(),
                         Manifest.permission.READ_EXTERNAL_STORAGE))) {
-                    ActivityCompat.requestPermissions(getActivity(),
+                    ActivityCompat.requestPermissions(requireActivity(),
                             new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                     Manifest.permission.READ_EXTERNAL_STORAGE},
                             REQUEST_PERMISSIONS);
 
                 } else {
-                    ActivityCompat.requestPermissions(getActivity(),
+                    ActivityCompat.requestPermissions(requireActivity(),
                             new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
                                     Manifest.permission.READ_EXTERNAL_STORAGE},
                             REQUEST_PERMISSIONS);
                 }
             } else {
-                gallery.setAdapter(new ImageAdapter(getActivity()));
+                gallery.setAdapter(new ImageAdapter(requireActivity()));
                 gallery.setVisibility(View.VISIBLE);
             }
 

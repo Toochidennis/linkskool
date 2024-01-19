@@ -67,8 +67,8 @@
                 android:fontFamily="@font/roboto"
                 android:hint="News title"
                 android:inputType="textMultiLine"
-                android:minLines="1"
                 android:minHeight="48dp"
+                android:minLines="1"
                 android:textColorHint="@color/gray"
                 android:textSize="14sp" />
 
