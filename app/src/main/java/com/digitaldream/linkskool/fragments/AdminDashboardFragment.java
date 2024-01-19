@@ -6,8 +6,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,7 +29,7 @@ import com.digitaldream.linkskool.activities.TeacherContacts;
 import com.digitaldream.linkskool.adapters.AdminDashboardAdapter;
 import com.digitaldream.linkskool.config.DatabaseHelper;
 import com.digitaldream.linkskool.models.AdminDashboardModel;
-import com.digitaldream.linkskool.models.AdminReplyModel;
+import com.digitaldream.linkskool.models.AdminCommentsModel;
 import com.digitaldream.linkskool.models.ClassNameTable;
 import com.digitaldream.linkskool.models.StudentTable;
 import com.digitaldream.linkskool.models.TeachersTable;
@@ -55,9 +56,10 @@ public class AdminDashboardFragment extends Fragment {
     private TextView noOfClassesTxt, noOfStudentsTxt, noOfTeachersTxt, errorMessageTxt;
     private SwipeRefreshLayout swipeRefreshLayout;
     private CardView classBtn, studentBtn, teachersBtn;
-    private LinearLayout addQuestionBtn;
+    private Button addQuestionBtn;
     private RecyclerView questionRecyclerView;
     private ImageView settingsButton;
+    ProgressBar progressBar;
     List<AdminDashboardModel> questionList = new ArrayList<>();
 
     private DatabaseHelper databaseHelper;
@@ -99,14 +101,13 @@ public class AdminDashboardFragment extends Fragment {
         questionRecyclerView = view.findViewById(R.id.questionRecyclerView);
         swipeRefreshLayout = view.findViewById(R.id.swipeRefresh);
         addQuestionBtn = view.findViewById(R.id.addQuestionBtn);
+        progressBar = view.findViewById(R.id.progressBar);
 
         databaseHelper = new DatabaseHelper(requireContext());
     }
 
     private void handleClicks() {
-        settingsButton.setOnClickListener(v->{
-            startActivity(new Intent(requireContext(), Settings.class));
-        });
+        settingsButton.setOnClickListener(v -> startActivity(new Intent(requireContext(), Settings.class)));
 
         teachersBtn.setOnClickListener(v -> {
             Intent intent3 = new Intent(getContext(),
@@ -165,10 +166,10 @@ public class AdminDashboardFragment extends Fragment {
         setUpRecyclerView();
 
         if (json.isEmpty()) {
-            getFeed();
+            getFeeds();
         } else {
             if (refresh) {
-                getFeed();
+                getFeeds();
             } else {
                 parseJSON(json);
             }
@@ -194,12 +195,16 @@ public class AdminDashboardFragment extends Fragment {
 
     }*/
 
-    private void getFeed() {
+    private void getFeeds() {
         String url = requireActivity().getString(R.string.base_url) + "/getFeed.php";
         HashMap<String, String> stringMap = new HashMap<>();
         stringMap.put("id", "0");
         stringMap.put("_db", db);
         stringMap.put("page", "1");
+
+        progressBar.setVisibility(View.VISIBLE);
+
+        questionList.clear();
 
         FunctionUtils.sendRequestToServer(Request.Method.POST, url, requireContext(), stringMap,
                 new VolleyCallback() {
@@ -212,11 +217,12 @@ public class AdminDashboardFragment extends Fragment {
                     @Override
                     public void onError(@NonNull VolleyError error) {
                         errorMessageTxt.setVisibility(View.VISIBLE);
+                        errorMessageTxt.setText(getString(R.string.no_internet));
+                        progressBar.setVisibility(View.GONE);
                     }
                 }, false);
 
     }
-
 
     private void parseJSON(String response) {
         try {
@@ -226,7 +232,7 @@ public class AdminDashboardFragment extends Fragment {
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject questionObject = jsonArray.getJSONObject(i);
-                List<AdminReplyModel> replyList = new ArrayList<>();
+                List<AdminCommentsModel> replyList = new ArrayList<>();
 
                 String id = questionObject.getString("id");
                 String title = questionObject.getString("title");
@@ -238,6 +244,7 @@ public class AdminDashboardFragment extends Fragment {
                 String type = questionObject.getString("type");
                 String description = questionObject.getString("description");
                 String body = questionObject.getString("body");
+                String imageUrl = questionObject.getString("picref");
 
                 if (!body.isEmpty()) {
                     JSONArray bodyArray = new JSONArray(body);
@@ -254,13 +261,14 @@ public class AdminDashboardFragment extends Fragment {
                             image = bodyObject.getString("src");
                         }
 
-                        replyList.add(new AdminReplyModel(id, username, content, image, date));
+                        replyList.add(new AdminCommentsModel(id, username, content, image, date));
                     }
                 }
 
                 AdminDashboardModel questionModel =
-                        new AdminDashboardModel(id, username, title,
-                                commentsNo, likesNo, shareNo, type, date, replyList);
+                        new AdminDashboardModel(
+                                id, username, title,
+                                commentsNo, likesNo, shareNo, type, date,imageUrl, replyList);
 
                 AdminDashboardModel existingQuestionModel = questionMap.get(description.strip());
 
@@ -279,10 +287,20 @@ public class AdminDashboardFragment extends Fragment {
 
             Collections.reverse(questionList);
 
+            progressBar.setVisibility(View.GONE);
+
+            if (questionList.isEmpty()) {
+                errorMessageTxt.setVisibility(View.VISIBLE);
+                errorMessageTxt.setText(getString(R.string.there_is_no_feeds_yet));
+            } else {
+                errorMessageTxt.setVisibility(View.GONE);
+            }
+
             questionAdapter.notifyDataSetChanged();
 
         } catch (JSONException e) {
             e.printStackTrace();
+            progressBar.setVisibility(View.GONE);
         }
     }
 
@@ -291,18 +309,12 @@ public class AdminDashboardFragment extends Fragment {
         questionRecyclerView.hasFixedSize();
         questionRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         questionRecyclerView.setAdapter(questionAdapter);
-
-       /* if (questionList.isEmpty()) {
-            errorMessageTxt.setVisibility(View.VISIBLE);
-        } else {
-            errorMessageTxt.setVisibility(View.GONE);
-        }*/
     }
 
 
     private void refreshFeeds() {
         swipeRefreshLayout.setOnRefreshListener(() -> {
-            getFeed();
+            getFeeds();
             swipeRefreshLayout.setRefreshing(false);
         });
     }
