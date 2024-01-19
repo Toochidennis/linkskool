@@ -155,7 +155,7 @@
         <activity android:name="com.digitaldream.linkskool.activities.AddNews" />
         <activity android:name="com.digitaldream.linkskool.activities.Flashcard" />
         <activity android:name="com.digitaldream.linkskool.activities.AnswerView" />
-        <activity android:name="com.digitaldream.linkskool.activities.QuestionView" />
+        <activity android:name="com.digitaldream.linkskool.activities.QuestionViewActivity" />
         <activity android:name="com.digitaldream.linkskool.activities.ResponseDetails" />
         <activity android:name="com.digitaldream.linkskool.activities.ViewResponses" />
         <activity android:name="com.digitaldream.linkskool.activities.FlashView" />

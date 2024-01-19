@@ -67,7 +67,6 @@ public class AnswerView extends AppCompatActivity implements AnswerAdapter.OnAns
 
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,7 +114,7 @@ public class AnswerView extends AppCompatActivity implements AnswerAdapter.OnAns
         questionText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AnswerView.this, QuestionView.class);
+                Intent intent = new Intent(AnswerView.this, QuestionViewActivity.class);
                 intent.putExtra("feed",feed);
                 startActivity(intent);
             }
@@ -171,17 +170,14 @@ public class AnswerView extends AppCompatActivity implements AnswerAdapter.OnAns
         }
 
         replyEDT = findViewById(R.id.reply);
-        replyEDT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                feed.setQuestion(feed.getAnswer());
-                FragmentTransaction transaction = ((FragmentActivity) AnswerView.this)
-                        .getSupportFragmentManager()
-                        .beginTransaction();
-                AnswerBottomSheet answerBottomSheet = AnswerBottomSheet.newInstance("reply");
-                answerBottomSheet.show(transaction, "answerBottomSheet");
-                answerBottomSheet.DismissListener(AnswerView.this);
-            }
+        replyEDT.setOnClickListener(v -> {
+            feed.setQuestion(feed.getAnswer());
+            FragmentTransaction transaction = ((FragmentActivity) AnswerView.this)
+                    .getSupportFragmentManager()
+                    .beginTransaction();
+            AnswerBottomSheet answerBottomSheet = AnswerBottomSheet.newInstance("reply");
+            answerBottomSheet.show(transaction, "answerBottomSheet");
+            answerBottomSheet.DismissListener(AnswerView.this);
         });
         SharedPreferences sharedPreferences = getSharedPreferences("loginDetail", Context.MODE_PRIVATE);
         db = sharedPreferences.getString("db","");

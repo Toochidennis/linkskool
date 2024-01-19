@@ -40,7 +40,7 @@ import com.bumptech.glide.Glide;
 import com.digitaldream.linkskool.activities.AnswerView;
 import com.digitaldream.linkskool.activities.Login;
 import com.digitaldream.linkskool.activities.NewsView;
-import com.digitaldream.linkskool.activities.QuestionView;
+import com.digitaldream.linkskool.activities.QuestionViewActivity;
 import com.digitaldream.linkskool.R;
 import com.digitaldream.linkskool.dialog.CustomDialog;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -97,7 +97,6 @@ public class AnswerBottomSheet extends BottomSheetDialogFragment {
     }
 
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -123,10 +122,10 @@ public class AnswerBottomSheet extends BottomSheetDialogFragment {
          }
          TextView question = view.findViewById(R.id.question);
          uriList = new ArrayList<>();
-         if(from.equals("answer")) {
-             String questionText = QuestionView.feed.getQuestion().trim();
+        /* if(from.equals("answer")) {
+             String questionText = QuestionViewActivity.feed.getQuestion().trim();
              questionText = questionText.substring(0,1).toUpperCase()+""+questionText.substring(1);
-             String q = QuestionView.feed.getQuestion().trim();
+             String q = QuestionViewActivity.feed.getQuestion().trim();
              try {
                  questionText = questionText.substring(0, 1).toUpperCase() + questionText.substring(1);
                  q = q.substring(questionText.length() - 1).trim();
@@ -170,7 +169,7 @@ public class AnswerBottomSheet extends BottomSheetDialogFragment {
 
          }else if(from.equals("news")){
              question.setText(NewsView.title);
-         }
+         }*/
         //gallery.setAdapter(new ImageAdapter(getActivity()));
         layoutInflater = LayoutInflater.from(getContext());
         //itemPosition = editorContainer.getChildCount();
@@ -393,6 +392,7 @@ public class AnswerBottomSheet extends BottomSheetDialogFragment {
                     e1.printStackTrace();
                 }
 
+
             }else{
                 LinearLayout l = (LinearLayout) editorContainer.getChildAt(a);
                 EditText edt = l.findViewById(R.id.editT);
@@ -407,7 +407,6 @@ public class AnswerBottomSheet extends BottomSheetDialogFragment {
                     obj2.put("content",edt.getText().toString());
                     obj2.put("type","text");
                     jsonArray.put(obj2);
-
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -497,8 +496,8 @@ public class AnswerBottomSheet extends BottomSheetDialogFragment {
             protected Map<String, String> getParams() {
                 Map<String,String> params = new HashMap<>();
                 params.put("answer",jsonArray.toString());
-                params.put("title",QuestionView.feed.getQuestion());
-                params.put("question_id",QuestionView.feed.getId());
+//                params.put("title", QuestionViewActivity.feed.getQuestion());
+               // params.put("question_id", QuestionViewActivity.feed.getId());
                 params.put("author_id",author_id);
                 if(authorname==null){
                     authorname = "Admin";
