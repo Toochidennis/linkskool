@@ -15,6 +15,7 @@ import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.adapters.GenericAdapter2
+import com.digitaldream.linkskool.fragments.PostCommentDialogFragment
 import com.digitaldream.linkskool.models.AdminCommentsModel
 import com.digitaldream.linkskool.models.AdminDashboardModel
 import com.digitaldream.linkskool.utils.FunctionUtils.capitaliseFirstLetter
@@ -76,6 +77,10 @@ class QuestionViewActivity : AppCompatActivity(R.layout.activity_question_view) 
 
         backButton.setOnClickListener {
             onBackPressedDispatcher.onBackPressed()
+        }
+
+        commentButton.setOnClickListener {
+            PostCommentDialogFragment().show(supportFragmentManager, "")
         }
     }
 
