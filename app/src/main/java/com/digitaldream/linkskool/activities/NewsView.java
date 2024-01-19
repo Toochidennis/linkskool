@@ -36,7 +36,7 @@ import com.digitaldream.linkskool.adapters.AnswerAdapter;
 import com.digitaldream.linkskool.models.AnswerModel;
 import com.digitaldream.linkskool.R;
 import com.digitaldream.linkskool.models.QAObject;
-import com.digitaldream.linkskool.utils.AnswerBottomSheet;
+//import com.digitaldream.linkskool.utils.AnswerBottomSheet;
 import com.digitaldream.linkskool.utils.RefreshListener;
 import com.squareup.picasso.Picasso;
 
@@ -156,9 +156,9 @@ public class NewsView extends AppCompatActivity implements RefreshListener, Answ
                 FragmentTransaction transaction = ((FragmentActivity) NewsView.this)
                         .getSupportFragmentManager()
                         .beginTransaction();
-                AnswerBottomSheet answerBottomSheet = AnswerBottomSheet.newInstance("news");
+                /*AnswerBottomSheet answerBottomSheet = AnswerBottomSheet.newInstance("news");
                 answerBottomSheet.show(transaction, "answerBottomSheet");
-                answerBottomSheet.DismissListener(NewsView.this);
+                answerBottomSheet.DismissListener(NewsView.this);*/
             }
         });
 
