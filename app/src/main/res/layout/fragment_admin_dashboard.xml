@@ -114,7 +114,7 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="@dimen/dimen_8"
                             android:fontFamily="@font/pt_serif_bold"
-                            android:text="22"
+                            android:text=""
                             android:textColor="@color/tab_color"
                             android:textSize="@dimen/text_28"
                             android:textStyle="bold" />
@@ -163,7 +163,7 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="@dimen/dimen_8"
                             android:fontFamily="@font/pt_serif_bold"
-                            android:text="100"
+                            android:text=""
                             android:textColor="@color/tab_color"
                             android:textSize="@dimen/text_28"
                             android:textStyle="bold" />
@@ -213,7 +213,7 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="@dimen/dimen_8"
                             android:fontFamily="@font/pt_serif_bold"
-                            android:text="4000"
+                            android:text=""
                             android:textColor="@color/tab_color"
                             android:textSize="@dimen/text_28"
                             android:textStyle="bold" />
@@ -263,25 +263,22 @@
                     android:textSize="@dimen/text_16"
                     android:textStyle="bold" />
 
-                <LinearLayout
+                <Button
                     android:id="@+id/addQuestionBtn"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="@dimen/dimen_10"
+                    android:layout_marginTop="@dimen/dimen_16"
                     android:layout_marginEnd="@dimen/dimen_16"
-                    android:background="@drawable/circle2"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@string/app_name"
-                        android:src="@drawable/ic_add" />
-
-                </LinearLayout>
+                    android:background="@drawable/ripple_effect13"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingStart="@dimen/dimen_10"
+                    android:paddingEnd="@dimen/dimen_10"
+                    android:text="@string/add_post"
+                    android:textAllCaps="false"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_12" />
 
             </RelativeLayout>
 
@@ -293,6 +290,14 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:progressDrawable="@drawable/progress_bg"
+                    android:visibility="gone" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/questionRecyclerView"
@@ -306,7 +311,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="@string/no_data"
+                    android:fontFamily="@font/montserrat"
+                    android:text="@string/there_is_no_feeds_yet"
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_16"
                     android:visibility="gone" />
@@ -314,7 +320,6 @@
             </RelativeLayout>
 
         </LinearLayout>
-
 
     </RelativeLayout>
 
