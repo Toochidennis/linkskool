@@ -67,12 +67,16 @@
     <color name="test_color_8">#F3F3F3</color>
     <color name="transparent_black">#90000000</color>
     <color name="android_ash">#FAFAFA</color>
-
     <color name="pathColor">#191F91</color>
 
-    <color name="chart_line">@color/test_color_2</color>
-    <color name="chart_text">@color/black</color>
-    <color name="chart_point">@color/test_color_5</color>
+    <color name="tinted_0">#769BFF</color>
+    <color name="tinted_1">#3AB3FF</color>
+    <color name="tinted_2">#5353F4</color>
+    <color name="tinted_3">#85F6BF</color>
+    <color name="tinted_4">#9657F4</color>
+    <color name="tinted_5">#4AF6FF</color>
+    <color name="tinted_6">#414AE4</color>
+    <color name="tinted_7">#7C7CFF</color>
 
 
 </resources>
