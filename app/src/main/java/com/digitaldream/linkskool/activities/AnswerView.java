@@ -35,7 +35,7 @@ import com.digitaldream.linkskool.models.AnswerModel;
 import com.digitaldream.linkskool.models.CommentTable;
 import com.digitaldream.linkskool.R;
 import com.digitaldream.linkskool.models.QAObject;
-import com.digitaldream.linkskool.utils.AnswerBottomSheet;
+//import com.digitaldream.linkskool.utils.AnswerBottomSheet;
 import com.digitaldream.linkskool.utils.RefreshListener;
 import com.squareup.picasso.Picasso;
 
@@ -175,9 +175,9 @@ public class AnswerView extends AppCompatActivity implements AnswerAdapter.OnAns
             FragmentTransaction transaction = ((FragmentActivity) AnswerView.this)
                     .getSupportFragmentManager()
                     .beginTransaction();
-            AnswerBottomSheet answerBottomSheet = AnswerBottomSheet.newInstance("reply");
-            answerBottomSheet.show(transaction, "answerBottomSheet");
-            answerBottomSheet.DismissListener(AnswerView.this);
+            //AnswerBottomSheet answerBottomSheet = AnswerBottomSheet.newInstance("reply");
+           // answerBottomSheet.show(transaction, "answerBottomSheet");
+           // answerBottomSheet.DismissListener(AnswerView.this);
         });
         SharedPreferences sharedPreferences = getSharedPreferences("loginDetail", Context.MODE_PRIVATE);
         db = sharedPreferences.getString("db","");
