@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.google.android.exoplayer:exoplayer-core:2.8.4@aar" external-system-id="GRADLE">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/717e62036617ddcb55719b67e293baec/transformed/jetified-exoplayer-core-2.8.4/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/93c1d5f12f08fe79c6b5301e2dfcf008/transformed/jetified-exoplayer-core-2.8.4/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/717e62036617ddcb55719b67e293baec/transformed/jetified-exoplayer-core-2.8.4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/717e62036617ddcb55719b67e293baec/transformed/jetified-exoplayer-core-2.8.4/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/93c1d5f12f08fe79c6b5301e2dfcf008/transformed/jetified-exoplayer-core-2.8.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/93c1d5f12f08fe79c6b5301e2dfcf008/transformed/jetified-exoplayer-core-2.8.4/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.exoplayer/exoplayer-core/2.8.4/eafb8ea2791cc9e7a259c98d23d180d22e66d3d0/exoplayer-core-2.8.4-javadoc.jar!/" />
