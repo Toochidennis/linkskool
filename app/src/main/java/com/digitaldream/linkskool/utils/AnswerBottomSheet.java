@@ -1,3 +1,4 @@
+/*
 package com.digitaldream.linkskool.utils;
 
 import android.Manifest;
@@ -122,7 +123,8 @@ public class AnswerBottomSheet extends BottomSheetDialogFragment {
          }
          TextView question = view.findViewById(R.id.question);
          uriList = new ArrayList<>();
-        /* if(from.equals("answer")) {
+        */
+/* if(from.equals("answer")) {
              String questionText = QuestionViewActivity.feed.getQuestion().trim();
              questionText = questionText.substring(0,1).toUpperCase()+""+questionText.substring(1);
              String q = QuestionViewActivity.feed.getQuestion().trim();
@@ -169,7 +171,8 @@ public class AnswerBottomSheet extends BottomSheetDialogFragment {
 
          }else if(from.equals("news")){
              question.setText(NewsView.title);
-         }*/
+         }*//*
+
         //gallery.setAdapter(new ImageAdapter(getActivity()));
         layoutInflater = LayoutInflater.from(getContext());
         //itemPosition = editorContainer.getChildCount();
@@ -278,7 +281,8 @@ public class AnswerBottomSheet extends BottomSheetDialogFragment {
     }
 
 
-    /*for (EditText view : editList){
+    */
+/*for (EditText view : editList){
         view.setOnFocusChangeListener(focusListener);
     }
 
@@ -290,21 +294,26 @@ public class AnswerBottomSheet extends BottomSheetDialogFragment {
                 focusedView  = null;
             }
         }
-    }*/
+    }*//*
+
 
 
 
     private class ImageAdapter extends BaseAdapter {
 
-        /** The context. */
+        */
+/** The context. *//*
+
         private Activity context;
 
-        /**
+        */
+/**
          * Instantiates a new image adapter.
          *
          * @param localContext
          *            the local context
-         */
+         *//*
+
         public ImageAdapter(Activity localContext) {
             context = localContext;
             images = getAllShownImagesPath(context);
@@ -343,13 +352,15 @@ public class AnswerBottomSheet extends BottomSheetDialogFragment {
             return picturesView;
         }
 
-        /**
+        */
+/**
          * Getting All Images Path.
          *
          * @param activity
          *            the activity
          * @return ArrayList with images Path
-         */
+         *//*
+
         private ArrayList<String> getAllShownImagesPath(Activity activity) {
             Uri uri;
             Cursor cursor;
@@ -631,3 +642,4 @@ public class AnswerBottomSheet extends BottomSheetDialogFragment {
     }
 
 }
+*/

@@ -203,6 +203,7 @@ public class AdminDashboardFragment extends Fragment {
         stringMap.put("page", "1");
 
         progressBar.setVisibility(View.VISIBLE);
+        errorMessageTxt.setVisibility(View.GONE);
 
         questionList.clear();
 
@@ -300,6 +301,8 @@ public class AdminDashboardFragment extends Fragment {
 
         } catch (JSONException e) {
             e.printStackTrace();
+            errorMessageTxt.setVisibility(View.VISIBLE);
+            errorMessageTxt.setText(getString(R.string.no_internet));
             progressBar.setVisibility(View.GONE);
         }
     }
