@@ -300,7 +300,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Users/tooch/AppData/Local/Programs/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/arrow_forward/baseline_arrow_forward_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/close/baseline_close_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -311,8 +311,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_classroom" />
-                            <entry key="sourceFile" value="C:\Users\tooch\Downloads\account_balance_FILL0_wght400_GRAD0_opsz24.svg" />
+                            <entry key="outputName" value="ic_tools" />
+                            <entry key="sourceFile" value="C:\Users\tooch\Downloads\construction_FILL0_wght400_GRAD0_opsz24.svg" />
                           </map>
                         </option>
                       </PersistentState>
