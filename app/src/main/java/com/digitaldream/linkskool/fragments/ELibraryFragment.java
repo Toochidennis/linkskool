@@ -77,12 +77,7 @@ public class ELibraryFragment extends Fragment {
                     Toast.makeText(getContext(), "You clicked position " + sI,
                             Toast.LENGTH_SHORT).show();
                     break;
-                default:
-                    try {
-                        throw new Exception("(:");
-                    } catch (Exception sE) {
-                        sE.printStackTrace();
-                    }
+
             }
         });
 

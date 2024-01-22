@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg2"
+    tools:context=".dialog.ResultClassDialog">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/inter_regular"
+        android:padding="@dimen/dimen_16"
+        android:text="@string/select_class"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/classRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginStart="@dimen/dimen_16"
+        android:clipToPadding="false"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/item_result_class" />
+
+    <TextView
+        android:id="@+id/feedbackTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dimen_16"
+        android:visibility="gone"
+        android:fontFamily="@font/montserrat"
+        android:padding="@dimen/dimen_16"
+        android:text="@string/there_s_no_class_yet"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_14" />
+
+</RelativeLayout>
