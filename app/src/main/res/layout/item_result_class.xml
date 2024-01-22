@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/classNameTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/dimen_16"
+    android:text="@string/classes"
+    android:layout_marginBottom="@dimen/dimen_16"
+    android:background="@drawable/ripple_effect"
+    android:fontFamily="@font/montserrat"
+    android:textColor="@color/test_color_1"
+    android:textSize="@dimen/text_14" />
