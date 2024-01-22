@@ -16,11 +16,12 @@
             android:id="@+id/appBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true">
+            android:layout_alignParentTop="true"
+            app:elevation="0dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="?actionBarSize"
                 android:background="@color/tab_color">
 
                 <ImageButton
@@ -63,11 +64,11 @@
                     android:contentDescription="@string/todo"
                     android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"
                     android:drawableTint="@color/white"
+                    android:fontFamily="@font/montserrat"
                     android:paddingStart="@dimen/dimen_16"
                     android:paddingEnd="@dimen/dimen_16"
                     android:textColor="@color/white"
-                    android:textSize="14sp"
-                    app:tint="@color/white" />
+                    android:textSize="14sp" />
 
             </RelativeLayout>
 
@@ -99,6 +100,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:fontFamily="@font/inter_regular"
                         android:text="Average"
                         android:textAlignment="textStart"
                         android:textColor="@color/white"
@@ -136,6 +138,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:clipToPadding="false"
                         android:gravity="center"
                         android:orientation="horizontal"
                         android:padding="@dimen/dimen_16">
@@ -170,6 +173,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/dimen_10"
                                     android:text="Student Result"
+                                    android:textAlignment="center"
                                     android:textColor="@color/white"
                                     android:textSize="12sp" />
 
@@ -259,7 +263,8 @@
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
                             android:layout_marginTop="16dp"
-                            android:text="@string/no_data"
+                            android:fontFamily="@font/montserrat"
+                            android:text="@string/there_is_no_result_yet"
                             android:textAlignment="center"
                             android:textColor="@color/black"
                             android:textSize="@dimen/text_16"
@@ -278,7 +283,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/no_data"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/no_internet"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="@dimen/text_16"

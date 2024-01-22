@@ -7,7 +7,6 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
@@ -30,7 +29,7 @@ import com.digitaldream.linkskool.utils.VolleyCallback
 import org.achartengine.GraphicalView
 import org.json.JSONArray
 import org.json.JSONObject
-import java.util.*
+import java.util.Locale
 
 class AdminResultDashboardActivity : AppCompatActivity(R.layout.activity_admin_result_dashboard) {
 
@@ -177,24 +176,14 @@ class AdminResultDashboardActivity : AppCompatActivity(R.layout.activity_admin_r
         sendRequestToServer(Request.Method.GET, url, this, null,
             object : VolleyCallback {
                 override fun onResponse(response: String) {
-                    if (response != "[]") {
-                        parseResponse(response)
-                        termErrorMessageTxt.isVisible = false
-                        errorMessageTxt.isVisible = false
-                    } else {
-                        termErrorMessageTxt.isVisible = true
-                    }
+                    termErrorMessageTxt.isVisible = false
+                    errorMessageTxt.isVisible = false
+                    parseResponse(response)
                 }
 
                 override fun onError(error: VolleyError) {
                     rootView.isVisible = false
                     errorMessageTxt.isVisible = true
-                    Toast.makeText(
-                        this@AdminResultDashboardActivity, getString(
-                            R.string
-                                .no_internet
-                        ), Toast.LENGTH_SHORT
-                    ).show()
                 }
             })
     }
@@ -204,47 +193,57 @@ class AdminResultDashboardActivity : AppCompatActivity(R.layout.activity_admin_r
             sessionList.clear()
 
             with(JSONArray(response)) {
-                getJSONObject(0).run {
-                    for (year in keys()) {
-                        if (year == "0000") continue
+                if (get(0) is JSONObject) {
+                    getJSONObject(0).run {
+                        for (year in keys()) {
+                            if (year == "0000") continue
 
-                        val termList = mutableListOf<AdminResultTermModel>()
+                            val termList = mutableListOf<AdminResultTermModel>()
 
-                        JSONObject(getString(year)).let { terms ->
-                            val termsObject = terms.get("terms")
-                            if (termsObject is JSONObject) {
-                                termsObject.let {
-                                    for (termKey in it.keys()) {
-                                        val term = it.getString(termKey)
-                                        termList.add(AdminResultTermModel(term, year))
-                                    }
-                                }
-                            } else if (termsObject is JSONArray) {
-                                termsObject.let {
-                                    for (termKey in 0 until it.length()) {
-                                        val term = it.getString(termKey)
-                                        if (term != "null")
+                            JSONObject(getString(year)).let { terms ->
+                                val termsObject = terms.get("terms")
+                                if (termsObject is JSONObject) {
+                                    termsObject.let {
+                                        for (termKey in it.keys()) {
+                                            val term = it.getString(termKey)
                                             termList.add(AdminResultTermModel(term, year))
+                                        }
+                                    }
+                                } else if (termsObject is JSONArray) {
+                                    termsObject.let {
+                                        for (termKey in 0 until it.length()) {
+                                            val term = it.getString(termKey)
+                                            if (term != "null")
+                                                termList.add(AdminResultTermModel(term, year))
+                                        }
                                     }
                                 }
                             }
+
+                            val previousYear = year.toInt() - 1
+
+                            val session = String.format(
+                                Locale.getDefault(), "%d/%s",
+                                previousYear, year
+                            )
+
+                            sessionList.add(AdminResultDashboardModel(session, termList))
                         }
-
-                        val previousYear = year.toInt() - 1
-                        val session = String.format(
-                            Locale.getDefault(), "%d/%s",
-                            previousYear, year
-                        )
-
-                        sessionList.add(AdminResultDashboardModel(session, termList))
                     }
+                } else {
+                    termErrorMessageTxt.isVisible = true
                 }
+
             }
 
             setUpAdapter()
 
         } catch (e: Exception) {
             e.printStackTrace()
+            termErrorMessageTxt.apply {
+                text = getString(R.string.no_internet)
+                isVisible = true
+            }
         }
     }
 
