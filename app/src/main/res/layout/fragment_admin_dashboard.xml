@@ -115,7 +115,7 @@
                             android:layout_marginTop="@dimen/dimen_8"
                             android:fontFamily="@font/pt_serif_bold"
                             android:text=""
-                            android:textColor="@color/tab_color"
+                            android:textColor="@color/black"
                             android:textSize="@dimen/text_28"
                             android:textStyle="bold" />
 
@@ -126,7 +126,7 @@
                             android:layout_marginTop="@dimen/dimen_8"
                             android:fontFamily="@font/montserrat"
                             android:text="@string/students"
-                            android:textColor="@color/test_color_1"
+                            android:textColor="@color/black"
                             android:textSize="@dimen/text_14" />
 
                     </LinearLayout>
@@ -164,7 +164,7 @@
                             android:layout_marginTop="@dimen/dimen_8"
                             android:fontFamily="@font/pt_serif_bold"
                             android:text=""
-                            android:textColor="@color/tab_color"
+                            android:textColor="@color/black"
                             android:textSize="@dimen/text_28"
                             android:textStyle="bold" />
 
@@ -175,7 +175,7 @@
                             android:layout_marginTop="@dimen/dimen_8"
                             android:fontFamily="@font/montserrat"
                             android:text="@string/teachers"
-                            android:textColor="@color/test_color_1"
+                            android:textColor="@color/black"
                             android:textSize="@dimen/text_14" />
 
                     </LinearLayout>
@@ -214,7 +214,7 @@
                             android:layout_marginTop="@dimen/dimen_8"
                             android:fontFamily="@font/pt_serif_bold"
                             android:text=""
-                            android:textColor="@color/tab_color"
+                            android:textColor="@color/black"
                             android:textSize="@dimen/text_28"
                             android:textStyle="bold" />
 
@@ -225,7 +225,7 @@
                             android:layout_marginTop="@dimen/dimen_8"
                             android:fontFamily="@font/montserrat"
                             android:text="@string/classes"
-                            android:textColor="@color/test_color_1"
+                            android:textColor="@color/black"
                             android:textSize="@dimen/text_14" />
 
                     </LinearLayout>
