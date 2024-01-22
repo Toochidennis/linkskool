@@ -81,7 +81,7 @@ public class QuestionBottomSheet extends BottomSheetDialogFragment {
                 if(question.isEmpty()){
                     Toast.makeText(getContext(),"Question must not be empty",Toast.LENGTH_SHORT).show();
                 }else {
-                    FragmentTransaction transaction = ((FragmentActivity) Objects.requireNonNull(getContext()))
+                    FragmentTransaction transaction = ((FragmentActivity) requireContext())
                             .getSupportFragmentManager()
                             .beginTransaction();
                     QuestionAccessViewSheet a = new QuestionAccessViewSheet();

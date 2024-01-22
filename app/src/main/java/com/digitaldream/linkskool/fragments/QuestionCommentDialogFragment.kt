@@ -6,6 +6,8 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -29,7 +31,7 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 
-class PostCommentDialogFragment : DialogFragment(R.layout.fragment_post_comment_dialog) {
+class QuestionCommentDialogFragment : DialogFragment(R.layout.fragment_question_comment_dialog) {
 
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
     private val picasso = Picasso.get()
@@ -39,6 +41,8 @@ class PostCommentDialogFragment : DialogFragment(R.layout.fragment_post_comment_
     private lateinit var selectedImageView: ImageView
     private lateinit var imageContainer: CardView
     private lateinit var removeImageButton: ImageButton
+    private lateinit var replyEditText:EditText
+    private lateinit var replyButton:Button
 
     private var param1: String? = null
     private var param2: String? = null
@@ -69,7 +73,6 @@ class PostCommentDialogFragment : DialogFragment(R.layout.fragment_post_comment_
         handleViewClicks()
 
         initData()
-
     }
 
 
@@ -80,6 +83,8 @@ class PostCommentDialogFragment : DialogFragment(R.layout.fragment_post_comment_
             selectedImageView = findViewById(R.id.selectedImageView)
             imageContainer = findViewById(R.id.imageContainer)
             removeImageButton = findViewById(R.id.removeImageButton)
+            replyButton = findViewById(R.id.replyButton)
+            replyEditText = findViewById(R.id.replyEditText)
         }
     }
 
@@ -208,15 +213,19 @@ class PostCommentDialogFragment : DialogFragment(R.layout.fragment_post_comment_
         imageContainer.isVisible = true
     }
 
+    private fun validateForm(){
+
+    }
+
 
     companion object {
 
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PostCommentDialogFragment().apply {
+        fun newInstance(authorName: String, authorId: String) =
+            QuestionCommentDialogFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putString(ARG_PARAM1, authorName)
+                    putString(ARG_PARAM2, authorId)
                 }
             }
     }
