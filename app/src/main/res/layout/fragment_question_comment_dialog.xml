@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.PostCommentDialogFragment">
+    tools:context=".fragments.QuestionCommentDialogFragment">
 
     <ImageButton
         android:id="@+id/navigateUp"
@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/replyButton"
         android:layout_width="80dp"
         android:layout_height="30dp"
         android:layout_marginTop="@dimen/dimen_16"
@@ -101,7 +102,7 @@
                 android:autofillHints=""
                 android:backgroundTint="@android:color/transparent"
                 android:fontFamily="@font/inter_regular"
-                android:hint="Add your comment"
+                android:hint="@string/add_your_comment"
                 android:inputType="textCapSentences|textMultiLine"
                 android:lineSpacingMultiplier="1"
                 android:lines="40"
