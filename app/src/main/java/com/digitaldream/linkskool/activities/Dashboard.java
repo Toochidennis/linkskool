@@ -7,36 +7,28 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.GravityCompat;
 import androidx.core.view.MenuProvider;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.digitaldream.linkskool.R;
 import com.digitaldream.linkskool.adapters.NewsAdapter;
 import com.digitaldream.linkskool.config.DatabaseHelper;
 import com.digitaldream.linkskool.config.ForceUpdateAsync;
-import com.digitaldream.linkskool.dialog.AdminClassesDialog;
-import com.digitaldream.linkskool.dialog.AdminELearningDialog;
 import com.digitaldream.linkskool.dialog.ContactUsDialog;
 import com.digitaldream.linkskool.fragments.AdminDashboardFragment;
-import com.digitaldream.linkskool.fragments.AdminELearningCourseOutlineFragment;
+import com.digitaldream.linkskool.fragments.AdminELearningNavigationFragment;
 import com.digitaldream.linkskool.fragments.AdminPaymentDashboardFragment;
 import com.digitaldream.linkskool.fragments.AdminResultNavigationGraphFragment;
 import com.digitaldream.linkskool.fragments.ELibraryFragment;
 import com.digitaldream.linkskool.fragments.FlashCardList;
-import com.digitaldream.linkskool.interfaces.ELearningListener;
 import com.digitaldream.linkskool.models.AssessmentModel;
 import com.digitaldream.linkskool.models.ClassNameTable;
 import com.digitaldream.linkskool.models.CourseOutlineTable;
@@ -227,9 +219,11 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
                     return true;
 
                 case R.id.payment:
-                    getSupportFragmentManager().beginTransaction().replace(
-                            R.id.payment_container,
-                            new AdminPaymentDashboardFragment()).commit();
+                    getSupportFragmentManager().beginTransaction()
+                            .replace(
+                                    R.id.payment_container,
+                                    new AdminPaymentDashboardFragment()
+                            ).commit();
 
                     return true;
                 case R.id.student_library:
@@ -239,42 +233,8 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
                     return true;
 
                 case R.id.student_elearning:
-                    AdminELearningDialog mAdminELearningDialog = new AdminELearningDialog(this,
-                            new ELearningListener() {
-                                @Override
-                                public void goBackToHome() {
-                                    setHomeItem(Dashboard.this);
-
-                                }
-
-                                @Override
-                                public void openELearning(@NonNull String courseName,
-                                                          @NonNull String courseId,
-                                                          @NonNull String levelName,
-                                                          @NonNull String levelId
-                                ) {
-
-                                    getSupportFragmentManager()
-                                            .beginTransaction()
-                                            .replace(
-                                                    R.id.payment_container,
-                                                    AdminELearningCourseOutlineFragment.newInstance(
-                                                            courseName,
-                                                            courseId,
-                                                            levelName,
-                                                            levelId
-                                                    )
-                                            ).commit();
-                                }
-                            });
-
-                    mAdminELearningDialog.setCancelable(false);
-                    mAdminELearningDialog.show();
-                    Window mWindow = mAdminELearningDialog.getWindow();
-                    mWindow.setLayout(
-                            ViewGroup.LayoutParams.MATCH_PARENT,
-                            ViewGroup.LayoutParams.WRAP_CONTENT
-                    );
+                    getSupportFragmentManager().beginTransaction().replace(R.id.payment_container,
+                            new AdminELearningNavigationFragment()).commit();
 
                     return true;
             }

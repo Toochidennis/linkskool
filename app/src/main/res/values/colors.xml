@@ -7,7 +7,7 @@
     <color name="blue">#033876</color>
     <color name="ligth_blue">@color/blue</color>
     <color name="gray">#14000000</color>
-    <color name="light_gray">#D4D4D4</color>
+    <color name="light_gray">#F8F8F8</color>
     <color name="white">#fff</color>
     <color name="color1">#7719AA</color>
     <color name="color2">#DC3C00</color>
@@ -78,6 +78,7 @@
     <color name="tinted_5">#4AF6FF</color>
     <color name="tinted_6">#414AE4</color>
     <color name="tinted_7">#7C7CFF</color>
+    <color name="tinted_8">#99B3FF</color>
 
 
 </resources>
