@@ -11,13 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@color/android_ash">
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:elevation="0dp">
 
-        <androidx.appcompat.widget.Toolbar
+        <include
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            layout="@layout/toolbar" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -64,7 +63,7 @@
             android:layout_gravity="end|center"
             android:layout_marginEnd="@dimen/dimen_10"
             android:layout_marginBottom="@dimen/dimen_64"
-            android:backgroundTint="@color/test_color_3"
+            android:backgroundTint="@color/tinted_1"
             android:contentDescription="@string/todo"
             android:src="@drawable/ic_add" />
 
