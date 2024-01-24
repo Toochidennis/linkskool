@@ -36,7 +36,7 @@ private List<CourseTable> courseLists= new ArrayList<>();
     @Override
     public ElearningCourseViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.elearning_course_item,viewGroup,false);
+        View view = layoutInflater.inflate(R.layout.item_e_learning_course,viewGroup,false);
         return new ElearningCourseViewHolder(view,onCourseClickListener);
     }
 

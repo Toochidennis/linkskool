@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
@@ -56,31 +55,14 @@ public class ELibraryFragment extends Fragment {
 
 
         toolbar.setTitle("E-library");
-        toolbar.setNavigationIcon(R.drawable.arrow_left);
-        toolbar.setNavigationOnClickListener(v -> requireActivity().onBackPressed());
 
         mSlideModelList = new ArrayList<>();
 
         mSlideModelList.add(new SlideModel(R.drawable.ic_kids_lessons, ScaleTypes.FIT));
-        mSlideModelList.add(new SlideModel(R.drawable.ic_tutorials_slider,
-                ScaleTypes.FIT));
-        mSlideModelList.add(new SlideModel(R.drawable.ic_library_slider,
-                ScaleTypes.FIT));
+        mSlideModelList.add(new SlideModel(R.drawable.ic_tutorials_slider, ScaleTypes.FIT));
+        mSlideModelList.add(new SlideModel(R.drawable.ic_library_slider, ScaleTypes.FIT));
 
         mImageSlider.setImageList(mSlideModelList);
-
-        mImageSlider.setItemClickListener(sI -> {
-            switch (sI) {
-                case 0:
-                case 1:
-                case 2:
-                    Toast.makeText(getContext(), "You clicked position " + sI,
-                            Toast.LENGTH_SHORT).show();
-                    break;
-
-            }
-        });
-
 
         mCbt.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), StaffUtils.class);
