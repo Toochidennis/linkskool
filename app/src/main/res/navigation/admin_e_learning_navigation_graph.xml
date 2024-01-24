@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/admin_e_learning_navigation"
+    app:startDestination="@id/adminELearningDashboardFragment">
+
+    <fragment
+        android:id="@+id/adminELearningDashboardFragment"
+        android:name="com.digitaldream.linkskool.fragments.AdminELearningDashboardFragment"
+        android:label="ELearning"
+        tools:layout="@layout/fragment_admin_e_learning_dashboard">
+        <action
+            android:id="@+id/action_adminELearningDashboardFragment_to_adminELearningCourseBottomSheetFragment"
+            app:destination="@id/adminELearningCourseBottomSheetFragment" />
+    </fragment>
+
+
+    <dialog
+        android:id="@+id/adminELearningCourseBottomSheetFragment"
+        android:name="com.digitaldream.linkskool.fragments.AdminELearningCourseBottomSheetFragment"
+        android:label="AdminELearningCourseBottomSheetFragment"
+        tools:layout="@layout/fragment_admin_e_learning_course_bottom_sheet">
+
+        <argument
+            android:name="levelName"
+            android:defaultValue='"'
+            app:argType="string" />
+        <argument
+            android:name="levelId"
+            android:defaultValue='"'
+            app:argType="string" />
+        <action
+            android:id="@+id/action_adminELearningCourseBottomSheetFragment_to_adminELearningCourseOutlineFragment"
+            app:destination="@id/adminELearningCourseOutlineFragment" />
+    </dialog>
+
+    <fragment
+        android:id="@+id/adminELearningCourseOutlineFragment"
+        android:name="com.digitaldream.linkskool.fragments.AdminELearningCourseOutlineFragment"
+        android:label="adminELearningCourseOutlineFragment"
+        tools:layout="@layout/fragment_admin_e_learning_course_outline">
+
+        <argument
+            android:name="courseName"
+            android:defaultValue='"'
+            app:argType="string" />
+
+        <argument
+            android:name="courseId"
+            android:defaultValue='"'
+            app:argType="string" />
+
+        <argument
+            android:name="levelName"
+            android:defaultValue='"'
+            app:argType="string" />
+        <argument
+            android:name="levelId"
+            android:defaultValue='"'
+            app:argType="string" />
+
+    </fragment>
+
+
+</navigation>
