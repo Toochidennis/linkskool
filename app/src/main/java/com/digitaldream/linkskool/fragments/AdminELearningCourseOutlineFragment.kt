@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -25,12 +26,13 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONArray
 
 
-private const val COURSE_NAME = "course_name"
-private const val COURSE_ID = "course_id"
-private const val LEVEL_NAME = "level_name"
-private const val LEVEL_ID = "level_id"
+private const val COURSE_NAME = "courseName"
+private const val COURSE_ID = "courseId"
+private const val LEVEL_NAME = "levelName"
+private const val LEVEL_ID = "levelId"
 
-class AdminELearningCourseOutlineFragment : Fragment(R.layout.fragment_admin_e_learning_course_outline) {
+class AdminELearningCourseOutlineFragment :
+    Fragment(R.layout.fragment_admin_e_learning_course_outline) {
 
     private lateinit var mAddCourseOutlineBtn: FloatingActionButton
     private lateinit var outlineRecyclerView: RecyclerView
@@ -47,43 +49,12 @@ class AdminELearningCourseOutlineFragment : Fragment(R.layout.fragment_admin_e_l
     private var mTerm: String? = null
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            mCourseName = it.getString(COURSE_NAME)
-            mCourseId = it.getString(COURSE_ID)
-            mLevelName = it.getString(LEVEL_NAME)
-            mLevelId = it.getString(LEVEL_ID)
-        }
-    }
-
-
-    companion object {
-
-        @JvmStatic
-        fun newInstance(courseName: String, courseId: String, levelName: String, levelId: String) =
-            AdminELearningCourseOutlineFragment().apply {
-                arguments = Bundle().apply {
-                    putString(COURSE_NAME, courseName)
-                    putString(COURSE_ID, courseId)
-                    putString(LEVEL_NAME, levelName)
-                    putString(LEVEL_ID, levelId)
-                }
-            }
-
-    }
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         setUpViews(view)
 
-        getCourseOutline()
-
-        createCourseOutline()
-
-        refresh()
+        initData()
     }
 
     private fun setUpViews(view: View) {
@@ -105,8 +76,8 @@ class AdminELearningCourseOutlineFragment : Fragment(R.layout.fragment_admin_e_l
 
             toolbar.apply {
                 setNavigationOnClickListener {
-                    @Suppress("DEPRECATION")
-                    requireActivity().onBackPressed() }
+                   findNavController().popBackStack(R.id.adminELearningDashboardFragment, inclusive = false)
+                }
             }
 
         }
@@ -114,6 +85,21 @@ class AdminELearningCourseOutlineFragment : Fragment(R.layout.fragment_admin_e_l
         mTerm =
             requireActivity().getSharedPreferences("loginDetail", MODE_PRIVATE)
                 .getString("term", "")
+    }
+
+    private fun initData() {
+        arguments?.let {
+            mCourseName = it.getString(COURSE_NAME)
+            mCourseId = it.getString(COURSE_ID)
+            mLevelName = it.getString(LEVEL_NAME)
+            mLevelId = it.getString(LEVEL_ID)
+        }
+
+        getCourseOutline()
+
+        createCourseOutline()
+
+        refresh()
     }
 
     private fun getCourseOutline() {
@@ -190,7 +176,7 @@ class AdminELearningCourseOutlineFragment : Fragment(R.layout.fragment_admin_e_l
             R.layout.item_course_outline_layout,
             bindItem = { itemView, model, _ ->
                 val outlineTitleTxt: TextView = itemView.findViewById(R.id.outlineTitleTxt)
-              //  val levelName: TextView = itemView.findViewById(R.id.levelNameTxt)
+                //  val levelName: TextView = itemView.findViewById(R.id.levelNameTxt)
                 val teacherName: TextView = itemView.findViewById(R.id.teacherNameTxt)
 
                 outlineTitleTxt.text = capitaliseFirstLetter(model.title)
@@ -236,9 +222,6 @@ class AdminELearningCourseOutlineFragment : Fragment(R.layout.fragment_admin_e_l
                 getCourseOutline()
                 isRefreshing = false
             }
-
         }
-
     }
-
 }
