@@ -29,6 +29,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/resultRecyclerView"
                 android:layout_width="match_parent"
+                android:layout_marginStart="@dimen/dimen_16"
                 android:layout_height="match_parent" />
 
             <TextView
