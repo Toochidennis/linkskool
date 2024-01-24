@@ -99,7 +99,6 @@ class StaffELearningFragment : Fragment() {
             }
 
             toolbar.setNavigationOnClickListener {
-                @Suppress("DEPRECATION")
                 requireActivity().onBackPressed()
             }
 
@@ -188,7 +187,6 @@ class StaffELearningFragment : Fragment() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-
     }
 
 
@@ -317,7 +315,7 @@ class StaffELearningFragment : Fragment() {
                 val commentTxt: TextView = itemView.findViewById(R.id.commentTxt)
                 val dateTxt: TextView = itemView.findViewById(R.id.dateTxt)
 
-                userNameTxt.text = capitaliseFirstLetter(model.userName)
+                userNameTxt.text = capitaliseFirstLetter(model.username)
                 dateTxt.text = formatDate2(model.date, "custom")
                 "Commented on ${model.description}".let { commentTxt.text = it }
             }
