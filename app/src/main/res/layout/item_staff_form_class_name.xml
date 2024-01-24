@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/classContainer"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="70dp"
     android:layout_marginTop="@dimen/dimen_16"
     android:layout_marginEnd="@dimen/dimen_16"
-    android:background="@drawable/dialog_bg4"
+    android:background="@drawable/ripple_effect1"
+    android:elevation="2dp"
     android:foreground="?android:attr/selectableItemBackground"
-    android:paddingStart="@dimen/dimen_32"
-    android:paddingTop="@dimen/dimen_16"
-    android:paddingEnd="@dimen/dimen_32"
-    android:paddingBottom="@dimen/dimen_16">
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_10">
+
+    <ImageView
+        android:id="@+id/classImageView"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:contentDescription="@string/file_icon"
+        android:src="@drawable/ic_material"
+        app:tint="@color/gray_400" />
 
     <TextView
         android:id="@+id/classNameTxt"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="JSS1"
-        android:textAlignment="center"
-        android:textAllCaps="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/classes"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_16" />
+        android:textSize="@dimen/text_14"
+        android:textStyle="bold" />
 
 </LinearLayout>
