@@ -377,7 +377,7 @@ class StudentELearningFragment : Fragment() {
                 val commentTxt: TextView = itemView.findViewById(R.id.commentTxt)
                 val dateTxt: TextView = itemView.findViewById(R.id.dateTxt)
 
-                userNameTxt.text = model.userName
+                userNameTxt.text = model.username
                 dateTxt.text = formatDate2(model.date, "custom")
                 "Commented on ${model.description}".let { commentTxt.text = it }
             }

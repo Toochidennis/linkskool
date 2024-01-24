@@ -190,4 +190,8 @@
     <string name="select_a_level">Select a level</string>
     <string name="there_s_no_class_yet">There\'s no class yet</string>
     <string name="there_is_no_result_yet">There is no result yet</string>
+    <string name="recent_activity">Recent activity</string>
+    <string name="select_a_course">Select a course</string>
+    <string name="there_is_no_course_yet">There is no course yet!</string>
+    <string name="upcoming_event">Upcoming event</string>
 </resources>
