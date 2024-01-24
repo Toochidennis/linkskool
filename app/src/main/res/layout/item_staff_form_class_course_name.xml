@@ -10,8 +10,8 @@
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/dimen_16"
         android:layout_marginTop="@dimen/dimen_16"
-        android:textAllCaps="true"
         android:layout_marginEnd="@dimen/dimen_16"
+        android:fontFamily="@font/inter_regular"
         android:text="@string/select_class"
         android:textColor="@color/black"
         android:textSize="@dimen/text_18"
@@ -21,6 +21,7 @@
         android:id="@+id/itemRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/dimen_16" />
+        android:layout_marginStart="@dimen/dimen_16"
+        android:clipToPadding="false" />
 
 </LinearLayout>
