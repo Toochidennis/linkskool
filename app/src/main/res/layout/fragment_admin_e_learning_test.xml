@@ -1,82 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.AdminELearningTestFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:background="@color/android_ash">
+        android:background="@color/tab_color">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize">
+        <ImageButton
+            android:id="@+id/dismissBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center"
+            android:layout_marginStart="6dp"
+            android:background="@color/tab_color"
+            android:contentDescription="@string/close"
+            android:padding="@dimen/dimen_10"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            app:tint="@color/white" />
 
-            <ImageButton
-                android:id="@+id/dismissBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="6dp"
-                android:background="@drawable/ripple_effect11"
-                android:clickable="true"
-                android:contentDescription="@string/close"
-                android:focusable="true"
-                android:padding="@dimen/dimen_10"
-                android:src="@drawable/ic_arrow_back_black_24dp" />
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/dimen_10"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:background="@drawable/circle2"
+            android:gravity="center"
+            android:backgroundTint="@color/tinted_color_4"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/durationTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/poppins_regular"
+                android:textAlignment="center"
+                android:fontFamily="@font/pt_serif_bold"
                 android:padding="@dimen/dimen_16"
-                android:text=""
-                android:textColor="@color/test_color_1"
+                android:textColor="@color/black"
                 android:textSize="@dimen/text_18" />
+        </LinearLayout>
 
-            <Button
-                android:id="@+id/submitQuestionBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_alignParentTop="true"
-                android:layout_gravity="end"
-                android:layout_marginTop="@dimen/dimen_6"
-                android:layout_marginEnd="@dimen/dimen_16"
-                android:background="@drawable/ripple_effect6"
-                android:paddingStart="@dimen/dimen_16"
-                android:paddingEnd="@dimen/dimen_16"
-                android:text="@string/submit"
-                android:textAllCaps="false"
-                android:textColor="@color/test_color_1"
-                android:textSize="@dimen/text_16" />
+        <Button
+            android:id="@+id/submitQuestionBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="end|center"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:background="@drawable/ripple_effect12"
+            android:paddingStart="@dimen/dimen_16"
+            android:paddingEnd="@dimen/dimen_16"
+            android:text="@string/submit"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_16" />
 
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-    <androidx.core.widget.NestedScrollView
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/questionViewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_above="@id/btnLayout"
         android:layout_below="@id/appBar"
-        android:contentDescription="@string/nested_scrollview"
-        android:fillViewport="true">
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/questionViewPager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:contentDescription="@string/view_pager" />
-
-    </androidx.core.widget.NestedScrollView>
+        android:contentDescription="@string/view_pager" />
 
     <RelativeLayout
         android:id="@+id/btnLayout"
@@ -93,7 +86,8 @@
             android:background="@drawable/ripple_effect11"
             android:contentDescription="@string/prev"
             android:padding="@dimen/dimen_24"
-            android:src="@drawable/ic_arrow_back_black_24dp" />
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            app:tint="@color/tab_color" />
 
         <ImageButton
             android:id="@+id/nextBtn"
@@ -104,9 +98,9 @@
             android:background="@drawable/ripple_effect11"
             android:contentDescription="@string/next"
             android:padding="@dimen/dimen_24"
-            android:src="@drawable/baseline_arrow_forward_24" />
+            android:src="@drawable/baseline_arrow_forward_24"
+            app:tint="@color/tab_color" />
 
     </RelativeLayout>
-
 
 </RelativeLayout>
