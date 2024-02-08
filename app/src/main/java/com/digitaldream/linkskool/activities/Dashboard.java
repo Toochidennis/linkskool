@@ -7,16 +7,10 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.MenuProvider;
 
 import com.digitaldream.linkskool.R;
 import com.digitaldream.linkskool.adapters.NewsAdapter;
@@ -29,41 +23,22 @@ import com.digitaldream.linkskool.fragments.AdminPaymentDashboardFragment;
 import com.digitaldream.linkskool.fragments.AdminResultNavigationGraphFragment;
 import com.digitaldream.linkskool.fragments.ELibraryFragment;
 import com.digitaldream.linkskool.fragments.FlashCardList;
-import com.digitaldream.linkskool.models.AssessmentModel;
-import com.digitaldream.linkskool.models.ClassNameTable;
-import com.digitaldream.linkskool.models.CourseOutlineTable;
-import com.digitaldream.linkskool.models.CourseTable;
-import com.digitaldream.linkskool.models.ExamType;
-import com.digitaldream.linkskool.models.FormClassModel;
 import com.digitaldream.linkskool.models.GeneralSettingModel;
-import com.digitaldream.linkskool.models.GradeModel;
-import com.digitaldream.linkskool.models.LevelTable;
-import com.digitaldream.linkskool.models.NewsTable;
-import com.digitaldream.linkskool.models.StudentTable;
-import com.digitaldream.linkskool.models.TeacherCourseModel;
-import com.digitaldream.linkskool.models.TeacherCourseModelCopy;
-import com.digitaldream.linkskool.models.TeachersTable;
-import com.digitaldream.linkskool.models.VideoTable;
-import com.digitaldream.linkskool.models.VideoUtilTable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
-import com.j256.ormlite.table.TableUtils;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsClickListener {
     //private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
-    private List<NewsTable> newsTitleList;
+
     private DatabaseHelper databaseHelper;
     private Dao<GeneralSettingModel, Long> generalSettingDao;
     private List<GeneralSettingModel> generalSettingsList;
     public static String db;
     private String user_name, school_name, userId;
-    private TextView schoolName, user;
     private ContactUsDialog dialog;
     private boolean fromLogin = false;
     private boolean isFirstTime = false;
@@ -92,40 +67,6 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
         }
 
 
-        addMenuProvider(new MenuProvider() {
-            @Override
-            public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
-                menuInflater.inflate(R.menu.settings_menu, menu);
-            }
-
-            @Override
-            public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.settings:
-                        startActivity(new Intent(Dashboard.this, Settings.class));
-                        return true;
-                    case R.id.setup:
-                        startActivity(
-                                new Intent(Dashboard.this, PaymentActivity.class).putExtra
-                                        ("from", "settings")
-                        );
-                        return true;
-
-                }
-                return false;
-            }
-        });
-
-
-        // drawerLayout = findViewById(R.id.drawer_layout);
-        //navigationView = findViewById(R.id.navigation_view);
-       /* drawerLayout.setDescendantFocusability(
-                ViewGroup.FOCUS_AFTER_DESCENDANTS);*/
-
-        //View headerView = navigationView.getHeaderView(0);
-        // user = headerView.findViewById(R.id.user);
-        // schoolName = headerView.findViewById(R.id.school_name);
-
         SharedPreferences sharedPreferences = getSharedPreferences(
                 "loginDetail", Context.MODE_PRIVATE);
         try {
@@ -139,9 +80,6 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
         user_name = sharedPreferences.getString("user", "User ID: " + userId);
         db = sharedPreferences.getString("db", "");
 
-
-//        schoolName.setText(builder.toString());
-        //school_Name.setText(builder.toString());
         bottomNavigationView = findViewById(R.id.bottom_navigation_student);
         if (from != null && from.equals("testupload")) {
             FlashCardList.refresh = true;
@@ -247,7 +185,7 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
     public void onNewsClick(int position) {
 
         Intent intent = new Intent(this, NewsPage.class);
-        intent.putExtra("newsId", newsTitleList.get(position).getNewsId());
+        //s intent.putExtra("newsId", newsTitleList.get(position).getNewsId());
         startActivity(intent);
     }
 
@@ -265,8 +203,6 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
             forceUpdate();
 
         }
-
-//        navigationView.getMenu().getItem(0).setChecked(true);
 
     }
 
@@ -292,65 +228,12 @@ public class Dashboard extends AppCompatActivity implements NewsAdapter.OnNewsCl
         new ForceUpdateAsync(currentVersion, Dashboard.this).execute();
     }
 
-
     public void setHomeItem(Activity activity) {
 
         BottomNavigationView bottomNavigationView = activity.findViewById(
                 R.id.bottom_navigation_student);
         bottomNavigationView.setSelectedItemId(R.id.student_dashboard);
 
-    }
-
-    private void logout() {
-        SharedPreferences sharedPreferences = getSharedPreferences(
-                "loginDetail", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("loginStatus", false);
-        editor.putString("user", "");
-        editor.putString("school_name", "");
-        editor.apply();
-        try {
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    StudentTable.class);
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    TeachersTable.class);
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    ClassNameTable.class);
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    LevelTable.class);
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    NewsTable.class);
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    CourseTable.class);
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    GradeModel.class);
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    GeneralSettingModel.class);
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    AssessmentModel.class);
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    TeacherCourseModelCopy.class);
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    TeacherCourseModel.class);
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    FormClassModel.class);
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    CourseOutlineTable.class);
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    VideoTable.class);
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    VideoUtilTable.class);
-            TableUtils.clearTable(databaseHelper.getConnectionSource(),
-                    ExamType.class);
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        Intent intent = new Intent(Dashboard.this, Login.class);
-        startActivity(intent);
-        finish();
     }
 
 }
