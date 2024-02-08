@@ -32,6 +32,8 @@ class AdminELearningQuestionPreviewAdapter(
     }
 
     private var picasso = Picasso.get()
+    private val labelList =
+        arrayOf('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '0', 'P')
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -109,7 +111,6 @@ class AdminELearningQuestionPreviewAdapter(
             loadImage(itemView.context, shortAnswer.attachmentUri, questionImage)
             answerEditText.setText(shortAnswer.answerText)
         }
-
     }
 
 
@@ -117,14 +118,11 @@ class AdminELearningQuestionPreviewAdapter(
         options: MutableList<MultipleChoiceOption>,
         recyclerView: RecyclerView
     ) {
-        val labelList =
-            arrayOf('A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', '0', 'P')
-
         GenericAdapter2(
             options,
             R.layout.item_options_layout,
             bindItem = { itemView, model, position ->
-                val optionLabel: TextView = itemView.findViewById(R.id.optionsLabel)
+                val optionLabel: TextView = itemView.findViewById(R.id.optionLabelTxt)
                 val optionTxt: TextView = itemView.findViewById(R.id.optionsTxt)
                 val optionImage: ImageView = itemView.findViewById(R.id.optionImage)
 

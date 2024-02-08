@@ -25,13 +25,11 @@ class AdminELearningQuestionTestIntroDialogFragment(
     private lateinit var durationTxt: TextView
     private lateinit var startBtn: Button
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(STYLE_NORMAL, R.style.DialogTheme)
         isCancelable = false
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -58,7 +56,6 @@ class AdminELearningQuestionTestIntroDialogFragment(
         }
 
     }
-
 
     private fun pulsateButton() {
         val animation = AnimationUtils.loadAnimation(context, R.anim.pulse)
