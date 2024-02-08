@@ -2,9 +2,9 @@ package com.digitaldream.linkskool.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
@@ -21,10 +21,15 @@ class PaymentSettingsFragment : Fragment(R.layout.fragment_settings_payment) {
         view.apply {
             val toolbar = view.findViewById<Toolbar>(R.id.toolbar)
 
-            toolbar.apply {
+            (requireActivity() as AppCompatActivity).setSupportActionBar(toolbar)
+            val actionBar = (requireActivity() as AppCompatActivity).supportActionBar
+
+            actionBar?.apply {
                 title = "Payment Settings"
-                setNavigationIcon(R.drawable.arrow_left)
-                setNavigationOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
+
+                toolbar.setNavigationOnClickListener {
+                    requireActivity().onBackPressedDispatcher.onBackPressed()
+                }
             }
 
             val feeBtn = view.findViewById<CardView>(R.id.fee_settings)
