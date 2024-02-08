@@ -3,21 +3,15 @@ package com.digitaldream.linkskool.fragments
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -40,7 +34,7 @@ import java.util.Locale
 class AdminPaymentDashboardFragment : Fragment(R.layout.fragment_dashboard_payment_admin),
     OnItemClickListener {
 
-    private lateinit var menuHost: MenuHost
+    private lateinit var settingsButton: ImageButton
     private lateinit var mMainLayout: LinearLayout
     private lateinit var mExpectedAmount: TextView
     private lateinit var mReceivedBtn: LinearLayout
@@ -67,7 +61,7 @@ class AdminPaymentDashboardFragment : Fragment(R.layout.fragment_dashboard_payme
         super.onViewCreated(view, savedInstanceState)
 
         view.apply {
-            val toolbar: Toolbar = findViewById(R.id.toolbar)
+            settingsButton = findViewById(R.id.settingsButton)
             mMainLayout = findViewById(R.id.dashboard_view)
             mReceivedBtn = findViewById(R.id.received_btn)
             mRecyclerView = findViewById(R.id.transaction_recycler)
@@ -85,23 +79,6 @@ class AdminPaymentDashboardFragment : Fragment(R.layout.fragment_dashboard_payme
             mSeeAllBtn = findViewById(R.id.see_all_btn)
             mErrorView = findViewById(R.id.error_view)
             mRefreshBtn = findViewById(R.id.refresh_btn)
-
-            (activity as AppCompatActivity).setSupportActionBar(toolbar)
-            val actionBar = (activity as AppCompatActivity).supportActionBar
-            menuHost = requireActivity()
-
-            setUpMenu()
-
-            actionBar!!.apply {
-                setHomeButtonEnabled(true)
-                title = "Payment"
-                setDisplayHomeAsUpEnabled(true)
-            }
-
-            toolbar.setNavigationOnClickListener {
-                requireActivity().onBackPressed()
-            }
-
         }
 
 
@@ -112,7 +89,7 @@ class AdminPaymentDashboardFragment : Fragment(R.layout.fragment_dashboard_payme
 
         refreshData()
 
-        buttonsCLick()
+        handleViewsClick()
     }
 
 
@@ -283,14 +260,12 @@ class AdminPaymentDashboardFragment : Fragment(R.layout.fragment_dashboard_payme
     }
 
 
-    private fun buttonsCLick() {
-
+    private fun handleViewsClick() {
         mExpenditureBtn.setOnClickListener {
             startActivity(
                 Intent(activity, PaymentActivity().javaClass)
                     .putExtra("from", "expenditure")
             )
-
         }
 
         mReceiptBtn.setOnClickListener {
@@ -329,30 +304,15 @@ class AdminPaymentDashboardFragment : Fragment(R.layout.fragment_dashboard_payme
                 )
         }
 
+        settingsButton.setOnClickListener {
+            startActivity(
+                Intent(requireContext(), PaymentActivity::class.java)
+                    .putExtra("from", "settings")
+            )
+        }
+
     }
 
-    private fun setUpMenu() {
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.settings_menu, menu)
-
-                menu.getItem(0).isVisible = false
-                menu.getItem(1).isVisible = true
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return when (menuItem.itemId) {
-                    android.R.id.home -> {
-                        requireActivity().onBackPressedDispatcher
-                            .onBackPressed()
-                        return true
-                    }
-
-                    else -> false
-                }
-            }
-        })
-    }
 
     private fun refreshData() {
         mRefreshBtn.setOnClickListener {
@@ -365,7 +325,6 @@ class AdminPaymentDashboardFragment : Fragment(R.layout.fragment_dashboard_payme
         super.onResume()
         mTransactionList.clear()
         getDashboardDetails()
-        setUpMenu()
     }
 
     override fun onItemClick(position: Int) {
