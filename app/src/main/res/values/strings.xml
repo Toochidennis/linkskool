@@ -194,4 +194,5 @@
     <string name="select_a_course">Select a course</string>
     <string name="there_is_no_course_yet">There is no course yet!</string>
     <string name="upcoming_event">Upcoming event</string>
+    <string name="payment">Payment</string>
 </resources>

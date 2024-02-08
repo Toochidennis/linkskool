@@ -18,7 +18,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.android.volley.Request
 import com.android.volley.VolleyError
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.adapters.AdminELearningTestAdapter
+import com.digitaldream.linkskool.adapters.AdminELearningQuizAdapter
 import com.digitaldream.linkskool.adapters.GenericAdapter2
 import com.digitaldream.linkskool.models.QuestionItem
 import com.digitaldream.linkskool.models.QuizProgressModel
@@ -116,13 +116,12 @@ import java.util.Locale
 
 
 private const val MAX_VISIBLE_QUESTIONS = 5
-
 class StudentELearningQuizDialogFragment(
     private val quizId: String,
     private val duration: String,
     private val quizItems: MutableList<SectionModel>
 ) : DialogFragment(R.layout.fragment_student_e_learning_quiz),
-    AdminELearningTestAdapter.UserResponse {
+    AdminELearningQuizAdapter.UserResponse {
 
 
     private lateinit var countDownTxt: TextView
@@ -133,7 +132,7 @@ class StudentELearningQuizDialogFragment(
     private lateinit var nextBtn: ImageButton
 
     private lateinit var countDownJob: Job
-    private lateinit var quizAdapter: AdminELearningTestAdapter
+    private lateinit var quizAdapter: AdminELearningQuizAdapter
     private lateinit var progressAdapter: GenericAdapter2<QuizProgressModel>
 
     private var userResponses = mutableMapOf<String, String>()
@@ -200,7 +199,7 @@ class StudentELearningQuizDialogFragment(
     }
 
     private fun showQuestion() {
-        quizAdapter = AdminELearningTestAdapter(quizItems, userResponses, this)
+        quizAdapter = AdminELearningQuizAdapter(quizItems, userResponses, this)
         quizViewPager.adapter = quizAdapter
 
         quizViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -520,7 +519,7 @@ class StudentELearningQuizDialogFragment(
     }
 
     @OptIn(DelicateCoroutinesApi::class)
-    override fun onOptionSelected(questionId: String, selectedOption: String) {
+    override fun onOptionSelected(itemView :View, questionId: String, selectedOption: String) {
         userResponses[questionId] = selectedOption
 
         GlobalScope.launch {
