@@ -65,7 +65,7 @@ class TermFeeDialog(
 
         mLeftToLeftAnimation = AnimationUtils.loadAnimation(context, R.anim.move_left_left)
         mRightToRightAnimation = AnimationUtils.loadAnimation(context, R.anim.move_right_right)
-        mRightToLeftAnimation = AnimationUtils.loadAnimation(context, R.anim.move_right_left)
+        mRightToLeftAnimation = AnimationUtils.loadAnimation(context, R.anim.slide_in_right)
         mLeftToRightAnimation = AnimationUtils.loadAnimation(context, R.anim.move_left_right)
 
         getLevelName()
