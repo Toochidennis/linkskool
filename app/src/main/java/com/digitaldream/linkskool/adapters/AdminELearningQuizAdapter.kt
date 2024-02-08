@@ -7,14 +7,14 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.digitaldream.linkskool.R
 import com.digitaldream.linkskool.models.MultiChoiceQuestion
@@ -23,9 +23,10 @@ import com.digitaldream.linkskool.models.QuestionItem
 import com.digitaldream.linkskool.models.SectionModel
 import com.digitaldream.linkskool.models.ShortAnswerModel
 import com.digitaldream.linkskool.utils.FunctionUtils
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
-class AdminELearningTestAdapter(
+class AdminELearningQuizAdapter(
     private var itemList: MutableList<SectionModel>,
     private var userResponses: MutableMap<String, String>,
     private var userResponse: UserResponse
@@ -40,6 +41,13 @@ class AdminELearningTestAdapter(
     private var picasso = Picasso.get()
     private lateinit var optionsAdapter: OptionAdapter
     private var currentQuestionCount = 0
+    private val labelList =
+        arrayOf(
+            'A', 'B', 'C', 'D',
+            'E', 'F', 'G', 'H',
+            'I', 'J', 'K', 'L',
+            'M', 'N', '0', 'P'
+        )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -67,7 +75,6 @@ class AdminELearningTestAdapter(
             }
 
             else -> throw IllegalArgumentException("Invalid view type: $viewType")
-
         }
     }
 
@@ -81,7 +88,6 @@ class AdminELearningTestAdapter(
                     (itemModel.questionItem as? QuestionItem.MultiChoice)?.question ?: return
                 currentQuestionCount = calculateQuestionCount(position)
                 holder.bind(question)
-
             }
 
             is ShortAnswerViewHolder -> {
@@ -118,6 +124,7 @@ class AdminELearningTestAdapter(
         private val questionCountTxt: TextView = itemView.findViewById(R.id.questionCountTxt)
         private val questionTxt: TextView = itemView.findViewById(R.id.questionTxt)
         private val questionImage: ImageView = itemView.findViewById(R.id.questionImage)
+        private val imageCardView: CardView = itemView.findViewById(R.id.imageCardView)
         private val optionRecyclerView: RecyclerView =
             itemView.findViewById(R.id.optionsRecyclerView)
 
@@ -125,8 +132,14 @@ class AdminELearningTestAdapter(
 
         fun bind(multiChoiceQuestion: MultiChoiceQuestion) {
             questionTxt.text = multiChoiceQuestion.questionText
-            loadImage(itemView.context, multiChoiceQuestion.attachmentUri, questionImage)
-            questionCountTxt.text = (currentQuestionCount).toString()
+            loadImage(
+                itemView.context,
+                multiChoiceQuestion.attachmentUri,
+                questionImage,
+                imageCardView
+            )
+            val totalNoOfQuestions = "$currentQuestionCount/${sumOfQuestions()}"
+            questionCountTxt.text = totalNoOfQuestions
 
             options = multiChoiceQuestion.options
 
@@ -157,12 +170,14 @@ class AdminELearningTestAdapter(
         private val questionCountTxt: TextView = itemView.findViewById(R.id.questionCountTxt)
         private val questionTxt: TextView = itemView.findViewById(R.id.questionTxt)
         private val questionImage: ImageView = itemView.findViewById(R.id.questionImage)
+        private val imageCardView: CardView = itemView.findViewById(R.id.imageCardView)
         private val answerEditText: EditText = itemView.findViewById(R.id.answerEditText)
 
         fun bind(shortAnswer: ShortAnswerModel) {
             questionTxt.text = shortAnswer.questionText
-            loadImage(itemView.context, shortAnswer.attachmentUri, questionImage)
-            questionCountTxt.text = (currentQuestionCount).toString()
+            loadImage(itemView.context, shortAnswer.attachmentUri, questionImage, imageCardView)
+            val totalNoOfQuestions = "$currentQuestionCount/${sumOfQuestions()}"
+            questionCountTxt.text = totalNoOfQuestions
 
             val questionId = shortAnswer.questionId
             val typedAnswer = userResponses[questionId]
@@ -196,7 +211,6 @@ class AdminELearningTestAdapter(
         private fun setTypedAnswer(answer: String) {
             answerEditText.setText(answer)
         }
-
     }
 
 
@@ -223,19 +237,11 @@ class AdminELearningTestAdapter(
         override fun getItemCount() = multiChoiceQuestion.options?.size!!
 
         inner class OptionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            private val optionLayout: LinearLayout = itemView.findViewById(R.id.optionLayout)
-            private val optionCard: CardView = itemView.findViewById(R.id.optionCard)
-            private val optionLabel: TextView = itemView.findViewById(R.id.optionsLabel)
+            private val rootView: RelativeLayout = itemView.findViewById(R.id.rootView)
+            private val optionLabel: TextView = itemView.findViewById(R.id.optionLabelTxt)
             private val optionTxt: TextView = itemView.findViewById(R.id.optionsTxt)
+            private val imageCardView: CardView = itemView.findViewById(R.id.imageCardView)
             private val optionImage: ImageView = itemView.findViewById(R.id.optionImage)
-
-            private val labelList =
-                arrayOf(
-                    'A', 'B', 'C', 'D',
-                    'E', 'F', 'G', 'H',
-                    'I', 'J', 'K', 'L',
-                    'M', 'N', '0', 'P'
-                )
 
             fun bind(multipleChoiceOption: MultipleChoiceOption) {
                 optionLabel.text = labelList[adapterPosition].toString()
@@ -243,50 +249,30 @@ class AdminELearningTestAdapter(
                 itemView.isSelected = multipleChoiceOption.isSelected
 
                 if (itemView.isSelected) {
-                    optionCard.setCardBackgroundColor(
-                        ContextCompat.getColor(itemView.context, R.color.test_color_2)
-                    )
+                    rootView.background =
+                        ContextCompat.getDrawable(itemView.context, R.drawable.edit_text_bg8)
 
-                    optionLayout.background =
-                        ContextCompat.getDrawable(itemView.context, R.drawable.circle6)
-
-                    optionLabel.setTextColor(
-                        ContextCompat.getColor(
-                            itemView.context,
-                            R.color.test_color_2
-                        )
-                    )
                 } else {
-                    optionLayout.background = ContextCompat.getDrawable(
-                        itemView.context, R
-                            .drawable.circle5
-                    )
-
-                    optionCard.setCardBackgroundColor(
-                        ContextCompat.getColor(
-                            itemView.context, R.color.color_1
-                        )
-                    )
-
-                    optionLabel.setTextColor(
-                        ContextCompat.getColor(
-                            itemView.context,
-                            R.color.color_1
-                        )
-                    )
+                    rootView.background =
+                        ContextCompat.getDrawable(itemView.context, R.drawable.edit_text_bg7)
                 }
 
                 if (multipleChoiceOption.optionText.isEmpty()) {
-                    loadImage(itemView.context, multipleChoiceOption.attachmentUri, optionImage)
+                    loadImage(
+                        itemView.context,
+                        multipleChoiceOption.attachmentUri,
+                        optionImage,
+                        imageCardView
+                    )
                     optionTxt.isVisible = false
                 } else {
                     optionTxt.text = multipleChoiceOption.optionText
                     optionTxt.isVisible = true
-                    optionImage.isVisible = false
+                    imageCardView.isVisible = false
                 }
 
                 if (!isAnimationPlayed) {
-                    playAnimation(itemView, adapterPosition)
+                    fadeInView(itemView, adapterPosition)
                 }
 
                 itemView.setOnClickListener {
@@ -300,36 +286,38 @@ class AdminELearningTestAdapter(
 
                     notifyDataSetChanged()
 
-                    userResponse.onOptionSelected(questionId,
+                    userResponse.onOptionSelected(itemView, questionId,
                         selectedOption.optionText.ifEmpty {
                             selectedOption.attachmentName
                         }
                     )
-
                 }
             }
         }
     }
 
-    private fun playAnimation(itemView: View, position: Int) {
-        itemView.alpha = 0f
-        itemView.animate()
-            .alpha(1f)
-            .setDuration(500)
-            .setStartDelay(position * 150L)
-            .start()
+    fun fadeInView(view: View, position: Int) {
+        val animation = AnimationUtils.loadAnimation(view.context, R.anim.slide_in_right)
+        val startOffSet: Long = (position + 1) * + 200L
+        animation.startOffset = startOffSet
+        view.startAnimation(animation)
     }
+
 
     private fun setUpOptionsRecyclerView(recyclerView: RecyclerView) {
         recyclerView.apply {
             hasFixedSize()
-            layoutManager = LinearLayoutManager(context)
             adapter = optionsAdapter
         }
     }
 
 
-    private fun loadImage(context: Context, imageUri: Any?, imageView: ImageView) {
+    private fun loadImage(
+        context: Context,
+        imageUri: Any?,
+        imageView: ImageView,
+        imageCardView: CardView
+    ) {
         try {
             when (imageUri) {
                 is String -> {
@@ -338,26 +326,45 @@ class AdminELearningTestAdapter(
 
                         if (isBase64) {
                             val bitmap = FunctionUtils.decodeBase64ToBitmap(imageUri)
-                            imageView.isVisible = bitmap != null
+                            imageCardView.isVisible = bitmap != null
                             imageView.setImageBitmap(bitmap)
                         } else {
                             val url = "${context.getString(R.string.base_url)}/$imageUri"
-                            picasso.load(url).into(imageView)
-                            imageView.isVisible = true
-                        }
+                            picasso
+                                .load(url)
+                                .error(R.drawable.no_internet)
+                                .into(imageView, object : Callback {
+                                    override fun onSuccess() {
 
-                    } else {
-                        imageView.isVisible = false
+                                    }
+
+                                    override fun onError(e: java.lang.Exception?) {
+                                        imageView.scaleType = ImageView.ScaleType.CENTER
+                                    }
+                                })
+
+                            imageCardView.isVisible = true
+                        }
                     }
                 }
 
                 is Uri -> {
-                    picasso.load(imageUri).into(imageView)
-                    imageView.isVisible = true
+                    picasso
+                        .load(imageUri)
+                        .error(R.drawable.no_internet)
+                        .into(imageView, object : Callback {
+                            override fun onSuccess() {
+
+                            }
+
+                            override fun onError(e: java.lang.Exception?) {
+                                imageView.scaleType = ImageView.ScaleType.CENTER
+                            }
+                        })
+                    imageCardView.isVisible = true
                 }
 
-                else -> imageView.isVisible = false
-
+                else -> imageCardView.isVisible = false
             }
 
         } catch (e: Exception) {
@@ -375,9 +382,13 @@ class AdminELearningTestAdapter(
         return count + 1
     }
 
+    private fun sumOfQuestions(): Int {
+        return itemList.count { it.questionItem != null }
+    }
+
 
     interface UserResponse {
-        fun onOptionSelected(questionId: String, selectedOption: String)
+        fun onOptionSelected(itemView: View, questionId: String, selectedOption: String)
         fun setTypedAnswer(questionId: String, typedAnswer: String)
     }
 }

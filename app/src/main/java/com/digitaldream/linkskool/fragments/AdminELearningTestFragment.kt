@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.viewpager2.widget.ViewPager2
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.adapters.AdminELearningTestAdapter
+import com.digitaldream.linkskool.adapters.AdminELearningQuizAdapter
 import com.digitaldream.linkskool.dialog.AdminELearningQuestionTestIntroDialogFragment
 import com.digitaldream.linkskool.models.MultiChoiceQuestion
 import com.digitaldream.linkskool.models.MultipleChoiceOption
@@ -19,9 +19,7 @@ import com.digitaldream.linkskool.models.QuestionItem
 import com.digitaldream.linkskool.models.SectionModel
 import com.digitaldream.linkskool.models.ShortAnswerModel
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -35,7 +33,7 @@ private const val ARG_PARAM1 = "param1"
 
 class AdminELearningTestFragment :
     Fragment(R.layout.fragment_admin_e_learning_test),
-    AdminELearningTestAdapter.UserResponse {
+    AdminELearningQuizAdapter.UserResponse {
 
     private lateinit var dismissBtn: ImageButton
     private lateinit var countDownTxt: TextView
@@ -47,7 +45,7 @@ class AdminELearningTestFragment :
     // Initialise section items
     private lateinit var quizItems: MutableList<SectionModel>
     private lateinit var countDownJob: Job
-    private lateinit var quizAdapter: AdminELearningTestAdapter
+    private lateinit var quizAdapter: AdminELearningQuizAdapter
     private var userResponses = mutableMapOf<String, String>()
 
     // Variables to store data
@@ -125,7 +123,7 @@ class AdminELearningTestFragment :
 
 
     private fun showQuestion() {
-        quizAdapter = AdminELearningTestAdapter(quizItems, userResponses, this)
+        quizAdapter = AdminELearningQuizAdapter(quizItems, userResponses, this)
         questionViewPager.adapter = quizAdapter
 
         questionViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -460,7 +458,6 @@ class AdminELearningTestFragment :
             if (status == "start") {
                 showQuestion()
                 countDownTimer()
-
             } else {
                 requireActivity().finish()
             }
@@ -517,17 +514,9 @@ class AdminELearningTestFragment :
         }
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
-    override fun onOptionSelected(questionId: String, selectedOption: String) {
+    override fun onOptionSelected(itemView: View, questionId: String, selectedOption: String) {
         userResponses[questionId] = selectedOption
-
-        GlobalScope.launch {
-            delay(1000L)
-
-            withContext(Dispatchers.Main) {
-                showNextQuestion()
-            }
-        }
+        itemView.postDelayed({ showNextQuestion() }, 1000)
     }
 
     override fun setTypedAnswer(questionId: String, typedAnswer: String) {
