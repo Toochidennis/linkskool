@@ -73,10 +73,10 @@ class StaffDashboardResultAdapter(
 
                 StaffResultBottomSheetFragment
                     .newInstance(
-                        itemPosition.levelId?:"",
-                        itemPosition.courseId?:"",
-                        itemPosition.classId?:"",
-                        itemPosition.courseName?:""
+                        itemPosition.levelId ?: "",
+                        itemPosition.courseId ?: "",
+                        itemPosition.classId ?: "",
+                        itemPosition.courseName ?: ""
                     ).show(fragmentManager, "")
 
             }
@@ -108,7 +108,8 @@ class StaffDashboardResultAdapter(
                 R.color.tinted_color_icon, R.color.tinted_6, R.color.tinted_7
             )
 
-            val randomColorResourceId = colorResources[kotlin.random.Random.nextInt(colorResources.size)]
+            val randomColorResourceId =
+                colorResources[kotlin.random.Random.nextInt(colorResources.size)]
 
             return ContextCompat.getColor(itemView.context, randomColorResourceId)
         }

@@ -27,7 +27,6 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/dimen_10"
         android:fontFamily="@font/montserrat"
-        android:text="@string/classes"
         android:textColor="@color/black"
         android:textSize="@dimen/text_14"
         android:textStyle="bold" />

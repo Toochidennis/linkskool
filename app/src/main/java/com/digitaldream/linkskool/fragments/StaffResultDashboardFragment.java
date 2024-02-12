@@ -3,22 +3,15 @@ package com.digitaldream.linkskool.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.MenuHost;
-import androidx.core.view.MenuProvider;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.digitaldream.linkskool.R;
 import com.digitaldream.linkskool.adapters.StaffDashboardResultAdapter;
 import com.digitaldream.linkskool.config.DatabaseHelper;
-import com.digitaldream.linkskool.dialog.ContactUsDialog;
 import com.digitaldream.linkskool.models.CourseTable;
 import com.digitaldream.linkskool.models.StaffResultModel;
 import com.j256.ormlite.dao.Dao;
@@ -37,8 +29,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import timber.log.Timber;
 
 
 public class StaffResultDashboardFragment extends Fragment {
@@ -71,7 +61,6 @@ public class StaffResultDashboardFragment extends Fragment {
         emptyTxt = view.findViewById(R.id.emptyTxt);
     }
 
-
     private void init() {
         ((AppCompatActivity) (requireActivity())).setSupportActionBar(toolbar);
         ActionBar actionBar = ((AppCompatActivity) (requireActivity())).getSupportActionBar();
@@ -83,7 +72,6 @@ public class StaffResultDashboardFragment extends Fragment {
 
         loadResults();
     }
-
 
     private void loadResults() {
         try {
@@ -104,7 +92,6 @@ public class StaffResultDashboardFragment extends Fragment {
         }
 
     }
-
 
     private void setUpResultAdapter(List<CourseTable> courseList) {
         List<StaffResultModel> resultModel = new ArrayList<>();
@@ -130,12 +117,16 @@ public class StaffResultDashboardFragment extends Fragment {
         for (CourseTable itemModel : courseList) {
             String courseName = itemModel.getCourseName();
 
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                List<CourseTable> courseTableList =
-                        courseHashmap.getOrDefault(courseName, new ArrayList<>());
-                assert courseTableList != null;
-                courseTableList.add(itemModel);
-                courseHashmap.put(courseName, courseTableList);
+            if (itemModel.getClassName() != null) {
+                List<CourseTable> courseTableList = courseHashmap.get(courseName);
+                if (courseTableList != null) {
+                    courseTableList.add(itemModel);
+                    courseHashmap.put(courseName, courseTableList);
+                } else {
+                    List<CourseTable> newCourseTableList = new ArrayList<>();
+                    newCourseTableList.add(itemModel);
+                    courseHashmap.put(courseName, newCourseTableList);
+                }
             }
         }
 
