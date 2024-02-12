@@ -11,8 +11,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,15 +32,14 @@ import com.digitaldream.linkskool.activities.Login;
 import com.digitaldream.linkskool.activities.StaffUtils;
 import com.digitaldream.linkskool.adapters.StaffDashboardAdapter;
 import com.digitaldream.linkskool.config.DatabaseHelper;
-import com.digitaldream.linkskool.dialog.ContactUsDialog;
+import com.digitaldream.linkskool.models.AdminCommentsModel;
+import com.digitaldream.linkskool.models.AdminDashboardModel;
 import com.digitaldream.linkskool.models.ClassNameTable;
 import com.digitaldream.linkskool.models.CourseOutlineTable;
 import com.digitaldream.linkskool.models.CourseTable;
 import com.digitaldream.linkskool.models.ExamType;
 import com.digitaldream.linkskool.models.LevelTable;
 import com.digitaldream.linkskool.models.NewsTable;
-import com.digitaldream.linkskool.models.StaffQuestionModel;
-import com.digitaldream.linkskool.models.StaffReplyModel;
 import com.digitaldream.linkskool.models.StudentTable;
 import com.digitaldream.linkskool.models.TeachersTable;
 import com.digitaldream.linkskool.models.VideoTable;
@@ -47,7 +47,6 @@ import com.digitaldream.linkskool.models.VideoUtilTable;
 import com.digitaldream.linkskool.utils.FunctionUtils;
 import com.digitaldream.linkskool.utils.QuestionBottomSheet;
 import com.digitaldream.linkskool.utils.VolleyCallback;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.table.TableUtils;
@@ -70,9 +69,10 @@ public class StaffDashboardFragment extends Fragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView questionRecyclerView;
     private CardView formClassBtn, courseBtn;
-    private FloatingActionButton addQuestionBtn;
+    private Button addQuestionBtn;
     private TextView usernameTxt;
-    private ImageView logoutBtn, infoBtn;
+    private ImageButton logoutBtn;
+    ProgressBar progressBar;
 
 
     private DatabaseHelper databaseHelper;
@@ -81,7 +81,7 @@ public class StaffDashboardFragment extends Fragment {
 
 
     private List<CourseTable> courseList;
-    List<StaffQuestionModel> questionList = new ArrayList<>();
+    List<AdminDashboardModel> questionList = new ArrayList<>();
 
     private static String json = "";
     public static boolean refresh = false;
@@ -122,8 +122,8 @@ public class StaffDashboardFragment extends Fragment {
         addQuestionBtn = view.findViewById(R.id.addQuestionBtn);
         questionRecyclerView = view.findViewById(R.id.questionRecyclerView);
         usernameTxt = view.findViewById(R.id.usernameTxt);
-        logoutBtn = view.findViewById(R.id.logoutBtn);
-        infoBtn = view.findViewById(R.id.infoBtn);
+        logoutBtn = view.findViewById(R.id.logoutButton);
+        progressBar = view.findViewById(R.id.progressBar);
 
         setUpToolbar();
     }
@@ -140,13 +140,6 @@ public class StaffDashboardFragment extends Fragment {
             builder.show();
         });
 
-        infoBtn.setOnClickListener(v -> {
-            ContactUsDialog dialog = new ContactUsDialog(requireActivity());
-            dialog.show();
-            Window window = dialog.getWindow();
-            assert window != null;
-            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        });
     }
 
 
@@ -218,6 +211,11 @@ public class StaffDashboardFragment extends Fragment {
         HashMap<String, String> stringMap = new HashMap<>();
         stringMap.put("id", getClassObject());
 
+        progressBar.setVisibility(View.VISIBLE);
+        errorMessageTxt.setVisibility(View.GONE);
+
+        questionList.clear();
+
         FunctionUtils.sendRequestToServer(Request.Method.POST, url, requireContext(), stringMap,
                 new VolleyCallback() {
                     @Override
@@ -229,6 +227,8 @@ public class StaffDashboardFragment extends Fragment {
                     @Override
                     public void onError(@NonNull VolleyError error) {
                         errorMessageTxt.setVisibility(View.VISIBLE);
+                        errorMessageTxt.setText(getString(R.string.no_internet));
+                        progressBar.setVisibility(View.GONE);
                     }
                 }, false);
 
@@ -258,13 +258,13 @@ public class StaffDashboardFragment extends Fragment {
     private void parseJSON(String response) {
         try {
             questionList.clear();
-            HashMap<String, StaffQuestionModel> questionMap = new HashMap<>();
+            HashMap<String, AdminDashboardModel> questionMap = new HashMap<>();
 
             JSONArray jsonArray = new JSONArray(response);
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject questionObject = jsonArray.getJSONObject(i);
-                List<StaffReplyModel> replyList = new ArrayList<>();
+                List<AdminCommentsModel> replyList = new ArrayList<>();
 
                 String id = questionObject.getString("id");
                 String title = questionObject.getString("title");
@@ -292,15 +292,15 @@ public class StaffDashboardFragment extends Fragment {
                             image = bodyObject.getString("src");
                         }
 
-                        replyList.add(new StaffReplyModel(id, username, content, image, date));
+                        replyList.add(new AdminCommentsModel(id, username, content, image, date));
                     }
                 }
 
-                StaffQuestionModel questionModel =
-                        new StaffQuestionModel(id, username, title,
-                                commentsNo, likesNo, shareNo, type, date, replyList);
+                AdminDashboardModel questionModel =
+                        new AdminDashboardModel(id, username, title,
+                                commentsNo, likesNo, shareNo, type, date, "",replyList);
 
-                StaffQuestionModel existingQuestionModel =
+                AdminDashboardModel existingQuestionModel =
                         questionMap.get(description.strip());
 
                 if (existingQuestionModel != null) {
@@ -312,17 +312,29 @@ public class StaffDashboardFragment extends Fragment {
                 }
             }
 
-            for (Map.Entry<String, StaffQuestionModel> entry : questionMap.entrySet()) {
+            for (Map.Entry<String, AdminDashboardModel> entry : questionMap.entrySet()) {
                 questionList.add(entry.getValue());
             }
 
 
             Collections.reverse(questionList);
 
+            progressBar.setVisibility(View.GONE);
+
+            if (questionList.isEmpty()) {
+                errorMessageTxt.setVisibility(View.VISIBLE);
+                errorMessageTxt.setText(getString(R.string.there_is_no_feeds_yet));
+            } else {
+                errorMessageTxt.setVisibility(View.GONE);
+            }
+
             questionAdapter.notifyDataSetChanged();
 
         } catch (JSONException e) {
             e.printStackTrace();
+            errorMessageTxt.setVisibility(View.VISIBLE);
+            errorMessageTxt.setText(getString(R.string.no_internet));
+            progressBar.setVisibility(View.GONE);
         }
     }
 
@@ -333,11 +345,6 @@ public class StaffDashboardFragment extends Fragment {
         questionRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         questionRecyclerView.setAdapter(questionAdapter);
 
-       /* if (questionList.isEmpty()) {
-            errorMessageTxt.setVisibility(View.VISIBLE);
-        } else {
-            errorMessageTxt.setVisibility(View.GONE);
-        }*/
     }
 
     private void refreshFeeds() {
