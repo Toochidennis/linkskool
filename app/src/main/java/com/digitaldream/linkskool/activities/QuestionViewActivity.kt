@@ -45,6 +45,8 @@ class QuestionViewActivity : AppCompatActivity(R.layout.activity_question_view) 
     private val commentList = mutableListOf<AdminCommentsModel>()
     private lateinit var commentsAdapter: GenericAdapter2<AdminCommentsModel>
 
+    private var from: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +54,6 @@ class QuestionViewActivity : AppCompatActivity(R.layout.activity_question_view) 
         initViews()
 
         processData()
-
     }
 
     private fun initViews() {
@@ -68,6 +69,8 @@ class QuestionViewActivity : AppCompatActivity(R.layout.activity_question_view) 
         noOfLikesTextView = findViewById(R.id.likesTextView)
         noOfCommentsTextView = findViewById(R.id.commentsTextView)
         noOfRepostTextView = findViewById(R.id.repostTextView)
+
+        from = intent.getStringExtra("from")
 
         questionModel = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             intent.getSerializableExtra("question_object", AdminDashboardModel::class.java)

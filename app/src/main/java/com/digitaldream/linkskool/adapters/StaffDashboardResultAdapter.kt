@@ -73,10 +73,10 @@ class StaffDashboardResultAdapter(
 
                 StaffResultBottomSheetFragment
                     .newInstance(
-                        itemPosition.levelId,
-                        itemPosition.courseId,
-                        itemPosition.classId,
-                        itemPosition.courseName
+                        itemPosition.levelId?:"",
+                        itemPosition.courseId?:"",
+                        itemPosition.classId?:"",
+                        itemPosition.courseName?:""
                     ).show(fragmentManager, "")
 
             }

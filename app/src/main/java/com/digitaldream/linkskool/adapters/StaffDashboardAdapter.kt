@@ -1,25 +1,25 @@
 package com.digitaldream.linkskool.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.digitaldream.linkskool.R
+import com.digitaldream.linkskool.activities.QuestionViewActivity
+import com.digitaldream.linkskool.models.AdminDashboardModel
 import com.digitaldream.linkskool.models.StaffQuestionModel
-import com.digitaldream.linkskool.models.StaffReplyModel
-import com.digitaldream.linkskool.utils.FunctionUtils.capitaliseFirstLetter
-import com.digitaldream.linkskool.utils.FunctionUtils.formatDate2
+import com.digitaldream.linkskool.utils.FunctionUtils
+import kotlin.random.Random
 
 
 class StaffDashboardAdapter(
-    private val itemList: List<StaffQuestionModel>,
+    private val itemList: List<AdminDashboardModel>,
 ) : RecyclerView.Adapter<StaffDashboardAdapter.ItemViewHolder>() {
 
-    private lateinit var replyAdapter: GenericAdapter<StaffReplyModel>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -40,59 +40,45 @@ class StaffDashboardAdapter(
         private val commentNoTxt: TextView = itemView.findViewById(R.id.comments)
         private val noOfLikesTxt: TextView = itemView.findViewById(R.id.upVotes)
         private val sharesCountTxt: TextView = itemView.findViewById(R.id.share)
-        private val replySeparator: View = itemView.findViewById(R.id.replySeparator)
-        private val replyTitle: TextView = itemView.findViewById(R.id.replyTitle)
-        private val replyRecyclerView: RecyclerView = itemView.findViewById(R.id.replyRecyclerView)
+        private val imageCard: CardView = itemView.findViewById(R.id.imageHolder)
 
 
-        fun bind(staffModel: StaffQuestionModel) {
-            usernameTxt.text = capitaliseFirstLetter(staffModel.username)
-            dateTxt.text = formatDate2(staffModel.date, "custom")
+        fun bind(staffModel: AdminDashboardModel) {
+            usernameTxt.text = FunctionUtils.capitaliseFirstLetter(staffModel.username)
+            dateTxt.text = FunctionUtils.formatDate2(staffModel.date, "custom")
             questionTxt.text = staffModel.question
             commentNoTxt.text = staffModel.commentsNo
             noOfLikesTxt.text = staffModel.likesNo
             sharesCountTxt.text = staffModel.noOfShared
 
-            replyTitle.isVisible = staffModel.replyList.isNotEmpty()
-            replySeparator.isVisible = staffModel.replyList.isNotEmpty()
-            setReplyAdapter(staffModel.replyList)
+            val randomTintedColor = generateRandomTintedColor()
+            imageCard.setCardBackgroundColor(randomTintedColor)
+
+            viewQuestion(model = staffModel)
         }
 
-        private fun setReplyAdapter(replyList: List<StaffReplyModel>) {
-            replyAdapter = GenericAdapter(
-                replyList.toMutableList(),
-                R.layout.item_staff_reply_layout,
-                bindItem = { itemView, model, _ ->
-                    val usernameTxt: TextView = itemView.findViewById(R.id.usernameTxt)
-                    val dateTxt: TextView = itemView.findViewById(R.id.dateTxt)
-                    val replyTxt: TextView = itemView.findViewById(R.id.replyTxt)
-                    val replyImage: ImageView = itemView.findViewById(R.id.replyImage)
+        private fun generateRandomTintedColor(): Int {
+            val colorResources = listOf(
+                R.color.tinted_color_icon_5,
+                R.color.tinted_0, R.color.tinted_1, R.color.tinted_2, R.color.tinted_3, R.color
+                    .tinted_4, R.color.tinted_5, R.color.tinted_6, R.color.tinted_7
+            )
 
-                    usernameTxt.text = capitaliseFirstLetter(model.username)
-                    dateTxt.text = formatDate2(model.date, "custom")
+            val randomColorResourceId = colorResources[Random.nextInt(colorResources.size)]
 
-                    if (model.reply.isNotBlank()) {
-                        replyTxt.text = model.reply
-                        replyTxt.isVisible = true
-                    } else {
-                        replyTxt.isVisible = false
-                        replyImage.isVisible = true
-                    }
-                }
-            ) {
-
-            }
-
-            setUpReplyRecyclerView()
+            return ContextCompat.getColor(itemView.context, randomColorResourceId)
         }
 
-        private fun setUpReplyRecyclerView() {
-            replyRecyclerView.apply {
-                hasFixedSize()
-                layoutManager = LinearLayoutManager(itemView.context)
-                adapter = replyAdapter
+        private fun viewQuestion(model: AdminDashboardModel) {
+            itemView.setOnClickListener {
+                it.context.startActivity(
+                    Intent(it.context, QuestionViewActivity::class.java)
+                        .putExtra("question_object", model)
+                        .putExtra("from", "staff")
+                )
             }
         }
+
     }
 
 }
