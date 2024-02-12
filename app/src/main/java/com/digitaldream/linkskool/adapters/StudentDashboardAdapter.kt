@@ -1,23 +1,22 @@
 package com.digitaldream.linkskool.adapters
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.isVisible
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.digitaldream.linkskool.R
-import com.digitaldream.linkskool.models.StudentDashboardModel
-import com.digitaldream.linkskool.models.StudentReplyModel
+import com.digitaldream.linkskool.activities.QuestionViewActivity
+import com.digitaldream.linkskool.models.AdminDashboardModel
 import com.digitaldream.linkskool.utils.FunctionUtils
+import kotlin.random.Random
 
 class StudentDashboardAdapter(
-    private val itemList: List<StudentDashboardModel>,
+    private val itemList: List<AdminDashboardModel>,
 ) : RecyclerView.Adapter<StudentDashboardAdapter.ItemViewHolder>() {
-
-    private lateinit var replyAdapter: GenericAdapter<StudentReplyModel>
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -39,12 +38,10 @@ class StudentDashboardAdapter(
         private val commentNoTxt: TextView = itemView.findViewById(R.id.comments)
         private val noOfLikesTxt: TextView = itemView.findViewById(R.id.upVotes)
         private val sharesCountTxt: TextView = itemView.findViewById(R.id.share)
-        private val replySeparator: View = itemView.findViewById(R.id.replySeparator)
-        private val replyTitle: TextView = itemView.findViewById(R.id.replyTitle)
-        private val replyRecyclerView: RecyclerView = itemView.findViewById(R.id.replyRecyclerView)
+        private val imageCard: CardView = itemView.findViewById(R.id.imageHolder)
 
 
-        fun bind(studentModel: StudentDashboardModel) {
+        fun bind(studentModel: AdminDashboardModel) {
             usernameTxt.text = FunctionUtils.capitaliseFirstLetter(studentModel.username)
             dateTxt.text = FunctionUtils.formatDate2(studentModel.date, "custom")
             questionTxt.text = studentModel.question
@@ -52,44 +49,30 @@ class StudentDashboardAdapter(
             noOfLikesTxt.text = studentModel.likesNo
             sharesCountTxt.text = studentModel.noOfShared
 
-            replyTitle.isVisible = studentModel.replyList.isNotEmpty()
-            replySeparator.isVisible = studentModel.replyList.isNotEmpty()
-            setReplyAdapter(studentModel.replyList)
+            val randomTintedColor = generateRandomTintedColor()
+            imageCard.setCardBackgroundColor(randomTintedColor)
+
+            viewQuestion(model = studentModel)
         }
 
-        private fun setReplyAdapter(replyList: List<StudentReplyModel>) {
-            replyAdapter = GenericAdapter(
-                replyList.toMutableList(),
-                R.layout.item_student_reply_layout,
-                bindItem = { itemView, model, _ ->
-                    val usernameTxt: TextView = itemView.findViewById(R.id.usernameTxt)
-                    val dateTxt: TextView = itemView.findViewById(R.id.dateTxt)
-                    val replyTxt: TextView = itemView.findViewById(R.id.replyTxt)
-                    val replyImage: ImageView = itemView.findViewById(R.id.replyImage)
+        private fun generateRandomTintedColor(): Int {
+            val colorResources = listOf(
+                R.color.tinted_color_icon_5,
+                R.color.tinted_0, R.color.tinted_1, R.color.tinted_2, R.color.tinted_3, R.color
+                    .tinted_4, R.color.tinted_5, R.color.tinted_6, R.color.tinted_7
+            )
 
-                    usernameTxt.text = FunctionUtils.capitaliseFirstLetter(model.username)
-                    dateTxt.text = FunctionUtils.formatDate2(model.date, "custom")
+            val randomColorResourceId = colorResources[Random.nextInt(colorResources.size)]
 
-                    if (model.reply.isNotBlank()) {
-                        replyTxt.text = model.reply
-                        replyTxt.isVisible = true
-                    } else {
-                        replyTxt.isVisible = false
-                        replyImage.isVisible = true
-                    }
-                }
-            ) {
-
-            }
-
-            setUpReplyRecyclerView()
+            return ContextCompat.getColor(itemView.context, randomColorResourceId)
         }
 
-        private fun setUpReplyRecyclerView() {
-            replyRecyclerView.apply {
-                hasFixedSize()
-                layoutManager = LinearLayoutManager(itemView.context)
-                adapter = replyAdapter
+        private fun viewQuestion(model: AdminDashboardModel) {
+            itemView.setOnClickListener {
+                it.context.startActivity(
+                    Intent(it.context, QuestionViewActivity::class.java)
+                        .putExtra("question_object", model)
+                )
             }
         }
     }

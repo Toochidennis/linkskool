@@ -10,8 +10,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,13 +29,12 @@ import com.digitaldream.linkskool.R;
 import com.digitaldream.linkskool.activities.Login;
 import com.digitaldream.linkskool.adapters.StudentDashboardAdapter;
 import com.digitaldream.linkskool.config.DatabaseHelper;
-import com.digitaldream.linkskool.dialog.ContactUsDialog;
+import com.digitaldream.linkskool.models.AdminCommentsModel;
+import com.digitaldream.linkskool.models.AdminDashboardModel;
 import com.digitaldream.linkskool.models.CourseOutlineTable;
 import com.digitaldream.linkskool.models.ExamType;
 import com.digitaldream.linkskool.models.NewsTable;
 import com.digitaldream.linkskool.models.StudentCourses;
-import com.digitaldream.linkskool.models.StudentDashboardModel;
-import com.digitaldream.linkskool.models.StudentReplyModel;
 import com.digitaldream.linkskool.models.StudentResultDownloadTable;
 import com.digitaldream.linkskool.models.StudentTable;
 import com.digitaldream.linkskool.models.VideoTable;
@@ -42,7 +42,6 @@ import com.digitaldream.linkskool.models.VideoUtilTable;
 import com.digitaldream.linkskool.utils.FunctionUtils;
 import com.digitaldream.linkskool.utils.QuestionBottomSheet;
 import com.digitaldream.linkskool.utils.VolleyCallback;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.j256.ormlite.table.TableUtils;
 
 import org.json.JSONArray;
@@ -62,13 +61,14 @@ public class StudentDashboardFragment extends Fragment {
 
     private TextView errorMessageTxt;
     private RecyclerView questionRecyclerView;
-    private FloatingActionButton addQuestionBtn;
+    private Button addQuestionBtn;
     private SwipeRefreshLayout swipeRefreshLayout;
     private TextView usernameTxt;
-    private ImageView logoutBtn, infoBtn;
+    private ImageButton logoutBtn;
+    private ProgressBar progressBar;
 
 
-    List<StudentDashboardModel> questionList = new ArrayList<>();
+    List<AdminDashboardModel> questionList = new ArrayList<>();
     private StudentDashboardAdapter questionAdapter;
     private DatabaseHelper databaseHelper;
 
@@ -94,7 +94,6 @@ public class StudentDashboardFragment extends Fragment {
         setUpViews(view);
 
         init();
-
     }
 
     private void setUpViews(View view) {
@@ -104,8 +103,7 @@ public class StudentDashboardFragment extends Fragment {
         addQuestionBtn = view.findViewById(R.id.addQuestionBtn);
         usernameTxt = view.findViewById(R.id.usernameTxt);
         logoutBtn = view.findViewById(R.id.logoutBtn);
-        infoBtn = view.findViewById(R.id.infoBtn);
-
+        progressBar = view.findViewById(R.id.progressBar);
 
         databaseHelper = new DatabaseHelper(requireContext());
 
@@ -129,14 +127,6 @@ public class StudentDashboardFragment extends Fragment {
 
             builder.setPositiveButton("Logout", (dialog, which) -> logout());
             builder.show();
-        });
-
-        infoBtn.setOnClickListener(v -> {
-            ContactUsDialog dialog = new ContactUsDialog(requireActivity());
-            dialog.show();
-            Window window = dialog.getWindow();
-            assert window != null;
-            window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         });
     }
 
@@ -172,6 +162,11 @@ public class StudentDashboardFragment extends Fragment {
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("id", levelId);
 
+        progressBar.setVisibility(View.VISIBLE);
+        errorMessageTxt.setVisibility(View.GONE);
+
+        questionList.clear();
+
         FunctionUtils.sendRequestToServer(Request.Method.POST, url, requireContext(), hashMap,
                 new VolleyCallback() {
                     @Override
@@ -183,6 +178,8 @@ public class StudentDashboardFragment extends Fragment {
                     @Override
                     public void onError(@NonNull VolleyError error) {
                         errorMessageTxt.setVisibility(View.VISIBLE);
+                        errorMessageTxt.setText(getString(R.string.no_internet));
+                        progressBar.setVisibility(View.GONE);
                     }
                 }, false);
     }
@@ -191,13 +188,13 @@ public class StudentDashboardFragment extends Fragment {
     private void buildJSON(String response) {
         try {
             questionList.clear();
-            HashMap<String, StudentDashboardModel> questionMap = new HashMap<>();
+            HashMap<String, AdminDashboardModel> questionMap = new HashMap<>();
 
             JSONArray jsonArray = new JSONArray(response);
 
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject questionObject = jsonArray.getJSONObject(i);
-                List<StudentReplyModel> replyList = new ArrayList<>();
+                List<AdminCommentsModel> replyList = new ArrayList<>();
 
                 String id = questionObject.getString("id");
                 String title = questionObject.getString("title");
@@ -225,15 +222,15 @@ public class StudentDashboardFragment extends Fragment {
                             image = bodyObject.getString("src");
                         }
 
-                        replyList.add(new StudentReplyModel(id, username, content, image, date));
+                        replyList.add(new AdminCommentsModel(id, username, content, image, date));
                     }
                 }
 
-                StudentDashboardModel questionModel =
-                        new StudentDashboardModel(id, username, title,
-                                commentsNo, likesNo, shareNo, type, date, replyList);
+                AdminDashboardModel questionModel =
+                        new AdminDashboardModel(id, username, title,
+                                commentsNo, likesNo, shareNo, type, date, "",replyList);
 
-                StudentDashboardModel existingQuestionModel =
+                AdminDashboardModel existingQuestionModel =
                         questionMap.get(description.strip());
 
                 if (existingQuestionModel != null) {
@@ -245,16 +242,28 @@ public class StudentDashboardFragment extends Fragment {
                 }
             }
 
-            for (Map.Entry<String, StudentDashboardModel> entry : questionMap.entrySet()) {
+            for (Map.Entry<String, AdminDashboardModel> entry : questionMap.entrySet()) {
                 questionList.add(entry.getValue());
             }
 
             Collections.reverse(questionList);
 
+            progressBar.setVisibility(View.GONE);
+
+            if (questionList.isEmpty()) {
+                errorMessageTxt.setVisibility(View.VISIBLE);
+                errorMessageTxt.setText(getString(R.string.there_is_no_feeds_yet));
+            } else {
+                errorMessageTxt.setVisibility(View.GONE);
+            }
+
             questionAdapter.notifyDataSetChanged();
 
         } catch (JSONException e) {
             e.printStackTrace();
+            errorMessageTxt.setVisibility(View.VISIBLE);
+            errorMessageTxt.setText(getString(R.string.no_internet));
+            progressBar.setVisibility(View.GONE);
         }
     }
 
@@ -263,12 +272,6 @@ public class StudentDashboardFragment extends Fragment {
         questionRecyclerView.hasFixedSize();
         questionRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         questionRecyclerView.setAdapter(questionAdapter);
-
-       /* if (questionList.isEmpty()) {
-            errorMessageTxt.setVisibility(View.VISIBLE);
-        } else {
-            errorMessageTxt.setVisibility(View.GONE);
-        }*/
     }
 
     private void refreshFeeds() {
@@ -277,7 +280,6 @@ public class StudentDashboardFragment extends Fragment {
             swipeRefreshLayout.setRefreshing(false);
         });
     }
-
 
     private void logout() {
         SharedPreferences sharedPreferences = requireActivity().getSharedPreferences(

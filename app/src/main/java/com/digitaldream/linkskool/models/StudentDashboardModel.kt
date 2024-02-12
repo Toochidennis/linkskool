@@ -1,5 +1,7 @@
 package com.digitaldream.linkskool.models
 
+import java.io.Serializable
+
 data class StudentDashboardModel(
     val id: String = "",
     val username: String = "",
@@ -10,7 +12,7 @@ data class StudentDashboardModel(
     val type: String = "",
     val date: String = "",
     val replyList: List<StudentReplyModel> = arrayListOf()
-)
+):Serializable
 
 data class StudentReplyModel(
     val replyId: String,
@@ -18,4 +20,4 @@ data class StudentReplyModel(
     val reply: String = "",
     val replyImage: Any? = null,
     val date: String
-)
+):Serializable
