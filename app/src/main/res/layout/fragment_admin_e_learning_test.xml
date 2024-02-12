@@ -24,27 +24,17 @@
             android:src="@drawable/ic_arrow_back_black_24dp"
             app:tint="@color/white" />
 
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+        <TextView
+            android:id="@+id/durationTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/dimen_10"
-            android:layout_marginTop="@dimen/dimen_10"
-            android:background="@drawable/circle2"
-            android:gravity="center"
-            android:backgroundTint="@color/tinted_color_4"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/durationTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:fontFamily="@font/pt_serif_bold"
-                android:padding="@dimen/dimen_16"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_18" />
-        </LinearLayout>
+            android:fontFamily="@font/pt_serif_bold"
+            android:padding="@dimen/dimen_16"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_18"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/submitQuestionBtn"
