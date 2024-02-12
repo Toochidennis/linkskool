@@ -227,7 +227,6 @@ public class AdminDashboardFragment extends Fragment {
 
     private void parseJSON(String response) {
         try {
-            questionList.clear();
             HashMap<String, AdminDashboardModel> questionMap = new HashMap<>();
             JSONArray jsonArray = new JSONArray(response);
 
@@ -313,7 +312,6 @@ public class AdminDashboardFragment extends Fragment {
         questionRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         questionRecyclerView.setAdapter(questionAdapter);
     }
-
 
     private void refreshFeeds() {
         swipeRefreshLayout.setOnRefreshListener(() -> {
