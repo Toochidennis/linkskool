@@ -52,13 +52,12 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:background="@color/tinted_8">
+                    android:background="@color/test_color_1">
 
                     <androidx.viewpager2.widget.ViewPager2
                         android:id="@+id/viewPager"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="gone" />
+                        android:layout_height="match_parent" />
 
                     <com.google.android.material.tabs.TabLayout
                         android:id="@+id/tabLayout"
@@ -79,7 +78,8 @@
                         android:text="@string/no_internet"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_14" />
+                        android:textSize="@dimen/text_14"
+                        android:visibility="gone" />
 
                 </RelativeLayout>
 

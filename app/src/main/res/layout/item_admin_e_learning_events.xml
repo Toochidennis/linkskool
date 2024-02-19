@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/dimen_16">
+
+    <TextView
+        android:id="@+id/title_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:fontFamily="@font/inter_bold"
+        android:text="@string/no_internet"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_24" />
+
+    <TextView
+        android:id="@+id/course_name_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_txt"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/no_data"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_16" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/date_txt"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dimen_10"
+        android:fontFamily="@font/pt_serif_bold"
+        android:text="@string/toochi_dennis"
+        android:textColor="@color/tinted_color_2" />
+
+</RelativeLayout>

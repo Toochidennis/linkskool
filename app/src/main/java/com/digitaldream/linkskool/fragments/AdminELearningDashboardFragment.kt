@@ -23,6 +23,7 @@ import com.digitaldream.linkskool.models.LevelTable
 import com.digitaldream.linkskool.models.RecentActivityModel
 import com.digitaldream.linkskool.models.UpcomingQuizModel
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.j256.ormlite.dao.Dao
 import com.j256.ormlite.dao.DaoManager
 import kotlin.random.Random
@@ -64,18 +65,10 @@ class AdminELearningDashboardFragment : Fragment(R.layout.fragment_admin_e_learn
         getLevels()
 
         setUpActivityAdapter()
+
+        setupEventAdapter()
     }
 
-
- /*   private fun setUpEventAdapter(eventList: MutableList<UpcomingQuizModel>) {
-        val eventAdapter = GenericAdapter2(
-            itemResLayout = R.layout.item_up_coming_quiz_layout,
-            itemList = eventList,
-            bindItem = { itemView, model, _ ->
-
-            }
-        )
-    }*/
 
     private fun setUpActivityAdapter() {
         val activityList = mutableListOf<RecentActivityModel>().apply {
@@ -190,5 +183,32 @@ class AdminELearningDashboardFragment : Fragment(R.layout.fragment_admin_e_learn
         val randomColorResourceId = colorResources[Random.nextInt(colorResources.size)]
 
         return ContextCompat.getColor(requireContext(), randomColorResourceId)
+    }
+
+    private fun setupEventAdapter() {
+        val events = mutableListOf<UpcomingQuizModel>().apply {
+            for (i in 1..6) {
+                add(UpcomingQuizModel("$i", "First C/A Test $i", "19th Feb. 2024", "Mathematics"))
+            }
+        }
+
+        val eventAdapter = GenericAdapter2(
+            itemList = events,
+            itemResLayout = R.layout.item_admin_e_learning_events,
+            bindItem = { itemView, model, _ ->
+                val titleTextView: TextView = itemView.findViewById(R.id.title_txt)
+                val courseNameTextView: TextView = itemView.findViewById(R.id.course_name_txt)
+                val dateTextView: TextView = itemView.findViewById(R.id.date_txt)
+
+                titleTextView.text = model.title
+                courseNameTextView.text = model.type
+                dateTextView.text = model.date
+            }
+        )
+
+
+        viewPager2.adapter = eventAdapter
+
+        TabLayoutMediator(tabLayout, viewPager2) { _, _ -> }.attach()
     }
 }
