@@ -78,7 +78,7 @@
     <color name="tinted_5">#4AF6FF</color>
     <color name="tinted_6">#414AE4</color>
     <color name="tinted_7">#7C7CFF</color>
-    <color name="tinted_8">#99B3FF</color>
+    <color name="tinted_8">@color/tinted_color_icon_4</color>
 
 
 </resources>
