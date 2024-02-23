@@ -27,7 +27,7 @@ import java.util.Objects;
 
 public class Settings extends AppCompatActivity {
     private final String[] settingsTitle = {"General settings", "Level", "Courses",
-            "Grade", "Assessment", "Class", "Login"};
+            "Grade", "Assessment", "Class", "Logout"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
