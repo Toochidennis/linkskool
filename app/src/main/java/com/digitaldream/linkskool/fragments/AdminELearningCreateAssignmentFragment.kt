@@ -1,5 +1,6 @@
 package com.digitaldream.linkskool.fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -431,6 +432,7 @@ class AdminELearningCreateAssignmentFragment :
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun deleteAttachment(deleteButton: ImageButton, position: Int) {
         deleteButton.setOnClickListener {
             if (mFrom == "edit") {
@@ -479,6 +481,7 @@ class AdminELearningCreateAssignmentFragment :
         } else {
             postAssignment()
         }
+        mAssignBtn.isEnabled = true
     }
 
     private fun createAssignmentObject(): HashMap<String, String> {

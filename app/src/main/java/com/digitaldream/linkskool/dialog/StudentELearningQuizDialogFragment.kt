@@ -522,16 +522,8 @@ class StudentELearningQuizDialogFragment(
     override fun onOptionSelected(itemView :View, questionId: String, selectedOption: String) {
         userResponses[questionId] = selectedOption
 
-        GlobalScope.launch {
-            delay(1000L)
-
-            withContext(Dispatchers.Main) {
-                showNextQuestion()
-            }
-        }
-
+        itemView.postDelayed({ showNextQuestion() }, 1000)
         updateAnsweredQuestion()
-
         progressAdapter.notifyDataSetChanged()
     }
 
@@ -539,7 +531,6 @@ class StudentELearningQuizDialogFragment(
         userResponses[questionId] = typedAnswer
 
         updateAnsweredQuestion()
-
         progressAdapter.notifyDataSetChanged()
     }
 
