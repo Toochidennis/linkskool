@@ -9,8 +9,8 @@ android {
         applicationId "com.digitaldream.linkskool"
         minSdkVersion 21
         targetSdk 34
-        versionCode 46
-        versionName "28.6"
+        versionCode 47
+        versionName "28.7"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         vectorDrawables {
