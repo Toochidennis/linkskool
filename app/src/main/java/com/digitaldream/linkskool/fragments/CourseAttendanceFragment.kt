@@ -125,7 +125,6 @@ class CourseAttendanceFragment : Fragment() {
         refreshAttendance()
     }
 
-
     private fun getAttendance() {
         val url = "${requireContext().getString(R.string.base_url)}/getAttendanceList.php"
         val hashMap = hashMapOf<String, String>()

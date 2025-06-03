@@ -113,7 +113,6 @@ public class CBTConfirmationDialog extends Dialog {
         if (mJson.isEmpty()) {
             new getCourse().execute(Integer.toString(mExamList.get(0).getYearId()));
             //  Log.i("status", "ran " + mJson + " execution");
-
         }
 
         mContinueBtn.setOnClickListener(sView -> {
@@ -134,7 +133,6 @@ public class CBTConfirmationDialog extends Dialog {
         });
 
         mCloseBtn.setOnClickListener(sView -> dismiss());
-
     }
 
 
@@ -142,7 +140,6 @@ public class CBTConfirmationDialog extends Dialog {
         try {
             mExamList = mExamDao.queryBuilder().where().eq("course",
                     mCourseName).and().eq("year", mYear).query();
-
 
             if (!mExamList.isEmpty()) {
                 Exam exam = mExamList.get(0);
@@ -262,10 +259,7 @@ public class CBTConfirmationDialog extends Dialog {
                 // getContext().startActivity(new Intent(getContext(), ELibraryFragment.class));
                 dismiss();
             }
-
         }
-
     }
-
 }
 

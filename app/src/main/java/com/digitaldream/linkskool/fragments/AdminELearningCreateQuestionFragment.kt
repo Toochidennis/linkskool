@@ -906,7 +906,6 @@ class AdminELearningCreateQuestionFragment :
         }.apply()
     }
 
-
     // Load JSON data from SharedPreferences
     private fun loadJsonData() {
         year = sharedPreferences.getString("school_year", "")
@@ -923,12 +922,10 @@ class AdminELearningCreateQuestionFragment :
         }.apply()
     }
 
-
     // Display a toast message
     private fun showToast(message: String) {
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
     }
-
 
     // Handle the back button press event
     private fun onExitQuestion() {
@@ -972,11 +969,9 @@ class AdminELearningCreateQuestionFragment :
         }.create()
     }
 
-
     // Handle the back button press event
     private fun onBackPressed() {
         deleteJsonData()
         requireActivity().finish()
     }
-
 }

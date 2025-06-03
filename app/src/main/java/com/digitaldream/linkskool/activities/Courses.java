@@ -184,7 +184,6 @@ public class Courses extends AppCompatActivity implements CoursesAdapter.OnCours
                     selection(false);
                     selectAll=false;
 
-
                 }else {
                     menu.getItem(0).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_check_box3));
                     selection(true);
@@ -192,8 +191,6 @@ public class Courses extends AppCompatActivity implements CoursesAdapter.OnCours
 
                 }
                 countText.setText(""+getSelectedCount());
-
-
                 return true;
             case android.R.id.home:
                 onBackPressed();
@@ -216,8 +213,6 @@ public class Courses extends AppCompatActivity implements CoursesAdapter.OnCours
         selectAll=false;
         showOrHideFAB();
     }
-
-
 
     @Override
     public void onCourseLongClick(int position) {

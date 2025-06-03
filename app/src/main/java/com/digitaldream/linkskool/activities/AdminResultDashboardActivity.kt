@@ -237,7 +237,6 @@ class AdminResultDashboardActivity : AppCompatActivity(R.layout.activity_admin_r
             }
 
             setUpAdapter()
-
         } catch (e: Exception) {
             e.printStackTrace()
             termErrorMessageTxt.apply {
@@ -255,7 +254,6 @@ class AdminResultDashboardActivity : AppCompatActivity(R.layout.activity_admin_r
             layoutManager = LinearLayoutManager(this@AdminResultDashboardActivity)
             adapter = resultAdapter
         }
-
     }
 
     private fun refreshData() {

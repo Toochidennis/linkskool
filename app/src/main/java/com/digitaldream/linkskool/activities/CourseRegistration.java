@@ -173,7 +173,6 @@ public class CourseRegistration extends AppCompatActivity implements CourseRegAd
         intent.putExtra("from","single");
         intent.putExtra("student",st);
         startActivity(intent);
-
     }
 
     @Override
@@ -211,7 +210,6 @@ public class CourseRegistration extends AppCompatActivity implements CourseRegAd
                     menu.getItem(0).setIcon(ContextCompat.getDrawable(this, R.drawable.ic_check_box3));
                     selection(true);
                     selectAll=true;
-
                 }
 
                 return true;

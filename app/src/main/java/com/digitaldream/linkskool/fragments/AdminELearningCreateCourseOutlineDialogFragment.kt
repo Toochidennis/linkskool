@@ -249,9 +249,9 @@ class AdminELearningCreateCourseOutlineDialogFragment(
             put("description", description)
             put("class", if (selectedClasses.isEmpty()) "" else classJsonArray.toString())
             put("teacher", teacherJsonArray.toString())
-            put("course", courseId ?: "")
-            put("course_name", courseName ?: "")
-            put("level", levelId ?: "")
+            put("course", courseId)
+            put("course_name", courseName)
+            put("level", levelId)
             put("author_id", userId ?: "")
             put("author_name", userName ?: "")
             put("year", year ?: "")
@@ -290,5 +290,4 @@ class AdminELearningCreateCourseOutlineDialogFragment(
             dismiss()
         }
     }
-
 }

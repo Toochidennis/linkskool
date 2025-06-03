@@ -41,6 +41,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONArray
 import org.json.JSONObject
+import timber.log.Timber
 
 /**
  * ### Student E-Learning Fragment Documentation
@@ -176,7 +177,6 @@ class StudentELearningFragment : Fragment() {
             }
 
             toolbar.setNavigationOnClickListener {
-                @Suppress("DEPRECATION")
                 requireActivity().onBackPressed()
             }
         }
@@ -220,6 +220,8 @@ class StudentELearningFragment : Fragment() {
         val url = "${requireActivity().getString(R.string.base_url)}/getLearningHome.php?" +
                 "level=$levelId&class=$classId&term=$term"
 
+        Timber.tag("learning").i(url)
+
         sendRequestToServer(
             Request.Method.GET,
             url,
@@ -255,7 +257,6 @@ class StudentELearningFragment : Fragment() {
                 }
             })
     }
-
 
     private fun parseUpcomingQuizJson(quiz: JSONArray) {
         with(quiz) {

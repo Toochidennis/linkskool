@@ -584,10 +584,11 @@ class AdminELearningCreateAssignmentFragment :
                             if (getString("status") == "success") {
                                 if (mFrom != "edit") {
                                     showToast("Assignment added")
-                                    finishActivity()
                                 } else {
-                                    finishActivity()
+                                    showToast("Assignment updated successfully!")
                                 }
+
+                                finishActivity()
                             } else {
                                 showToast("Failed. Please check your connection and try again")
                             }

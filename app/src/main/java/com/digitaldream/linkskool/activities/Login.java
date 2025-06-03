@@ -14,8 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.Request;
-import com.android.volley.VolleyError;
 import com.digitaldream.linkskool.R;
 import com.digitaldream.linkskool.config.DatabaseHelper;
 import com.digitaldream.linkskool.models.AssessmentModel;
@@ -136,14 +134,11 @@ public class Login extends AppCompatActivity {
         }
 
         login.setOnClickListener(view -> {
-
             if (validateLoginForm()) {
                 loginApiCall();
             }
-
         });
     }
-
     private boolean validateLoginForm() {
         usernameText = Objects.requireNonNull(username.getEditText()).getText().toString().trim();
         passwordText = Objects.requireNonNull(password.getEditText()).getText().toString().trim();
@@ -181,14 +176,12 @@ public class Login extends AppCompatActivity {
                     public void onResponse(@NonNull String response) {
                         parseJSON(response);
                     }
-
                     @Override
                     public void onError(@NonNull VolleyError error) {
                         Toast.makeText(Login.this, error+ "Something went wrong, " +
                                 "Please try again", Toast.LENGTH_SHORT).show();
                     }
                 }, true);
-
     }
 
     public String stripHtml(String html) {
